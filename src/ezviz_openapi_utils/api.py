@@ -5612,11 +5612,12 @@ class EZVIZOpenAPI:
             'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token
         }
+        params = {}
         if device_serial:
             params['deviceSerial'] = device_serial
-        if page_start:
+        if page_start is not None:
             params['pageStart'] = page_start
-        if page_size:
+        if page_size is not None:
             params['pageSize'] = page_size
         raw_response = self._client._session.request('GET', url, headers=headers, params=params)
         meta = raw_response.get('meta', {})
@@ -5856,4 +5857,3 @@ class EZVIZOpenAPI:
         if code != 200:
             raise EZVIZAPIError(str(code), message)
         return raw_response
-
