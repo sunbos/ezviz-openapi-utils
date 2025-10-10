@@ -98,9 +98,9 @@ class EZVIZOpenAPI:
             'model': model,
             'version': version
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数为空或参数不存在",
@@ -111,7 +111,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
 
     def search_device_info(
         self,
@@ -155,8 +155,8 @@ class EZVIZOpenAPI:
             if model is not None:
                 kwargs['data']['model'] = model
 
-        raw_response = self._client._request(method, url, **kwargs)
-        result_section = raw_response.get('result', {})
+        api_response = self._client._request(method, url, **kwargs)
+        result_section = api_response.get('result', {})
         code = result_section.get('code')
         msg = result_section.get('msg', '未知错误')
         error_description_dict = {
@@ -173,11 +173,12 @@ class EZVIZOpenAPI:
             "49999": ""
         }
 
-        if code != "200":
+        # 对于查询设备信息，20020错误码实际表示设备已存在且在线，这是业务上的成功状态
+        if code not in ["200", "20020"]:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
     
     def add_device(
         self,
@@ -201,9 +202,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'validateCode': validate_code
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数为空或格式不正确",
@@ -227,7 +228,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
     
     def delete_device(
         self,
@@ -248,9 +249,9 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial,
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数为空或格式不正确",
@@ -265,7 +266,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
 
     def device_wifi_qrcode(
         self,
@@ -292,9 +293,9 @@ class EZVIZOpenAPI:
             'ssid': ssid,
             'password': password
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数为空或格式不正确",
@@ -308,7 +309,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
         
     def device_permission_check(
         self,
@@ -336,16 +337,15 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         
-        headers = {}
         if ssid is not None:
-            headers['ssid'] = ssid
+            params['ssid'] = ssid
         if client_ip is not None:
-            headers['clientIP'] = client_ip
+            params['clientIP'] = client_ip
 
-        raw_response = self._client._session.request('GET', url, params=params, headers=headers)
+        api_response = self._client._request('GET', url, params=params)
         
         # 检查响应中的meta code
-        meta = raw_response.get('meta', {})
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         
@@ -364,7 +364,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(code, message, error_description)
 
-        return raw_response
+        return api_response
 
     def get_device_realtime_status(
         self,
@@ -392,10 +392,10 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
         }
 
-        raw_response = self._client._request('GET', url, params=params)
+        api_response = self._client._request('GET', url, params=params)
         
         # 检查 meta 中的返回码
-        meta = raw_response.get('meta', {})
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         
@@ -413,7 +413,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return api_response
 
     def get_device_permissions(
         self,
@@ -440,10 +440,10 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
         }
 
-        raw_response = self._client._request('GET', url, params=params)
+        api_response = self._client._request('GET', url, params=params)
 
         # 检查 meta 中的返回码
-        meta = raw_response.get('meta', {})
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
 
@@ -462,7 +462,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return api_response
 
     def update_device_name(
         self,
@@ -488,9 +488,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'deviceName': device_name
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数为空或格式不正确",
@@ -503,7 +503,7 @@ class EZVIZOpenAPI:
         if code != "200":
             raise EZVIZAPIError(str(code), msg, error_description)
 
-        return raw_response
+        return api_response
 
     def update_camera_name(
         self,
@@ -537,9 +537,9 @@ class EZVIZOpenAPI:
         if channel_no is not None:
             payload['channelNo'] = channel_no
             
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         
         # 根据code获取错误描述
         error_description_dict = {
@@ -554,7 +554,7 @@ class EZVIZOpenAPI:
         if code != "200":
             raise EZVIZAPIError(str(code), msg, error_description)
 
-        return raw_response
+        return api_response
     
     def add_ipc_device(
         self,
@@ -588,9 +588,9 @@ class EZVIZOpenAPI:
             payload['channelNo'] = channel_no
         if validate_code is not None:
             payload['validateCode'] = validate_code
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
 
         # 根据code获取错误描述
         error_description_dict = {
@@ -610,7 +610,7 @@ class EZVIZOpenAPI:
         if code != "200":
             raise EZVIZAPIError(str(code), msg, error_description)
 
-        return raw_response
+        return api_response
 
     def delete_ipc_device(
         self,
@@ -640,9 +640,9 @@ class EZVIZOpenAPI:
         }
         if channel_no is not None:
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数为空或格式不正确",
@@ -659,7 +659,7 @@ class EZVIZOpenAPI:
         error_description = error_description_dict.get(str(code), "未知错误")
         if code != "200":
             raise EZVIZAPIError(str(code), msg, error_description)
-        return raw_response
+        return api_response
 
     def nvr_device_camera_limit(
         self,
@@ -700,15 +700,11 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token
         }
         
-        try:
-            response = self._client._session.request('POST', url, data=payload, headers=headers)
-            response.raise_for_status()
-            raw_response = response.json()
-        except requests.RequestException as e:
-            raise EZVIZAPIError("500", f"网络请求失败: {str(e)}", "网络错误")
-        
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, data=payload, headers=headers)
+        http_response.raise_for_status()
+        api_response = http_response.json()
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         
         # 根据code获取错误描述
         error_description_dict = {
@@ -723,7 +719,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
 
     def get_gb_license_list(
         self,
@@ -756,17 +752,17 @@ class EZVIZOpenAPI:
             'pageSize': page_size
         }
 
-        raw_response = self._client._request('POST', url, data=payload)
+        api_response = self._client._request('POST', url, data=payload)
         
         # 检查响应格式
-        meta = raw_response.get('meta', {})
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         
         if code != 200:
             raise EZVIZAPIError(str(code), message)
             
-        return raw_response
+        return api_response
     
     def get_device_info(
         self,
@@ -791,11 +787,11 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
 
-        raw_response = self._client._request('POST', url, data=payload)
+        api_response = self._client._request('POST', url, data=payload)
 
         # 检查响应格式
-        code = raw_response.get('code')
-        message = raw_response.get('message', '未知错误')
+        code = api_response.get('code')
+        message = api_response.get('message', '未知错误')
         # 错误码映射表
         error_description_dict = {
             "10001": "参数为空或格式不正确",
@@ -809,7 +805,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return api_response
     
     def list_devices_by_page(
         self,
@@ -832,9 +828,9 @@ class EZVIZOpenAPI:
             'pageStart': page_start,
             'pageSize': page_size
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         
         # 根据code获取错误描述
         error_description_dict = {
@@ -848,7 +844,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def list_devices_by_id(
         self,
@@ -871,9 +867,9 @@ class EZVIZOpenAPI:
             'id': start_id,
             'pageSize': page_size
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "无效参数",
@@ -885,7 +881,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response 
+        return api_response 
 
     def get_camera_list(
         self,
@@ -911,9 +907,9 @@ class EZVIZOpenAPI:
             'pageStart': page_start,
             'pageSize': page_size
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数错误",
@@ -929,7 +925,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
 
     def get_device_camera_list(
         self,
@@ -952,9 +948,9 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数错误",
@@ -970,7 +966,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
 
     def get_device_status(
         self,
@@ -991,14 +987,14 @@ class EZVIZOpenAPI:
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
-        url = f"{self._base_url}/api/lapp/device/status"
+        url = f"{self._base_url}/api/lapp/device/status/get"
         payload = {
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         # 根据code获取错误描述
         error_description_dict = {
             "10001": "参数为空或格式不正确",
@@ -1012,7 +1008,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
     
     def get_device_channel_status(
         self,
@@ -1035,14 +1031,11 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        try:
-            response = self._client._session.request('GET', url, headers=headers)
-            response.raise_for_status()
-            raw_response = response.json()
-        except requests.RequestException as e:
-            raise EZVIZAPIError("500", f"网络请求失败: {str(e)}", "网络错误")
-        
-        result_section = raw_response.get('result', {})
+
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        api_response = http_response.json()
+        result_section = api_response.get('result', {})
         code = result_section.get('code')
         msg = result_section.get('msg', '未知错误')
         error_description_dict = {
@@ -1057,7 +1050,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
 
     def get_device_connection_info(
         self,
@@ -1076,8 +1069,8 @@ class EZVIZOpenAPI:
         Returns:
             Dict[str, Any]: 设备连接信息
         """
-        
-        
+
+
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_connection_info' 仅限 'cn' 区域使用。", "区域限制错误")
 
@@ -1085,9 +1078,9 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1101,7 +1094,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
 
-        return raw_response
+        return api_response
 
     def create_device_add_token_url(
         self,
@@ -1137,10 +1130,11 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token
         }
 
-        raw_response = self._client._session.request('POST', url, json=payload, headers=headers)
-
+        http_response = self._client._session.request('POST', url, json=payload, headers=headers)
         # 检查响应中的meta信息
-        meta = raw_response.get('meta', {})
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
 
@@ -1153,7 +1147,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return response_data
 
     def get_device_add_note_info(
         self,
@@ -1195,17 +1189,18 @@ class EZVIZOpenAPI:
         if page_size is not None:
             params['pageSize'] = page_size
 
-        raw_response = self._client._session.request('GET', url, params=params, headers=headers)
-
+        http_response = self._client._session.request('GET', url, params=params, headers=headers)
         # 检查响应中的meta信息
-        meta = raw_response.get('meta', {})
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
 
         if code != 200:
             raise EZVIZAPIError(str(code), message)
 
-        return raw_response
+        return response_data
 
     def list_device_add_token_urls(
         self,
@@ -1239,10 +1234,11 @@ class EZVIZOpenAPI:
         if page_size is not None:
             params['pageSize'] = page_size
 
-        raw_response = self._client._session.request('GET', url, params=params, headers=headers)
-
+        http_response = self._client._session.request('GET', url, params=params, headers=headers)
         # 检查响应中的meta信息
-        meta = raw_response.get('meta', {})
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
 
@@ -1255,7 +1251,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return response_data
 
     def get_device_capacity(
         self,
@@ -1278,10 +1274,10 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
 
-        raw_response = self._client._request('POST', url, data=payload)
+        api_response = self._client._request('POST', url, data=payload)
 
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1293,7 +1289,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return api_response
 
     def start_ptz_control(
         self,
@@ -1324,10 +1320,10 @@ class EZVIZOpenAPI:
             'speed': speed
         }
 
-        raw_response = self._client._request('POST', url, data=payload)
+        api_response = self._client._request('POST', url, data=payload)
 
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1337,6 +1333,7 @@ class EZVIZOpenAPI:
             "20008": "操作过于频繁，稍后再试",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
+            "60000": "设备不支持云台控制",
             "60006": "稍候再试",
             "60020": "确认设备是否支持该操作"
         }
@@ -1345,7 +1342,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return api_response
 
     def stop_ptz_control(
         self,
@@ -1372,9 +1369,9 @@ class EZVIZOpenAPI:
         }
         if direction is not None:
             payload['direction'] = direction
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1384,13 +1381,14 @@ class EZVIZOpenAPI:
             "20008": "操作过于频繁，稍后再试",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
+            "60000": "设备不支持云台控制",
             "60006": "稍候再试",
             "60020": "确认设备是否支持该操作"
         }
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def device_mirror_ptz(
         self,
@@ -1416,9 +1414,9 @@ class EZVIZOpenAPI:
             'channelNo': channel_no,
             'command': command
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1434,7 +1432,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def add_device_preset(
         self,
@@ -1457,9 +1455,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1475,7 +1473,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def move_device_preset(
         self,
@@ -1501,9 +1499,9 @@ class EZVIZOpenAPI:
             'channelNo': channel_no,
             'presetIndex': index
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1520,7 +1518,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def clear_device_preset(
         self,
@@ -1546,9 +1544,9 @@ class EZVIZOpenAPI:
             'channelNo': channel_no,
             'index': index
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1565,7 +1563,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def compose_panorama_image(
         self,
@@ -1592,8 +1590,8 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'localIndex': local_index
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('POST', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         error_description_dict = {
@@ -1604,7 +1602,7 @@ class EZVIZOpenAPI:
         if code != 200:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def calibrate_ptz(
         self,
@@ -1635,13 +1633,16 @@ class EZVIZOpenAPI:
             'localIndex': local_index
         }
 
-        raw_response = self._client._session.request('POST', url, headers=headers)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('POST', url, headers=headers)
+        # 状态码200，错误码20015
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return response_data
 
     def reset_ptz(
         self,
@@ -1664,8 +1665,11 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('POST', url, headers=headers)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('POST', url, headers=headers)
+        # 状态码422，错误码60020（设备不支持此命令）
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         error_description_dict = {
@@ -1679,7 +1683,7 @@ class EZVIZOpenAPI:
         if code != 200:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return response_data
 
     def control_ptz(
         self, 
@@ -1723,14 +1727,16 @@ class EZVIZOpenAPI:
             "taskID": task_id
         }
 
-        raw_response = self._client._session.request("PUT", url, headers=headers, json=payload)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request("PUT", url, headers=headers, json=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
         
-        return raw_response
+        return response_data
 
     def capture_image(
         self, 
@@ -1745,9 +1751,9 @@ class EZVIZOpenAPI:
             'channelNo': channel_no,
             'quality': quality
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1765,7 +1771,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def get_passenger_flow_switch_status(
         self,
@@ -1787,9 +1793,9 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1803,7 +1809,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
     
     def set_passenger_flow_switch(
         self,
@@ -1832,9 +1838,9 @@ class EZVIZOpenAPI:
         }
         if channel_no is not None:
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1852,7 +1858,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def get_daily_passenger_flow(
         self,
@@ -1880,9 +1886,9 @@ class EZVIZOpenAPI:
             'channelNo': channel_no,
             'date': date
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1896,7 +1902,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def get_hourly_passenger_flow(
         self,
@@ -1924,9 +1930,9 @@ class EZVIZOpenAPI:
             'channelNo': channel_no,
             'date': date
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1940,7 +1946,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def set_passenger_flow_config(
         self,
@@ -1972,9 +1978,9 @@ class EZVIZOpenAPI:
         }
         if channel_no is not None:
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1993,7 +1999,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def get_passenger_flow_config(
         self,
@@ -2019,9 +2025,9 @@ class EZVIZOpenAPI:
         }
         if channel_no is not None:
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        message = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        message = api_response.get('msg', '未知错误')
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -2036,7 +2042,7 @@ class EZVIZOpenAPI:
         if code != "200":
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return api_response
 
     def get_device_otap_property(
         self,
@@ -2073,8 +2079,10 @@ class EZVIZOpenAPI:
             'domainIdentifier': domain_identifier,
             'propIdentifier': prop_identifier
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         error_description_dict = {
@@ -2085,7 +2093,7 @@ class EZVIZOpenAPI:
         if code != 200:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
-        return raw_response
+        return response_data
 
     def set_device_otap_property(
         self,
@@ -2126,9 +2134,10 @@ class EZVIZOpenAPI:
             'Content-Type': 'application/json'
         }
 
-        raw_response = self._client._session.request('PUT', url, headers=headers, json=property_data)
-
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('PUT', url, headers=headers, json=property_data)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
 
@@ -2143,7 +2152,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return response_data
 
     def execute_device_otap_action(
         self,
@@ -2184,9 +2193,10 @@ class EZVIZOpenAPI:
             'Content-Type': 'application/json'
         }
 
-        raw_response = self._client._session.request('PUT', url, headers=headers, json=action_data)
-
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('PUT', url, headers=headers, json=action_data)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
 
@@ -2201,7 +2211,7 @@ class EZVIZOpenAPI:
             error_description = error_description_dict.get(str(code), "未知错误")
             raise EZVIZAPIError(str(code), message, error_description)
 
-        return raw_response
+        return response_data
 
     def get_voice_device_list(
         self,
@@ -2223,14 +2233,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
     
     def add_voice_to_device(
         self,
@@ -2258,19 +2268,19 @@ class EZVIZOpenAPI:
             'voiceName': voice_name,
             'voiceUrl': voice_url
         }
-        raw_response = self._client._request('POST', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('POST', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response     
+        return api_response     
 
     def modify_voice_name(
         self,
         device_serial: str,
-        voicee_id: int,
+        voice_id: int,
         voice_name: str,
         voice_url: str
     ) -> Dict[str, Any]:
@@ -2292,17 +2302,17 @@ class EZVIZOpenAPI:
         url = f"{self._base_url}/api/route/voice/v3/devices/voices"
         params = {
             'deviceSerial': device_serial,
-            'voiceId': voicee_id,
+            'voiceId': voice_id,
             'voiceName': voice_name,
             'voiceUrl': voice_url
         }
-        raw_response = self._client._request('PUT', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('PUT', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
         
     def delete_voice_from_device(
         self,
@@ -2333,13 +2343,13 @@ class EZVIZOpenAPI:
             'voiceName': voice_name,
             'voiceUrl': voice_url
         }
-        raw_response = self._client._request('DELETE', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('DELETE', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
     
     def set_device_alarm_sound(
         self,
@@ -2373,13 +2383,13 @@ class EZVIZOpenAPI:
         if voice_id is not None:
             params['voiceId'] = voice_id
 
-        raw_response = self._client._request('PUT', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('PUT', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response        
+        return api_response        
 
     def transmit_isapi_command(
         self,
@@ -2432,12 +2442,12 @@ class EZVIZOpenAPI:
 
         try:
             # --- 核心改动：直接使用 client._session，绕过 client._request ---
-            response = self._client._session.request(method, url, **kwargs)
-            response.raise_for_status()
+            http_response = self._client._session.request(method, url, **kwargs)
+            http_response.raise_for_status()
 
             # 从响应头中获取自定义返回码
-            ezo_code = response.headers.get('EZO-Code')
-            ezo_message = response.headers.get('EZO-Message', '未知错误')
+            ezo_code = http_response.headers.get('EZO-Code')
+            ezo_message = http_response.headers.get('EZO-Message', '未知错误')
 
             # 错误码映射表
             error_description_dict = {
@@ -2455,10 +2465,10 @@ class EZVIZOpenAPI:
                 raise EZVIZAPIError(ezo_code, ezo_message, error_description)
 
             # 请求成功，根据响应内容类型返回数据
-            if 'application/json' in response.headers.get('Content-Type', ''):
-                return response.json()
+            if 'application/json' in http_response.headers.get('Content-Type', ''):
+                return http_response.json()
             else:
-                return response.text
+                return http_response.text
 
         except requests.RequestException as e:
             raise EZVIZAPIError("500", f"网络请求失败: {str(e)}", "网络错误")
@@ -2486,9 +2496,9 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2505,7 +2515,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
     
     def set_device_encrypt_on(
         self, 
@@ -2523,9 +2533,9 @@ class EZVIZOpenAPI:
         """
         url = f"{self._base_url}/api/lapp/device/encrypt/on"
         payload = { 'deviceSerial': device_serial }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2542,7 +2552,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
     
     def update_device_password(
         self, 
@@ -2568,9 +2578,9 @@ class EZVIZOpenAPI:
             'oldPassword': old_password,
             'newPassword': new_password
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2588,7 +2598,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
     
     def set_device_defence(
         self, 
@@ -2611,9 +2621,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'isDefence': is_defence
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2628,7 +2638,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
     
     def get_device_defence_plan(
         self, 
@@ -2651,9 +2661,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2666,7 +2676,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response  
+        return api_response  
     
     def set_device_defence_plan(
         self, 
@@ -2706,9 +2716,9 @@ class EZVIZOpenAPI:
             payload['period'] = period
         if enable:
             payload['enable'] = enable
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2721,7 +2731,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
       
     def get_wifi_sound_switch_status(
         self, 
@@ -2742,9 +2752,9 @@ class EZVIZOpenAPI:
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2757,7 +2767,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_wifi_sound_switch_status(
         self, 
@@ -2785,9 +2795,9 @@ class EZVIZOpenAPI:
         }
         if channel_no: 
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2805,7 +2815,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
     
     def get_scene_switch_status(
         self, 
@@ -2828,9 +2838,9 @@ class EZVIZOpenAPI:
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2843,7 +2853,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_scene_switch_status(
         self, 
@@ -2871,9 +2881,9 @@ class EZVIZOpenAPI:
         }
         if channel_no: 
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2891,7 +2901,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
       
     def get_ssl_switch_status(
         self, 
@@ -2911,9 +2921,9 @@ class EZVIZOpenAPI:
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2926,7 +2936,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_ssl_switch_status(
         self, 
@@ -2953,9 +2963,9 @@ class EZVIZOpenAPI:
         }
         if channel_no: 
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2973,7 +2983,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_indicator_light_switch_status(
         self, 
@@ -2991,13 +3001,13 @@ class EZVIZOpenAPI:
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_indicator_light_switch_status' 仅限 'cn' 区域使用。", "区域限制错误")
-        url = f"{self._base_url}/api/lapp/device/ssl/switch/set"
+        url = f"{self._base_url}/api/lapp/device/light/switch/status"
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3010,7 +3020,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
        
     def set_indicator_light_switch_status(
         self, 
@@ -3040,9 +3050,9 @@ class EZVIZOpenAPI:
         }
         if channel_no: 
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3060,7 +3070,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_fullday_record_switch_status(
         self, 
@@ -3082,9 +3092,9 @@ class EZVIZOpenAPI:
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3098,7 +3108,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_fullday_record_switch_status(
         self, 
@@ -3127,9 +3137,9 @@ class EZVIZOpenAPI:
         }
         if channel_no: 
             payload['channelNo'] = channel_no
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3147,7 +3157,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_motion_detection_sensitivity_config(
         self, 
@@ -3169,9 +3179,9 @@ class EZVIZOpenAPI:
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3184,7 +3194,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_motion_detection_sensitivity(
         self,
@@ -3218,9 +3228,9 @@ class EZVIZOpenAPI:
         if type is not None:
             payload['type'] = type
 
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3238,7 +3248,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_sound_alarm(
         self,
@@ -3264,9 +3274,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'type': type
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3282,7 +3292,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_offline_notify(
         self,
@@ -3307,9 +3317,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'enable': enable
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3325,7 +3335,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_sound_status(
         self,
@@ -3339,9 +3349,9 @@ class EZVIZOpenAPI:
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3353,6 +3363,10 @@ class EZVIZOpenAPI:
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
+        if code != '200':
+            error_description = error_code_dict.get(code, "未知错误")
+            raise EZVIZAPIError(code, msg, error_description)
+        return api_response
 
     def set_sound_status(
         self,
@@ -3375,9 +3389,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'enable': enable
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3393,7 +3407,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_mobile_status(
         self,
@@ -3423,9 +3437,9 @@ class EZVIZOpenAPI:
         if channel_no:
             payload['channelNo'] = channel_no
             
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3441,7 +3455,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_mobile_status(
         self,
@@ -3463,9 +3477,9 @@ class EZVIZOpenAPI:
         payload = { 
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3481,7 +3495,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
         
     def set_osd_name(
         self,
@@ -3509,9 +3523,9 @@ class EZVIZOpenAPI:
             'osdName': osd_name,
             'channelNo': channel_no
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3526,7 +3540,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_osd_name(
         self,
@@ -3549,15 +3563,17 @@ class EZVIZOpenAPI:
             'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token
         }
-        payload = {
+        params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('POST', url, data=payload, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, params=params, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_intelligence_detection_switch_status(
         self,
@@ -3584,9 +3600,9 @@ class EZVIZOpenAPI:
         }
         if type is not None:
             payload['type'] = type
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3601,7 +3617,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def set_intelligence_detection_switch_status(
         self,
@@ -3633,9 +3649,9 @@ class EZVIZOpenAPI:
             payload['channelNo'] = channel_no
         if type is not None:
             payload['type'] = type
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -3650,7 +3666,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_human_track_switch(
         self,
@@ -3673,9 +3689,13 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        # 状态码200，错误码60020
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
+        code = meta.get('code')
+        message = meta.get('message', '未知错误')
         error_code_dict = {
             "10002": "accessToken异常或过期",
             "10031": "子账号没有设备权限",
@@ -3687,10 +3707,10 @@ class EZVIZOpenAPI:
             "49999": "接口调用异常",
             "60020": "设备不支持"
         }
-        if code != '200':
+        if code != 200:
             error_description = error_code_dict.get(code, "未知错误")
-            raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+            raise EZVIZAPIError(str(code), message, error_description)
+        return response_data
 
     def set_human_track_switch(
         self,
@@ -3718,9 +3738,12 @@ class EZVIZOpenAPI:
         data = {
             'enable': enable
         }
-        raw_response = self._client._session.request('PUT', url, headers=headers, data=data)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('PUT', url, headers=headers, data=data)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
+        code = meta.get('code')
+        message = meta.get('message', '未知错误')
         error_code_dict = {
             "10002": "accessToken异常或过期",
             "10031": "子账号没有设备权限",
@@ -3732,10 +3755,10 @@ class EZVIZOpenAPI:
             "49999": "接口调用异常",
             "60020": "设备不支持"
         }
-        if code != '200':
+        if code != 200:
             error_description = error_code_dict.get(code, "未知错误")
-            raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+            raise EZVIZAPIError(str(code), message, error_description)
+        return response_data
 
     def set_system_operate(
         self,
@@ -3774,9 +3797,11 @@ class EZVIZOpenAPI:
         if delay is not None:
             payload['delay'] = delay
 
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -3788,7 +3813,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return response_data
 
     def set_timing_plan(
         self,
@@ -3830,12 +3855,14 @@ class EZVIZOpenAPI:
         # 不填默认为0
         if event_arg is not None:
             payload['eventArg'] = event_arg
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
     
     def get_timing_plan(
         self,
@@ -3859,12 +3886,14 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def open_human_detection_area(
         self,
@@ -3893,12 +3922,14 @@ class EZVIZOpenAPI:
         payload = {
             'type': type
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
     
     def set_pir_detection_area(
         self,
@@ -3932,12 +3963,14 @@ class EZVIZOpenAPI:
         payload = {
             'area': area
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_human_detection_area(
         self,
@@ -3962,12 +3995,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def set_human_detection_area(
         self,
@@ -3998,12 +4033,14 @@ class EZVIZOpenAPI:
         payload = {
             'area': area
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_device_detect_config(
         self,
@@ -4031,12 +4068,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def set_device_detect_config(
         self,
@@ -4072,12 +4111,14 @@ class EZVIZOpenAPI:
             'type': type,
             'value': value
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
     
     def set_device_display_mode(
         self,
@@ -4107,12 +4148,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'mode': mode
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_device_display_mode(
         self,
@@ -4132,16 +4175,17 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 '' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/display/mode/get"
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
     
     def set_device_work_mode(
         self,
@@ -4170,12 +4214,14 @@ class EZVIZOpenAPI:
         payload = {
             'mode': mode
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_device_work_mode(
         self,
@@ -4195,16 +4241,17 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'get_device_work_mode' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/battery/work/mode/get"
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
     
     def get_device_power_status(
         self,
@@ -4228,12 +4275,14 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def set_device_switch_status(
         self,
@@ -4263,12 +4312,14 @@ class EZVIZOpenAPI:
             'enable': enable,
             'type': type
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_device_switch_status(
         self,
@@ -4297,12 +4348,14 @@ class EZVIZOpenAPI:
         params = {
             'type': type
         }
-        raw_response = self._client._session.request('GET', url, headers=headers, params=params)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_advanced_alarm_detection_types(
         self,
@@ -4326,12 +4379,14 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
     
     def get_device_format_status(
         self,
@@ -4354,8 +4409,10 @@ class EZVIZOpenAPI:
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers, params=params)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         error_code_dict = {
@@ -4365,10 +4422,10 @@ class EZVIZOpenAPI:
             "20011": "设备不支持或者设备异常",
             "60058": "设备存在高风险需要确权"
         }
-        if code != '200':
+        if code != 200:
             error_description = error_code_dict.get(code, "未知错误")
-            raise EZVIZAPIError(code, message, error_description)
-        return raw_response
+            raise EZVIZAPIError(str(code), message, error_description)
+        return response_data
 
     def format_device_disk(
         self,
@@ -4394,10 +4451,12 @@ class EZVIZOpenAPI:
             'diskIndex': disk_index,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('PUT', url, headers=headers, data=payload)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
-        msg = meta.get('msg', '未知错误')
+        message = meta.get('message', '未知错误')
         error_code_dict = {
             "10002": "accessToken异常或过期",
             "10031": "子账号没有设备权限",
@@ -4409,10 +4468,10 @@ class EZVIZOpenAPI:
             "20018": "用户没有设备权限",
             "60058": "设备存在高风险需要确权"
         }
-        if code != '200':
+        if code != 200:
             error_description = error_code_dict.get(code, "未知错误")
-            raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+            raise EZVIZAPIError(str(code), message, error_description)
+        return response_data
 
     def set_video_level(
         self,
@@ -4446,10 +4505,12 @@ class EZVIZOpenAPI:
             'videoLevel': video_level
         }
 
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
-        msg = meta.get('msg', '未知错误')
+        message = meta.get('message', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -4459,10 +4520,10 @@ class EZVIZOpenAPI:
             "20008": "设备响应超时",
             "50000": "服务异常"
         }
-        if code != '200':
+        if code != 200:
             error_description = error_code_dict.get(code, "未知错误")
-            raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+            raise EZVIZAPIError(str(code), message, error_description)
+        return response_data
 
     def set_device_video_encode(
         self,
@@ -4492,7 +4553,7 @@ class EZVIZOpenAPI:
             encode_complex (str): 编码复杂度 0-低 1-中 2-高 默认1（非必填）
             device_serial (str): 设备序列号（必填）
             channel_no (str): 设备通道号 默认为1（非必填）
-        return: 
+        return:
             Dict[str, Any]: API返回的JSON数据。
         Raises:
             EZVIZAPIError: 当API调用失败时抛出.
@@ -4500,7 +4561,7 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_video_encode' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/device/video/encode/set"
-        params = {
+        data = {
             'accessToken': self._client.access_token,
             'streamTypeIn': stream_type_in,
             'resolution': resolution,
@@ -4513,9 +4574,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        raw_response = self._client._session.request('POST', url, params=params)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        api_response = self._client._request('POST', url, data=data)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -4529,7 +4590,7 @@ class EZVIZOpenAPI:
         if code != '200':
             error_description = error_code_dict.get(code, "未知错误")
             raise EZVIZAPIError(code, msg, error_description)
-        return raw_response
+        return api_response
 
     def get_device_video_encode(
         self, 
@@ -4555,13 +4616,15 @@ class EZVIZOpenAPI:
         headers = {
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
-            'localIndex': local_index
+            'localIndex': str(local_index)
         }
         params = {
             'streamType': stream_type
         }
-        raw_response = self._client._session.request('GET', url, headers=headers, params=params)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         error_code_dict = {
@@ -4573,16 +4636,16 @@ class EZVIZOpenAPI:
             "20018": "该用户不拥有该设备",
             "70018": "资源不存在"
         }
-        if code != '200':
+        if code != 200:
             error_description = error_code_dict.get(code, "未知错误")
-            raise EZVIZAPIError(code, message, error_description)
-        return raw_response
+            raise EZVIZAPIError(str(code), message, error_description)
+        return response_data
 
     def set_device_audio_encode_type(
         self,
         device_serial: str,
         encode_type: str,
-        local_index: Optional[str] = 1
+        local_index: Optional[str] = "1"
     ) -> Dict[str, Any]:
         """
         音频编码格式切换（PUT）
@@ -4600,7 +4663,6 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'set_device_audio_encode_type' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/audio/encodeType"
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
@@ -4609,13 +4671,16 @@ class EZVIZOpenAPI:
         payload = {
             'encodeType': encode_type
         }
-        raw_response = self._client._session.request('PUT', url, headers=headers, data=payload)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        # 状态码422，错误码60020，不支持该命令
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
 
     def set_device_video_encode_type(
         self,
@@ -4641,13 +4706,15 @@ class EZVIZOpenAPI:
             'encodeType': encode_type,
             'streamType': stream_type
         }
-        raw_response = self._client._session.request('PUT', url, headers=headers, data=payload)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
 
     def get_device_white_balance(
         self,
@@ -4669,13 +4736,13 @@ class EZVIZOpenAPI:
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return api_response
 
     def set_device_white_balance(
         self,
@@ -4708,13 +4775,13 @@ class EZVIZOpenAPI:
             payload['whiteBalanceRed'] = white_balance_red
         if white_balance_blue is not None:
             payload['whiteBalanceBlue'] = white_balance_blue
-        raw_response = self._client._request('PUT', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('PUT', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return api_response
 
     def get_device_backlight_compensation(
         self,
@@ -4736,13 +4803,13 @@ class EZVIZOpenAPI:
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return api_response
     
     def set_device_backlight_compensation(
         self,
@@ -4767,13 +4834,13 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'mode': mode
         }
-        raw_response = self._client._request('PUT', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('PUT', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return api_response
 
     def get_device_denoising(
         self,
@@ -4795,13 +4862,14 @@ class EZVIZOpenAPI:
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
+        # 状态码412，错误码20015（设备不支持）
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return api_response
 
     def set_device_denoising(
         self,
@@ -4839,13 +4907,13 @@ class EZVIZOpenAPI:
         if temporal_level is not None:
             payload['temporalLevel'] = temporal_level
 
-        raw_response = self._client._request('PUT', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('PUT', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return api_response
 
     def get_device_exposure_time(
         self,
@@ -4856,7 +4924,7 @@ class EZVIZOpenAPI:
         功能：查询设备曝光时间参数， 托管/子账号：支持， 权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+        return:
             Dict[str, Any]: API返回的JSON数据。
         Raises:
             EZVIZAPIError: 当API调用失败时抛出.
@@ -4864,16 +4932,22 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_exposure_time' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/video/exposure/time"
+        headers = {
+            'accessToken': self._client.access_token
+        }
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {}) 
+        http_response = self._client._session.request('GET', url, headers=headers, params = params)
+        # 设备不支持，状态码412，错误码20015
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
 
     def set_device_exposure_time(
         self,
@@ -4899,13 +4973,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'exposureTarget': exposure_target
         }
-        raw_response = self._client._request('PUT', url, data=payload)
-        meta = raw_response.get('meta', {})
+        # 状态码412，错误码20015，设备不支持
+        api_response = self._client._request('PUT', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return api_response
 
     def get_device_anti_flicker(
         self,
@@ -4924,16 +4999,22 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_anti_flicker' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/video/anti/flicker"
+        headers = {
+            'accessToken': self._client.access_token
+        }
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('GET', url, params=params, headers = headers)
+        # 状态码412，错误码20015，设备不支持
+        http_response.raise_for_status()
+        response_data = http_response.json()        
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
     
     def set_device_anti_flicker(
         self,
@@ -4954,17 +5035,23 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_anti_flicker' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/video/anti/flicker"
+        headers = {
+            'accessToken': self._client.access_token
+        }
         payload = {
             'deviceSerial': device_serial,
             'mode': mode
         }
-        raw_response = self._client._request('PUT', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._session.request('PUT', url, data=payload, headers = headers)
+        # 状态码412，错误码20015，设备不支持
+        api_response.raise_for_status()
+        response_data = api_response.json()  
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
     
     def get_device_disk_capacity(
         self,
@@ -4983,16 +5070,20 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_disk_capacity' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/diskCapacity"
+        headers = {
+            'accessToken': self._client.access_token
+        }
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
-        code = meta.get('code')
-        msg = meta.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, params = params, headers = headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def set_device_video_switch_status(
         self,
@@ -5023,13 +5114,16 @@ class EZVIZOpenAPI:
             'type': type,
             'enable': enable
         }
-        raw_response = self._client._session.request('PUT', url, headers=headers, data=payload) 
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('PUT', url, headers=headers, data=payload) 
+        # 状态码422，错误码60020，设备不支持
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
 
     def get_device_video_switch_status(
         self,
@@ -5057,13 +5151,16 @@ class EZVIZOpenAPI:
         params = {
             'type': type
         }
-        raw_response = self._client._session.request('GET', url, headers=headers, params=params)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        # 状态码422，错误码60020，设备不支持
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, message)
-        return raw_response
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
 
     def set_fill_light_mode(
         self,
@@ -5094,11 +5191,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'mode': mode
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
+        return response_data
 
     def set_fill_light_switch(
         self,
@@ -5128,12 +5228,14 @@ class EZVIZOpenAPI:
         }
         if enable is not None:
             payload['enable'] = enable
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def set_talk_speaker_volume(
         self,
@@ -5163,12 +5265,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'volume': volume
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_talk_speaker_volume(
         self,
@@ -5194,12 +5298,14 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_device_alarm_detect_switch(
         self,
@@ -5222,12 +5328,14 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('GET', url, headers=headers)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def set_device_defense(
         self,
@@ -5256,12 +5364,14 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'status': status
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def play_device_audition(
         self,
@@ -5292,12 +5402,14 @@ class EZVIZOpenAPI:
             'voiceIndex': voice_index,
             'volume': volume
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def set_detect_switch(
         self,
@@ -5331,12 +5443,14 @@ class EZVIZOpenAPI:
         }
         if type:
             payload['type'] = type
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_device_image_params(
         self,
@@ -5358,15 +5472,19 @@ class EZVIZOpenAPI:
         headers = {
             'accessToken': self._client.access_token
         }
-        payload = {
+        params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers, params=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
-        if code != '200':
-            raise EZVIZAPIError(code, msg)
-        return raw_response
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        # 状态码412，错误码20015，设备不支持
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
+        code = meta.get('code')
+        message = meta.get('message', '未知错误')
+        if code != 200:
+            raise EZVIZAPIError(str(code), message)
+        return response_data
 
     def set_device_image_params(
         self,
@@ -5420,12 +5538,15 @@ class EZVIZOpenAPI:
         if sharpness is not None:
             payload['sharpness'] = sharpness
 
-        raw_response = self._client._session.request('PUT', url, headers=headers, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
+        http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        # 状态码412，错误码20015，设备不支持
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        code = response_data.get('code')
+        msg = response_data.get('msg', '未知错误')
         if code != '200':
             raise EZVIZAPIError(code, msg)
-        return raw_response
+        return response_data
 
     def get_ptz_homing_point(
         self,
@@ -5446,17 +5567,17 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_ptz_homing_point' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op"
-        payload = {
+        params = {
             'accessToken': self._client.access_token,
             'key': key
         }
-        raw_response = self._client._session.request('GET', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
 
     def set_ptz_homing_point(
         self,
@@ -5483,13 +5604,13 @@ class EZVIZOpenAPI:
             'key': key,
             'value': value
         }
-        raw_response = self._client._session.request('PUT', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('PUT', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
     
     def get_ptz_homing_point_status(
         self,
@@ -5510,17 +5631,16 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_ptz_homing_point_status' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op"
-        payload = {
-            'accessToken': self._client.access_token,
+        params = {
             'key': key
         }
-        raw_response = self._client._session.request('GET', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
 
     def set_preset_point(
         self,
@@ -5547,13 +5667,13 @@ class EZVIZOpenAPI:
             'key': key,
             'value': value
         }
-        raw_response = self._client._session.request('PUT', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('PUT', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
 
     def get_intelligent_model_device_support(
         self,
@@ -5579,13 +5699,15 @@ class EZVIZOpenAPI:
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._session.request('GET', url, headers=headers, params=params)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return response_data
         
     def get_intelligent_model_device_list(
         self,
@@ -5619,13 +5741,15 @@ class EZVIZOpenAPI:
             params['pageStart'] = page_start
         if page_size is not None:
             params['pageSize'] = page_size
-        raw_response = self._client._session.request('GET', url, headers=headers, params=params)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return response_data
     
     def load_intelligent_model_app(
         self,
@@ -5648,20 +5772,22 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'load_intelligent_model_app' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/intelligent/model/app/load"
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'accessToken': self._client.access_token
         }
         payload = {
-            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'appId': app_id
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return response_data
 
     def set_intelligent_model_device_onoffline(
         self,
@@ -5685,13 +5811,16 @@ class EZVIZOpenAPI:
             'appId': app_id,
             'status': status
         }
-        raw_response = self._client._session.request('POST', url, headers=headers, data=payload)
-        meta = raw_response.get('meta', {})
+        http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        # 状态码200，错误码2004（设备异常），设备目前不支持动态加载
+        http_response.raise_for_status()
+        response_data = http_response.json()
+        meta = response_data.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return response_data
        
     def get_device_version_info(
         self,
@@ -5711,12 +5840,12 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
-        if code != 200:
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
+        if code != "200":
             raise EZVIZAPIError(str(code), msg)
-        return raw_response
+        return api_response
 
     def upgrade_device_firmware(
         self,
@@ -5736,12 +5865,12 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
-        if code != 200:
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
+        if code != "200":
             raise EZVIZAPIError(str(code), msg)
-        return raw_response
+        return api_response
 
     def get_device_upgrade_status(
         self,
@@ -5761,12 +5890,12 @@ class EZVIZOpenAPI:
         payload = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        code = raw_response.get('code')
-        msg = raw_response.get('msg', '未知错误')
-        if code != 200:
+        api_response = self._client._request('POST', url, data=payload)
+        code = api_response.get('code')
+        msg = api_response.get('msg', '未知错误')
+        if code != "200":
             raise EZVIZAPIError(str(code), msg)
-        return raw_response
+        return api_response
 
     def get_device_upgrade_modules(
         self,
@@ -5788,13 +5917,13 @@ class EZVIZOpenAPI:
         params = {
             'deviceSerial': device_serial
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
 
     def upgrade_device_modules(
         self,
@@ -5819,13 +5948,13 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'modules': modules
         }
-        raw_response = self._client._request('POST', url, data=payload)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('POST', url, data=payload)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
 
     def get_device_module_upgrade_status(
         self,
@@ -5850,10 +5979,10 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'module': module
         }
-        raw_response = self._client._request('GET', url, params=params)
-        meta = raw_response.get('meta', {})
+        api_response = self._client._request('GET', url, params=params)
+        meta = api_response.get('meta', {})
         code = meta.get('code')
         message = meta.get('message', '未知错误')
         if code != 200:
             raise EZVIZAPIError(str(code), message)
-        return raw_response
+        return api_response
