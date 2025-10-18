@@ -13,3 +13,11 @@ class EZVIZAuthError(EZVIZBaseError):
 class EZVIZAPIError(EZVIZBaseError):
     """萤石开放平台API调用异常"""
     pass
+
+class EZVIZDeviceNotSupportedError(EZVIZBaseError):
+    """设备不支持该功能的异常"""
+    def __init__(self, code: str, msg: str, device_serial: str = "", api_name: str = ""):
+        self.device_serial = device_serial
+        self.api_name = api_name
+        description = f"设备 {device_serial} 不支持功能 {api_name}: {msg}"
+        super().__init__(code, msg, description)
