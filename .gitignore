@@ -1,0 +1,58 @@
+# -----------------
+# 敏感信息 (Sensitive Information)
+# -----------------
+# 忽略包含环境变量和密钥的 .env 文件
+.env
+
+# -----------------
+# 字节码/缓存文件 (Bytecode / Cache)
+# -----------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# -----------------
+# 虚拟环境 (Virtual Environments)
+# -----------------
+.venv
+venv/
+venv
+env/
+env
+ENV/
+ENV
+
+# -----------------
+# 测试/覆盖率报告 (Testing / Coverage)
+# -----------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+pytestdebug.log
+pytest-html-report.html
+
+# -----------------
+# IDE/编辑器配置 (IDE / Editor Config)
+# -----------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -----------------
+# 构建/分发产物 (Build / Distribution)
+# -----------------
+build/
+dist/
+*.egg-info/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg
