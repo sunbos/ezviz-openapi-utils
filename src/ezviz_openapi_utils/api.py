@@ -2823,7 +2823,7 @@ class EZVIZOpenAPI:
         接口功能：该接口用于设置wifi配置或设备启动提示音开关
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-            enable (int): 状态：0-关闭，1-开启（非必填）
+            enable (int): 状态：0-关闭，1-开启（必填）
             channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
         Returns:
             Dict[str, Any]: API返回的JSON数据。
