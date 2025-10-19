@@ -15,7 +15,6 @@ class Client:
         
         self._access_token = AccessToken(self.app_key, self.app_secret, self.region)
         if self._access_token.code != self.TOKEN_SUCCESS_CODE:
-            # raise RuntimeError(f"客户端初始化失败：{self._access_token.msg}")
             raise EZVIZAuthError(
                 self._access_token.code,
                 self._access_token.msg,
@@ -28,12 +27,7 @@ class Client:
             # 重新获取 token
             self._access_token = AccessToken(self.app_key, self.app_secret, self.region)
             if self._access_token.code != self.TOKEN_SUCCESS_CODE:
-                # raise RuntimeError(f"重新获取 access_token 失败：{self._access_token.msg}")
-                raise EZVIZAuthError(
-                    self._access_token.code,
-                    self._access_token.msg,
-                    "重新获取 access_token 失败"
-                )
+                raise EZVIZAuthError(self._access_token.code, self._access_token.msg,"重新获取 access_token 失败")
         return self._access_token.data.access_token
 
     @property
