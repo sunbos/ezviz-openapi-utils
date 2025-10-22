@@ -1,5 +1,19 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+EZVIZ OpenAPI Client Module
+
+This module provides the Client class for handling authentication and API requests
+to the EZVIZ OpenAPI platform. It manages token lifecycle, session handling,
+and automatic retry mechanisms for token expiration.
+
+Author: SunBo <1443584939@qq.com>
+License: MIT
+"""
+
 import requests
 from typing import Any, Dict
+
 from .oauth import AccessToken
 from .exceptions import EZVIZAuthError, EZVIZAPIError
 

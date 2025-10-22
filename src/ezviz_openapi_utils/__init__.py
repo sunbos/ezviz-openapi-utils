@@ -1,13 +1,27 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-ezviz_openapi_utils 包提供与萤石开放平台交互的核心工具类和函数。
-主要功能包括：
-- Client: 萤石API客户端
-- AccessToken: 访问令牌对象
-- get_access_token: 获取访问令牌的认证函数
-- EZVIZOpenAPI: 萤石开放平台API接口集合
+EZVIZ OpenAPI Utils Package
+
+This package provides a comprehensive Python library for interacting with the EZVIZ
+OpenAPI platform. It offers simplified authentication, token management, and
+access to approximately 143 API methods for device management, control, and monitoring.
+
+Main Components:
+- Client: EZVIZ API client with automatic token management
+- AccessToken: OAuth access token object
+- get_access_token: Authentication function for obtaining access tokens
+- EZVIZOpenAPI: Comprehensive collection of EZVIZ OpenAPI methods
+
+Author: SunBo <1443584939@qq.com>
+License: MIT
+Version: 0.1.0
 """
 
 __version__ = '0.1.0'
+__author__ = 'SunBo'
+__email__ = '1443584939@qq.com'
+__license__ = 'MIT'
 
 # 导入核心模块
 from .client import Client

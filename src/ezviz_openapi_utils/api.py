@@ -1,3 +1,17 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+EZVIZ OpenAPI Module
+
+This module provides the EZVIZOpenAPI class which serves as a comprehensive interface
+to the EZVIZ OpenAPI platform. It includes approximately 143 API methods covering
+device management, PTZ control, intelligent features, security settings, firmware
+updates, and more.
+
+Author: SunBo <1443584939@qq.com>
+License: MIT
+"""
+
 import time
 import requests
 from typing import Any, Dict, Literal, Optional, Union
@@ -188,11 +202,12 @@ class EZVIZOpenAPI:
 
         url = f"{self._base_url}/api/lapp/device/support/ezviz"
         payload = {
+            'accessToken': self._client.access_token,
             'appKey': app_key,
             'model': model,
             'version': version
         }
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或参数不存在",
             "49999": "接口调用异常"
@@ -254,27 +269,55 @@ class EZVIZOpenAPI:
                 kwargs['data']['model'] = model
 
         http_response = self._client._session.request(method, url, **kwargs, headers={'Content-Type': "application/x-www-form-urlencoded"})
-        error_description_dict = {
-            "10001": "",
-            "10002": "",
-            "10004": "",
-            "20002": "",
-            "20013": "",
-            "20014": "",
-            "20020": "",
-            "20023": "",
-            "20029": "",
-            "60107": "",
-            "49999": ""
-        }
 
-        return self._handle_api_response(
-            http_response,
-            api_name="search_device_info",
-            device_serial=device_serial,
-            response_format="result",
-            error_code_map=error_description_dict
-        )
+        # 自定义响应处理逻辑，专门处理search_device_info的成功状态码
+        try:
+            response_data = http_response.json()
+        except ValueError:
+            # 如果JSON解析失败，检查HTTP状态
+            http_response.raise_for_status()
+            raise EZVIZAPIError("HTTP_ERROR", f"HTTP {http_response.status_code}", "无法解析响应数据")
+
+        # 检查HTTP状态码
+        try:
+            http_response.raise_for_status()
+        except requests.HTTPError as e:
+            raise EZVIZAPIError("HTTP_ERROR", str(e), f"HTTP请求失败: {e}")
+
+        # 从result字段提取code和msg
+        result = response_data.get('result', {})
+        code = result.get('code')
+        message = result.get('msg', '未知错误')
+
+        # 检查是否是设备不支持的错误
+        if str(code) in DEVICE_NOT_SUPPORTED_CODES:
+            not_supported_error = EZVIZDeviceNotSupportedError(
+                str(code),
+                message,
+                device_serial,
+                "search_device_info"
+            )
+            raise not_supported_error
+
+        # search_device_info API的特殊成功状态码
+        SEARCH_DEVICE_SUCCESS_CODES = {"200", "20020", "20023", "20029"}
+
+        if str(code) not in SEARCH_DEVICE_SUCCESS_CODES:
+            # 处理其他错误码
+            error_description_dict = {
+                "10001": "请求参数错误",
+                "10002": "accessToken过期或异常",
+                "10004": "accessToken不合法",
+                "20002": "用户不存在",
+                "20013": "设备已被别人添加",
+                "20014": "设备序列不正确",
+                "60107": "不支持错误",
+                "49999": "系统错误"
+            }
+            error_description = error_description_dict.get(str(code), "未知错误")
+            raise EZVIZAPIError(str(code), message, error_description)
+
+        return response_data
     
     def add_device(
         self,
@@ -428,6 +471,7 @@ class EZVIZOpenAPI:
         """
         url = f"{self._base_url}/api/userdevice/v3/devices/op/permission"
         params = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
         
@@ -436,7 +480,7 @@ class EZVIZOpenAPI:
         if client_ip is not None:
             params['clientIP'] = client_ip
 
-        http_response = self._client._session.request('GET', url, params=params, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('GET', url, params=params)
 
         # 错误码映射表
         error_description_dict = {
@@ -524,10 +568,11 @@ class EZVIZOpenAPI:
 
         url = f"{self._base_url}/api/userdevice/v3/devices/permission"
         params = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
         }
 
-        http_response = self._client._session.request('GET', url, params=params, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('GET', url, params=params)
 
         # 错误码映射表
         error_description_dict = {
@@ -1057,10 +1102,11 @@ class EZVIZOpenAPI:
         """
         url = f"{self._base_url}/api/lapp/device/status/get"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1840,9 +1886,10 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'get_passenger_flow_switch_status' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/passengerflow/switch/status"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1883,12 +1930,13 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'set_passenger_flow_switch' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/passengerflow/switch/set"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'enable': enable
         }
         if channel_no is not None:
             payload['channelNo'] = channel_no
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -1933,11 +1981,12 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'get_daily_passenger_flow' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/passengerflow/daily"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'channelNo': channel_no,
             'date': date
         }
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -1978,11 +2027,12 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'get_hourly_passenger_flow' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/passengerflow/hourly"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'channelNo': channel_no,
             'date': date
         }
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -2025,13 +2075,14 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'set_passenger_flow_config' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/passengerflow/config/set"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'line': line,
             'direction': direction
         }
         if channel_no is not None:
             payload['channelNo'] = channel_no
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -2075,11 +2126,12 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'get_passenger_flow_config' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/passengerflow/config/get"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
         if channel_no is not None:
             payload['channelNo'] = channel_no
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
@@ -2271,10 +2323,11 @@ class EZVIZOpenAPI:
         url = f"{self._base_url}/api/route/voice/v3/devices/voices"
 
         params = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
 
-        http_response = self._client._session.request('GET', url, headers={'accessToken': self._client.access_token}, params=params)
+        http_response = self._client._session.request('GET', url, params=params)
         return self._handle_api_response(
             http_response,
             api_name="get_voice_device_list",
@@ -2425,7 +2478,7 @@ class EZVIZOpenAPI:
         if voice_id is not None:
             params['voiceId'] = voice_id
 
-        http_response = self._client._session.request('PUT', url, params=params, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('PUT', url, params=params)
         return self._handle_api_response(
             http_response,
             api_name="set_device_alarm_sound",
@@ -2622,11 +2675,12 @@ class EZVIZOpenAPI:
         """
         url = f"{self._base_url}/api/lapp/device/password/update"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'oldPassword': old_password,
             'newPassword': new_password
         }
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -2667,10 +2721,11 @@ class EZVIZOpenAPI:
         """
         url = f"{self._base_url}/api/lapp/device/defence/set"
         payload = {
+            'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
             'isDefence': is_defence
         }
-        http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",
@@ -4628,7 +4683,7 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_video_encode' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/device/video/encode/set"
-        data = {
+        params = {
             'accessToken': self._client.access_token,
             'streamTypeIn': stream_type_in,
             'resolution': resolution,
@@ -4641,7 +4696,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        http_response = self._client._session.request('POST', url, data=data, headers={'accessToken': self._client.access_token})
+        http_response = self._client._session.request('POST', url, params=params)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "accessToken异常或过期",

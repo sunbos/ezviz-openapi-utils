@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+EZVIZ OpenAPI Exceptions Module
+
+This module defines the exception hierarchy for the EZVIZ OpenAPI platform.
+It provides specific exception classes for different types of errors including
+authentication failures, API errors, and device-specific errors.
+
+Author: SunBo <1443584939@qq.com>
+License: MIT
+"""
+
 class EZVIZBaseError(Exception):
     """萤石开放平台基础异常类"""
     def __init__(self, code: str, msg: str, description: str = ""):

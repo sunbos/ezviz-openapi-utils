@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+EZVIZ OpenAPI OAuth Module
+
+This module provides authentication and token management functionality for the EZVIZ
+OpenAPI platform. It handles OAuth authentication flow, token refresh mechanisms,
+and supports multiple regional API endpoints.
+
+Author: SunBo <1443584939@qq.com>
+License: MIT
+"""
+
 from typing import Literal, TypedDict, Union, cast
 import requests
 from .exceptions import EZVIZAuthError
