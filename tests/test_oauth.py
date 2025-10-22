@@ -1,4 +1,21 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+EZVIZ OpenAPI OAuth Module Tests
+
+This module provides unit tests for the OAuth authentication functionality
+of the EZVIZ OpenAPI platform. Tests cover token acquisition, validation,
+and error handling scenarios.
+
+Test Requirements:
+- Set EZVIZ_APP_KEY and EZVIZ_APP_SECRET in .env file
+- Tests validate token lifecycle and error handling
+- Supports multiple regional API endpoints
+
+Author: SunBo <1443584939@qq.com>
+License: MIT
+"""
+
 import os
 import pytest
 from dotenv import load_dotenv

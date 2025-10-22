@@ -1,4 +1,21 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+EZVIZ OpenAPI Client Module Tests
+
+This module provides unit and integration tests for the Client class functionality.
+Tests cover client initialization, token management, session handling, and API request
+processing capabilities of the EZVIZ OpenAPI platform.
+
+Test Requirements:
+- Set EZVIZ_APP_KEY and EZVIZ_APP_SECRET in .env file
+- Tests validate client lifecycle and error handling
+- Covers automatic token refresh mechanisms
+
+Author: SunBo <1443584939@qq.com>
+License: MIT
+"""
+
 import os
 import pytest
 from dotenv import load_dotenv
