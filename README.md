@@ -1,6 +1,6 @@
 # EZVIZ OpenAPI Utils
 
-[简体中文](README.zh-CN.md) | [English](README.md)
+[简体中文](README.zh-CN.md) | English
 
 A Python library designed to simplify interactions with the EZVIZ OpenAPI platform. It handles authentication, automatic token refreshing, and provides a clean, unified interface for all API endpoints.
 

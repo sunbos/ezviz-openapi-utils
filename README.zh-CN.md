@@ -1,6 +1,6 @@
 # EZVIZ OpenAPI Utils (萤石开放平台工具库)
 
-[简体中文](README.zh-CN.md) | [English](README.md)
+简体中文 | [English](README.md)
 
 一个用于简化与萤石开放平台 API 交互的 Python 库。它负责处理认证、Access Token 自动刷新，并为所有 API 提供了一个简洁统一的接口。
 
