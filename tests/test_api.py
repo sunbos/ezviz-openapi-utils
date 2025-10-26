@@ -82,6 +82,14 @@ def test_disk_index():
     """提供测试磁盘索引"""
     return os.getenv("TEST_DISK_INDEX", "0")  # 默认值为"0"
 
+@pytest.fixture
+def video_encrypt_passwords():
+    """提供视频加密密码配置"""
+    return {
+        "old_password": os.getenv("OLD_VIDEO_ENCRYPT_PASSWORD"),
+        "new_password": os.getenv("NEW_VIDEO_ENCRYPT_PASSWORD")
+    }
+
 class TestDeviceManagementCore:
     """设备管理核心API测试"""
 
@@ -1102,7 +1110,7 @@ class TestFirmwareExtended:
 class TestSecurityExtended:
     """安全扩展API测试"""
 
-    def test_update_device_password(self, real_api, test_device_serial):
+    def test_update_device_password(self, real_api, test_device_serial, video_encrypt_passwords):
         """测试修改设备视频加密密码"""
         if not test_device_serial:
             pytest.skip("需要设置 TEST_DEVICE_SERIAL 环境变量")
@@ -1111,8 +1119,8 @@ class TestSecurityExtended:
             # 此操作具有破坏性风险，谨慎使用
             response = real_api.update_device_password(
                 device_serial=test_device_serial,
-                old_password="121212..",
-                new_password="121212.."
+                old_password=video_encrypt_passwords["old_password"],
+                new_password=video_encrypt_passwords["new_password"]
             )
             assert response.get("code") == "200"
             # pytest.skip("跳过有破坏性风险的操作测试")
