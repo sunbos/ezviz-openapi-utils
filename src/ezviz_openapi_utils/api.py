@@ -307,10 +307,13 @@ class EZVIZOpenAPI:
             error_description_dict = {
                 "10001": "请求参数错误",
                 "10002": "accessToken过期或异常",
-                "10004": "accessToken不合法",
-                "20002": "用户不存在",
+                "10004": "用户不存在",
+                "20002": "设备不存在",
                 "20013": "设备已被别人添加",
                 "20014": "设备序列不正确",
+                "20020": "设备在线，被自己添加",
+                "20023": "设备不在线，未被用户添加",
+                "20029": "设备不在线，但是已经被自己添加",
                 "60107": "不支持错误",
                 "49999": "系统错误"
             }
@@ -346,16 +349,18 @@ class EZVIZOpenAPI:
                                                     headers={'Content-Type': 'application/x-www-form-urlencoded'})
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "请重新获取 accessToken",
-            "10005": "appKey 被冻结，请检查您的应用状态",
-            "20002": "设备未注册至萤石云，请先激活设备",
-            "20007": "检查设备是否在线，网络连接是否正常",
-            "20010": "检查设备验证码是否输入错误",
-            "20011": "检查设备网络等是否正常，或稍后重试",
-            "20013": "该设备已被其他账号添加，请先解绑",
-            "20017": "设备已经添加到当前账号下，无需重复添加",
-            "49999": "接口调用异常，建议稍后重试或联系技术支持",
-            "60066": "本地更新验证码：\n    https://statics.ys7.com/device/image/servicepic/16.png",
+            "10002": "重新获取accessToken",
+            "10005": "appKey被冻结",
+            "20002": "该接口出现这个错误码表示设备未注册至萤石云",
+            "20007": "检查设备是否在线",
+            "20010": "检查设备验证码是否错误",
+            "20011": "检查设备网络等是否正常",
+            "20013": "该设备已被别的账号添加",
+            "20014": "",
+            "20017": "设备已经添加到该账号下",
+            "20038": "",
+            "49999": "接口调用异常",
+            "60066": "本地更新验证码",
             "60058": "设备需要确权：\n    1. 设备确权接口文档：https://open.ys7.com/help/664\n    2. 确权快速操作指南：https://open.ys7.com/bbs/article/106",
             "60034": "此设备不支持直连云服务，请将设备先关联到海康威视硬盘录像机",
             "60085": "设备确权问题：\n    请参考接口文档：https://open.ys7.com/help/664",
@@ -392,10 +397,11 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "请重新获取 accessToken",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
-            "20031": "请在萤石客户端关闭终端绑定，参考此步骤：https://service.ezviz.com/questions/answer?id=14098",
             "49999": "接口调用异常"
         }
         return self._handle_api_response(
@@ -435,7 +441,7 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "请重新获取 accessToken",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
             "10017": "确认appKey是否正确",
             "49999": "接口调用异常"
@@ -622,6 +628,8 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -672,6 +680,8 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "检查设备对应通道是否存在",
             "49999": "接口调用异常"
@@ -723,13 +733,30 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60012": "设备返回其他错误码",
             "60020": "确认设备是否支持关联IPC",
+            "60040": "",
+            "60041": "",
+            "60042": "",
+            "60043": "",
+            "60044": "",
+            "60045": "",
+            "60046": "",
+            "60047": "",
+            "60048": "",
+            "60049": "",
+            "60050": "",
+            "60051": "",
+            "60052": "",
+            "60053": "",
+            "60054": "",
             "60055": "检查IPC设备码流"
         }
         return self._handle_api_response(
@@ -774,13 +801,17 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60012": "设备返回其他错误码",
-            "60020": "确认设备是否支持关联IPC"
+            "60020": "确认设备是否支持关联IPC",
+            "60056": "",
+            "60057": ""
         }
         return self._handle_api_response(
             http_response,
@@ -911,6 +942,8 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -948,8 +981,8 @@ class EZVIZOpenAPI:
         error_description_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
+            "10004": "用户不存在",
             "10005": "appKey被冻结",
-            "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
 
@@ -986,7 +1019,7 @@ class EZVIZOpenAPI:
         error_description_dict = {
             "10001": "无效参数",
             "10002": "accessToken过期或异常",
-            "10004": "需要使用B账号",
+            "10004": "用户不存在",
             "10005": "appKey异常",
             "49999": "数据异常"
         }
@@ -1025,13 +1058,13 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
-            "10001": "参数错误",
-            "10002": "accessToken异常或过期",
-            "10005": "appKey异常",
-            "20002": "设备不存在",
-            "20014": "deviceSerial不合法",
-            "20018": "该用户不拥有该设备",
-            "49999": "数据异常"
+            "10001": "参数为空或格式不正确",
+            "10002": "重新获取accessToken",
+            "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
+            "49999": "接口调用异常"
         }
         return self._handle_api_response(
             http_response,
@@ -1065,13 +1098,13 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
-            "10001": "参数错误",
-            "10002": "accessToken异常或过期",
-            "10005": "appKey异常",
-            "20002": "设备不存在",
-            "20014": "deviceSerial不合法",
-            "20018": "该用户不拥有该设备",
-            "49999": "数据异常"
+            "10001": "参数为空或格式不正确",
+            "10002": "重新获取accessToken",
+            "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
+            "49999": "接口调用异常"
         }
         return self._handle_api_response(
             http_response,
@@ -1111,6 +1144,8 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -1146,9 +1181,11 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('GET', url, headers=headers)
         error_description_dict = {
-            "10001": "参数错误",
-            "10002": "accessToken过期或异常",
+            "10001": "参数为空或格式不正确",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -1193,6 +1230,8 @@ class EZVIZOpenAPI:
             "10002": "重新获取accessToken",
             "10004": "需要使用B账号",
             "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -1241,7 +1280,9 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, json=payload, headers=headers)
 
         error_description_dict = {
-            "403": "无权限，请确认accessToken是否为开发者账号"
+            "400": "",
+            "403": "accessToken请使用开发者账号",
+            "500": ""
         }
         return self._handle_api_response(
             http_response,
@@ -1292,11 +1333,18 @@ class EZVIZOpenAPI:
             params['pageSize'] = page_size
 
         http_response = self._client._session.request('GET', url, params=params, headers=headers)
+        
+        error_description_dict = {
+            "400": "",
+            "404": "",
+            "500": ""
+        }
         return self._handle_api_response(
             http_response,
             api_name="get_device_add_note_info",
             device_serial=device_serial or "",
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_description_dict
         )
 
     def list_device_add_token_urls(
@@ -1334,7 +1382,9 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('GET', url, params=params, headers=headers)
 
         error_description_dict = {
-            "403": "无权限，请确认accessToken是否为开发者账号"
+            "400": "",
+            "403": "无权限，请确认accessToken是否为开发者账号",
+            "500": ""
         }
         return self._handle_api_response(
             http_response,
@@ -1369,9 +1419,12 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
 
         error_description_dict = {
-            "10001": "参数为空或格式不正确",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+            "10001": "参数为空或参数不合法",
+            "10002": "",
+            "10004": "",
+            "10005": "",
             "20002": "设备序列号输入有误或者设备未添加或者通道异常",
+            "20014": "",
             "49999": "接口调用异常"
         }
         return self._handle_api_response(
@@ -1418,13 +1471,21 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60000": "设备不支持云台控制",
+            "60000": "",
+            "60001": "",
+            "60002": "",
+            "60003": "",
+            "60004": "",
+            "60005": "",
             "60006": "稍候再试",
+            "60009": "",
             "60020": "确认设备是否支持该操作"
         }
         return self._handle_api_response(
@@ -1466,13 +1527,17 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60000": "设备不支持云台控制",
+            "60000": "",
+            "60001": "",
             "60006": "稍候再试",
+            "60009": "",
             "60020": "确认设备是否支持该操作"
         }
         return self._handle_api_response(
@@ -1513,12 +1578,17 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
+            "60000": "",
+            "60001": "",
             "60006": "稍候再试",
+            "60009": "",
             "60020": "确认设备是否支持该操作"
         }
         return self._handle_api_response(
@@ -1556,12 +1626,17 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
+            "60000": "",
+            "60001": "",
             "60006": "稍候再试",
+            "60007": "",
             "60008": "C6预置点最大限制个数为12"
         }
         return self._handle_api_response(
@@ -1602,13 +1677,20 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
+            "60000": "",
+            "60001": "",
             "60006": "稍候再试",
+            "60009": "",
+            "60010": "",
+            "60011": "",
             "60020": "确认设备是否支持该操作"
         }
         return self._handle_api_response(
@@ -1649,12 +1731,16 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
+            "60000": "",
+            "60001": "",
             "60006": "稍候再试",
             "60020": "确认设备是否支持该操作"
         }
@@ -1766,12 +1852,16 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('POST', url, headers=headers)
         error_description_dict = {
-            "10001": "参数为空或者格式不对",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
-            "20007": "参考服务中心排查方法",
-            "20008": "设备响应超时，请检测设备网络或重试",
-            "60020": "请确认设备是否支持该命令"
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20006": "",
+            "20007": "",
+            "20008": "",
+            "50000": "",
+            "60020": "",
+            "60058": ""
         }
         return self._handle_api_response(
             http_response,
@@ -1848,17 +1938,18 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
             "10051": "设备不属于当前用户或者未分享给当前用户",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁或者设备不支持萤石协议抓拍",
+            "20014": "",
             "20032": "检查设备是否包含该通道",
             "49999": "接口调用异常",
             "60017": "设备返回失败",
-            "60020": "请确认设备是否支持该命令"
+            "60020": "确认设备是否支持抓图"
         }
         return self._handle_api_response(
             http_response,
@@ -1892,13 +1983,14 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "10051": "设备不属于当前用户或者未分享给当前用户",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
-            "60020": "请确认设备是否支持该命令"
+            "60020": "设备不支持客流统计功能"
         }
         return self._handle_api_response(
             http_response,
@@ -1941,10 +2033,11 @@ class EZVIZOpenAPI:
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
@@ -1989,13 +2082,14 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60020": "请确认设备是否支持该命令"
+            "60020": "设备不支持客流统计功能"
         }
         return self._handle_api_response(
             http_response,
@@ -2035,9 +2129,10 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
@@ -2085,16 +2180,18 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60020": "请确认设备是否支持该命令",
+            "60020": "设备不支持客流统计功能",
             "60022": "已是当前开关状态",
             "60025": "设备返回其他错误码"
         }
@@ -2134,13 +2231,15 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_description_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken有效期为七天，建议在accessToken即将过期或者出现10002错误码的时候重新获取accessToken",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60020": "请确认设备是否支持该命令",
+            "60020": "设备不支持客流统计功能",
             "60022": "已是当前开关状态"
         }
         return self._handle_api_response(
@@ -2188,9 +2287,10 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('GET', url, headers=headers)
         error_description_dict = {
-            "10001": "参数为空或者格式不对",
-            "20007": "参考服务中心排查方法",
-            "20018": "确认设备是否属于用户"
+            "10001": "",
+            "10031": "",
+            "20007": "",
+            "20018": ""
         }
         return self._handle_api_response(
             http_response,
@@ -2241,9 +2341,10 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('PUT', url, headers=headers, json=property_data)
         error_description_dict = {
-            "10001": "参数为空或者格式不对",
-            "20007": "参考服务中心排查方法",
-            "20018": "确认设备是否属于用户"
+            "10001": "",
+            "10031": "",
+            "20007": "",
+            "20018": ""
         }
         return self._handle_api_response(
             http_response,
@@ -2294,9 +2395,10 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('PUT', url, headers=headers, json=action_data)
         error_description_dict = {
-            "10001": "参数为空或者格式不对",
-            "20007": "参考服务中心排查方法",
-            "20018": "确认设备是否属于用户"
+            "10001": "",
+            "10031": "",
+            "20007": "",
+            "20018": ""
         }
         return self._handle_api_response(
             http_response,
@@ -2479,11 +2581,25 @@ class EZVIZOpenAPI:
             params['voiceId'] = voice_id
 
         http_response = self._client._session.request('PUT', url, params=params)
+        error_code_dict = {
+            "111001": "",
+            "111002": "",
+            "111003": "",
+            "111004": "",
+            "111005": "",
+            "111006": "",
+            "111007": "",
+            "111008": "",
+            "111009": "",
+            "111010": "",
+            "111011": "",
+        }
         return self._handle_api_response(
             http_response,
             api_name="set_device_alarm_sound",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )        
 
     def transmit_isapi_command(
@@ -2547,7 +2663,7 @@ class EZVIZOpenAPI:
             # 错误码映射表
             error_description_dict = {
                 "10001": "参数为空或格式不正确",
-                "10002": "accessToken异常或过期",
+                "10002": "重新获取accessToken",
                 "20002": "设备不存在",
                 "20006": "网络异常",
                 "20007": "设备不在线",
@@ -2570,7 +2686,6 @@ class EZVIZOpenAPI:
                 raise EZVIZAPIError(str(e.response.status_code), f"HTTP {e.response.status_code} 错误: {str(e)}", "")
             else:
                 raise EZVIZAPIError("NETWORK_ERROR", f"网络请求失败: {str(e)}", "")
-
 
     def set_device_encrypt_off(
         self, 
@@ -2595,14 +2710,14 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
             "20010": "检查设备验证码是否错误",
-            "20018": "该用户不拥有该设备",
+            "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60016": "设备加密开关已是关闭状态"
         }
@@ -2636,14 +2751,14 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
-            "20010": "检查设备验证码是否错误",
-            "20018": "该用户不拥有该设备",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60016": "设备加密开关已是关闭状态"
         }
@@ -2683,14 +2798,15 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
-            "20010": "检查设备验证码是否错误",
-            "20018": "该用户不拥有该设备",
+            "20010": "确认输入的旧密码是否正确",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60012": "设备返回其他错误码",
             "60020": "确认设备是否支持修改视频预览密码"
@@ -2728,12 +2844,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "该用户不拥有该设备",
             "49999": "接口调用异常"
         }
@@ -2770,10 +2887,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
-            "20018": "该用户不拥有该设备",
+            "20002": "",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
+            "20032": "",
             "49999": "接口调用异常",
             "60020": "确认设备是否支持修改视频预览密码"
         }
@@ -2827,12 +2947,17 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
-            "20018": "该用户不拥有该设备",
+            "20002": "",
+            "20006": "检查设备网络状况，稍后再试",
+            "20007": "检查设备是否在线",
+            "20008": "操作过于频繁，稍后再试",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
+            "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60020": "确认设备是否支持修改视频预览密码"
+            "60020": "设备不支持设备布撤防计划功能"
         }
         return self._handle_api_response(
             http_response,
@@ -2865,9 +2990,11 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60020": "设备不支持设置WIFI配置提示音开关功能"
@@ -2910,12 +3037,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
@@ -2955,12 +3083,14 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
-            "60020": "设备不支持设置场景联动开关功能"
+            "60020": "设备不支持镜头遮蔽功能"
         }
         return self._handle_api_response(
             http_response,
@@ -3000,12 +3130,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
@@ -3042,9 +3173,11 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60020": "设备不支持声源定位功能"
@@ -3086,12 +3219,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
@@ -3130,12 +3264,14 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
-            "60020": "设备不支持声源定位功能"
+            "60020": "设备不支持指示灯设置功能"
         }
         return self._handle_api_response(
             http_response,
@@ -3177,12 +3313,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
@@ -3221,11 +3358,12 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
-            "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
             "60020": "设备不支持指示灯设置功能"
         }
@@ -3268,16 +3406,17 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60020": "设备不支持指示灯设置功能",
+            "60020": "设备不支持全天录像配置",
             "60022": "已是当前开关状态"
         }
         return self._handle_api_response(
@@ -3312,12 +3451,14 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
+            "10004": "",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
-            "60020": "设备不支持指示灯设置功能"
+            "60020": "设备不支持移动侦测灵敏度配置"
         }
         return self._handle_api_response(
             http_response,
@@ -3363,17 +3504,17 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "20032": "该用户下通道不存在",
             "49999": "接口调用异常",
-            "60020": "设备不支持指示灯设置功能",
-            "60022": "已是当前灵敏度"
+            "60020": "设备不支持移动侦测灵敏度配置"
         }
         return self._handle_api_response(
             http_response,
@@ -3411,15 +3552,16 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
-            "60020": "设备不支持指示灯设置功能"
+            "60020": "设备不支持告警声音配置"
         }
         return self._handle_api_response(
             http_response,
@@ -3456,15 +3598,16 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
-            "60020": "设备不支持指示灯设置功能"
+            "60020": "设备不支持离线通知功能"
         }
         return self._handle_api_response(
             http_response,
@@ -3490,12 +3633,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -3532,12 +3676,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60020": "设备不支持设置麦克风功能"
@@ -3582,12 +3727,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60020": "设备不支持移动跟踪"
@@ -3624,12 +3770,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常",
             "60020": "设备不支持移动跟踪"
@@ -3672,12 +3819,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -3750,12 +3898,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -3801,12 +3950,13 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('POST', url, data=payload)
         error_code_dict = {
             "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
+            "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
-            "20002": "①设备没有注册到萤石云平台，请检查下设备网络参数，确保能正常连接网络②设备序列号不存在",
+            "20002": "",
             "20006": "检查设备网络状况，稍后再试",
             "20007": "检查设备是否在线",
             "20008": "操作过于频繁，稍后再试",
+            "20014": "",
             "20018": "检查设备是否属于当前账户",
             "49999": "接口调用异常"
         }
@@ -3841,14 +3991,14 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('GET', url, headers=headers)
         error_code_dict = {
-            "10002": "accessToken异常或过期",
+            "10002": "token过期或异常",
             "10031": "子账号没有设备权限",
             "20002": "设备不存在",
             "20006": "设备网络异常",
             "20007": "设备离线",
             "20008": "设备响应超时",
             "20018": "用户没有设备权限",
-            "49999": "接口调用异常",
+            "49999": "数据异常",
             "60020": "设备不支持"
         }
         return self._handle_api_response(
@@ -3887,7 +4037,7 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=data)
         error_code_dict = {
-            "10002": "accessToken异常或过期",
+            "10002": "token过期或异常",
             "10031": "子账号没有设备权限",
             "20002": "设备不存在",
             "20006": "设备网络异常",
@@ -4539,11 +4689,11 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
         error_code_dict = {
-            "10031": "子账号没有设备权限",
-            "20002": "设备不存在",
-            "20007": "设备不在线",
-            "20011": "设备不支持或者设备异常",
-            "60058": "设备存在高风险需要确权"
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20011": "",
+            "60058": ""
         }
         return self._handle_api_response(
             http_response,
@@ -4579,15 +4729,15 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
         error_code_dict = {
-            "10002": "accessToken异常或过期",
-            "10031": "子账号没有设备权限",
-            "20002": "设备不存在",
-            "20007": "设备不在线",
-            "20011": "设备不支持或者设备异常",
-            "20014": "存储介质不存在",
-            "20016": "当前设备正在格式化",
-            "20018": "用户没有设备权限",
-            "60058": "设备存在高风险需要确权"
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20011": "",
+            "20014": "",
+            "20016": "",
+            "20018": "",
+            "60058": ""
         }
         return self._handle_api_response(
             http_response,
@@ -4631,13 +4781,13 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
         error_code_dict = {
-            "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
-            "20001": "通道不存在",
-            "20002": "设备不存在",
-            "20007": "设备不在线",
-            "20008": "设备响应超时",
-            "50000": "服务异常"
+            "10001": "",
+            "10002": "",
+            "20001": "",
+            "20002": "",
+            "20007": "",
+            "20008": "",
+            "50000": ""
         }
         return self._handle_api_response(
             http_response,
@@ -4698,14 +4848,14 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('POST', url, params=params)
         error_code_dict = {
-            "10001": "参数为空或格式不正确",
-            "10002": "accessToken异常或过期",
-            "10031": "子账号或开发者用户无权限",
-            "20002": "设备不存在",
-            "20007": "设备不在线",
-            "20008": "设备响应超时",
-            "20018": "托管账户没有权限",
-            "50000": "服务器异常"
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20008": "",
+            "20018": "",
+            "50000": ""
         }
         return self._handle_api_response(
             http_response,
@@ -4746,7 +4896,7 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
         error_code_dict = {
-            "10001": "参数为空或格式不正确",
+            "10001": "设备序列号不能为空\n设备序列号格式不正确\n请求头参数为空: deviceSerial\n参数类型不匹配,参数\nstreamType类型应该为int\nstreamType格式错误",
             "10002": "accessToken异常或过期",
             "20002": "设备不存在",
             "20007": "设备不在线",
@@ -4793,11 +4943,25 @@ class EZVIZOpenAPI:
             'encodeType': encode_type
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20006": "",
+            "20007": "",
+            "20008": "",
+            "20011": "",
+            "20018": "",
+            "60020": "",
+            "60058": ""
+        }
         return self._handle_api_response(
             http_response,
             api_name="set_device_audio_encode_type",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_device_video_encode_type(
@@ -4825,11 +4989,25 @@ class EZVIZOpenAPI:
             'streamType': stream_type
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20006": "",
+            "20007": "",
+            "20008": "",
+            "20011": "",
+            "20018": "",
+            "60020": "",
+            "60058": ""
+        }
         return self._handle_api_response(
             http_response,
             api_name="set_device_video_encode_type",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_device_white_balance(
@@ -4856,11 +5034,19 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20015": ""
+        }
         return self._handle_api_response(
             http_response,
             api_name="get_device_white_balance",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_device_white_balance(
@@ -4898,11 +5084,20 @@ class EZVIZOpenAPI:
         if white_balance_blue is not None:
             payload['whiteBalanceBlue'] = white_balance_blue
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20015": ""
+        }        
         return self._handle_api_response(
             http_response,
             api_name="set_device_white_balance",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_device_backlight_compensation(
@@ -4929,11 +5124,19 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20015": ""
+        }          
         return self._handle_api_response(
             http_response,
             api_name="get_device_backlight_compensation",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
     
     def set_device_backlight_compensation(
@@ -4963,11 +5166,20 @@ class EZVIZOpenAPI:
             'mode': mode
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20015": ""
+        }
         return self._handle_api_response(
             http_response,
             api_name="set_device_backlight_compensation",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_device_denoising(
@@ -4994,11 +5206,19 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20015": ""
+        }        
         return self._handle_api_response(
             http_response,
             api_name="get_device_denoising",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_device_denoising(
@@ -5041,11 +5261,20 @@ class EZVIZOpenAPI:
             payload['temporalLevel'] = temporal_level
 
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20015": ""
+        }   
         return self._handle_api_response(
             http_response,
             api_name="set_device_denoising",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_device_exposure_time(
@@ -5072,11 +5301,19 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, headers=headers, params = params)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20015": ""
+        }         
         return self._handle_api_response(
             http_response,
             api_name="get_device_exposure_time",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_device_exposure_time(
@@ -5107,11 +5344,20 @@ class EZVIZOpenAPI:
             'exposureTarget': exposure_target
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20015": ""
+        }          
         return self._handle_api_response(
             http_response,
             api_name="set_device_exposure_time",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_device_anti_flicker(
@@ -5138,11 +5384,19 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, params=params, headers = headers)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20015": ""
+        }   
         return self._handle_api_response(
             http_response,
             api_name="get_device_anti_flicker",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
     
     def set_device_anti_flicker(
@@ -5172,11 +5426,20 @@ class EZVIZOpenAPI:
             'mode': mode
         }
         http_response = self._client._session.request('PUT', url, data=payload, headers=headers)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20015": ""
+        }   
         return self._handle_api_response(
             http_response,
             api_name="set_device_anti_flicker",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
     
     def get_device_disk_capacity(
@@ -5203,11 +5466,19 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, params=params, headers=headers)
+        error_code_dict = {
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20014": "",
+            "20018": ""
+        }
         return self._handle_api_response(
             http_response,
             api_name="get_device_disk_capacity",
             device_serial=device_serial,
-            response_format="code"
+            response_format="code",
+            error_code_map=error_code_dict
         )
 
     def set_device_video_switch_status(
@@ -5240,11 +5511,25 @@ class EZVIZOpenAPI:
             'enable': enable
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "429": "",
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20006": "",
+            "20007": "",
+            "20008": "",
+            "60020": "",
+            "60058": "",
+            "80002": ""
+        }
         return self._handle_api_response(
             http_response,
             api_name="set_device_video_switch_status",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_device_video_switch_status(
@@ -5274,11 +5559,20 @@ class EZVIZOpenAPI:
             'type': type
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "429": "",
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "60020": ""
+        }        
         return self._handle_api_response(
             http_response,
             api_name="get_device_video_switch_status",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_fill_light_mode(
@@ -5311,11 +5605,24 @@ class EZVIZOpenAPI:
             'mode': mode
         }
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        error_code_dict = {
+            "10001": "",
+            "10002": "",
+            "10005": "",
+            "20006": "",
+            "20007": "",
+            "20008": "",
+            "20011": "",
+            "20014": "",
+            "20018": "",
+            "60020": ""
+        }          
         return self._handle_api_response(
             http_response,
             api_name="set_fill_light_mode",
             device_serial=device_serial,
-            response_format="code"
+            response_format="code",
+            error_code_map=error_code_dict
         )
 
     def set_fill_light_switch(
@@ -5479,11 +5786,19 @@ class EZVIZOpenAPI:
             'status': status
         }
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        error_code_dict = {
+            "10001": "",
+            "20014": "",
+            "20018": "",
+            "60012": "",
+            "60020": ""
+        }             
         return self._handle_api_response(
             http_response,
             api_name="set_device_defense",
             device_serial=device_serial,
-            response_format="code"
+            response_format="code",
+            error_code_map=error_code_dict
         )
 
     def play_device_audition(
@@ -5586,11 +5901,19 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20015": ""
+        }          
         return self._handle_api_response(
             http_response,
             api_name="get_device_image_params",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_device_image_params(
@@ -5646,11 +5969,20 @@ class EZVIZOpenAPI:
             payload['sharpness'] = sharpness
 
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "500": "",
+            "10001": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20015": ""
+        }  
         return self._handle_api_response(
             http_response,
             api_name="set_device_image_params",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_ptz_homing_point(
@@ -5677,11 +6009,22 @@ class EZVIZOpenAPI:
             'key': key
         }
         http_response = self._client._session.request('GET', url, params=params)
+        error_code_dict = {
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20008": "",
+            "20018": "",
+            "50000": ""
+        }         
         return self._handle_api_response(
             http_response,
             api_name="get_ptz_homing_point",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_ptz_homing_point(
@@ -5711,11 +6054,20 @@ class EZVIZOpenAPI:
             'value': value
         }
         http_response = self._client._session.request('PUT', url, data=payload)
+        error_code_dict = {
+            "10001": "",
+            "10002": "",
+            "20002": "",
+            "20007": "",
+            "20008": "",
+            "20018": ""
+        }          
         return self._handle_api_response(
             http_response,
             api_name="set_ptz_homing_point",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
     
     def get_ptz_homing_point_status(
@@ -5742,11 +6094,22 @@ class EZVIZOpenAPI:
             'key': key
         }
         http_response = self._client._session.request('GET', url , params=params)
+        error_code_dict = {
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20008": "",
+            "20018": "",
+            "50000": ""
+        }           
         return self._handle_api_response(
             http_response,
             api_name="get_ptz_homing_point_status",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_preset_point(
@@ -5776,11 +6139,21 @@ class EZVIZOpenAPI:
             'value': value
         }
         http_response = self._client._session.request('PUT', url, data=payload)
+        error_code_dict = {
+            "10001": "",
+            "10002": "",
+            "10031": "",
+            "20002": "",
+            "20007": "",
+            "20008": "",
+            "20018": ""
+        }           
         return self._handle_api_response(
             http_response,
             api_name="set_preset_point",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_intelligent_model_device_support(
@@ -5808,11 +6181,17 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "500": "",
+            "2000": "",
+            "2001": ""
+        }           
         return self._handle_api_response(
             http_response,
             api_name="get_intelligent_model_device_support",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
         
     def get_intelligent_model_device_list(
@@ -5848,11 +6227,16 @@ class EZVIZOpenAPI:
         if page_size is not None:
             params['pageSize'] = page_size
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "400": "",
+            "500": ""
+        }            
         return self._handle_api_response(
             http_response,
             api_name="get_intelligent_model_device_list",
             device_serial=device_serial or "unknown",
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
     
     def load_intelligent_model_app(
@@ -5884,11 +6268,17 @@ class EZVIZOpenAPI:
             'appId': app_id
         }
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        error_code_dict = {
+            "400": "",
+            "500": "",
+            "2004": ""
+        }        
         return self._handle_api_response(
             http_response,
             api_name="load_intelligent_model_app",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def set_intelligent_model_device_onoffline(
@@ -5914,11 +6304,16 @@ class EZVIZOpenAPI:
             'status': status
         }
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
+        error_code_dict = {
+            "400": "",
+            "500": ""
+        }        
         return self._handle_api_response(
             http_response,
             api_name="set_intelligent_model_device_onoffline",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
        
     def get_device_version_info(
@@ -5941,11 +6336,21 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('POST', url, data=payload)
+        error_code_dict = {
+            "10001": "参数为空或格式不正确",
+            "10002": "重新获取accessToken",
+            "10005": "appKey被冻结",
+            "20002": "",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
+            "49999": "接口调用异常"
+        }         
         return self._handle_api_response(
             http_response,
             api_name="get_device_version_info",
             device_serial=device_serial,
-            response_format="code"
+            response_format="code",
+            error_code_map=error_code_dict
         )
 
     def upgrade_device_firmware(
@@ -5968,11 +6373,25 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('POST', url, data=payload)
+        error_code_dict = {
+            "10001": "参数为空或格式不正确",
+            "10002": "重新获取accessToken",
+            "10005": "appKey被冻结",
+            "20002": "",
+            "20006": "检查设备网络状况，稍后再试",
+            "20007": "检查设备是否在线",
+            "20008": "操作过于频繁，稍后再试",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
+            "49999": "接口调用异常",
+            "60013": ""
+        }         
         return self._handle_api_response(
             http_response,
             api_name="upgrade_device_firmware",
             device_serial=device_serial,
-            response_format="code"
+            response_format="code",
+            error_code_map=error_code_dict
         )
 
     def get_device_upgrade_status(
@@ -5995,11 +6414,22 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('POST', url, data=payload)
+        error_code_dict = {
+            "10001": "参数为空或格式不正确",
+            "10002": "重新获取accessToken",
+            "10005": "appKey被冻结",
+            "20002": "",
+            "20007": "检查设备是否在线",
+            "20014": "",
+            "20018": "检查设备是否属于当前账户",
+            "49999": "接口调用异常"
+        }  
         return self._handle_api_response(
             http_response,
             api_name="get_device_upgrade_status",
             device_serial=device_serial,
-            response_format="code"
+            response_format="code",
+            error_code_map=error_code_dict
         )
 
     def get_device_upgrade_modules(
@@ -6026,11 +6456,17 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "10001": "",
+            "10031": "",
+            "20002": ""
+        }         
         return self._handle_api_response(
             http_response,
             api_name="get_device_upgrade_modules",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def upgrade_device_modules(
@@ -6060,11 +6496,19 @@ class EZVIZOpenAPI:
             'modules': modules
         }
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+        error_code_dict = {
+            "10001": "",
+            "20002": "",
+            "20007": "",
+            "20008": "",
+            "20028": ""
+        }    
         return self._handle_api_response(
             http_response,
             api_name="upgrade_device_modules",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
 
     def get_device_module_upgrade_status(
@@ -6094,9 +6538,15 @@ class EZVIZOpenAPI:
             'module': module
         }
         http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "10001": "",
+            "10031": "",
+            "20002": ""
+        }  
         return self._handle_api_response(
             http_response,
             api_name="get_device_module_upgrade_status",
             device_serial=device_serial,
-            response_format="meta"
+            response_format="meta",
+            error_code_map=error_code_dict
         )
