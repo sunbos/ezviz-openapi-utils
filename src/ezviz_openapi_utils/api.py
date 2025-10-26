@@ -5596,9 +5596,9 @@ class EZVIZOpenAPI:
     def set_device_image_params(
         self,
         device_serial: str,
-        gammaCorrection: int,
+        gamma_correction: int,
         gain: int,
-        imageStyle: str,
+        image_style: str,
         brightness: Optional[int] = None,
         contrast: Optional[int] = None,
         saturatio: Optional[int] = None,
@@ -5609,9 +5609,9 @@ class EZVIZOpenAPI:
         功能：设置设备图像参数， 托管/子账号：支持， 权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-            gammaCorrection (int): 伽马矫正，范围0-9（必填）
+            gamma_correction (int): 伽马矫正，范围0-9（必填）
             gain (int): 增益，范围0-100（必填）
-            imageStyle (str): 图像风格，[standard-标准；soft-柔和；gorgeous-艳丽；manual-手动]（必填）
+            image_style (str): 图像风格，[standard-标准；soft-柔和；gorgeous-艳丽；manual-手动]（必填）
             brightness (Optional[int]): 亮度，范围0-100,手动模式下必填（非必填）
             contrast (Optional[int]): 对比度，范围0-100,手动模式下必填（非必填）
             saturatio (Optional[int]): 饱和度，范围0-100,手动模式下必填（非必填）
@@ -5623,18 +5623,18 @@ class EZVIZOpenAPI:
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_image_params' 仅限 'cn' 区域使用。", "区域限制错误")
-        if imageStyle == "manual":
+        if image_style == "manual":
             if brightness is None or contrast is None or saturatio is None or sharpness is None:
-                raise ValueError("当imageStyle为manual时，brightness、contrast、saturatio、sharpness为必填参数")
+                raise ValueError("当image_style为manual时，brightness、contrast、saturatio、sharpness为必填参数")
         url = f"{self._base_url}/api/v3/device/video/image/params"
         headers = {
             'accessToken': self._client.access_token
         }
         payload = {
             'deviceSerial': device_serial,
-            'gammaCorrection': gammaCorrection,
+            'gammaCorrection': gamma_correction,
             'gain': gain,
-            'imageStyle': imageStyle
+            'imageStyle': image_style
         }
         if brightness is not None:
             payload['brightness'] = brightness
