@@ -42,6 +42,11 @@ pytest-html-report.html
 *.swo
 
 # -----------------
+# AI/开发工具配置 (AI / Dev Tools Config)
+# -----------------
+CLAUDE.md
+
+# -----------------
 # 构建/分发产物 (Build / Distribution)
 # -----------------
 build/
