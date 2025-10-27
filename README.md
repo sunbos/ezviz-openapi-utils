@@ -13,13 +13,15 @@ A Python library designed to simplify interactions with the EZVIZ OpenAPI platfo
 
 ## 📦 Installation
 
-First, install the core dependency `requests`.
+Install the package:
 
 ```bash
-pip install requests
+pip install ezviz-openapi-utils
 ```
 
-*(Note: This project uses `pyproject.toml` for dependency management. For a full development environment, use `pip install -e .[dev]`.)*
+This will install the package along with its core dependency `requests`.
+
+*(Note: For development, clone the repository and use `pip install -e .[dev]` to include dev dependencies.)*
 
 ## 🚀 Getting Started
 

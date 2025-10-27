@@ -13,13 +13,15 @@
 
 ## 📦 安装
 
-首先，安装核心依赖 `requests`。
+安装包：
 
 ```bash
-pip install requests
+pip install ezviz-openapi-utils
 ```
 
-*(注意：这个项目目前通过 `pyproject.toml` 来管理依赖，推荐您使用 `pip install -e .[dev]` 来安装，这样可以同时获得开发工具。)*
+这将安装包及其核心依赖 `requests`。
+
+*(注意：对于开发环境，克隆仓库后使用 `pip install -e .[dev]` 以包含开发工具。)*
 
 ## 🚀 快速上手
 
