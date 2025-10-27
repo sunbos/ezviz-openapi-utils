@@ -1,5 +1,9 @@
 # EZVIZ OpenAPI Utils (萤石开放平台工具库)
 
+[![PyPI version](https://badge.fury.io/py/ezviz-openapi-utils.svg)](https://pypi.org/project/ezviz-openapi-utils/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/ezviz-openapi-utils.svg)](https://pypi.org/project/ezviz-openapi-utils/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 简体中文 | [English](README.md)
 
 一个用于简化与萤石开放平台 API 交互的 Python 库。它负责处理认证、Access Token 自动刷新，并为所有 API 提供了一个简洁统一的接口。
@@ -22,6 +26,29 @@ pip install ezviz-openapi-utils
 这将安装包及其核心依赖 `requests`。
 
 *(注意：对于开发环境，克隆仓库后使用 `pip install -e .[dev]` 以包含开发工具。)*
+
+## 🧪 测试
+
+### 设置
+
+在仓库根目录创建 `.env` 文件，填入您的萤石 API 凭据：
+
+```env
+EZVIZ_APP_KEY=your_app_key_here
+EZVIZ_APP_SECRET=your_app_secret_here
+```
+
+### 运行测试
+
+```bash
+# 运行所有测试
+pytest
+
+# 运行特定测试文件
+pytest tests/test_client.py
+
+# 如果未配置凭据，集成测试会自动跳过
+```
 
 ## 🚀 快速上手
 
@@ -58,3 +85,38 @@ delete_response = api.delete_device(device_serial="427734888")
 print(delete_response)
 # 输出: {'code': '200', 'msg': '操作成功!'}
 ```
+
+## 🛡️ 错误处理
+
+本库为不同错误场景提供了自定义异常：
+
+```python
+from ezviz_openapi_utils import Client, EZVIZOpenAPI
+from ezviz_openapi_utils.exceptions import EZVIZAuthError, EZVIZAPIError
+
+client = Client(app_key="你的_APP_KEY", app_secret="你的_APP_SECRET", region="cn")
+api = EZVIZOpenAPI(client)
+
+try:
+    response = api.add_device(device_serial="427734888", validate_code="ABCDEF")
+    print(f"成功: {response}")
+except EZVIZAuthError as e:
+    print(f"认证错误: {e.code} - {e.message}")
+except EZVIZAPIError as e:
+    print(f"API 错误: {e.code} - {e.message}")
+except Exception as e:
+    print(f"意外错误: {e}")
+```
+
+## 🔒 安全
+
+- **切勿提交凭据**：确保您的 `EZVIZ_APP_KEY` 和 `EZVIZ_APP_SECRET` 不被提交到版本控制
+- **使用环境变量**：将凭据存储在 `.env` 文件中（确保 `.gitignore` 包含 `.env`）
+- **定期轮换**：为安全起见，定期轮换您的 API 凭据
+- **最小权限原则**：使用具有最小必要权限的 API 密钥
+
+## 🤝 贡献
+
+欢迎贡献！请参阅 [CONTRIBUTING.md](CONTRIBUTING.md) 了解如何设置开发环境、运行测试和提交拉取请求。
+
+如果您发现错误或有功能请求，请[提交 issue](https://github.com/sunbos/ezviz-openapi-utils/issues)。
