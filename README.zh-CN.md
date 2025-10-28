@@ -117,6 +117,6 @@ except Exception as e:
 
 ## 🤝 贡献
 
-欢迎贡献！请参阅 [CONTRIBUTING.md](CONTRIBUTING.md) 了解如何设置开发环境、运行测试和提交拉取请求。
+欢迎贡献！请参阅 [CONTRIBUTING.zh-CN.md](CONTRIBUTING.zh-CN.md) 了解如何设置开发环境、运行测试和提交拉取请求。
 
 如果您发现错误或有功能请求，请[提交 issue](https://github.com/sunbos/ezviz-openapi-utils/issues)。
