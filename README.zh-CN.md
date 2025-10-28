@@ -1,7 +1,7 @@
 # EZVIZ OpenAPI Utils (萤石开放平台工具库)
 
 [![PyPI version](https://badge.fury.io/py/ezviz-openapi-utils.svg)](https://pypi.org/project/ezviz-openapi-utils/)
-[![Python Versions](https://img.shields.io/pypi/pyversions/ezviz-openapi-utils.svg)](https://pypi.org/project/ezviz-openapi-utils/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/ezviz-openapi-utils.svg?logo=python&logoColor=white)](https://pypi.org/project/ezviz-openapi-utils/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 简体中文 | [English](README.md)
