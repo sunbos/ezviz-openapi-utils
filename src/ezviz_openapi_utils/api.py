@@ -169,8 +169,10 @@ class EZVIZOpenAPI:
 
     def _get_error_description(self, code: str, custom_map: Optional[Dict[str, str]] = None) -> str:
         """获取错误描述"""
+        # 先查询API是否有为错误码自定义错误描述
         if custom_map and code in custom_map:
             return custom_map[code]
+        # 当不存在时，使用通用错误码的错误描述
         return GLOBAL_ERROR_CODE_MAP.get(code, "未知错误")
 
     def is_device_support_ezviz(
@@ -6550,3 +6552,4 @@ class EZVIZOpenAPI:
             response_format="meta",
             error_code_map=error_code_dict
         )
+
