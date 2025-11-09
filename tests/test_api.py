@@ -32,9 +32,9 @@ APP_SECRET = os.getenv("EZVIZ_APP_SECRET")
 def handle_api_error(e):
     """统一的API错误处理函数"""
     if e.code in ["5000", "20017", "20020"]:  # 设备已被自己添加
-        pytest.skip(f"设备已被自己添加: {e.msg}")
+        pytest.skip(f"设备已被自己添加: {e.message}")
     elif e.code in ["2030", "20015", "20019", "60000", "60020", "60047", "60050", "60051", "60053"]:  # 设备不支持命令
-        pytest.skip(f"设备不支持该操作: {e.msg}")
+        pytest.skip(f"设备不支持该操作: {e.message}")
     else:
         raise
 
@@ -152,9 +152,9 @@ class TestDeviceManagementCore:
             pytest.skip(f"设备不支持功能: {e}")
         except EZVIZAPIError as e:
             if e.code in ["20002", "20018"]:  # 设备不存在或不属于用户
-                pytest.skip(f"设备不可用: {e.msg}")
+                pytest.skip(f"设备不可用: {e.message}")
             elif e.code == "10001":  # 参数错误
-                pytest.skip(f"参数错误: {e.msg}")
+                pytest.skip(f"参数错误: {e.message}")
             else:
                 raise
 
@@ -172,9 +172,9 @@ class TestDeviceManagementCore:
             pytest.skip(f"设备不支持功能: {e}")
         except EZVIZAPIError as e:
             if e.code in ["20002", "20018"]:  # 设备不存在或不属于用户
-                pytest.skip(f"设备不可用: {e.msg}")
+                pytest.skip(f"设备不可用: {e.message}")
             elif e.code == "20001":  # 设备重新添加过
-                pytest.skip(f"设备状态异常: {e.msg}")
+                pytest.skip(f"设备状态异常: {e.message}")
             else:
                 raise
 
@@ -1059,12 +1059,12 @@ class TestImageVideoSettingsExtended:
         try:
             response = real_api.set_device_image_params(
                 device_serial=test_device_serial,
-                gammaCorrection=2,
+                gamma_correction=2,
                 gain=2,
-                imageStyle="manual",
+                image_style="manual",
                 brightness=12,
                 contrast=2,
-                saturatio=2,
+                saturation=2,
                 sharpness=2
             )
             meta = response.get('meta', {})
@@ -1939,9 +1939,9 @@ class TestRemainingAPIs:
                 device_serial=test_device_serial,
                 local_index="0",
                 resource_category="global",
-                domain_identifier="PTZ",
-                prop_identifier="test_property",
-                property_data={"test_key": "test_value"}
+                domain_identifier="TimeMgr",
+                prop_identifier="TimeZone",
+                property_data={"timeZone": "CST-08:00:00"}
             )
             meta = response.get('meta', {})
             assert meta.get('code') == 200
@@ -2457,28 +2457,6 @@ class TestRemainingAPIs:
             pytest.skip("跳过具有极端破坏性风险的操作测试")
         except EZVIZAPIError:
             pass
-
-    def test_set_device_otap_property(self, real_api, test_device_serial):
-        """测试设置OTAP设备属性"""
-        if not test_device_serial:
-            pytest.skip("需要设置 TEST_DEVICE_SERIAL 环境变量")
-
-        try:
-            response = real_api.set_device_otap_property(
-                device_serial=test_device_serial,
-                local_index="0",
-                resource_category="global",
-                domain_identifier="TimeMgr",
-                prop_identifier="TimeZone",
-                property_data={"timeZone": "CST-08:00:00"}
-            )
-            meta = response.get('meta', {})
-            assert meta.get('code') == 200
-            print("OTAP设备属性设置成功")
-        except EZVIZDeviceNotSupportedError as e:
-            pytest.skip(f"设备不支持该功能: {e}")
-        except EZVIZAPIError as e:
-            handle_api_error(e)
 
     def test_get_ptz_homing_point(self, real_api, test_device_serial):
         """测试获取云台归位点模式"""
