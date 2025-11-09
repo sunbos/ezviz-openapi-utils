@@ -18,7 +18,7 @@ from .exceptions import EZVIZAuthError
 # 1. 常量 (Constants)
 # 定义已知错误码及其描述，便于维护和扩展
 # 仅包含可能返回的错误码
-_ERROR_CODE_DESCRIPTIONS = {
+ERROR_CODE_REMARKS = {
     '10001': "参数为空或格式不正确",
     '10005': "appKey被冻结",
     '10017': "确认appKey是否正确",
@@ -29,46 +29,69 @@ _ERROR_CODE_DESCRIPTIONS = {
 # 2. 类型定义 (Type Definitions)
 Region = Literal["cn", "en", "eu", "us", "sa", "sg", "in", "ru"]
 
-# 国内data数据
-class AccessTokenDataCN(TypedDict):
+# 国内成功响应的data数据
+class SuccessAccessTokenDataCN(TypedDict):
     accessToken: str
     expireTime: int
 
-# 海外data数据
-class AccessTokenDataEN(TypedDict):
+# 海外成功响应的data数据
+class SuccessAccessTokenDataEN(TypedDict):
     accessToken: str
     expireTime: int
     areaDomain: str
+
+# 成功响应的data数据（国内/海外统一Union类型）
+SuccessAccessTokenData = Union[SuccessAccessTokenDataCN, SuccessAccessTokenDataEN]
 
 # 成功和错误码定义
 SuccessCode = Literal["200"]
 ErrorCode = Literal["10001", "10005", "10017", "10030", "49999"]
 
-# 国内返回数据
+# 国内成功响应
 class SuccessResponseCN(TypedDict):
     code: SuccessCode
     msg: str
-    data: AccessTokenDataCN
+    data: SuccessAccessTokenData
 
-# 海外返回数据
+# 海外成功响应
 class SuccessResponseEN(TypedDict):
     code: SuccessCode
     msg: str
-    data: AccessTokenDataEN
+    data: SuccessAccessTokenData
 
 SuccessResponse = Union[SuccessResponseCN, SuccessResponseEN]
 
-# 错误返回数据
-class ErrorResponse(TypedDict):
+# 国内错误响应的data数据（data: null）
+class ErrorAccessTokenDataCN(TypedDict):
+    pass  # 表示 data 为 null（通过ErrorResponseCN中的data: None来明确）
+
+# 海外错误响应的data数据（无data字段）
+class ErrorAccessTokenDataEN(TypedDict):
+    pass  # 表示无data字段
+
+# 错误响应的data数据（国内/海外统一）
+ErrorAccessTokenData = Union[ErrorAccessTokenDataCN, ErrorAccessTokenDataEN]
+
+# 国内错误响应
+class ErrorResponseCN(TypedDict):
     code: ErrorCode
     msg: str
-    data: None
+    data: None  # 明确表示 data 为 null
+
+# 海外错误响应
+class ErrorResponseEN(TypedDict):
+    code: ErrorCode
+    msg: str
+    # 没有 data 字段
+
+# 统一错误响应类型
+ErrorResponse = Union[ErrorResponseCN, ErrorResponseEN]
 
 # 统一响应类型（成功或失败）
 Response = Union[SuccessResponse, ErrorResponse]
 
 # 在类型定义部分，添加：
-AccessTokenDataRaw = Union[AccessTokenDataCN, AccessTokenDataEN]
+AccessTokenDataRaw = Union[SuccessAccessTokenData, ErrorAccessTokenData]
 
 # 3. 辅助类 (Helper Class)
 class AccessTokenData:
@@ -113,24 +136,19 @@ class AccessToken:
         self.code = result.get("code", "未知")
         self.msg = result.get("msg", "无消息")
 
-        # 封装 data 为对象
-        raw_data = result.get("data", {})
-        self.data = AccessTokenData(raw_data) if raw_data else None
-
-        # 如果请求失败（code 非200），抛出异常（可选）
+        # 如果请求失败（code 非200），抛出异常
         if self.code != "200":
-            error_description = _ERROR_CODE_DESCRIPTIONS.get(self.code, "未知错误")
-            raise EZVIZAuthError(
-                code=self.code,
-                msg=self.msg,
-                description=error_description
-            )
-            
-        # 4. 此时 result 一定是 SuccessResponse
-        success_result = cast(SuccessResponse, result)
-        raw_data: AccessTokenDataRaw = success_result["data"]  # ← 类型为 AccessTokenDataCN | AccessTokenDataEN
+            error_remark = ERROR_CODE_REMARKS.get(self.code, "未知错误")
+            raise EZVIZAuthError(code=self.code, message=self.msg, remark=error_remark)
 
-        # 5. 初始化 AccessTokenData
+        # 此时一定是成功响应，封装 data 为对象
+        success_result = cast(SuccessResponse, result)
+        raw_data = success_result["data"]
+        # 根据区域类型进行更精确的类型转换
+        if self.region == "cn":
+            raw_data = cast(SuccessAccessTokenDataCN, raw_data)
+        else:
+            raw_data = cast(SuccessAccessTokenDataEN, raw_data)
         self.data = AccessTokenData(raw_data)
 
     def _get_url(self) -> str:

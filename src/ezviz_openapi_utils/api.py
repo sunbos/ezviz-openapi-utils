@@ -142,8 +142,8 @@ class EZVIZOpenAPI:
         # 检查业务错误码
         if code not in (200, "200"):
             # 使用自定义错误映射或默认映射
-            error_description = self._get_error_description(str(code), error_code_map)
-            raise EZVIZAPIError(str(code), message, error_description)
+            error_remark = self._get_error_remark(str(code), error_code_map)
+            raise EZVIZAPIError(str(code), message, error_remark)
 
         return response_data
 
@@ -167,12 +167,12 @@ class EZVIZOpenAPI:
                 message = meta.get('message', message)
             return code, message
 
-    def _get_error_description(self, code: str, custom_map: Optional[Dict[str, str]] = None) -> str:
-        """获取错误描述"""
-        # 先查询API是否有为错误码自定义错误描述
+    def _get_error_remark(self, code: str, custom_map: Optional[Dict[str, str]] = None) -> str:
+        """获取错误备注"""
+        # 先查询API是否有为错误码自定义错误备注
         if custom_map and code in custom_map:
             return custom_map[code]
-        # 当不存在时，使用通用错误码的错误描述
+        # 当不存在时，使用通用错误码的错误备注
         return GLOBAL_ERROR_CODE_MAP.get(code, "未知错误")
 
     def is_device_support_ezviz(
@@ -210,7 +210,7 @@ class EZVIZOpenAPI:
             'version': version
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或参数不存在",
             "49999": "接口调用异常"
         }
@@ -219,7 +219,7 @@ class EZVIZOpenAPI:
             api_name="is_device_support_ezviz",
             device_serial="",
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def search_device_info(
@@ -306,7 +306,7 @@ class EZVIZOpenAPI:
 
         if str(code) not in SEARCH_DEVICE_SUCCESS_CODES:
             # 处理其他错误码
-            error_description_dict = {
+            error_remark_dict = {
                 "10001": "请求参数错误",
                 "10002": "accessToken过期或异常",
                 "10004": "用户不存在",
@@ -319,8 +319,8 @@ class EZVIZOpenAPI:
                 "60107": "不支持错误",
                 "49999": "系统错误"
             }
-            error_description = error_description_dict.get(str(code), "未知错误")
-            raise EZVIZAPIError(str(code), message, error_description)
+            error_remark = error_remark_dict.get(str(code), "未知错误")
+            raise EZVIZAPIError(str(code), message, error_remark)
 
         return response_data
     
@@ -349,7 +349,7 @@ class EZVIZOpenAPI:
         }
         http_response = self._client._session.request('POST', url, data=payload,
                                                     headers={'Content-Type': 'application/x-www-form-urlencoded'})
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -373,7 +373,7 @@ class EZVIZOpenAPI:
             api_name="add_device",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
     
     def delete_device(
@@ -397,7 +397,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -411,7 +411,7 @@ class EZVIZOpenAPI:
             api_name="delete_device",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def device_wifi_qrcode(
@@ -441,7 +441,7 @@ class EZVIZOpenAPI:
             'password': password
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -453,7 +453,7 @@ class EZVIZOpenAPI:
             api_name="device_wifi_qrcode",
             device_serial="",
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
         
     def device_permission_check(
@@ -491,7 +491,7 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('GET', url, params=params)
 
         # 错误码映射表
-        error_description_dict = {
+        error_remark_dict = {
             "401": "Unauthorized",
             "403": "Forbidden",
             "404": "Not Found",
@@ -505,7 +505,7 @@ class EZVIZOpenAPI:
             api_name="device_permission_check",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_realtime_status(
@@ -538,7 +538,7 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('GET', url, params=params)
 
         # 错误码映射表
-        error_description_dict = {
+        error_remark_dict = {
             "401": "Unauthorized",
             "403": "Forbidden",
             "404": "Not Found",
@@ -551,7 +551,7 @@ class EZVIZOpenAPI:
             api_name="get_device_realtime_status",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_permissions(
@@ -583,7 +583,7 @@ class EZVIZOpenAPI:
         http_response = self._client._session.request('GET', url, params=params)
 
         # 错误码映射表
-        error_description_dict = {
+        error_remark_dict = {
             "401": "Unauthorized",
             "403": "Forbidden",
             "404": "Not Found",
@@ -597,7 +597,7 @@ class EZVIZOpenAPI:
             api_name="get_device_permissions",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def update_device_name(
@@ -626,7 +626,7 @@ class EZVIZOpenAPI:
             'deviceName': device_name
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -640,14 +640,14 @@ class EZVIZOpenAPI:
             api_name="update_device_name",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def update_camera_name(
         self,
         device_serial: str,
         name: str,
-        channel_no: Optional[int] = None
+        channel_no: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         修改云端通道名称。
@@ -656,7 +656,7 @@ class EZVIZOpenAPI:
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             name (str): 通道名称，长度不大于50字节，不能包含特殊字符（必填）
-            channel_no (Optional[int]): 非必选参数，不为空表示修改指定通道名称，为空表示修改通道1名称（可选）
+            channel_no (Optional[str]): 非必选参数，不为空表示修改指定通道名称，为空表示修改通道1名称（可选）
 
         Returns:
             Dict[str, Any]: API返回的原始数据。
@@ -678,7 +678,7 @@ class EZVIZOpenAPI:
             
         http_response = self._client._session.request('POST', url, data=payload)
 
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -693,7 +693,7 @@ class EZVIZOpenAPI:
             api_name="update_camera_name",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
     
     def add_ipc_device(
@@ -726,12 +726,12 @@ class EZVIZOpenAPI:
             'ipcSerial': ipc_serial
         }
         if channel_no is not None:
-            payload['channelNo'] = channel_no
+            payload['channelNo'] = str(channel_no)
         if validate_code is not None:
             payload['validateCode'] = validate_code
         http_response = self._client._session.request('POST', url, data=payload)
 
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -766,7 +766,7 @@ class EZVIZOpenAPI:
             api_name="add_ipc_device",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def delete_ipc_device(
@@ -797,9 +797,9 @@ class EZVIZOpenAPI:
             'ipcSerial': ipc_serial
         }
         if channel_no is not None:
-            payload['channelNo'] = channel_no
+            payload['channelNo'] = str(channel_no)
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -820,7 +820,7 @@ class EZVIZOpenAPI:
             api_name="delete_ipc_device",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def nvr_device_camera_limit(
@@ -858,7 +858,7 @@ class EZVIZOpenAPI:
         
         http_response = self._client._session.request('POST', url, data=payload, headers={'accessToken': self._client.access_token})
 
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数错误",
             "10002": "accessToken过期或异常",
             "10031": "子账户或萤石用户没有权限",
@@ -870,7 +870,7 @@ class EZVIZOpenAPI:
             api_name="nvr_device_camera_limit",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_gb_license_list(
@@ -940,7 +940,7 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('POST', url, data=payload)
 
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -954,7 +954,7 @@ class EZVIZOpenAPI:
             api_name="get_device_info",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
     
     def list_devices_by_page(
@@ -980,7 +980,7 @@ class EZVIZOpenAPI:
             'pageSize': page_size
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10004": "用户不存在",
@@ -992,7 +992,7 @@ class EZVIZOpenAPI:
             http_response,
             api_name="list_devices_by_page",
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def list_devices_by_id(
@@ -1018,7 +1018,7 @@ class EZVIZOpenAPI:
             'pageSize': page_size
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "无效参数",
             "10002": "accessToken过期或异常",
             "10004": "用户不存在",
@@ -1030,7 +1030,7 @@ class EZVIZOpenAPI:
             api_name="list_devices_by_id",
             device_serial="",
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         ) 
 
     def get_camera_list(
@@ -1059,7 +1059,7 @@ class EZVIZOpenAPI:
             'pageSize': page_size
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1073,7 +1073,7 @@ class EZVIZOpenAPI:
             api_name="get_camera_list",
             device_serial="",
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_camera_list(
@@ -1099,7 +1099,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1113,7 +1113,7 @@ class EZVIZOpenAPI:
             api_name="get_device_camera_list",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_status(
@@ -1142,7 +1142,7 @@ class EZVIZOpenAPI:
             'channelNo': channel_no
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1156,7 +1156,7 @@ class EZVIZOpenAPI:
             api_name="get_device_status",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
     
     def get_device_channel_status(
@@ -1182,7 +1182,7 @@ class EZVIZOpenAPI:
         }
 
         http_response = self._client._session.request('GET', url, headers=headers)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1196,7 +1196,7 @@ class EZVIZOpenAPI:
             api_name="get_device_channel_status",
             device_serial=device_serial,
             response_format="result",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_connection_info(
@@ -1227,7 +1227,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10004": "需要使用B账号",
@@ -1242,7 +1242,7 @@ class EZVIZOpenAPI:
             api_name="get_device_connection_info",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def create_device_add_token_url(
@@ -1269,7 +1269,7 @@ class EZVIZOpenAPI:
         
         url = f"{self._base_url}/api/service/device/add/tokenUrl"
         payload = {
-            'expireTime': expire_time
+            'expireTime': str(expire_time)
         }
         if note is not None:
             payload['note'] = note
@@ -1281,7 +1281,7 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('POST', url, json=payload, headers=headers)
 
-        error_description_dict = {
+        error_remark_dict = {
             "400": "",
             "403": "accessToken请使用开发者账号",
             "500": ""
@@ -1291,7 +1291,7 @@ class EZVIZOpenAPI:
             api_name="create_device_add_token_url",
             device_serial="",
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_add_note_info(
@@ -1336,7 +1336,7 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('GET', url, params=params, headers=headers)
         
-        error_description_dict = {
+        error_remark_dict = {
             "400": "",
             "404": "",
             "500": ""
@@ -1346,7 +1346,7 @@ class EZVIZOpenAPI:
             api_name="get_device_add_note_info",
             device_serial=device_serial or "",
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def list_device_add_token_urls(
@@ -1383,7 +1383,7 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('GET', url, params=params, headers=headers)
 
-        error_description_dict = {
+        error_remark_dict = {
             "400": "",
             "403": "无权限，请确认accessToken是否为开发者账号",
             "500": ""
@@ -1393,7 +1393,7 @@ class EZVIZOpenAPI:
             api_name="list_device_add_token_urls",
             device_serial="",
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_capacity(
@@ -1420,7 +1420,7 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('POST', url, data=payload)
 
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或参数不合法",
             "10002": "",
             "10004": "",
@@ -1434,7 +1434,7 @@ class EZVIZOpenAPI:
             api_name="get_device_capacity",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def start_ptz_control(
@@ -1469,7 +1469,7 @@ class EZVIZOpenAPI:
 
         http_response = self._client._session.request('POST', url, data=payload)
 
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1495,7 +1495,7 @@ class EZVIZOpenAPI:
             api_name="start_ptz_control",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def stop_ptz_control(
@@ -1525,7 +1525,7 @@ class EZVIZOpenAPI:
         if direction is not None:
             payload['direction'] = direction
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1547,7 +1547,7 @@ class EZVIZOpenAPI:
             api_name="stop_ptz_control",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def device_mirror_ptz(
@@ -1576,7 +1576,7 @@ class EZVIZOpenAPI:
             'command': command
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1598,7 +1598,7 @@ class EZVIZOpenAPI:
             api_name="device_mirror_ptz",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def add_device_preset(
@@ -1624,7 +1624,7 @@ class EZVIZOpenAPI:
             'channelNo': channel_no
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1646,7 +1646,7 @@ class EZVIZOpenAPI:
             api_name="add_device_preset",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def move_device_preset(
@@ -1675,7 +1675,7 @@ class EZVIZOpenAPI:
             'presetIndex': index
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1700,7 +1700,7 @@ class EZVIZOpenAPI:
             api_name="move_device_preset",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def clear_device_preset(
@@ -1729,7 +1729,7 @@ class EZVIZOpenAPI:
             'index': index
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1751,7 +1751,7 @@ class EZVIZOpenAPI:
             api_name="clear_device_preset",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def compose_panorama_image(
@@ -1781,7 +1781,7 @@ class EZVIZOpenAPI:
             'localIndex': local_index
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "400": "参数不正确",
             "404": "资源不存在",
             "500": "服务异常"
@@ -1791,13 +1791,13 @@ class EZVIZOpenAPI:
             api_name="compose_panorama_image",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def calibrate_ptz(
         self,
         device_serial: str,
-        local_index: str = 1,
+        local_index: str = "1",
     ) -> Dict[str, Any]:
         """
         校准云台
@@ -1853,7 +1853,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('POST', url, headers=headers)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "",
             "10002": "",
             "10031": "",
@@ -1870,7 +1870,7 @@ class EZVIZOpenAPI:
             api_name="reset_ptz",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def control_ptz(
@@ -1938,7 +1938,7 @@ class EZVIZOpenAPI:
             'quality': quality
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -1958,7 +1958,7 @@ class EZVIZOpenAPI:
             api_name="capture_image",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_passenger_flow_switch_status(
@@ -1983,7 +1983,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10004": "",
@@ -1999,7 +1999,7 @@ class EZVIZOpenAPI:
             api_name="get_passenger_flow_switch_status",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
     
     def set_passenger_flow_switch(
@@ -2031,7 +2031,7 @@ class EZVIZOpenAPI:
         if channel_no is not None:
             payload['channelNo'] = channel_no
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -2051,7 +2051,7 @@ class EZVIZOpenAPI:
             api_name="set_passenger_flow_switch",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_daily_passenger_flow(
@@ -2082,7 +2082,7 @@ class EZVIZOpenAPI:
             'date': date
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -2098,7 +2098,7 @@ class EZVIZOpenAPI:
             api_name="get_daily_passenger_flow",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_hourly_passenger_flow(
@@ -2129,7 +2129,7 @@ class EZVIZOpenAPI:
             'date': date
         }
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10005": "appKey被冻结",
@@ -2145,7 +2145,7 @@ class EZVIZOpenAPI:
             api_name="get_hourly_passenger_flow",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def set_passenger_flow_config(
@@ -2180,7 +2180,7 @@ class EZVIZOpenAPI:
         if channel_no is not None:
             payload['channelNo'] = channel_no
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10004": "",
@@ -2202,7 +2202,7 @@ class EZVIZOpenAPI:
             api_name="set_passenger_flow_config",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_passenger_flow_config(
@@ -2229,9 +2229,9 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         if channel_no is not None:
-            payload['channelNo'] = channel_no
+            payload['channelNo'] = str(channel_no)
         http_response = self._client._session.request('POST', url, data=payload)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
             "10004": "",
@@ -2249,7 +2249,7 @@ class EZVIZOpenAPI:
             api_name="get_passenger_flow_config",
             device_serial=device_serial,
             response_format="code",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_device_otap_property(
@@ -2288,7 +2288,7 @@ class EZVIZOpenAPI:
             'propIdentifier': prop_identifier
         }
         http_response = self._client._session.request('GET', url, headers=headers)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "",
             "10031": "",
             "20007": "",
@@ -2299,7 +2299,7 @@ class EZVIZOpenAPI:
             api_name="get_device_otap_property",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def set_device_otap_property(
@@ -2342,7 +2342,7 @@ class EZVIZOpenAPI:
         }
 
         http_response = self._client._session.request('PUT', url, headers=headers, json=property_data)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "",
             "10031": "",
             "20007": "",
@@ -2353,7 +2353,7 @@ class EZVIZOpenAPI:
             api_name="set_device_otap_property",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def execute_device_otap_action(
@@ -2396,7 +2396,7 @@ class EZVIZOpenAPI:
         }
 
         http_response = self._client._session.request('PUT', url, headers=headers, json=action_data)
-        error_description_dict = {
+        error_remark_dict = {
             "10001": "",
             "10031": "",
             "20007": "",
@@ -2407,7 +2407,7 @@ class EZVIZOpenAPI:
             api_name="execute_device_otap_action",
             device_serial=device_serial,
             response_format="meta",
-            error_code_map=error_description_dict
+            error_code_map=error_remark_dict
         )
 
     def get_voice_device_list(
@@ -2486,7 +2486,7 @@ class EZVIZOpenAPI:
         接口功能：修改设备上的指定语音文件的语音名称，PUT参数放在请求链接里
         Args:
             device_serial (str): 设备序列号
-            voicee_id (str): 设备语音唯一id
+            voice_id (str): 设备语音唯一id
             voice_name (str): 设备语音名称
             voice_url (str): 语音文件url Y
         Returns:
@@ -2643,7 +2643,7 @@ class EZVIZOpenAPI:
         }
 
         # 准备请求参数
-        kwargs = {'headers': headers}
+        kwargs: Dict[str, Any] = {'headers': headers}
 
         # 根据method和body类型，选择传递data或json
         if body is not None:
@@ -2659,11 +2659,11 @@ class EZVIZOpenAPI:
             http_response.raise_for_status()
 
             # 从响应头中获取自定义返回码
-            ezo_code = http_response.headers.get('EZO-Code')
-            ezo_message = http_response.headers.get('EZO-Message', '未知错误')
+            ezo_code = http_response.headers['EZO-Code']
+            ezo_message = http_response.headers['EZO-Message']
 
             # 错误码映射表
-            error_description_dict = {
+            error_remark_dict = {
                 "10001": "参数为空或格式不正确",
                 "10002": "重新获取accessToken",
                 "20002": "设备不存在",
@@ -2674,8 +2674,8 @@ class EZVIZOpenAPI:
             }
 
             if ezo_code != '200':
-                error_description = error_description_dict.get(ezo_code, "未知错误")
-                raise EZVIZAPIError(ezo_code, ezo_message, error_description)
+                error_remark = error_remark_dict[ezo_code]
+                raise EZVIZAPIError(ezo_code, ezo_message, error_remark)
 
             # 请求成功，根据请求类型返回数据
             if content_type == 'application/json':
@@ -2913,8 +2913,8 @@ class EZVIZOpenAPI:
         channel_no: Optional[int] = None, 
         start_time: Optional[str] = None,
         stop_time: Optional[str] = None,
-        period: Optional[int] = None,
-        enable: Optional[int] = None
+        period: Optional[str] = None,
+        enable: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         设置布撤防时间计划
@@ -2924,8 +2924,8 @@ class EZVIZOpenAPI:
             channel_no (Optional[int]): 通道号，不传表示设备本身（必填）
             start_time (Optional[str]): 开始时间，如16:00，默认为00:00（非必填）
             stop_time (Optional[str]): 结束时间，如16:30;如果为第二天,在时间前加上n,如n00:00.结束时间必须在开始时间之后,间隔不能超过24个小时（非必填）
-            period (Optional[int]): 周一~周日，用0~6表示，英文逗号分隔，默认为0,1,2,3,4,5,6（非必填）
-            enable (Optional[int]): 是否启用：1-启用，0-不启用，默认为1（非必填）
+            period (Optional[str]): 周一~周日，用0~6表示，英文逗号分隔，默认为0,1,2,3,4,5,6（非必填）
+            enable (Optional[str]): 是否启用：1-启用，0-不启用，默认为1（非必填）
         Returns:
             Dict[str, Any]: API返回的JSON数据。
         Raises:
@@ -2937,7 +2937,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         if channel_no:
-            payload['channelNo'] = channel_no
+            payload['channelNo'] = str(channel_no)
         if start_time:
             payload['startTime'] = start_time
         if stop_time:
@@ -3701,7 +3701,7 @@ class EZVIZOpenAPI:
         self,
         device_serial: str,
         enable: str,
-        channel_no: Optional[int] = None
+        channel_no: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         设置设备移动跟踪开关
@@ -3709,7 +3709,7 @@ class EZVIZOpenAPI:
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (str): 开启或关闭移动跟踪：0-关闭，1-开启（必填）
-            channel_no (Optional[int]): 通道号（非必填）
+            channel_no (Optional[str]): 通道号（非必填）
         return: 
             Dict[str, Any]: API返回的JSON数据。
         Raises:
@@ -3874,7 +3874,7 @@ class EZVIZOpenAPI:
     def get_intelligence_detection_switch_status(
         self,
         device_serial: str,
-        type: Optional[int] = None
+        type: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         获取设备智能检测开关状态
@@ -3882,7 +3882,7 @@ class EZVIZOpenAPI:
         
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-            type (Optional[int]): 智能检测开关类型 302-人体检测,304人脸抠图, 不传则代表画面变化检测（非必填）
+            type (Optional[str]): 智能检测开关类型 302-人体检测,304人脸抠图, 不传则代表画面变化检测（非必填）
         return: 
             Dict[str, Any]: API返回的JSON数据。
         Raises:
@@ -4092,7 +4092,7 @@ class EZVIZOpenAPI:
             'systemOperation': system_operation
         }
         if delay is not None:
-            payload['delay'] = delay
+            payload['delay'] = str(delay)
 
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
         error_code_dict = {
@@ -4118,7 +4118,7 @@ class EZVIZOpenAPI:
         start_time: str,
         end_time: str,
         week: str,
-        event_arg: Optional[int] = 0,
+        event_arg: Optional[str] = "0",
     ) -> Dict[str, Any]:
         """
         工作模式计划设置
@@ -4130,7 +4130,7 @@ class EZVIZOpenAPI:
             start_time (str): 每天的开始时间（必填）
             end_time (str): 每天的结束时间（必填）
             week (str): 每周重复（必填）
-            event_arg (Optional[int]): 计划时间内执行的模式 0-省电模式 1-性能模式 2-常电模式 3-超级省电模式 ,计划时间外执行省电模式（非必填）
+            event_arg (Optional[str]): 计划时间内执行的模式 0-省电模式 1-性能模式 2-常电模式 3-超级省电模式 ,计划时间外执行省电模式（非必填）
         return: 
             Dict[str, Any]: API返回的JSON数据。
         Raises:
@@ -4816,7 +4816,6 @@ class EZVIZOpenAPI:
         设备视频参数设置
         接口功能：通用设备视频参数设置接口，不保证所有参数生效所有设备（具体生效情况依赖设备支持程度）。 是否支持托管及子账号：支持，权限为Config
         Args:
-            access_token (str): 访问令牌（必填）
             stream_type_in (str): 视频码流 1-主码流 2-子码流（必填）
             resolution (str): 视频分辨率 0-DCIF 1-CIF 2-QCIF 3-4CIF 4-2CIF 6-QVGA（320x240） 16-VGA 17-UXGA 18-SVGA 19-HD720p（必填）
             video_frame_rate (str): 视频帧率 0-全帧率 1-1/16 2-1/8 3-1/4 4-1/2 5-1 6-2 7-4 8-6 9-8 10-10 11-12 12-16 13-20 14-15 15-18 16-22（必填）
@@ -4971,7 +4970,7 @@ class EZVIZOpenAPI:
         device_serial: str,
         encode_type: str,
         stream_type: int,
-        local_index: Optional[str] = 1
+        local_index: Optional[str] = "1"
     ) -> Dict[str, Any]:
         """
         切换设备编码格式（PUT）
@@ -5256,11 +5255,11 @@ class EZVIZOpenAPI:
             'mode': mode
         }
         if general_level is not None:
-            payload['generalLevel'] = general_level
+            payload['generalLevel'] = str(general_level)
         if spatial_level is not None:
-            payload['spatialLevel'] = spatial_level
+            payload['spatialLevel'] = str(spatial_level)
         if temporal_level is not None:
-            payload['temporalLevel'] = temporal_level
+            payload['temporalLevel'] = str(temporal_level)
 
         http_response = self._client._session.request('PUT', url, headers=headers, data=payload)
         error_code_dict = {
@@ -5654,7 +5653,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         if enable is not None:
-            payload['enable'] = enable
+            payload['enable'] = str(enable)
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
         return self._handle_api_response(
             http_response,
@@ -5870,7 +5869,7 @@ class EZVIZOpenAPI:
             'diskCapacity': disk_capacity
         }
         if type:
-            payload['type'] = type
+            payload['type'] = str(type)
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
         return self._handle_api_response(
             http_response,
@@ -5926,7 +5925,7 @@ class EZVIZOpenAPI:
         image_style: str,
         brightness: Optional[int] = None,
         contrast: Optional[int] = None,
-        saturatio: Optional[int] = None,
+        saturation: Optional[int] = None,
         sharpness: Optional[int] = None
     ) -> Dict[str, Any]:
         """
@@ -5939,7 +5938,7 @@ class EZVIZOpenAPI:
             image_style (str): 图像风格，[standard-标准；soft-柔和；gorgeous-艳丽；manual-手动]（必填）
             brightness (Optional[int]): 亮度，范围0-100,手动模式下必填（非必填）
             contrast (Optional[int]): 对比度，范围0-100,手动模式下必填（非必填）
-            saturatio (Optional[int]): 饱和度，范围0-100,手动模式下必填（非必填）
+            saturation (Optional[int]): 饱和度，范围0-100,手动模式下必填（非必填）
             sharpness (Optional[int]): 锐度，范围0-100,手动模式下必填（非必填）
         return:
             Dict[str, Any]: API返回的JSON数据。
@@ -5949,8 +5948,8 @@ class EZVIZOpenAPI:
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_image_params' 仅限 'cn' 区域使用。", "区域限制错误")
         if image_style == "manual":
-            if brightness is None or contrast is None or saturatio is None or sharpness is None:
-                raise ValueError("当image_style为manual时，brightness、contrast、saturatio、sharpness为必填参数")
+            if brightness is None or contrast is None or saturation is None or sharpness is None:
+                raise ValueError("当image_style为manual时，brightness、contrast、saturation、sharpness为必填参数")
         url = f"{self._base_url}/api/v3/device/video/image/params"
         headers = {
             'accessToken': self._client.access_token
@@ -5965,8 +5964,8 @@ class EZVIZOpenAPI:
             payload['brightness'] = brightness
         if contrast is not None:
             payload['contrast'] = contrast
-        if saturatio is not None:
-            payload['saturatio'] = saturatio
+        if saturation is not None:
+            payload['saturation'] = saturation
         if sharpness is not None:
             payload['sharpness'] = sharpness
 
@@ -6552,4 +6551,3 @@ class EZVIZOpenAPI:
             response_format="meta",
             error_code_map=error_code_dict
         )
-

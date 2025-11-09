@@ -12,28 +12,24 @@ License: MIT
 """
 
 import requests
-from typing import Any, Dict
+from typing import Any, Dict, Optional, cast
 
-from .oauth import AccessToken
+from .oauth import AccessToken, Region
 from .exceptions import EZVIZAuthError, EZVIZAPIError
 
 class Client:
     TOKEN_SUCCESS_CODE = "200"
     TOKEN_EXPIRED_CODE = "10002"  # 10002 是过期/异常码
     
-    def __init__(self, app_key: str, app_secret: str, region: str = "cn"):
+    def __init__(self, app_key: str, app_secret: str, region: Region = "cn"):
         self.app_key = app_key
         self.app_secret = app_secret
-        self.region = region
+        self.region: Region = region
         self._session = requests.Session()
-        
+
         self._access_token = AccessToken(self.app_key, self.app_secret, self.region)
         if self._access_token.code != self.TOKEN_SUCCESS_CODE:
-            raise EZVIZAuthError(
-                self._access_token.code,
-                self._access_token.msg,
-                "客户端初始化失败"
-            )
+            raise EZVIZAuthError(self._access_token.code, self._access_token.msg, "客户端初始化失败")
 
     @property
     def access_token(self) -> str:
@@ -42,18 +38,18 @@ class Client:
             self._access_token = AccessToken(self.app_key, self.app_secret, self.region)
             if self._access_token.code != self.TOKEN_SUCCESS_CODE:
                 raise EZVIZAuthError(self._access_token.code, self._access_token.msg,"重新获取 access_token 失败")
-        return self._access_token.data.access_token
+        return cast(str, self._access_token.data.access_token)
 
     @property
     def expire_time(self) -> int:
-        return self._access_token.data.expire_time
+        return cast(int, self._access_token.data.expire_time)
 
     @property
-    def area_domain(self) -> str:
+    def area_domain(self) -> Optional[str]:
         return self._access_token.data.area_domain
 
     @property
-    def code(self) -> int:
+    def code(self) -> str:
         return self._access_token.code
 
     @property
