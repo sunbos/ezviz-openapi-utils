@@ -2058,7 +2058,7 @@ class EZVIZOpenAPI:
         self,
         device_serial: str,
         channel_no: int,
-        date: str
+        date: Optional[int] = None
     ) -> Dict[str, Any]:
         """
         该接口用于查询设备某一天的客流统计数据（接口需要设备支持客流统计功能）
@@ -2066,11 +2066,12 @@ class EZVIZOpenAPI:
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
-            date (long): 时间戳日期，精确至毫秒，默认为今天，date参数只能是0时0点0分0秒（如1561046400000可以，1561050000000不行）（非必填）
+            date (Optional[int]): 时间戳日期，精确至毫秒，默认为今天，date参数只能是0时0点0分0秒（如1561046400000可以，1561050000000不行）（非必填）
         Returns:
             Dict[str, Any]: API返回的原始数据
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
+            ValueError: 当date参数不是0时0分0秒的时间戳时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_daily_passenger_flow' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -2078,9 +2079,18 @@ class EZVIZOpenAPI:
         payload = {
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
-            'channelNo': channel_no,
-            'date': date
+            'channelNo': channel_no
         }
+        # 验证date参数是否为0时0分0秒
+        if date is not None:
+            # 检查是否为整数
+            if not isinstance(date, int):
+                raise ValueError("date参数必须是整数类型的时间戳")
+            # 检查是否为0时0分0秒（毫秒时间戳除以86400000的余数应为0）
+            if date % 86400000 != 0:
+                raise ValueError("date参数必须是0时0分0秒的时间戳，例如1561046400000")
+            payload['date'] = date
+
         http_response = self._client._session.request('POST', url, data=payload)
         error_remark_dict = {
             "10001": "参数为空或格式不正确",
@@ -2105,7 +2115,7 @@ class EZVIZOpenAPI:
         self,
         device_serial: str,
         channel_no: int,
-        date: str
+        date: Optional[int] = None
     ) -> Dict[str, Any]:
         """
         该接口用于查询设备某一天每小时的客流统计数据（接口需要设备支持客流统计功能）
@@ -2113,7 +2123,7 @@ class EZVIZOpenAPI:
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
-            date (long): 时间戳日期，精确至毫秒，默认为今天（非必填）
+            date (Optional[int]): 时间戳日期，精确至毫秒，默认为今天（非必填）
         Returns:
             Dict[str, Any]: API返回的原始数据
         Raises:
@@ -2125,9 +2135,10 @@ class EZVIZOpenAPI:
         payload = {
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial,
-            'channelNo': channel_no,
-            'date': date
+            'channelNo': channel_no
         }
+        if date is not None:
+            payload['date'] = date
         http_response = self._client._session.request('POST', url, data=payload)
         error_remark_dict = {
             "10001": "参数为空或格式不正确",
@@ -2153,7 +2164,7 @@ class EZVIZOpenAPI:
         device_serial: str,
         line: str,
         direction: int,
-        channel_no: Optional[int]
+        channel_no: Optional[int] = None
     ) -> Dict[str, Any]:
         """
         该接口用于配置客流统计相关信息（接口需要设备支持客流统计功能）
@@ -2208,7 +2219,7 @@ class EZVIZOpenAPI:
     def get_passenger_flow_config(
         self,
         device_serial: str,
-        channel_no: Optional[int]
+        channel_no: Optional[int] = None
     ) -> Dict[str, Any]:
         """
         该接口用于获取客流统计配置相关信息（接口需要设备支持客流统计功能）
@@ -4081,7 +4092,7 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'set_system_operate' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/systemOperate"
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            # 'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
@@ -4107,7 +4118,7 @@ class EZVIZOpenAPI:
             http_response,
             api_name="set_system_operate",
             device_serial=device_serial,
-            response_format="code",
+            response_format="meta",
             error_code_map=error_code_dict
         )
 
@@ -4656,7 +4667,6 @@ class EZVIZOpenAPI:
             raise EZVIZAPIError("403", "函数 'get_advanced_alarm_detection_types' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/das/device/detect/switch/get"
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
@@ -4753,7 +4763,7 @@ class EZVIZOpenAPI:
         self,
         local_index: str,
         device_serial: str,
-        video_level: str
+        video_level: int
     ) -> Dict[str, Any]:
         """
         设置视频清晰度
@@ -5866,7 +5876,7 @@ class EZVIZOpenAPI:
             'accessToken': self._client.access_token
         }
         payload = {
-            'diskCapacity': disk_capacity
+            'deviceSerial': disk_capacity
         }
         if type:
             payload['type'] = str(type)
