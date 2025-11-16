@@ -182,8 +182,8 @@ class EZVIZOpenAPI:
         app_key: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        查询设备是否支持萤石协议。
-        参考文档: 查询设备是否支持萤石协议
+        查询设备是否支持萤石协议
+        接口功能: 根据设备型号以及设备版本号查询设备是否支持萤石协议。
 
         Args:
             model (str): 设备型号（必填）
@@ -229,8 +229,9 @@ class EZVIZOpenAPI:
         method: Literal['GET', 'POST'] = 'POST'
     ) -> Dict[str, Any]:
         """
-        查询设备信息。
-        参考文档: 查询设备信息
+        设备基础信息查询
+        接口功能: 该接口用于查询设备的必要基础信息，可以查询没有关联用户的设备。
+        注：如果设备已被其他用户添加，则无法查询相关信息。
 
         Args:
             device_serial (str): 设备序列号（必填）
@@ -330,14 +331,16 @@ class EZVIZOpenAPI:
         validate_code: str,
     ) -> Dict[str, Any]:
         """
-        添加设备。
-        参考文档: 添加设备
+        添加设备
+        接口功能: 添加设备到账号下。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             validate_code (str): 设备验证码，设备机身上的六位大写字母（必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -381,13 +384,15 @@ class EZVIZOpenAPI:
         device_serial: str,
     ) -> Dict[str, Any]:
         """
-        删除设备。
-        参考文档: 删除设备
+        删除设备
+        接口功能: 删除账号下设备（为保证该接口正常使用，请勿在萤石云APP开启终端绑定。如果该接口报错20031请手机登录萤石云视频客户端“我的”--“通用设置”--“账号安全”--“终端绑定”，关闭即可）。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -420,14 +425,16 @@ class EZVIZOpenAPI:
         password: str
     ) -> Dict[str, Any]:
         """
-        生成设备WiFi二维码。
-        参考文档: 生成设备WiFi二维码
+        生成设备配网二维码
+        接口功能: 该接口用于生成设备扫描配网二维码二进制数据，需要自行转换成图片（300x300像素大小）。
 
         Args:
             ssid (str): 路由器SSID，即WIFI名称，建议不要设置中文名称（必填）
             password (str): WIFI密码（必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -463,8 +470,8 @@ class EZVIZOpenAPI:
         client_ip: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        自动确权接口：验证设备权限并返回设备在线状态。
-        参考文档: 自动确权接口
+        自动确权
+        接口功能: 验证设备权限并返回设备在线状态。
 
         Args:
             device_serial (str): 设备序列号（必填）
@@ -513,15 +520,14 @@ class EZVIZOpenAPI:
         device_serial: str,
     ) -> Dict[str, Any]:
         """
-        获取设备实时状态（在线/离线）。
-        参考文档: 离线确认接口
+        离线确认接口
+        接口功能: 获取设备实时状态（在线/离线）。
 
         Args:
             device_serial (str): 设备序列号（必填）
 
         Returns:
             Dict[str, Any]: API返回的原始数据，包含 'meta' 和 'status' 字段。
-                            status 为 0 表示离线，1 表示在线。
 
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
@@ -559,8 +565,8 @@ class EZVIZOpenAPI:
         device_serial: str,
     ) -> Dict[str, Any]:
         """
-        获取设备权限信息。
-        参考文档: 在线确权接口
+        在线确权
+        接口功能: 获取设备权限信息。
 
         Args:
             device_serial (str): 设备序列号（必填）
@@ -606,8 +612,8 @@ class EZVIZOpenAPI:
         device_name: str
     ) -> Dict[str, Any]:
         """
-        修改云端设备名称。
-        参考文档: 修改云端设备名称
+        修改云端设备名称
+        接口功能: 修改设备名称。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
@@ -647,16 +653,16 @@ class EZVIZOpenAPI:
         self,
         device_serial: str,
         name: str,
-        channel_no: Optional[str] = None
+        channel_no: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        修改云端通道名称。
-        参考文档: 修改云端通道名称
+        修改云端通道名称
+        接口功能: 修改通道名称。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             name (str): 通道名称，长度不大于50字节，不能包含特殊字符（必填）
-            channel_no (Optional[str]): 非必选参数，不为空表示修改指定通道名称，为空表示修改通道1名称（可选）
+            channel_no (Optional[int]): 非必选参数，不为空表示修改指定通道名称，为空表示修改通道1名称（非必填）
 
         Returns:
             Dict[str, Any]: API返回的原始数据。
@@ -704,14 +710,14 @@ class EZVIZOpenAPI:
         validate_code: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        NVR设备关联IPC。
-        参考文档: NVR设备关联IPC
+        NVR设备关联IPC
+        接口功能: 该接口用于NVR设备关联IPC。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             ipc_serial (str): 待关联的IPC设备序列号（必填）
-            channel_no (Optional[int]): 非必选参数，不为空表示给指定通道关联IPC，为空表示给通道1关联IPC（可选）
-            validate_code (Optional[str]): 非必选参数，IPC设备验证码，默认为空（可选）
+            channel_no (Optional[int]): 非必选参数，不为空表示给指定通道关联IPC，为空表示给通道1关联IPC（非必填）
+            validate_code (Optional[str]): 非必选参数，IPC设备验证码，默认为空（非必填）
 
         Returns:
             Dict[str, Any]: API返回的原始数据。
@@ -776,13 +782,13 @@ class EZVIZOpenAPI:
         channel_no: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        NVR设备删除关联IPC。
-        参考文档: NVR设备删除关联IPC
+        NVR设备删除关联IPC
+        接口功能: 该接口用于NVR设备解除关联IPC。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             ipc_serial (str): 待关联的IPC设备序列号（必填）
-            channel_no (Optional[int]): 非必选参数，不为空表示给指定通道关联IPC，为空表示给通道1关联IPC（可选）
+            channel_no (Optional[int]): 非必选参数，不为空表示给指定通道关联IPC，为空表示给通道1关联IPC（非必填）
 
         Returns:
             Dict[str, Any]: API返回的原始数据。
@@ -830,10 +836,8 @@ class EZVIZOpenAPI:
         enable: int
     ) -> Dict[str, Any]:
         """
-        显示或者隐藏NVR下的通道。
-        参考文档: NVR设备隐藏IPC API文档
-        
-        注意：此API需要将accessToken放在Header中，而不是请求参数中。
+        NVR设备隐藏IPC
+        接口功能: 显示或者隐藏NVR下的通道。
 
         Args:
             device_serial (str): 设备序列号（必填）
@@ -880,8 +884,8 @@ class EZVIZOpenAPI:
         page_size: Optional[int] = 10
     ) -> Dict[str, Any]:
         """
-        获取国标License列表。
-        参考文档: 获取国标License列表
+        获取国标License列表
+        接口功能: 国标license查询。
 
         Args:
             product_key (str): 项目编码（必填）
@@ -919,8 +923,8 @@ class EZVIZOpenAPI:
         device_serial: str,
     ) -> Dict[str, Any]:
         """
-        查询用户下指定设备的基本信息。
-        参考文档: 获取单个设备信息
+        获取单个设备信息
+        接口功能: 查询用户下指定设备的基本信息。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
@@ -963,13 +967,16 @@ class EZVIZOpenAPI:
         page_size: Optional[int] = 10
     ) -> Dict[str, Any]:
         """
-        分页查询设备列表（根据页码）。
-        参考文档: 分页查询设备列表
+        分页查询设备列表（POST）
+        接口功能: 分页查询设备列表。起始页从0开始，不超过400页；每页默认查询数默认为10，不超过50。
+
         Args:
             page_start (int, optional): 分页页码，起始页从0开始，不超过400页。默认为0。
             page_size (int, optional): 分页大小，默认为10，不超过50。
+
         Returns:
             Dict[str, Any]: API返回的原始数据，包含 'data', 'code', 'msg', 'page' 字段。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1001,13 +1008,16 @@ class EZVIZOpenAPI:
         page_size: Optional[int] = 10
     ) -> Dict[str, Any]:
         """
-        根据设备索引ID分页查询设备列表。
-        参考文档: 根据设备索引id分页查询设备列表
+        根据设备索引id分页查询设备列表（POST）
+        接口功能: 根据起始索引分页查询设备列表。每页默认查询数默认为10，不超过50。
+
         Args:
             start_id (str): 起始条目索引，首页传"0"。
             page_size (int, optional): 分页大小，默认为10，不超过50。
+
         Returns:
             Dict[str, Any]: API返回的原始数据，包含 'data', 'code', 'msg', 'page' 字段。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1039,8 +1049,8 @@ class EZVIZOpenAPI:
         page_size: Optional[int] = 10
     ) -> Dict[str, Any]:
         """
-        获取视频通道列表。
-        参考文档: 获取监控点列表
+        获取视频通道列表
+        接口功能: 获取监控点列表。
 
         Args:
             page_start (int, optional): 分页起始页，从0开始。默认为 0。
@@ -1081,8 +1091,8 @@ class EZVIZOpenAPI:
         device_serial: str
     ) -> Dict[str, Any]:
         """
-        获取指定设备的通道信息。
-        参考文档: 获取指定设备的通道信息
+        获取指定设备的通道信息
+        接口功能: 获取指定设备的通道信息。
 
         Args:
             device_serial (str): 设备序列号（字母需为大写）。
@@ -1122,8 +1132,8 @@ class EZVIZOpenAPI:
         channel_no: Optional[int] = 1
     ) -> Dict[str, Any]:
         """
-        该接口用于根据序列号通道号获取设备状态信息。
-        参考文档: 获取设备状态信息
+        获取设备状态信息
+        接口功能: 该接口用于根据序列号通道号获取设备状态信息。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
@@ -1164,8 +1174,11 @@ class EZVIZOpenAPI:
         device_serial: str
     ) -> Dict[str, Any]:
         """
-        查询设备通道状态。
-        参考文档: 获取NVR通道状态信息
+        获取NVR通道状态信息
+        接口功能: 查询设备通道状态。
+
+        Args:
+            device_serial (str): 设备序列号（必填）
 
         Returns:
             Dict[str, Any]: API返回的原始数据。
@@ -1204,20 +1217,18 @@ class EZVIZOpenAPI:
         device_serial: str
     ) -> Dict[str, Any]:
         """
-        查询用户下指定设备的网络连接信息。
-        参考文档: 获取单个设备连接信息
+        获取单个设备连接信息
+        接口功能: 查询用户下指定设备的网络连接信息。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
 
+        Returns:
+            Dict[str, Any]: 设备连接信息。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
-
-        Returns:
-            Dict[str, Any]: 设备连接信息
         """
-
-
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_connection_info' 仅限 'cn' 区域使用。", "区域限制错误")
 
@@ -1251,16 +1262,19 @@ class EZVIZOpenAPI:
         note: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        创建用于B端客户添加设备的授权连接。
-        适用范围：B端设备添加工具
-        账号类型：仅支持开发者账号使用
-        参考文档: 创建授权连接
+        创建授权连接（POST）
+        接口功能: 开发者创建授权添加设备的连接，用于给平台客户添加设备的入口。
+        适用范围: B端设备添加工具。
+        账号类型: 仅支持开发者账号使用。
+
         Args:
-            expire_time (int): 过期时间，单位为小时，取值范围【1~720】。（必填）
-            note (str, optional): 备注信息。（非必填）
+            expire_time (int): 过期时间，单位为小时，取值范围【1~720】（必填）
+            note (str, optional): 备注信息（非必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据，包含 'meta' 和 'data' 字段。
                             'data' 中包含 'id', 'expireTime', 'url', 'note', 'expired'。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1301,18 +1315,21 @@ class EZVIZOpenAPI:
         page_size: Optional[int] = 10
     ) -> Dict[str, Any]:
         """
-        查询通过B端添加工具添加的设备信息，包含设备序列号、绑定方式、绑定时间、授权连接的备注。
-        可以通过设备序列号精确查询，或通过分页查询。
-        适用范围：B端设备添加工具
-        账号类型：仅支持开发者账号使用
-        参考文档: 设备备注信息查询
+        设备备注信息查询（GET）
+        接口功能: 开发者查询B端添加工具添加的设备信息，包含设备序列号，绑定方式，绑定时间，授权连接的备注。
+        查询条件: 可通过设备序列号查询或者分页查询设备信息。
+        适用范围: B端设备添加工具。
+        账号类型: 仅支持开发者账号使用。
+
         Args:
-            device_serial (str, optional): 设备序列号，用于查询该设备的详细信息。如果提供，则忽略分页参数。（非必填）
-            id (int, optional): 起始页索引，默认为None（即从第一页开始），查询结果不包含该数据。（非必填）
-            page_size (int, optional): 分页大小，默认为10，取值范围【1~50】。（非必填）
+            device_serial (str, optional): 设备序列号，用于查询该设备的详细信息。如果提供，则忽略分页参数（非必填）
+            id (int, optional): 起始页索引，默认为None（即从第一页开始），查询结果不包含该数据（非必填）
+            page_size (int, optional): 分页大小，默认为10，取值范围【1~50】（非必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据，包含 'meta' 和 'data' 字段。
                             'data' 是一个列表，每个元素包含 'id', 'deviceSerial', 'note', 'bindTime', 'bindType'。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1355,16 +1372,19 @@ class EZVIZOpenAPI:
         page_size: Optional[int] = 10
     ) -> Dict[str, Any]:
         """
-        查询开发者账号下所有的授权添加连接信息。
-        适用范围：B端设备添加工具
-        账号类型：仅支持开发者账号使用
-        参考文档: 开发者授权列表查询
+        开发者授权列表查询（GET）
+        接口功能: 开发者查询账号下授权添加连接信息，授权添加连接用于给平台客户添加设备的入口。
+        适用范围: B端设备添加工具。
+        账号类型: 仅支持开发者账号使用。
+
         Args:
-            id (str, optional): 起始页索引，默认为None（即从第一页开始），查询结果不包含该数据。（非必填）
-            page_size (int, optional): 分页大小，默认为10，取值范围【1~50】。（非必填）
+            id (str, optional): 起始页索引，默认为None（即从第一页开始），查询结果不包含该数据（非必填）
+            page_size (int, optional): 分页大小，默认为10，取值范围【1~50】（非必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据，包含 'meta' 和 'data' 字段。
                             'data' 是一个列表，每个元素包含 'id', 'expireTime', 'url', 'note', 'expired'。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1385,7 +1405,7 @@ class EZVIZOpenAPI:
 
         error_remark_dict = {
             "400": "",
-            "403": "无权限，请确认accessToken是否为开发者账号",
+            "403": "accessToken请使用开发者账号",
             "500": ""
         }
         return self._handle_api_response(
@@ -1401,16 +1421,18 @@ class EZVIZOpenAPI:
         device_serial: str
     ) -> Dict[str, Any]:
         """
-        该接口用户根据设备序列号查询设备能力集
-        参考文档: 获取设备能力集
+        获取设备能力集
+        接口功能: 该接口用户根据设备序列号查询设备能力集。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
-
         url = f"{self._base_url}/api/lapp/device/capacity"
         
         payload = {
@@ -1445,15 +1467,18 @@ class EZVIZOpenAPI:
         speed: int
     ) -> Dict[str, Any]:
         """
-        启动云台控制
-        参考文档: 启动云台控制
+        开始云台控制
+        接口功能: 对设备进行开始云台控制，开始云台控制之后必须先调用停止云台控制接口才能进行其他操作，包括其他方向的云台转动。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
             direction (int): 操作命令：0-上，1-下，2-左，3-右，4-左上，5-左下，6-右上，7-右下，8-物理放大，9-物理缩小，10-调整近焦距，11-调整远焦距，16-自动控制（必填）
             speed (int): 云台速度：0-慢，1-适中，2-快，海康设备参数不可为0（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1506,13 +1531,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         停止云台控制
-        参考文档: 停止云台控制
+        接口功能: 设备停止云台控制。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
             direction (Optional[int]): 操作命令：0-上，1-下，2-左，3-右，4-左上，5-左下，6-右上，7-右下，8-物理放大，9-物理缩小，10-调整近焦距，11-调整远焦距，16-自动控制（非必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1557,14 +1585,17 @@ class EZVIZOpenAPI:
         command: int
     ) -> Dict[str, Any]:
         """
-        对设备进行镜像翻转操作(需要设备支持)。
-        参考文档: 镜像翻转
+        镜像翻转
+        接口功能: 对设备进行镜像翻转操作(需要设备支持)。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
             command (int): 镜像方向：0-上下, 1-左右, 2-中心（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1607,13 +1638,16 @@ class EZVIZOpenAPI:
         channel_no: int
     ) -> Dict[str, Any]:
         """
-        支持云台控制操作的设备添加预置点，该接口需要设备支持能力集：ptz_preset=1
-        参考文档: 添加预置点
+        添加预置点
+        接口功能: 支持云台控制操作的设备添加预置点，该接口需要设备支持能力集：ptz_preset=1。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1656,14 +1690,17 @@ class EZVIZOpenAPI:
         index: int
     ) -> Dict[str, Any]:
         """
-        移动设备预置点。
-        参考文档: 移动预置点
+        调用预置点
+        接口功能: 对预置点进行调用控制。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
             index (int): 预置点，C6设备预置点是1-12（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1710,14 +1747,17 @@ class EZVIZOpenAPI:
         index: int
     ) -> Dict[str, Any]:
         """
-        清除预置点。
-        参考文档: 清除预置点
+        清除预置点
+        接口功能: 清除预置点。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
             index (int): 预置点，C6设备预置点是1-12（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1761,13 +1801,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         全景图片抓拍
+        接口功能: 全景图片抓拍。
         注：因图片存放在云录制空间，所以需要事先开通云录制。否则会失败。
-        参考文档: 全景图片抓拍
+
         Args:
             device_serial (str): 设备序列号（必填）
             local_index (str): 资源号（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1801,15 +1844,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         校准云台
-        参考文档: 校准云台
+        接口功能: 校准云台。
+
         Args:
             device_serial (str): 设备序列号（必填）
             local_index (str): 通道号，ipc默认为1（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
-        
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'calibrate_ptz' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -1837,11 +1882,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         云台复位
-        参考文档: 云台复位
+        接口功能: 云台复位，支持托管及子账号，设备级鉴权，校验权限为Ptz。需要设备支持support_oneclick_reset能力级。
+
         Args:
             device_serial (str): 设备序列号（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -1882,18 +1930,38 @@ class EZVIZOpenAPI:
         task_id: str = "default_task"
     ) -> Dict[str, Any]:
         """
-        控制云台转动。
-        适用于设备型号：CS-RK3-SWT1和CS-RK3-AWT1
+        云台八向控制
+        接口功能: 本文档仅适用于设备型号：CS-RK3-SWT1和CS-RK3-AWT1。其余型号不保证可用。
 
-        :param device_serial: 设备序列号
-        :param command: 云台命令 (up, down, left, right, upleft, downleft, upright, downright)
-        :param action: 动作 (start-开始, stop-结束)
-        :param speed: 云台速度 (1~7)
-        :param task_id: 任务ID
-        :return: API响应的JSON数据
+        Args:
+            device_serial (str): 设备序列号（必填）
+            command (str): 云台命令 (up-上, down-下, left-左, right-右, upleft-左上, downleft-左下, upright-右上, downright-右下)（非必填，默认为"up"）
+            action (str): 动作 (start-开始, stop-结束)（非必填，默认为"start"）
+            speed (int): 云台速度 (1~7)（非必填，默认为1）
+            task_id (str): 任务ID（非必填，默认为"default_task"）
+
+        Returns:
+            Dict[str, Any]: API返回的原始数据。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+            ValueError: 当参数值不符合要求时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'control_ptz' 仅限 'cn' 区域使用。", "区域限制错误")
+
+        # 参数验证
+        valid_commands = ["up", "down", "left", "right", "upleft", "downleft", "upright", "downright"]
+        if command not in valid_commands:
+            raise ValueError(f"无效的云台命令: {command}. 有效值: {valid_commands}")
+
+        valid_actions = ["start", "stop"]
+        if action not in valid_actions:
+            raise ValueError(f"无效的动作: {action}. 有效值: {valid_actions}")
+
+        if not (1 <= speed <= 7):
+            raise ValueError(f"无效的云台速度: {speed}. 有效范围: 1-7")
+
         url = f"{self._base_url}/api/v3/device/otap/action"
 
         headers = {
@@ -1924,12 +1992,27 @@ class EZVIZOpenAPI:
         )
 
     def capture_image(
-        self, 
-        device_serial: str, 
-        channel_no: int, 
+        self,
+        device_serial: str,
+        channel_no: int,
         quality: Optional[int]
     ) -> Dict[str, Any]:
+        """
+        设备抓拍图片
+        接口功能: 抓拍设备当前画面，该接口仅适用于IPC或者关联IPC的DVR设备，该接口并非预览时的截图功能。海康型号设备可能不支持萤石协议抓拍功能，使用该接口可能返回不支持或者超时。该接口需要设备支持能力集：support_capture=1。
+        注意：设备抓图能力有限，请勿频繁调用，建议每个摄像头调用的间隔4s以上。
 
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            channel_no (int): 通道号，IPC设备填写1（必填）
+            quality (Optional[int]): 视频清晰度,0-流畅,1-高清(720P),2-4CIF,3-1080P,4-400w 注：此参数不生效（非必填）
+
+        Returns:
+            Dict[str, Any]: API返回的原始数据。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
         url = f"{self._base_url}/api/lapp/device/capture"
         payload = {
             'accessToken': self._client.access_token,
@@ -1966,12 +2049,15 @@ class EZVIZOpenAPI:
         device_serial: str
     ) -> Dict[str, Any]:
         """
-        该接口用于获取客流统计开关状态（接口需要设备支持客流统计功能）
-        参考文档: 获取客流统计开关状态
+        获取客流统计开关状态
+        接口功能: 该接口用于获取客流统计开关状态（接口需要设备支持客流统计功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2009,14 +2095,17 @@ class EZVIZOpenAPI:
         channel_no: Optional[int],
     ) -> Dict[str, Any]:
         """
-        该接口用于设置客流统计开关（接口需要设备支持客流统计功能）
-        参考文档: 设置客流统计开关
+        设置客流统计开关
+        接口功能: 该接口用于设置客流统计开关（接口需要设备支持客流统计功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 开关状态，1表示开启，0表示关闭（必填）
             channel_no (Optional[int]): 通道号，默认为1（非必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2061,17 +2150,19 @@ class EZVIZOpenAPI:
         date: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        该接口用于查询设备某一天的客流统计数据（接口需要设备支持客流统计功能）
-        参考文档: 查询设备某一天的统计客流数据
+        查询设备某一天的统计客流数据
+        接口功能: 该接口用于查询设备某一天的客流统计数据（接口需要设备支持客流统计功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
             date (Optional[int]): 时间戳日期，精确至毫秒，默认为今天，date参数只能是0时0点0分0秒（如1561046400000可以，1561050000000不行）（非必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
-            ValueError: 当date参数不是0时0分0秒的时间戳时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_daily_passenger_flow' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -2081,14 +2172,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial,
             'channelNo': channel_no
         }
-        # 验证date参数是否为0时0分0秒
         if date is not None:
-            # 检查是否为整数
-            if not isinstance(date, int):
-                raise ValueError("date参数必须是整数类型的时间戳")
-            # 检查是否为0时0分0秒（毫秒时间戳除以86400000的余数应为0）
-            if date % 86400000 != 0:
-                raise ValueError("date参数必须是0时0分0秒的时间戳，例如1561046400000")
             payload['date'] = date
 
         http_response = self._client._session.request('POST', url, data=payload)
@@ -2118,14 +2202,17 @@ class EZVIZOpenAPI:
         date: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        该接口用于查询设备某一天每小时的客流统计数据（接口需要设备支持客流统计功能）
-        参考文档: 查询设备某一天每小时的客流数据
+        查询设备某一天每小时的客流数据
+        接口功能: 该接口用于查询设备某一天每小时的客流统计数据（接口需要设备支持客流统计功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号（必填）
             date (Optional[int]): 时间戳日期，精确至毫秒，默认为今天（非必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2167,15 +2254,18 @@ class EZVIZOpenAPI:
         channel_no: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        该接口用于配置客流统计相关信息（接口需要设备支持客流统计功能）
-        参考文档: 配置客流统计信息
+        配置客流统计信息
+        接口功能: 该接口用于配置客流统计相关信息（接口需要设备支持客流统计功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             line (str): 统计线的两个坐标点，坐标范围为0到1之间的7位浮点数，(0,0)坐标在左上角，格式如{"x1": "0.0","y1": "0.5","x2": "1","y2": "0.5"}（必填）
             direction (int): 指示方向的两个坐标点，(x1,y1)为起始点，(x2,y2)为结束点格式如{"x1": "0.5","y1": "0.5","x2": "0.5","y2": "0.6"}，最好与统计线保持垂直（必填）
             channel_no (Optional[int]): 非必选参数，不为空表示配置指定通道客流统计信息，为空表示配置设备本身信息（非必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2222,13 +2312,16 @@ class EZVIZOpenAPI:
         channel_no: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        该接口用于获取客流统计配置相关信息（接口需要设备支持客流统计功能）
-        参考文档: 获取客流统计配置信息
+        获取客流统计配置信息
+        接口功能: 该接口用于获取客流统计配置相关信息（接口需要设备支持客流统计功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (Optional[int]): 非必选参数，不为空表示获取指定通道客流统计信息，为空表示获取设备本身信息（非必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2273,19 +2366,20 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         otap设备属性查询接口
-        接口描述: 查询otap设备属性
+        接口功能: 查询otap设备属性。
+
         Args:
-            device_serial (str): 设备序列号
-            local_index (str): 资源序号
-            resource_category (str): 资源种类，描述资源的类型
-            domain_identifier (str): 功能点领域，填写报备时的属性所在领域
-            prop_identifier (str): 功能点标识，填写报备时的属性标识符
+            device_serial (str): 设备序列号（必填）
+            local_index (str): 资源序号（必填）
+            resource_category (str): 资源种类，描述资源的类型（必填）
+            domain_identifier (str): 功能点领域，填写报备时的属性所在领域（必填）
+            prop_identifier (str): 功能点标识，填写报备时的属性标识符（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的原始数据。
 
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
-
-        Returns:
-            Dict[str, Any]: API返回的原始数据
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_otap_property' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -2323,17 +2417,20 @@ class EZVIZOpenAPI:
         property_data: Dict[str, Any]
     ) -> Dict[str, Any]:
         """
-        OTAP设备属性设置接口。
-        参考文档: OTAP设备属性设置接口
+        OTAP设备属性设置接口
+        接口功能: 设置otap设备属性。
+
         Args:
-            device_serial (str): 设备序列号
-            local_index (str): 资源序号
-            resource_category (str): 资源种类
-            domain_identifier (str): 功能点领域
-            prop_identifier (str): 功能点标识符
-            property_data (Dict[str, Any]): 需要设置的属性数据，JSON结构。
+            device_serial (str): 设备序列号（必填）
+            local_index (str): 资源序号（必填）
+            resource_category (str): 资源种类（必填）
+            domain_identifier (str): 功能点领域（必填）
+            prop_identifier (str): 功能点标识符（必填）
+            property_data (Dict[str, Any]): 需要设置的属性数据，JSON结构（必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2377,17 +2474,20 @@ class EZVIZOpenAPI:
         action_data: Dict[str, Any]
     ) -> Dict[str, Any]:
         """
-        OTAP设备操作指令接口。
-        参考文档: OTAP设备操作指令接口
+        OTAP设备操作指令接口
+        接口功能: otap设备操作。
+
         Args:
-            device_serial (str): 设备序列号
-            local_index (str): 资源序号
-            resource_category (str): 资源种类
-            domain_identifier (str): 功能点领域
-            action_identifier (str): 功能点标识符
-            action_data (Dict[str, Any]): 操作指令的数据，JSON结构。
+            device_serial (str): 设备序列号（必填）
+            local_index (str): 资源序号（必填）
+            resource_category (str): 资源种类（必填）
+            domain_identifier (str): 功能点领域（必填）
+            action_identifier (str): 功能点标识符（必填）
+            action_data (Dict[str, Any]): 操作指令的数据，JSON结构（必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2427,9 +2527,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备语音列表接口
-        接口功能: 获取指定设备的语音列表，GET参数放在请求链接里
+        接口功能: 获取指定设备的语音列表，GET参数放在请求链接里。
+
+        Args:
+            device_serial (str): 设备序列号（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2458,13 +2563,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         新增设备语音接口
-        接口功能：将语音文件下发给设备，POST参数放在请求链接里
+        接口功能: 将语音文件下发给设备，POST参数放在请求链接里。
+
         Args:
-            device_serial (str): 设备序列号
-            voice_name (str): 设备语音名称
-            voice_url (str): 语音文件url
+            device_serial (str): 设备序列号（必填）
+            voice_name (str): 设备语音名称（必填）
+            voice_url (str): 语音文件url（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2494,14 +2602,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         修改设备语音名称接口
-        接口功能：修改设备上的指定语音文件的语音名称，PUT参数放在请求链接里
+        本文档仅适用于设备型号 CSEPMR511，其余型号不保证可用。
+        接口功能: 修改设备上的指定语音文件的语音名称，PUT参数放在请求链接里。
+
         Args:
-            device_serial (str): 设备序列号
-            voice_id (str): 设备语音唯一id
-            voice_name (str): 设备语音名称
-            voice_url (str): 语音文件url Y
+            device_serial (str): 设备序列号（必填）
+            voice_id (str): 设备语音唯一id（必填）
+            voice_name (str): 设备语音名称（必填）
+            voice_url (str): 语音文件url（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2532,14 +2644,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         删除设备语音接口
-        接口功能：删除设备上的指定语音文件，DELETE参数放在请求链接里
+        接口功能: 删除设备上的语音文件，DELETE参数放在请求链接里。
+
         Args:
-            device_serial (str): 设备序列号
-            voice_id (str): 设备语音唯一id
-            voice_name (str): 设备语音名称
-            voice_url (str): 语音文件url
+            device_serial (str): 设备序列号（必填）
+            voice_id (str): 设备语音唯一id（必填）
+            voice_name (str): 设备语音名称（必填）
+            voice_url (str): 语音文件url（必填）
+
         Returns:
-            Dict[str, Any]: API返回的原始数据
+            Dict[str, Any]: API返回的原始数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2569,15 +2684,18 @@ class EZVIZOpenAPI:
         voice_id: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        设置设备告警提示音。
-        参考文档: 设备告警提示音设置接口
+        设备告警提示音设置接口
+        接口功能: 设备告警提示音设置接口，PUT参数放在请求链接里。
+
         Args:
             device_serial (str): 设备序列号（必填）
             enable (int): 0-关闭，1-开启（必填）
             sound_type (int): 0-短叫，1-长叫，2-静音，3-自定义语音（必填）
-            voice_id (Optional[int]): 设备语音唯一id，soundType=3时有效（可选）
+            voice_id (Optional[int]): 设备语音唯一id，soundType=3时有效（非必填）
+
         Returns:
             Dict[str, Any]: API返回的原始数据，包含 'meta' 字段。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2624,17 +2742,19 @@ class EZVIZOpenAPI:
         content_type: str = "application/xml"
     ) -> Union[Dict[str, Any], str]:
         """
-        ISAPI下行指令透传接口。
-        该接口用于向海康品牌设备透传ISAPI协议指令。
-        参考文档: ISAPI下行指令透传
+        ISAPI下行指令透传
+        接口功能: 该接口用于从端或平台下发送ISAPI协议请求到设备,该接口支持json和XML形式的信令透传。
+
         Args:
-            isapi_path (str): ISAPI协议上的请求路径，例如 "/ISAPI/System/time/ntpServers/1"。
-            method (Literal['GET', 'POST', 'PUT', 'DELETE']): HTTP请求方法。
-            device_serial (str): 设备序列号。
-            body (Optional[Union[str, Dict[str, Any]]]): 请求体。可以是XML字符串或JSON字典。对于GET请求通常为None。
-            content_type (str): 请求体的内容类型，如 'application/xml' 或 'application/json'。默认为 'application/xml'。
+            isapi_path (str): ISAPI协议上的请求路径，例如 "/ISAPI/System/time/ntpServers/1"（必填）
+            method (Literal['GET', 'POST', 'PUT', 'DELETE']): HTTP请求方法（必填）
+            device_serial (str): 设备序列号（必填）
+            body (Optional[Union[str, Dict[str, Any]]]): 请求体。可以是XML字符串或JSON字典。对于GET请求通常为None（非必填）
+            content_type (str): 请求体的内容类型，如 'application/xml' 或 'application/json'。默认为 'application/xml'（非必填）
+
         Returns:
             Union[Dict[str, Any], str]: API返回的数据。如果响应头指明是JSON，则返回字典；如果是XML或其他，则返回原始字符串。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
             ValueError: 当 method 参数不是支持的方法时抛出。
@@ -2706,15 +2826,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         关闭设备视频加密
-        接口功能：根据设备验证码关闭设备视频加密开关
+        接口功能: 根据设备验证码关闭设备视频加密开关。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
-    
         url = f"{self._base_url}/api/lapp/device/encrypt/off"
         payload = {
             'accessToken': self._client.access_token,
@@ -2748,11 +2870,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         开启设备视频加密
-        接口功能：开启设备视频加密开关
+        接口功能: 开启设备视频加密开关。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2791,13 +2916,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         修改设备视频加密密码
-        接口功能：该接口用于修改设备视频加密密码（设备重置后修改的密码失效）
+        接口功能: 该接口用于修改设备视频加密密码（设备重置后修改的密码失效）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             old_password (str): 设备旧的加密密码（必填）
             new_password (str): 设备新的加密密码，长度大超过12字节（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2839,12 +2967,15 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备撤/布防
-        接口功能：对设备布撤防状态进行修改（活动检测开关），实现布防和撤防功能，该接口需要设备支持能力集：support_defence
+        接口功能: 对设备布撤防状态进行修改（活动检测开关），实现布防和撤防功能，该接口需要设备支持能力集：support_defence。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             is_defence (int): 布防状态，0：撤防，1：布防（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2882,12 +3013,15 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备布撤防计划
-        接口功能：获取设备布撤防计划，该接口需要设备支持能力集：support_defence
+        接口功能: 该接口用于获取设备布撤防计划（需要设备支持布撤防计划）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (int): 通道号，默认为1（非必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2929,16 +3063,19 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置布撤防时间计划
-        接口功能：该接口用于设置设备布撤防（活动检测）时间计划（需要设备支持布撤防计划）
+        接口功能: 该接口用于设置设备布撤防（活动检测）时间计划（需要设备支持布撤防计划）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-            channel_no (Optional[int]): 通道号，不传表示设备本身（必填）
+            channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
             start_time (Optional[str]): 开始时间，如16:00，默认为00:00（非必填）
             stop_time (Optional[str]): 结束时间，如16:30;如果为第二天,在时间前加上n,如n00:00.结束时间必须在开始时间之后,间隔不能超过24个小时（非必填）
             period (Optional[str]): 周一~周日，用0~6表示，英文逗号分隔，默认为0,1,2,3,4,5,6（非必填）
             enable (Optional[str]): 是否启用：1-启用，0-不启用，默认为1（非必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -2986,15 +3123,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取wifi配置提示音开关状态
-        接口功能：该接口用于获取wifi配置或设备启动提示音开关状态
+        接口功能: 该接口用于获取wifi配置或设备启动提示音开关状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
-
         url = f"{self._base_url}/api/lapp/device/sound/switch/status"
         payload = {
             'accessToken': self._client.access_token,
@@ -3028,16 +3167,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置wifi配置提示音开关
-        接口功能：该接口用于设置wifi配置或设备启动提示音开关
+        接口功能: 该接口用于设置wifi配置或设备启动提示音开关。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 状态：0-关闭，1-开启（必填）
             channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
-
         """
         url = f"{self._base_url}/api/lapp/device/sound/switch/set"
         payload = {
@@ -3077,17 +3218,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取镜头遮蔽开关状态
-        接口功能：该接口用于获取设备镜头遮蔽开关状态（需要设备支持镜头遮蔽功能）
+        接口功能: 该接口用于获取设备镜头遮蔽开关状态（需要设备支持镜头遮蔽功能）。
+
         Args:
-            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填） 
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
-        
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
-    
-
         url = f"{self._base_url}/api/lapp/device/scene/switch/status"
         payload = {
             'accessToken': self._client.access_token,
@@ -3121,14 +3262,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置镜头遮蔽开关
-        接口功能：该接口用于设置设备镜头遮蔽开关状态（需要设备支持镜头遮蔽功能）
+        接口功能: 该接口用于设置设备镜头遮蔽开关状态（需要设备支持镜头遮蔽功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 状态：0-关闭，1-开启（必填）
             channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
-        
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3170,11 +3313,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取声源定位开关状态
-        接口功能：该接口用于获取设备声源定位开关状态（需要设备支持声源定位功能）
+        接口功能: 该接口用于获取设备声源定位开关状态（需要设备支持声源定位功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3211,13 +3357,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置声源定位开关
-        接口功能：该接口用于设置设备声源定位开关状态（需要设备支持能力集：support_ssl）
+        接口功能: 该接口用于设置设备声源定位开关状态（需要设备支持能力集：support_ssl）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 状态：0-关闭，1-开启（必填）
             channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3259,11 +3408,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取摄像机指示灯开关状态
-        接口功能：该接口用于获取设备指示灯开关状态（需要设备支持指示灯功能）
+        接口功能: 该接口用于获取设备指示灯开关状态（需要设备支持指示灯功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
         Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3302,16 +3454,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置摄像机指示灯开关
-        接口功能：该接口用于设置摄像机指示灯开关状态（需要设备支持指示灯功能）
+        接口功能: 该接口用于设置摄像机指示灯开关状态（需要设备支持指示灯功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 状态：0-关闭，1-开启（必填）
             channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
-        
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_indicator_light_switch_status' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -3353,11 +3507,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取全天录像开关状态
-        接口功能：该接口用于获取设备全天录像开关状态（需要设备支持全天录像功能）
+        接口功能: 该接口用于获取设备全天录像开关状态（需要设备支持全天录像功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3396,13 +3553,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置全天录像开关
-        接口功能：该接口用于设置全天录像开关状态（需要设备支持全天录像功能）
+        接口功能: 该接口用于设置全天录像开关状态（需要设备支持全天录像功能）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 状态：0-关闭，1-开启（必填）
             channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3446,11 +3606,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取移动侦测灵敏度配置
-        接口功能：该接口用于获取智能算法配置（目前只支持移动侦测灵敏度配置）信息
+        接口功能: 该接口用于获取智能算法配置（目前只支持移动侦测灵敏度配置）信息。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3490,14 +3653,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置移动侦测灵敏度
-        接口功能：该接口用于设置智能算法模式（目前只支持移动侦测灵敏度配置）
+        接口功能: 该接口用于设置智能算法模式（目前只支持移动侦测灵敏度配置）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             value (int): type为0时，该值为0~6，0表示灵敏度最低（必填）
             channel_no (Optional[int]): 通道号，不传表示设备本身（非必填）
             type (Optional[int]): 智能算法模式：0-移动侦测灵敏度。非必选，默认为0（非必填）
-        return: 
-            Dict[str, Any]: API返回的JSON数据。  
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3544,15 +3710,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置告警声音模式
-        接口功能：该接口用于设置告警声音模式
+        接口功能: 该接口用于设置告警声音模式。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             type (int): 声音类型：0-短叫，1-长叫，2-静音（必填）
-        return: 
-            Dict[str, Any]: API返回的JSON数据。  
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
-
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_sound_alarm' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -3591,12 +3759,15 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         开启或关闭设备下线通知
-        接口功能：该接口用于开启或关闭设备下线通知
+        接口功能: 该接口用于开启或关闭设备下线通知。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 开启或关闭设备下线通知：0-关闭，1-开启（必填）
-        return: 
-            Dict[str, Any]: API返回的JSON数据。  
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3636,7 +3807,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备麦克风开关状态
-        接口功能：该接口用于获取设备麦克风开关状态
+        接口功能: 该接口用于获取设备麦克风开关状态。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/lapp/camera/video/sound/status"
         payload = {
@@ -3671,12 +3851,15 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备麦克风开关状态
-        接口功能：该接口用于设置麦克风开关状态
+        接口功能: 该接口用于设置麦克风开关状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (str): 开启或关闭麦克风：0-关闭，1-开启（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3716,13 +3899,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备移动跟踪开关
-        接口功能：该接口用于设置设备移动跟踪开关，需要设备支持能力集support_intelligent_track=1
+        接口功能: 该接口用于设置设备移动跟踪开关，需要设备支持能力集support_intelligent_track=1。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (str): 开启或关闭移动跟踪：0-关闭，1-开启（必填）
             channel_no (Optional[str]): 通道号（非必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3765,11 +3951,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备移动跟踪开关状态
-        接口功能：该接口用于设置设备移动跟踪开关状态
+        接口功能: 该接口用于获取设备移动跟踪开关状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3810,13 +3999,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备的osd名称
-        接口功能：该接口用于设置设备osd名称(只用于支持osd设置的设备，需要设备支持能力集：support_osd=1)
+        接口功能: 该接口用于设置设备osd名称(只用于支持osd设置的设备，需要设备支持能力集：support_osd=1)。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             osd_name (str): 需设置的osd内容（必填）
             channel_no (Optional[int]): 通道号,默认为1（非必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3856,11 +4048,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询osd
-        接口功能：查询设备osd
+        接口功能: 查询设备osd。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
             EZVIZAPIError: 当API调用失败时抛出。
         """
@@ -3889,15 +4084,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备智能检测开关状态
-        接口功能：获取设备智能检测开关状态
-        
+        接口功能: 获取设备智能检测开关状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             type (Optional[str]): 智能检测开关类型 302-人体检测,304人脸抠图, 不传则代表画面变化检测（非必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_intelligence_detection_switch_status' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -3936,17 +4133,21 @@ class EZVIZOpenAPI:
         channel_no: Optional[str] = None,
         type: Optional[str] = None
     ) -> Dict[str, Any]:
-        """设置设备智能检测开关状态
-        接口功能：设置设备智能检测开关状态
+        """
+        设置设备智能检测开关状态
+        接口功能: 设置设备智能检测开关状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (str): 状态： 0-关闭， 1-开启（必填）
             channel_no (Optional[str]): 通道号，非必选参数，不传表示设备本身（非必填）
             type (Optional[str]): 智能检测开关类型 302-人体检测,304人脸抠图, 不传则代表画面变化检测（非必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_intelligence_detection_switch_status' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -3985,14 +4186,18 @@ class EZVIZOpenAPI:
         self,
         device_serial: str
     ) -> Dict[str, Any]:
-        """获取人形追踪开关状态
-        接口功能：获取人形追踪开关状态接口
+        """
+        获取人形追踪开关状态
+        接口功能: 获取人形追踪开关状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_human_track_switch' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4027,15 +4232,19 @@ class EZVIZOpenAPI:
         device_serial: str,
         enable: int
     ) -> Dict[str, Any]:
-        """配置人形追踪开关状态
-        接口功能：配置人形追踪开关接口
+        """
+        配置人形追踪开关状态
+        接口功能: 配置人形追踪开关。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 是否启用：1-启用，0-不启用（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_human_track_switch' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4075,18 +4284,21 @@ class EZVIZOpenAPI:
         local_index: Optional[str] = None,
         delay: Optional[int] = None
     ) -> Dict[str, Any]:
-        """发送系统操作命令（远程重启）
-        接口功能：发送系统操作命令
+        """
+        发送系统操作命令（远程重启）
+        接口功能: 发送系统操作命令。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             system_operation (str): 系统操作命令：reboot-重启（必填）
             local_index (Optional[str]): 本地索引号（非必填）
             delay (Optional[int]): 延迟时间，单位秒，默认值0（非必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_system_operate' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4133,19 +4345,21 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         工作模式计划设置
-        接口功能：工作模式计划设置接口
-        
+        接口功能: 工作模式计划设置。
+
         Args:
-            device_serial (str): 设备序列号,存在英文字母的设备序
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (str): 计划状态 1-启用 0-不启用（必填）
             start_time (str): 每天的开始时间（必填）
             end_time (str): 每天的结束时间（必填）
             week (str): 每周重复（必填）
             event_arg (Optional[str]): 计划时间内执行的模式 0-省电模式 1-性能模式 2-常电模式 3-超级省电模式 ,计划时间外执行省电模式（非必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/timing/plan/set"
         headers = {
@@ -4176,15 +4390,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备工作模式计划
-        接口功能：查询设备工作模式计划
+        接口功能: 查询设备工作模式计划。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
 
-        return:
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/timing/plan/get"
         headers = {
@@ -4207,14 +4422,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         开启人形/PIR检测
-        接口功能：开启人形/PIR检测
+        接口功能: 开启人形/PIR检测。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             type (str): AI人形检测-1, PIR检测-5（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_alarm_detection_switch' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4243,17 +4461,19 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置PIR检测区域
-        接口功能：设置PIR检测区域
-        
+        接口功能: 设置PIR检测区域。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (str): 通道号（必填）
             area (str): 区域设置 ,如表顺序排列，每个值按位取值
                         例 [1,2,4,8,6] 则选中区域为序号（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_pir_detection_area' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4282,14 +4502,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询人形检测区域
-        接口功能：查询人形检测区域
+        接口功能: 查询人形检测区域。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (str): 通道号（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/motion/detect/get"
         headers = {
@@ -4314,16 +4537,19 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置人形检测区域
-        接口功能：设置人形检测区域
+        接口功能: 设置人形检测区域。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (str): 通道号（必填）
             area (str): 区域设置 ,如表顺序排列，每个值按位取值
                         例 [1,2,4,8,6] 则选中区域为序号（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/motion/detect/set"
         headers = {
@@ -4350,15 +4576,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取检测灵敏度
-        接口功能：查询灵敏度信息
+        接口功能: 查询灵敏度信息。
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (str): 通道号（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_detect_config' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4386,17 +4614,19 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置检测灵敏度
-        设置灵敏度信息(只用于支持检测灵敏度设置的设备，需要设备支持能力集：support_sensibility_adjust=1)
-        
+        接口功能: 设置灵敏度信息(只用于支持检测灵敏度设置的设备，需要设备支持能力集：support_sensibility_adjust=1)。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (str): 通道号（必填）
             type (str): 3-PIR检测灵敏度,4-人形检测灵敏度（必填）
             value (str): 取值为1-100,1表示灵敏度最低（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_detect_config' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4426,14 +4656,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备图像风格
-        接口功能：设置设备图像风格
+        接口功能: 设置设备图像风格。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             mode (str): 图像风格参数,1-标准，2-写实，3-艳丽（必填）
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_display_mode' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4444,7 +4677,7 @@ class EZVIZOpenAPI:
             'deviceSerial': device_serial
         }
         payload = {
-            'deviceSerial': device_serial,
+            # 'deviceSerial': device_serial,
             'mode': mode
         }
         http_response = self._client._session.request('POST', url, headers=headers, data=payload)
@@ -4461,13 +4694,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询图像风格
-        接口功能：查询图像风格
+        接口功能: 查询图像风格。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 '' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4491,16 +4727,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备工作模式
-        接口功能：设置设备工作模式
+        接口功能: 设置设备工作模式。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             mode (str): 工作模式 0-省电模式 1-性能模式 2-常电模式 3-超级省电模式（必填）
-        
-        return: 
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
-            
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/battery/work/mode/set"
         headers = {
@@ -4525,13 +4762,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备工作模式
-        接口功能：查询设备工作模式
+        接口功能: 查询设备工作模式。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_work_mode' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4554,19 +4794,21 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询电池充电状态
-        接口功能：查询电池充电状态
+        接口功能: 查询电池充电状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_power_status' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/v3/device/power/status/get"
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'accessToken': self._client.access_token,
             'deviceSerial': device_serial
         }
@@ -4586,15 +4828,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         平台向设备设置各种开关量
-        接口功能：平台向设备设置各种开关量,用于设置灯光提醒开关。
+        接口功能: 平台向设备设置各种开关量,用于设置灯光提醒开关。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (str): 开关状态,0-关闭，1-打开（必填）
             type (str): 开关类型,301-灯光闪烁开关/移动侦测灯光联动,305-灯光联动开关/PIR灯光联动（必填）
-        return: 
+            
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/switchStatus/set"
         headers = {
@@ -4622,15 +4867,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询开关状态
-        接口功能：查询开关状态,用于查询灯光提醒开关状态
+        接口功能: 查询开关状态,用于查询灯光提醒开关状态。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             channel_no (str): 通道号（必填）
             type (str): 301-灯光闪烁开关/移动侦测灯光联动,305-灯光联动开关/PIR灯光联动（必填）
-        return:
+            
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/switchStatus/get"
         headers = {
@@ -4655,13 +4903,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询高级告警侦测类型
-        接口功能：查询高级告警侦测类型
+        接口功能: 查询高级告警侦测类型。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+            
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_advanced_alarm_detection_types' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4684,11 +4935,14 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备存储介质状态查询接口
-        接口文档：根据设备序列号查询设备上存储介质的状态信息
+        接口功能: 根据设备序列号查询设备上存储介质的状态信息。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+            
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
             EZVIZAPIError: 当API调用失败时抛出.
         """
@@ -4722,14 +4976,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备存储介质格式化接口
-        接口文档：根据设备序列号和存储介质编号格式化指定编号的设备存储空间
+        接口功能: 根据设备序列号和存储介质编号格式化指定编号的设备存储空间。
+        
         Args:
             disk_index (str): 存储介质编号（必填）
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+            
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/format/disk"
         headers = {
@@ -4767,16 +5024,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置视频清晰度
-        接口功能：设置视频清晰度，向设备下发指令修改设备通道的清晰度设置 是否支持托管/子账号: 支持托管及子账号，权限为Config，设备通道级鉴权
+        接口功能: 设置视频清晰度，向设备下发指令修改设备通道的清晰度设置。是否支持托管/子账号: 支持托管及子账号，权限为Config，设备通道级鉴权。
         
         Args:
             local_index (str): 设备通道号（必填）
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             video_level (str): 设备视频清晰度等级 0-流畅 1-均衡 2-高清 3-超清（必填）
-        return:
+            
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_video_level' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4824,7 +5083,8 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备视频参数设置
-        接口功能：通用设备视频参数设置接口，不保证所有参数生效所有设备（具体生效情况依赖设备支持程度）。 是否支持托管及子账号：支持，权限为Config
+        接口功能: 通用设备视频参数设置接口，不保证所有参数生效所有设备（具体生效情况依赖设备支持程度）。是否支持托管及子账号：支持，权限为Config。
+        
         Args:
             stream_type_in (str): 视频码流 1-主码流 2-子码流（必填）
             resolution (str): 视频分辨率 0-DCIF 1-CIF 2-QCIF 3-4CIF 4-2CIF 6-QVGA（320x240） 16-VGA 17-UXGA 18-SVGA 19-HD720p（必填）
@@ -4836,10 +5096,12 @@ class EZVIZOpenAPI:
             encode_complex (str): 编码复杂度 0-低 1-中 2-高 默认1（非必填）
             device_serial (str): 设备序列号（必填）
             channel_no (str): 设备通道号 默认为1（非必填）
-        return:
+            
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_video_encode' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4884,15 +5146,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备视频参数查询
-        接口文档：查询设备设置的视频相关参数
+        接口功能: 查询设备设置的视频相关参数。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             local_index (Optional[int]): 资源描述，描述资源类型下的序号（默认1）（非必填）
             stream_type (Optional[int]): 视频码流：1主码流、2子码流（默认1）（非必填）
+
         return: 
             Dict[str, Any]: API返回的JSON数据。
+            
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_video_encode' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4931,15 +5196,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         音频编码格式切换（PUT）
-        接口功能：音频编码格式切换 是否支持托管：支持，权限为Config。 设备通道级鉴权，需要校验的能力集：support_audio_encode_types
+        接口功能: 音频编码格式切换。是否支持托管：支持，权限为Config。设备通道级鉴权，需要校验的能力集：support_audio_encode_types。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             encode_type (str): 音频编码格式 AAC（必填）
             local_index (Optional[str]): 资源（通道）号，非必选，默认为1（非必填）
-        return: 
+        
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+        
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_audio_encode_type' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -4984,7 +5252,19 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         切换设备编码格式（PUT）
-        接口功能：切换设备编码格式，校验的能力集：support_video_encode_switch_disable 为0 表示支持 是否支持托管及子账号：支持，权限为Config，设备通道级鉴权
+        接口功能: 切换设备编码格式，校验的能力集：support_video_encode_switch_disable 为0 表示支持。是否支持托管及子账号：支持，权限为Config，设备通道级鉴权。
+        
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            encode_type (str): 编码格式（必填）
+            stream_type (int): 码流类型（必填）
+            local_index (Optional[str]): 通道号，默认为1（非必填）
+        
+        Returns:
+            Dict[str, Any]: API返回的JSON数据。
+        
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_video_encode_type' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5027,13 +5307,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备白平衡参数（GET）
-        功能：查询设备白平衡参数， 托管/子账号：支持， 权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 查询设备白平衡参数。托管/子账号：支持，权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+        
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+        
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_white_balance' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5069,16 +5352,19 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备白平衡参数（PUT）
-        功能：设置设备白平衡参数， 托管/子账号：支持， 权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 设置设备白平衡参数。托管/子账号：支持，权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             mode (str): 白平衡模式，枚举值[auto：自动；lock：锁定；manul：手动]（必填）
             white_balance_red (Optional[str]): 白平衡红增益，手动模式下生效且手动模式下必传，范围0-255（非必填）
             white_balance_blue (Optional[str]): 白平衡蓝增益，手动模式下生效且手动模式下必传，范围0-255（非必填）
-        return: 
+        
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+        
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_white_balance' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5117,13 +5403,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备背光补偿参数（GET）
-        功能：查询设备背光补偿参数， 托管/子账号：支持， 权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 查询设备背光补偿参数。托管/子账号：支持，权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+        
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+        
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_backlight_compensation' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5157,14 +5446,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备背光补偿参数（PUT）
-        功能：设置设备背光补偿参数， 托管/子账号：支持， 权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 设置设备背光补偿参数。托管/子账号：支持，权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             mode (str): 背光补偿模式，枚举值[close-关闭；up-上；down-下；left-左；right-右；center-中心]（必填）
-        return: 
+        
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+        
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_backlight_compensation' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5199,13 +5491,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备图像降噪参数（GET）
-        功能：查询设备图像降噪参数， 托管/子账号：支持， 权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 查询设备图像降噪参数。托管/子账号：支持，权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+        
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+        
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_denoising' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5242,17 +5537,20 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备图像降噪参数（PUT）
-        功能：设置设备图像降噪参数， 托管/子账号：支持， 权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 设置设备图像降噪参数。托管/子账号：支持，权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             mode (str): 降噪模式，枚举值[close-关闭；general-普通；advanced-专家]（必填）
             general_level (Optional[int]): 普通模式降噪等级，普通模式下必填，范围1-100（非必填）
             spatial_level (Optional[int]): 专家模式空域等级，专家模式下必填，范围1-100（非必填）
             temporal_level (Optional[int]): 专家模式时域等级，专家模式下必填，范围1-100（非必填）
-        return: 
+        
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_denoising' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5294,13 +5592,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备曝光时间参数（GET）
-        功能：查询设备曝光时间参数， 托管/子账号：支持， 权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 查询设备曝光时间参数。托管/子账号：支持，权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_exposure_time' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5334,14 +5635,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备曝光时间参数（PUT）
-        功能：设置设备曝光时间参数， 托管/子账号：支持， 权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 设置设备曝光时间参数。托管/子账号：支持，权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             exposure_target (int): 曝光时间，单位us，范围：1-40000（必填）
-        return: 
+
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_exposure_time' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5377,13 +5681,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备防闪烁参数（GET）
-        功能：查询设备防闪烁参数， 托管/子账号：支持， 权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 查询设备防闪烁参数。托管/子账号：支持，权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_anti_flicker' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5417,14 +5724,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备防闪烁参数（PUT）
-        功能：设置设备防闪烁参数， 托管/子账号：支持， 权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 设置设备防闪烁参数。托管/子账号：支持，权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param。
+        
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-            mode (str): 防闪烁模式，枚举值：[50Hz，60Hz]（必填）.
-        return: 
+            mode (str): 防闪烁模式，枚举值：[50Hz，60Hz]（必填）
+
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_anti_flicker' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5460,12 +5770,16 @@ class EZVIZOpenAPI:
         """
         查询设备存储空间
         本接口仅适用于设备型号：ZNQXSXJ01ES系列和ZNBQSXJ01ES系列设备。其余型号不保证可用。
+        接口功能: 查询设备存储空间（SD卡）。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return: 
+
+        Returns: 
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_disk_capacity' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5500,15 +5814,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备视频类开关状态（PUT）
-        接口文档：设置设备视频类开关状态，支持托管及子账号,校验权限为Config，设备级鉴权。隐私遮蔽开关设置需要设备支持support_privacy能力集, 休眠开关设置需要设备支持support_low_power能力集，视频水印是否展示logo开关状态查询需要设备支持support_logo_switch能力集。
+        接口功能: 设置设备视频类开关状态，支持托管及子账号,校验权限为Config，设备级鉴权。隐私遮蔽开关设置需要设备支持support_privacy能力集, 休眠开关设置需要设备支持support_low_power能力集，视频水印是否展示logo开关状态查询需要设备支持support_logo_switch能力集。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             type (int): 开关类型，7.隐私遮蔽 21.休眠 702.视频水印是否展示LOGO（必填）
             enable (int): 设备开关状态，0.关闭，1.开启（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_video_switch_status' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5550,14 +5867,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备视频类开关状态（GET）
-        接口文档：查询设备视频类开关状态，支持托管及子账号,校验权限为GET，设备级鉴权。隐私遮蔽开关设置需要设备支持support_privacy能力集, 休眠开关设置需要设备支持support_low_power能力集，视频水印是否展示logo开关状态查询需要设备支持support_logo_switch能力集。
+        接口功能: 查询设备视频类开关状态，支持托管及子账号,校验权限为GET，设备级鉴权。隐私遮蔽开关设置需要设备支持support_privacy能力集, 休眠开关设置需要设备支持support_low_power能力集，视频水印是否展示logo开关状态查询需要设备支持support_logo_switch能力集。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             type (int): 开关类型，7.隐私遮蔽 21.休眠 702.视频水印是否展示LOGO（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_video_switch_status' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5593,7 +5913,8 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置补光灯模式
-        接口文档：设置补光灯模式
+        接口功能: 设置补光灯模式。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             mode (int): “黑白夜视”模式:0；
@@ -5601,10 +5922,12 @@ class EZVIZOpenAPI:
                         “智能夜视”:2；
                         人形检测全彩模式:3；
                         默认为0（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/fillLight/mode"
         headers = {
@@ -5643,14 +5966,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置补光灯开关
-        接口文档：设置补光灯开关
+        接口功能: 设置补光灯开关。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             enable (int): 状态：0-关闭，1-开启； 默认为0（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_fill_light_switch' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5679,14 +6005,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         配置音量
-        接口文档：配置音量
+        接口功能: 配置音量。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             volume (int): 音量值，范围0-100（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         
         if self._client.region != "cn":
@@ -5714,13 +6043,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询音量
-        接口文档：查询音量
+        接口功能：查询音量
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_talk_speaker_volume' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5746,13 +6078,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询人形/PIR检测状态
-        接口文档：查询人形/PIR检测状态
+        接口功能: 查询人形/PIR检测状态。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_alarm_detect_switch' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5776,14 +6111,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备主动防御（DeviceDefence）
-        接口说明:操作设备开启/关闭设备主动防御，需要设备支持support_active_defense能力集
+        接口功能: 操作设备开启/关闭设备主动防御，需要设备支持support_active_defense能力集。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             status (int): 主动防御状态，0-关闭，1-开启（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_defense' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5820,15 +6158,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         播放铃声
-        接口文档：播放铃声
+        接口功能: 播放铃声。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             voice_index (int): 语音索引（必填）
             volume (int): 音量（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/v3/device/audition"
         headers = {
@@ -5855,18 +6196,20 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置侦测开关
-        接口文档：设置侦测开关
+        接口功能: 设置侦测开关。
+
         Args:
             disk_capacity (str): 设备序列号（必填）
             type (Optional[int]): 0-关闭;
                                   4-活动侦测;
                                   8-人形检测;
                                   默认为0（非必填）
-        return:
-            Dict[str, Any]: API返回的JSON数据。
-        Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
 
+        Returns:
+            Dict[str, Any]: API返回的JSON数据。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_detect_switch' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5894,13 +6237,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备图像参数（GET）
-        功能：查询设备图像参数， 托管/子账号：支持， 权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 查询设备图像参数。托管/子账号：支持，权限类型：设备级GET权限，该接口需要设备支持能力集：support_image_param。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_image_params' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -5940,7 +6286,8 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备图像参数
-        功能：设置设备图像参数， 托管/子账号：支持， 权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param
+        接口功能: 设置设备图像参数。托管/子账号：支持，权限类型：设备级Config权限，该接口需要设备支持能力集：support_image_param。
+
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
             gamma_correction (int): 伽马矫正，范围0-9（必填）
@@ -5950,10 +6297,12 @@ class EZVIZOpenAPI:
             contrast (Optional[int]): 对比度，范围0-100,手动模式下必填（非必填）
             saturation (Optional[int]): 饱和度，范围0-100,手动模式下必填（非必填）
             sharpness (Optional[int]): 锐度，范围0-100,手动模式下必填（非必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_device_image_params' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6004,13 +6353,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备归位点模式（GET）
-        功能：支持托管及子账号，权限为Config，需要设备支持support_ptz_homing_point能力级
+        接口功能: 支持托管及子账号，权限为Config，需要设备支持support_ptz_homing_point能力级。
+
         Args:
             key (str): 固定传值returnToPoint（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_ptz_homing_point' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6047,14 +6399,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置设备归位点模式（PUT）
-        功能：支持托管及子账号，权限为Config，需要设备支持support_ptz_homing_point能力级
+        接口功能: 支持托管及子账号，权限为Config，需要设备支持support_ptz_homing_point能力级。
+
         Args:
             key (str): 固定值returnToPoint（必填）
             value (str): 归位点模式 0.默认归位点模式 1.自定义归位点模式（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_ptz_homing_point' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6089,13 +6444,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询自定义归位点设置状态（GET）
-        功能：支持托管及子账号，权限为Config，通道级鉴权，需要设备支持support_ptz_homing_point能力级
+        接口功能: 支持托管及子账号，权限为Config，通道级鉴权，需要设备支持support_ptz_homing_point能力级。
+
         Args:
             key (str): 固定值preset（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_ptz_homing_point_status' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6132,14 +6490,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设置自定义归位点（PUT）
-        功能：支持托管及子账号，权限为Config，需要设备支持support_ptz_homing_point能力级
+        接口功能: 支持托管及子账号，权限为Config，需要设备支持support_ptz_homing_point能力级。
+
         Args:
             key (str): 固定值preset（必填）
             value (str): 自定义归位点设置状态 1.是 0.否（必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_preset_point' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6173,13 +6534,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备支持算法列表
-        接口功能：查询指定设备支持的智能算法列表
+        接口功能: 查询指定设备支持的智能算法列表。
+
         Args:
-            device_serial (str): 设备序列号
-        return:
+            device_serial (str): 设备序列号（必填）
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_intelligent_model_device_support' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6213,15 +6577,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询智能设备列表
-        接口功能：查询智能设备列表（设备上已加载的算法）
+        接口功能: 查询智能设备列表（设备上已加载的算法）。
+
         Args:
             device_serial (Optional[str]): 关键字查询 分页参数与设备序列号两者 只可输入其一（非必填）
             page_start (Optional[int]): 页码，从0开始，默认为0（非必填）
             page_size (Optional[int]): 单页数量（单页限制数量8~50个）（非必填）
-        return:
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_intelligent_model_device_list' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6257,15 +6624,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备智能算法下发
-        接口功能：设备智能算法下发
-        
+        接口功能: 设备智能算法下发。
+
         Args:
-            device_serial (str): 设备序列号
-            app_id (str): 算法ID
-        return:
+            device_serial (str): 设备序列号（必填）
+            app_id (str): 算法ID（必填）
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'load_intelligent_model_app' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6300,7 +6669,18 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备启用/停用智能算法
-        接口功能：设备启用/停用智能算法，如果需要卸载算法，需要先停用算法，若设备内存不足会自动卸载已停用算法
+        接口功能: 设备启用/停用智能算法，如果需要卸载算法，需要先停用算法，若设备内存不足会自动卸载已停用算法。
+
+        Args:
+            device_serial (str): 设备序列号（必填）
+            app_id (str): 算法ID（必填）
+            status (str): 状态，on-启用，off-停用（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'set_intelligent_model_device_onoffline' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6333,13 +6713,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备版本信息
-        接口文档：查询用户下指定设备的版本信息
+        接口功能: 查询用户下指定设备的版本信息。
+
         Args:
-            device_serial (str): 设备序列号
+            device_serial (str): 设备序列号（必填）
+
         return:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/lapp/device/version/info"
         payload = {
@@ -6370,13 +6753,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         设备升级固件
-        接口功能：升级设备固件至最新版本
+        接口功能: 升级设备固件至最新版本。
+
         Args:
-            device_serial (str): 设备序列号
-        return:
+            device_serial (str): 设备序列号（必填）
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/lapp/device/upgrade"
         payload = {
@@ -6411,13 +6797,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备升级状态
-        接口文档：查询用户下指定设备的升级状态，包括升级进度。
+        接口功能: 查询用户下指定设备的升级状态，包括升级进度。
+
         Args:
-            device_serial (str): 设备序列号
-        return:
+            device_serial (str): 设备序列号（必填）
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         url = f"{self._base_url}/api/lapp/device/upgrade/status"
         payload = {
@@ -6449,13 +6838,16 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备模块升级信息
-        接口功能：查询待升级的模块信息。触发模块升级前调用该接口，用于确认哪些模块需要升级
+        接口功能: 查询待升级的模块信息。触发模块升级前调用该接口，用于确认哪些模块需要升级。
+
         Args:
-            device_serial (str): 设备序列号
-        return:
+            device_serial (str): 设备序列号（必填）
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_upgrade_modules' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6487,14 +6879,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         触发设备模块升级
-        接口功能：升级设备模块。模块信息来源于获取设备模块升级信息的接口
+        接口功能: 升级设备模块。模块信息来源于获取设备模块升级信息的接口。
+
         Args:
-            device_serial (str): 设备序列号
-            modules (str): 模块信息列表
-        return:
+            device_serial (str): 设备序列号（必填）
+            modules (str): 模块信息列表（必填）
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'upgrade_device_modules' 仅限 'cn' 区域使用。", "区域限制错误")
@@ -6529,14 +6924,17 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         获取设备模块升级状态
-        接口功能：用于获取设备模块升级状态及进度
+        接口功能: 用于获取设备模块升级状态及进度。
+
         Args:
-            device_serial (str): 设备序列号
-            module (str): 模块名称
-        return:
+            device_serial (str): 设备序列号（必填）
+            module (str): 模块名称（必填）
+
+        Returns:
             Dict[str, Any]: API返回的JSON数据。
+
         Raises:
-            EZVIZAPIError: 当API调用失败时抛出.
+            EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
             raise EZVIZAPIError("403", "函数 'get_device_module_upgrade_status' 仅限 'cn' 区域使用。", "区域限制错误")

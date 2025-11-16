@@ -2009,19 +2009,38 @@ class TestPassengerFlow:
         if not test_device_serial:
             pytest.skip("需要设置 TEST_DEVICE_SERIAL 环境变量")
 
-        # 使用昨天的日期进行测试
-        yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-
+        # 测试1: 不传递date参数，使用默认值（今天）
         try:
             response = real_api.get_daily_passenger_flow(
                 device_serial=test_device_serial,
-                channel_no = 1,
-                date=yesterday
+                channel_no=1
             )
             assert response.get("code") == "200"
             data = response.get('data', {})
             assert isinstance(data, dict)
-            print(f"每日客流统计数据获取成功: {data}")
+            print(f"每日客流统计数据获取成功（默认日期）: {data}")
+        except EZVIZDeviceNotSupportedError as e:
+            pytest.skip(f"设备不支持客流统计功能: {e}")
+        except EZVIZAPIError as e:
+            if e.code in ["20002", "20018"]:  # 设备不存在或不属于用户
+                pytest.skip(f"设备不可用: {e.message}")
+            else:
+                raise
+
+        # 测试2: 传递有效的date参数（必须是0时0分0秒的时间戳）
+        # 使用一个示例的0时0分0秒时间戳：2024-01-01 00:00:00 UTC
+        test_date = 1704067200000  # 2024-01-01 00:00:00 UTC的毫秒时间戳
+
+        try:
+            response = real_api.get_daily_passenger_flow(
+                device_serial=test_device_serial,
+                channel_no=1,
+                date=test_date
+            )
+            assert response.get("code") == "200"
+            data = response.get('data', {})
+            assert isinstance(data, dict)
+            print(f"每日客流统计数据获取成功（指定日期）: {data}")
         except EZVIZDeviceNotSupportedError as e:
             pytest.skip(f"设备不支持客流统计功能: {e}")
         except EZVIZAPIError as e:
@@ -2722,10 +2741,18 @@ class TestBacklightCompensation:
             pytest.skip("需要设置 TEST_DEVICE_SERIAL 环境变量")
 
         try:
-            # 此操作会修改通道名称，具有破坏性风险，跳过
-            pytest.skip("跳过具有破坏性风险的操作测试")
-        except EZVIZAPIError:
-            pass
+            new_name = f"TestCamera_{uuid.uuid4().hex[:8]}"
+            response = real_api.update_camera_name(
+                device_serial = test_device_serial,
+                name = new_name,
+                channel_no = 1
+            )
+            assert response.get("code") == "200"
+            print(f"通道名称修改成功: {new_name}")
+        except EZVIZDeviceNotSupportedError as e:
+            pytest.skip(f"设备不支持该功能: {e}")
+        except EZVIZAPIError as e:
+            handle_api_error(e)
 
     def test_add_device(self, real_api):
         """测试添加设备"""
