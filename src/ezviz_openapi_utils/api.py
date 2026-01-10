@@ -1991,6 +1991,52 @@ class EZVIZOpenAPI:
             response_format="meta"
         )
 
+    def get_device_preset_list(
+        self,
+        device_serial: str,
+        channel_no: Optional[int] = 1
+    ) -> Dict[str, Any]:
+        """
+        查询设备预置点列表（GET）
+        接口功能: 查询用户添加的预置点信息。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            channel_no (Optional[int]): 通道号，默认为1（非必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据，包含预置点列表信息。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
+        if self._client.region != "cn":
+            raise EZVIZAPIError("403", "函数 'get_device_preset_list' 仅限 'cn' 区域使用。", "区域限制错误")
+        url = f"{self._base_url}/api/service/device/preset/list"
+        headers = {
+            'accessToken': self._client.access_token
+        }
+        params = {
+            'deviceSerial': device_serial,
+            'channelNo': channel_no
+        }
+        http_response = self._client._session.request('GET', url, headers=headers, params=params)
+        error_code_dict = {
+            "10001": "参数错误",
+            "10031": "账号无权限访问此设备",
+            "50000": "服务异常",
+            "20002": "设备不存在",
+            "20014": "设备序列不正确",
+            "20015": "设备不支持"
+        }
+        return self._handle_api_response(
+            http_response,
+            api_name="get_device_preset_list",
+            device_serial=device_serial,
+            response_format="meta",
+            error_code_map=error_code_dict
+        )
+
     def capture_image(
         self,
         device_serial: str,
