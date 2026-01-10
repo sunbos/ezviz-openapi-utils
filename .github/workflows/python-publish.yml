@@ -12,11 +12,10 @@ on:
   release:
     types: [published]
 
-permissions:
-  contents: read
-
 jobs:
   release-build:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
 
     steps:
