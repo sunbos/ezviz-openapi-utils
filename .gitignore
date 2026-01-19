@@ -45,6 +45,13 @@ pytest-html-report.html
 # AI/开发工具配置 (AI / Dev Tools Config)
 # -----------------
 CLAUDE.md
+AGENTS.md
+
+# -----------------
+# Git Worktrees
+# -----------------
+.worktrees/
+worktrees/
 
 # -----------------
 # 构建/分发产物 (Build / Distribution)

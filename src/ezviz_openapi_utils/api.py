@@ -12,6 +12,7 @@ Author: SunBo <1443584939@qq.com>
 License: MIT
 """
 
+import json
 import time
 import requests
 from typing import Any, Dict, Literal, Optional, Union
@@ -671,8 +672,7 @@ class EZVIZOpenAPI:
             EZVIZAPIError: 当API调用失败时抛出。
         """
         if self._client.region != "cn":
-            raise EZVIZAPIError("403", "函数 'update_device_name' 仅限 'cn' 区域使用。", "区域限制错误")
-
+            raise EZVIZAPIError("403", "函数 'update_camera_name' 仅限 'cn' 区域使用。", "区域限制错误")
         url = f"{self._base_url}/api/lapp/camera/name/update"
         payload = {
             'accessToken': self._client.access_token,
@@ -680,10 +680,8 @@ class EZVIZOpenAPI:
             'name': name
         }
         if channel_no is not None:
-            payload['channelNo'] = channel_no
-            
+            payload['channelNo'] = str(channel_no)
         http_response = self._client._session.request('POST', url, data=payload)
-
         error_remark_dict = {
             "10001": "参数为空或格式不正确",
             "10002": "重新获取accessToken",
@@ -701,7 +699,7 @@ class EZVIZOpenAPI:
             response_format="code",
             error_code_map=error_remark_dict
         )
-    
+
     def add_ipc_device(
         self,
         device_serial: str,
@@ -1998,7 +1996,7 @@ class EZVIZOpenAPI:
     ) -> Dict[str, Any]:
         """
         查询设备预置点列表（GET）
-        接口功能: 查询用户添加的预置点信息。
+        接口功能: 查询用户添加的预置点信息 是否支持托管：是，通道级鉴权，校验权限为GET 是否支持子帐号：是，通道级鉴权，校验权限为GET
 
         Args:
             device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
@@ -2035,6 +2033,164 @@ class EZVIZOpenAPI:
             device_serial=device_serial,
             response_format="meta",
             error_code_map=error_code_dict
+        )
+
+    def get_cruise_time_plan(
+        self,
+        device_serial: str
+    ) -> Dict[str, Any]:
+        """
+        查询巡航计划
+        接口功能: 查询设备的巡航时间计划。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据，包含meta和data字段。
+                            data中包含enable（0关1开）和timingPlanBasicInfos（时间计划列表）。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
+        if self._client.region != "cn":
+            raise EZVIZAPIError("403", "函数 'get_cruise_time_plan' 仅限 'cn' 区域使用。", "区域限制错误")
+        url = f"{self._base_url}/api/v3/device/ptz/cruise/timePlan"
+        headers = {
+            'accessToken': self._client.access_token,
+            'deviceSerial': device_serial
+        }
+
+        http_response = self._client._session.request('GET', url, headers=headers)
+
+        return self._handle_api_response(
+            http_response,
+            api_name="get_cruise_time_plan",
+            device_serial=device_serial,
+            response_format="meta"
+        )
+
+    def set_cruise_time_plan(
+        self,
+        device_serial: str,
+        enable: int,
+        timer_defence_qos: str
+    ) -> Dict[str, Any]:
+        """
+        设置巡航计划
+        接口功能: 设置设备的巡航时间计划。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            enable (int): 巡航计划开关：0-关闭，1-开启（必填）
+            timer_defence_qos (str): 时间计划JSON字符串，例如：'[{"startTime":"08:00","endTime":"10:00","week":"0,1"}]'（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据，包含meta和data字段。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
+        if self._client.region != "cn":
+            raise EZVIZAPIError("403", "函数 'set_cruise_time_plan' 仅限 'cn' 区域使用。", "区域限制错误")
+        url = f"{self._base_url}/api/v3/device/ptz/cruise/timePlan"
+        headers = {
+            'accessToken': self._client.access_token,
+            'deviceSerial': device_serial,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        payload = {
+            'enable': enable,
+            'timerDefenceQos': timer_defence_qos
+        }
+
+        http_response = self._client._session.request('POST', url, headers=headers, data=payload)
+
+        return self._handle_api_response(
+            http_response,
+            api_name="set_cruise_time_plan",
+            device_serial=device_serial,
+            response_format="meta"
+        )
+
+    def get_cruise_auto_switch(
+        self,
+        device_serial: str,
+        local_index: str
+    ) -> Dict[str, Any]:
+        """
+        查询自动巡航开关
+        接口功能: 查询设备的自动巡航开关状态。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            local_index (str): 资源号（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据，包含meta和data字段。
+                            data中包含enable（boolean类型，false关，true开）。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
+        if self._client.region != "cn":
+            raise EZVIZAPIError("403", "函数 'get_cruise_auto_switch' 仅限 'cn' 区域使用。", "区域限制错误")
+        url = f"{self._base_url}/api/v3/device/ptz/cruise/auto/switch"
+        headers = {
+            'accessToken': self._client.access_token,
+            'deviceSerial': device_serial,
+            'localIndex': local_index
+        }
+
+        http_response = self._client._session.request('GET', url, headers=headers)
+
+        return self._handle_api_response(
+            http_response,
+            api_name="get_cruise_auto_switch",
+            device_serial=device_serial,
+            response_format="meta"
+        )
+
+    def set_cruise_auto_switch(
+        self,
+        device_serial: str,
+        local_index: str,
+        enable: bool
+    ) -> Dict[str, Any]:
+        """
+        设置自动巡航开关
+        接口功能: 设置设备的自动巡航开关状态。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            local_index (str): 通道号（必填）
+            enable (bool): 自动巡航开关：false-关闭，true-开启（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据，包含meta和data字段。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
+        if self._client.region != "cn":
+            raise EZVIZAPIError("403", "函数 'set_cruise_auto_switch' 仅限 'cn' 区域使用。", "区域限制错误")
+        url = f"{self._base_url}/api/v3/device/ptz/cruise/auto/switch"
+        headers = {
+            'accessToken': self._client.access_token,
+            'deviceSerial': device_serial,
+            'localIndex': local_index
+        }
+        params = {
+            'enable': enable
+        }
+
+        http_response = self._client._session.request('POST', url, headers=headers, params=params)
+
+        return self._handle_api_response(
+            http_response,
+            api_name="set_cruise_auto_switch",
+            device_serial=device_serial,
+            response_format="meta"
         )
 
     def capture_image(
@@ -6569,6 +6725,115 @@ class EZVIZOpenAPI:
         return self._handle_api_response(
             http_response,
             api_name="set_preset_point",
+            device_serial=device_serial,
+            response_format="meta",
+            error_code_map=error_code_dict
+        )
+
+    def get_night_vision_model(
+        self,
+        device_serial: str,
+        channel_no: int
+    ) -> Dict[str, Any]:
+        """
+        查询暖光调节、亮灯时长（GET）
+        接口功能: 设备键值对查询-根据key获取value。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            channel_no (int): 通道号（必填）
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据，包含 'meta' 和 'data' 字段。
+                            data.valueInfo 中包含：
+                            - luminance: 暖光调节（0-100）
+                            - duration: 亮灯时长（0-3600秒）
+                            - graphicType: 夜视模式（0-黑白，1-全彩，2-智能，3-人形检测全彩）
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
+        if self._client.region != "cn":
+            raise EZVIZAPIError("403", "函数 'get_night_vision_model' 仅限 'cn' 区域使用。", "区域限制错误")
+        url = f"{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op"
+        params = {
+            'accessToken': self._client.access_token,
+            'key': 'NightVision_Model'
+        }
+        http_response = self._client._session.request('GET', url, params=params)
+        error_code_dict = {
+            "10001": "无效参数",
+            "10002": "accessToken过期或异常",
+            "10031": "子账号或开发者用户无权限",
+            "20002": "设备不存在",
+            "20007": "设备不在线",
+            "20008": "设备响应超时",
+            "20018": "该用户不拥有该设备",
+            "50000": "服务器异常"
+        }
+        return self._handle_api_response(
+            http_response,
+            api_name="get_night_vision_model",
+            device_serial=device_serial,
+            response_format="meta",
+            error_code_map=error_code_dict
+        )
+
+    def set_night_vision_model(
+        self,
+        device_serial: str,
+        channel_no: int,
+        luminance: int,
+        duration: int,
+        graphic_type: int
+    ) -> Dict[str, Any]:
+        """
+        设置暖光调节、亮灯时长（PUT）
+        接口功能: 统一设置键值对。
+
+        Args:
+            device_serial (str): 设备序列号,存在英文字母的设备序列号，字母需为大写（必填）
+            channel_no (int): 通道号（必填）
+            luminance (int): 暖光调节值（0-100）（必填）
+            duration (int): 亮灯时长（0-3600秒）（必填）
+            graphic_type (int): 夜视模式（必填）
+                              0-黑白夜视模式
+                              1-全彩夜视模式
+                              2-智能夜视模式
+                              3-人形检测全彩模式
+
+        Returns:
+            Dict[str, Any]: API返回的JSON数据，包含 'meta' 和 'data' 字段。
+                            data.result 为 "OK" 表示设置成功。
+
+        Raises:
+            EZVIZAPIError: 当API调用失败时抛出。
+        """
+        if self._client.region != "cn":
+            raise EZVIZAPIError("403", "函数 'set_night_vision_model' 仅限 'cn' 区域使用。", "区域限制错误")
+        url = f"{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op"
+        value_dict = {
+            'luminance': luminance,
+            'duration': duration,
+            'graphicType': graphic_type
+        }
+        payload = {
+            'accessToken': self._client.access_token,
+            'key': 'NightVision_Model',
+            'value': json.dumps(value_dict)
+        }
+        http_response = self._client._session.request('PUT', url, data=payload)
+        error_code_dict = {
+            "10001": "无效参数",
+            "10002": "accessToken过期或异常",
+            "20002": "设备不存在",
+            "20007": "设备不在线",
+            "20008": "设备响应超时",
+            "20018": "该用户不拥有该设备"
+        }
+        return self._handle_api_response(
+            http_response,
+            api_name="set_night_vision_model",
             device_serial=device_serial,
             response_format="meta",
             error_code_map=error_code_dict

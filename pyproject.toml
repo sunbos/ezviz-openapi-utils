@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ezviz-openapi-utils"
-version = "0.3.3"
+version = "0.3.4"
 authors = [
   { name="SunBo", email="1443584939@qq.com" },
 ]
