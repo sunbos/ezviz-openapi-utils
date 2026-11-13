@@ -17,6 +17,9 @@ _SENSITIVE_KEYS = (
     "token",
     "secret",
     "password",
+    "deviceSerial",
+    "verifyCode",
+    "validateCode",
 )
 _SENSITIVE_PARAM_RE = re.compile(
     r"\b(" + "|".join(_SENSITIVE_KEYS) + r")\s*=\s*[^\s&\"']+",

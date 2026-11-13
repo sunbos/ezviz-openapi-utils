@@ -232,6 +232,18 @@ def test_device_identifiers_and_verification_codes_are_redacted(sdk):
     assert "PRIVATE" not in str(caught.value)
 
 
+def test_encoded_device_identifier_is_redacted_in_request_log(sdk, caplog):
+    def handler(request):
+        return httpx.Response(200, json={"code": "200"})
+
+    with caplog.at_level(logging.INFO, logger="httpx"):
+        with sdk.SyncTransport(
+            "https://api.example.test", transport=httpx.MockTransport(handler)
+        ) as client:
+            client.request("GET", "/api", params={"deviceSerial": "PRIVATE DEVICE"})
+    assert "PRIVATE" not in caplog.text
+
+
 def test_sdk_log_context_masks_unlisted_query_secret_and_preserves_integer_format(sdk, caplog):
     def handler(request):
         logging.getLogger("httpx").info("status=%d url=%s", 200, "/api?accessToken=UNLISTED_SECRET")

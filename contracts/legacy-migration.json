@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 4,
-  "pending_count": 146,
+  "mapped_count": 16,
+  "pending_count": 134,
   "compatibility_shim": false,
   "methods": [
     {
@@ -228,50 +228,74 @@
     {
       "legacy_method": "start_ptz_control",
       "source_line": 1460,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.start",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "direction": "direction",
+        "channel_no": "channel",
+        "speed": "speed"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "stop_ptz_control",
       "source_line": 1524,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.stop",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel",
+        "direction": "direction"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "device_mirror_ptz",
       "source_line": 1579,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.mirror",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel",
+        "command": "command"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "add_device_preset",
       "source_line": 1633,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.add_preset",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "move_device_preset",
       "source_line": 1684,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.move_preset",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel",
+        "index": "index"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "clear_device_preset",
       "source_line": 1741,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.clear_preset",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel",
+        "index": "index"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "compose_panorama_image",
@@ -284,18 +308,23 @@
     {
       "legacy_method": "calibrate_ptz",
       "source_line": 1838,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.calibrate",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "local_index": "channel"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "reset_ptz",
       "source_line": 1877,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.reset",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "control_ptz",
@@ -308,34 +337,46 @@
     {
       "legacy_method": "get_device_preset_list",
       "source_line": 1992,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.presets",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "get_cruise_time_plan",
       "source_line": 2038,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.cruise.get_schedule",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "set_cruise_time_plan",
       "source_line": 2073,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.cruise.set_schedule",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "enable": "enabled (bool)",
+        "timer_defence_qos": "periods (Sequence[CruisePeriod])"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "get_cruise_auto_switch",
       "source_line": 2116,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ptz.cruise.get_enabled",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "local_index": "channel"
+      },
+      "notes": "ApiResponse return; new keyword-only options and documented region/validation differences. Offline verified only."
     },
     {
       "legacy_method": "set_cruise_auto_switch",
@@ -343,7 +384,7 @@
       "status": "not_migrated",
       "target": null,
       "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "notes": "Pending source conflict: body table versus query example; see cn.cruise.set_enabled.encoding."
     },
     {
       "legacy_method": "capture_image",

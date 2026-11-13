@@ -26,6 +26,7 @@ from .devices import AsyncDevices, Devices
 from .errors import AuthenticationError, ProtocolError, TransportError
 from .models import ApiResponse
 from .operations import Operation
+from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .transport import AsyncTransport, ParamMapping, SyncTransport
 
@@ -193,6 +194,7 @@ class Client:
         self._closed = False
         self.devices = Devices(self)
         self.recordings = Recordings(self)
+        self.ptz = Ptz(self)
 
     @property
     def region(self) -> RegionConfig:
@@ -356,6 +358,7 @@ class AsyncClient:
         self._closed = False
         self.devices = AsyncDevices(self)
         self.recordings = AsyncRecordings(self)
+        self.ptz = AsyncPtz(self)
 
     @property
     def region(self) -> RegionConfig:

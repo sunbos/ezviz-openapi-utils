@@ -4,7 +4,7 @@
 
 ## 发行与兼容边界
 
-新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[旧版150项清单](../contracts/legacy-migration.json)中，目前4项有可核对的新入口，其余146项尚未迁移。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
+新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[旧版150项清单](../contracts/legacy-migration.json)中，目前16项有可核对的新入口，其余134项尚未迁移。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
 
 ## 方法映射
 
@@ -16,6 +16,20 @@
 | `get_device_status(device_serial, channel_no=1)` | `client.devices.status(device_serial, channel=1)` | 同路径 `/api/lapp/device/status/get`，参数与报文字段有变化 |
 
 注意：旧 `list_devices_by_id(start_id, page_size)` 虽与 `list` 同走 `/api/lapp/device/list`，但使用 `id` 游标分页，语义不同，目前没有对应新入口，不能用 `devices.list` 冒充。`client.recordings.local(...)` 是按当前文档新增的本地录像查询能力，旧版没有等价方法，不构成迁移承诺。
+
+新增的云台与巡航映射：
+
+| 旧方法 | 新入口（client下） | 参数变化 |
+| --- | --- | --- |
+| start_ptz_control / stop_ptz_control | ptz.start / ptz.stop | channel_no改为keyword-only channel；海外stop要求direction |
+| device_mirror_ptz | ptz.mirror | command保留，channel改为keyword-only |
+| add_device_preset / move_device_preset / clear_device_preset | ptz.add_preset / move_preset / clear_preset | channel_no改为channel；index保留 |
+| get_device_preset_list | ptz.presets | channel_no改为channel，仅国内 |
+| calibrate_ptz / reset_ptz | ptz.calibrate / ptz.reset | calibrate的local_index改为channel，reset仍为设备级，仅国内 |
+| get_cruise_auto_switch / get_cruise_time_plan | ptz.cruise.get_enabled / get_schedule | 前者local_index改为channel；后者无通道参数，仅国内 |
+| set_cruise_time_plan | ptz.cruise.set_schedule | enable整数改为enabled布尔，JSON字符串改为CruisePeriod序列，仅国内 |
+
+控制和计划设置不自动重放。旧set_cruise_auto_switch仍待核实body/query矛盾，不能用时间计划setter替代。所有新映射仍需按型号与权限做实际设备验证。
 
 ## 参数与返回值差异
 
@@ -54,11 +68,11 @@ with Client(
 
 ## 验证状态
 
-4 个设备方法已通过离线契约验证；真实联调目前仅覆盖国内认证与空设备列表，设备详情、海外账户尚未实测。不要把 mock 或空设备列表当作完整验证证据。
+已映射方法通过离线契约验证；真实联调目前仅覆盖国内认证与空设备列表，设备详情、控制、录像和海外账户尚未实测。不要把mock或空设备列表当作完整验证证据。
 
 ## 迁移前检查清单
 
-- [ ] 清点代码中实际调用的旧方法，确认是否落在 4 个已映射入口内，其余暂缓或自行封装。
+- [ ] 清点代码中实际调用的旧方法，确认是否落在16个已映射入口内，其余按清单逐项处理。
 - [ ] 确认 appKey/appSecret 主体与目标区域匹配；海外账户确认 `areaDomain` 行为。
 - [ ] 按新错误分类重写异常处理与重试逻辑。
 - [ ] 先用只读方法（`list`/`get`/`channels`/`status`）做连通性验证，再切换业务流量。

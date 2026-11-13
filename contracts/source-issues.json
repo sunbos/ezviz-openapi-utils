@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "issues": [
+    {
+      "id": "domestic.814.existing-conflict",
+      "region": "domestic",
+      "source_doc_id": "814",
+      "source_url": "https://open.ys7.com/help/814",
+      "source_content_sha256": "bef2279a7d844f9178b03fa4b7867c71f6fb01f191a5391247c2c3a5fb30a107",
+      "description": "traceability字段说明限制1至7位，示例使用8位；未选择其中一项替代原文。",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "retain raw source; no invented correction",
+      "evidence": [
+        {
+          "raw_content_character_offset": 224,
+          "excerpt": "traceability为1到7位数字"
+        },
+        {
+          "raw_content_character_offset": 579,
+          "excerpt": "traceability=01234567"
+        }
+      ]
+    },
+    {
+      "id": "overseas.476.existing-conflict",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "source_url": "https://open.ys7.com/help/en/476",
+      "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+      "description": "同页状态枚举有0=Offline与0=Online的冲突，原始表格保持不变。",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "retain raw source; no invented correction",
+      "evidence": [
+        {
+          "table_index": 2,
+          "row_index": 4,
+          "source_element_index": 89,
+          "description": "Online status: 0-Offline, 1-Online"
+        },
+        {
+          "table_index": 5,
+          "row_index": 4,
+          "source_element_index": 209,
+          "description": "Online status: 0 -Online, 1- Online"
+        },
+        {
+          "table_index": 8,
+          "row_index": 4,
+          "source_element_index": 343,
+          "description": "Online status: 0 -Online, 1- Online"
+        },
+        {
+          "table_index": 17,
+          "row_index": 6,
+          "source_element_index": 723,
+          "description": "Online status： 0-offline，1-online,-1-device not report"
+        }
+      ]
+    },
+    {
+      "id": "global.ptz.stop.direction",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "source_url": "https://open.ys7.com/help/en/479",
+      "source_content_sha256": "982d86700b3f17d17045e9adebab2f73b422945d40d952b7669498c4a04a9f4f",
+      "description": "Stop direction is required in the table, omitted by the HTTP example.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "require direction according to the parameter table"
+    },
+    {
+      "id": "cn.cruise.enabled.code_type",
+      "region": "domestic",
+      "source_doc_id": "5063",
+      "source_url": "https://open.ys7.com/help/5063",
+      "source_content_sha256": "aaa04729ffd6a46f36b5fac152ce0d1b7dd21e4b2a029acbbfeac4558f89c14b",
+      "description": "meta.code table says string while the success example uses integer 200.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "accept both 200 and string 200"
+    },
+    {
+      "id": "cn.cruise.schedule.data_type",
+      "region": "domestic",
+      "source_doc_id": "5065",
+      "source_url": "https://open.ys7.com/help/5065",
+      "source_content_sha256": "3850d2710e669acfc8867db9ece0b0d1ef24587b87c8d49f0622956636e0495f",
+      "description": "timingPlanBasicInfos is described as string but shown as array.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "preserve the original response data"
+    },
+    {
+      "id": "cn.cruise.set_enabled.encoding",
+      "region": "domestic",
+      "source_doc_id": "5064",
+      "source_url": "https://open.ys7.com/help/5064",
+      "source_content_sha256": "7391ba55b7be7f9c5a13af7bdf5307a2d27281f5f35502e897e408de41808268",
+      "description": "enable is placed in body by the table but in query by the example; body encoding is absent.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "no set_enabled facade until verified"
+    }
+  ]
+}

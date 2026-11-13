@@ -1,0 +1,23 @@
+{
+  "task_id": "S006B",
+  "status": "accepted",
+  "session_id": "2f886e84-42a8-4a22-91df-28d6bbc76c45",
+  "accepted_at_utc": "2026-11-13T23:43:33.265006+00:00",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "output_tokens": 3418,
+    "cache_creation_input_tokens": 0,
+    "input_tokens": 10604,
+    "cache_read_input_tokens": 14656
+  },
+  "provider_bill": "not independently verified",
+  "task_tests_passed": 25,
+  "repository_tests_passed": 471,
+  "document_subtests_passed": 11,
+  "mypy": "passed (13 SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "real_device_calls": false,
+  "remote_ci": "see PR 1 for current commit results"
+}

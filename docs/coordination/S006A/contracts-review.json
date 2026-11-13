@@ -1,0 +1,9 @@
+{
+  "task_id": "C004",
+  "new_contracts": 18,
+  "total_contracts": 30,
+  "known_contract_conflicts": 6,
+  "deferred_operation": "set_cruise_auto_switch",
+  "sources_rehashed": true,
+  "real_device_calls": false
+}

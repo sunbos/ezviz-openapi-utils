@@ -5,6 +5,7 @@ from importlib.metadata import version
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token, parse_token
 from .client import AsyncClient, Client
+from .cruise import AsyncCruise, Cruise, CruisePeriod
 from .devices import AsyncDevices, Devices
 from .errors import (
     ApiError,
@@ -17,6 +18,7 @@ from .errors import (
 )
 from .models import ApiResponse, ResponsePolicy
 from .operations import Operation
+from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .response import decode_response
 from .transport import AsyncTransport, SyncTransport
@@ -27,18 +29,23 @@ __all__ = [
     "ApiError",
     "ApiResponse",
     "AsyncClient",
+    "AsyncCruise",
     "AsyncDevices",
     "AsyncRecordings",
+    "AsyncPtz",
     "AsyncTransport",
     "AsyncTokenManager",
     "AuthenticationError",
     "Client",
+    "Cruise",
+    "CruisePeriod",
     "DeviceError",
     "Devices",
     "EzvizError",
     "Operation",
     "PermissionDeniedError",
     "ProtocolError",
+    "Ptz",
     "RegionConfig",
     "Recordings",
     "ResponsePolicy",

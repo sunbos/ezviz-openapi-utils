@@ -1,0 +1,20 @@
+{
+  "python": "3.12",
+  "results": [
+    {
+      "kind": "wheel",
+      "clean_install": true,
+      "install_offline": true,
+      "smoke": "Installed SDK sync/async mock smoke passed",
+      "real_api_used": false
+    },
+    {
+      "kind": "sdist",
+      "clean_install": true,
+      "install_offline": true,
+      "smoke": "Installed SDK sync/async mock smoke passed",
+      "real_api_used": false,
+      "source_archive_tests": "370 passed in 2.08s"
+    }
+  ]
+}

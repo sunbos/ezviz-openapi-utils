@@ -787,6 +787,1197 @@
         "path": "request-address section",
         "encoding": null
       }
+    },
+    {
+      "operation_id": "cn.ptz.start",
+      "region": "domestic",
+      "source_doc_id": "679",
+      "source_url": "https://open.ys7.com/help/679",
+      "source_content_sha256": "df649a653007df43ff463381cfe4cfc1b12ce7cc7ac6635c8d779fa8cf06875d",
+      "method": "POST",
+      "path": "/api/lapp/device/ptz/start",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "constant": "application/x-www-form-urlencoded",
+          "evidence": "request parameter table"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "direction",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "speed",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "directions are 0–11 or 16; stop is required before other PTZ operations after start.",
+          "evidence": "direction table and start-function section"
+        },
+        {
+          "fact": "speed values are 0/1/2; domestic Hikvision devices cannot use 0.",
+          "evidence": "speed table"
+        },
+        {
+          "fact": "Domestic English serial letters must be uppercase; subaccount minimum permission is Ptz on the specified camera/channel.",
+          "evidence": "deviceSerial row and function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.stop",
+      "region": "domestic",
+      "source_doc_id": "680",
+      "source_url": "https://open.ys7.com/help/680",
+      "source_content_sha256": "81317b838f2d108f2050e0377fe1a72bcbe8ad8fdc554c1ed8f39311a28d6217",
+      "method": "POST",
+      "path": "/api/lapp/device/ptz/stop",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "constant": "application/x-www-form-urlencoded",
+          "evidence": "request parameter table"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "direction",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "directions are 0–11 or 16; stop is required before other PTZ operations after start.",
+          "evidence": "direction table and start-function section"
+        },
+        {
+          "fact": "Domestic English serial letters must be uppercase; subaccount minimum permission is Ptz on the specified camera/channel.",
+          "evidence": "deviceSerial row and function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.mirror",
+      "region": "domestic",
+      "source_doc_id": "681",
+      "source_url": "https://open.ys7.com/help/681",
+      "source_content_sha256": "0eb32d91a66436a7f5590b41a3592c4e3b60f9ce5621cbefd8f8d8513618f6f4",
+      "method": "POST",
+      "path": "/api/lapp/device/ptz/mirror",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "constant": "application/x-www-form-urlencoded",
+          "evidence": "request parameter table"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "command",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "Domestic English serial letters must be uppercase; subaccount minimum permission is Ptz on the specified camera/channel.",
+          "evidence": "deviceSerial row and function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.add_preset",
+      "region": "domestic",
+      "source_doc_id": "682",
+      "source_url": "https://open.ys7.com/help/682",
+      "source_content_sha256": "89d3399fb74d78cc1239817380c39804ac0a53ecf0bd66ae567083c0f0847b12",
+      "method": "POST",
+      "path": "/api/lapp/device/preset/add",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "constant": "application/x-www-form-urlencoded",
+          "evidence": "request parameter table"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "The 1–12 index bound is specific to C6, not a universal device bound.",
+          "evidence": "preset index description"
+        },
+        {
+          "fact": "Domestic English serial letters must be uppercase; subaccount minimum permission is Ptz on the specified camera/channel.",
+          "evidence": "deviceSerial row and function description"
+        },
+        {
+          "fact": "Device capability required: ptz_preset=1.",
+          "evidence": "API function/capability requirement section"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.move_preset",
+      "region": "domestic",
+      "source_doc_id": "683",
+      "source_url": "https://open.ys7.com/help/683",
+      "source_content_sha256": "f9e5e305f502452b57843c90a3d1743cad8c9de22b1b4721f7dd019fd4daf4f1",
+      "method": "POST",
+      "path": "/api/lapp/device/preset/move",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "constant": "application/x-www-form-urlencoded",
+          "evidence": "request parameter table"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "index",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "The 1–12 index bound is specific to C6, not a universal device bound.",
+          "evidence": "preset index description"
+        },
+        {
+          "fact": "Domestic English serial letters must be uppercase; subaccount minimum permission is Ptz on the specified camera/channel.",
+          "evidence": "deviceSerial row and function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.clear_preset",
+      "region": "domestic",
+      "source_doc_id": "684",
+      "source_url": "https://open.ys7.com/help/684",
+      "source_content_sha256": "a747f3d1b13c4752d3b021ed4667395c45f2300f50993addea6f5f47276cb7e3",
+      "method": "POST",
+      "path": "/api/lapp/device/preset/clear",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "constant": "application/x-www-form-urlencoded",
+          "evidence": "request parameter table"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "index",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "The 1–12 index bound is specific to C6, not a universal device bound.",
+          "evidence": "preset index description"
+        },
+        {
+          "fact": "Domestic English serial letters must be uppercase; subaccount minimum permission is Ptz on the specified camera/channel.",
+          "evidence": "deviceSerial row and function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.ptz.start",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "source_url": "https://open.ys7.com/help/en/479",
+      "source_content_sha256": "982d86700b3f17d17045e9adebab2f73b422945d40d952b7669498c4a04a9f4f",
+      "method": "POST",
+      "path": "/api/lapp/device/ptz/start",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "direction",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "speed",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "directions are 0–11; stop is required before other PTZ operations after start.",
+          "evidence": "direction table and start-function section"
+        },
+        {
+          "fact": "speed values are 0/1/2.",
+          "evidence": "speed parameter table"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.ptz.stop",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "source_url": "https://open.ys7.com/help/en/479",
+      "source_content_sha256": "982d86700b3f17d17045e9adebab2f73b422945d40d952b7669498c4a04a9f4f",
+      "method": "POST",
+      "path": "/api/lapp/device/ptz/stop",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "direction",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "directions are 0–11; stop is required before other PTZ operations after start.",
+          "evidence": "direction table and start-function section"
+        }
+      ],
+      "uncertainties": [
+        "See global.ptz.stop.direction source issue."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.ptz.mirror",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "source_url": "https://open.ys7.com/help/en/479",
+      "source_content_sha256": "982d86700b3f17d17045e9adebab2f73b422945d40d952b7669498c4a04a9f4f",
+      "method": "POST",
+      "path": "/api/lapp/device/ptz/mirror",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "command",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.ptz.add_preset",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "source_url": "https://open.ys7.com/help/en/479",
+      "source_content_sha256": "982d86700b3f17d17045e9adebab2f73b422945d40d952b7669498c4a04a9f4f",
+      "method": "POST",
+      "path": "/api/lapp/device/preset/add",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "The 1–12 index bound is specific to C6, not a universal device bound.",
+          "evidence": "preset index description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.ptz.move_preset",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "source_url": "https://open.ys7.com/help/en/479",
+      "source_content_sha256": "982d86700b3f17d17045e9adebab2f73b422945d40d952b7669498c4a04a9f4f",
+      "method": "POST",
+      "path": "/api/lapp/device/preset/move",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "index",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "The 1–12 index bound is specific to C6, not a universal device bound.",
+          "evidence": "preset index description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.ptz.clear_preset",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "source_url": "https://open.ys7.com/help/en/479",
+      "source_content_sha256": "982d86700b3f17d17045e9adebab2f73b422945d40d952b7669498c4a04a9f4f",
+      "method": "POST",
+      "path": "/api/lapp/device/preset/clear",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "index",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "This operation changes device state.",
+          "evidence": "API function description; read_only=false is the SDK retry classification."
+        },
+        {
+          "fact": "The 1–12 index bound is specific to C6, not a universal device bound.",
+          "evidence": "preset index description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.presets",
+      "region": "domestic",
+      "source_doc_id": "4993",
+      "source_url": "https://open.ys7.com/help/4993",
+      "source_content_sha256": "4ca9352497b8c4ff108413ecd3169beef1635f7985ef90ec38deef11542a4a6b",
+      "method": "GET",
+      "path": "/api/service/device/preset/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "localIndex",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200
+        ],
+        "evidence": "response table/example; any type conflict is listed in uncertainties"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.ptz.calibrate",
+      "region": "domestic",
+      "source_doc_id": "686",
+      "source_url": "https://open.ys7.com/help/686",
+      "source_content_sha256": "f751c3f17fa7783dd99c4c42d43343459772c54ccc65f7e7a42d61829a923b30",
+      "method": "POST",
+      "path": "/api/v3/device/ptz/manual/adjust",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response table/example; any type conflict is listed in uncertainties"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Device capability required: support_ptz_position_correction.",
+          "evidence": "API function/capability requirement section"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.ptz.reset",
+      "region": "domestic",
+      "source_doc_id": "4477",
+      "source_url": "https://open.ys7.com/help/4477",
+      "source_content_sha256": "920fbd54a07fecb84148af55926fff4849f72fe931bdfc7efa4041f5c5c879f9",
+      "method": "POST",
+      "path": "/api/v3/device/ctrl/ptz/reset",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200
+        ],
+        "evidence": "response table/example; any type conflict is listed in uncertainties"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Device capability required: support_oneclick_reset.",
+          "evidence": "API function/capability requirement section"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_enabled",
+      "region": "domestic",
+      "source_doc_id": "5063",
+      "source_url": "https://open.ys7.com/help/5063",
+      "source_content_sha256": "aaa04729ffd6a46f36b5fac152ce0d1b7dd21e4b2a029acbbfeac4558f89c14b",
+      "method": "GET",
+      "path": "/api/v3/device/ptz/cruise/auto/switch",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200,
+          "200"
+        ],
+        "evidence": "response table/example; any type conflict is listed in uncertainties"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [
+        "See cn.cruise.enabled.code_type source issue."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_schedule",
+      "region": "domestic",
+      "source_doc_id": "5065",
+      "source_url": "https://open.ys7.com/help/5065",
+      "source_content_sha256": "3850d2710e669acfc8867db9ece0b0d1ef24587b87c8d49f0622956636e0495f",
+      "method": "GET",
+      "path": "/api/v3/device/ptz/cruise/timePlan",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200
+        ],
+        "evidence": "response table/example; any type conflict is listed in uncertainties"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [
+        "See cn.cruise.schedule.data_type source issue."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.set_schedule",
+      "region": "domestic",
+      "source_doc_id": "5066",
+      "source_url": "https://open.ys7.com/help/5066",
+      "source_content_sha256": "63ee0efc718aef5d1404b3cba75974499031b10743714e64c00c002f46e014a4",
+      "method": "POST",
+      "path": "/api/v3/device/ptz/cruise/timePlan",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "timerDefenceQos",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200
+        ],
+        "evidence": "response table/example; any type conflict is listed in uncertainties"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "enable is 0/1; timerDefenceQos is a JSON array encoded as form text. Each period uses ordered HH:mm times and comma-separated weekdays 0=Monday through 6=Sunday.",
+          "evidence": "parameter section and form curl example"
+        },
+        {
+          "fact": "Each call replaces the prior schedule and does not establish cruise preset points; preset/effect/switch prerequisites remain separate.",
+          "evidence": "preconditions and supplementary notes"
+        },
+        {
+          "fact": "Device capability required: support_ptz_cruise_plan.",
+          "evidence": "API function/capability requirement section"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -804,6 +1995,10 @@
       "review": "docs/coordination/S004B/contracts-review.json",
       "result": "contracts/reviewed-transport-contracts.json",
       "note": "C003 additions use source_content_sha256 for source binding."
+    },
+    {
+      "review": "docs/coordination/S006A/contracts-review.json",
+      "note": "C004 adds 18 source-hash-bound contracts; one conflicting setter stays unresolved."
     }
   ]
 }

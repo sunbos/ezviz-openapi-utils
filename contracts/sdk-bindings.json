@@ -145,6 +145,222 @@
       ],
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.start",
+      "region": "domestic",
+      "source_doc_id": "679",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.start",
+        "AsyncPtz.start"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.stop",
+      "region": "domestic",
+      "source_doc_id": "680",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.stop",
+        "AsyncPtz.stop"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.mirror",
+      "region": "domestic",
+      "source_doc_id": "681",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.mirror",
+        "AsyncPtz.mirror"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.add_preset",
+      "region": "domestic",
+      "source_doc_id": "682",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.add_preset",
+        "AsyncPtz.add_preset"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.move_preset",
+      "region": "domestic",
+      "source_doc_id": "683",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.move_preset",
+        "AsyncPtz.move_preset"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.clear_preset",
+      "region": "domestic",
+      "source_doc_id": "684",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.clear_preset",
+        "AsyncPtz.clear_preset"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.ptz.start",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.start",
+        "AsyncPtz.start"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.ptz.stop",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.stop",
+        "AsyncPtz.stop"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.ptz.mirror",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.mirror",
+        "AsyncPtz.mirror"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.ptz.add_preset",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.add_preset",
+        "AsyncPtz.add_preset"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.ptz.move_preset",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.move_preset",
+        "AsyncPtz.move_preset"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.ptz.clear_preset",
+      "region": "overseas",
+      "source_doc_id": "479",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.clear_preset",
+        "AsyncPtz.clear_preset"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.presets",
+      "region": "domestic",
+      "source_doc_id": "4993",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.presets",
+        "AsyncPtz.presets"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.calibrate",
+      "region": "domestic",
+      "source_doc_id": "686",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.calibrate",
+        "AsyncPtz.calibrate"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.reset",
+      "region": "domestic",
+      "source_doc_id": "4477",
+      "module": "src/ezviz_unified/ptz.py",
+      "symbols": [
+        "Ptz.reset",
+        "AsyncPtz.reset"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_enabled",
+      "region": "domestic",
+      "source_doc_id": "5063",
+      "module": "src/ezviz_unified/cruise.py",
+      "symbols": [
+        "Cruise.get_enabled",
+        "AsyncCruise.get_enabled"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_schedule",
+      "region": "domestic",
+      "source_doc_id": "5065",
+      "module": "src/ezviz_unified/cruise.py",
+      "symbols": [
+        "Cruise.get_schedule",
+        "AsyncCruise.get_schedule"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ptz.cruise.set_schedule",
+      "region": "domestic",
+      "source_doc_id": "5066",
+      "module": "src/ezviz_unified/cruise.py",
+      "symbols": [
+        "Cruise.set_schedule",
+        "AsyncCruise.set_schedule"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }
