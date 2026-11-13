@@ -15,6 +15,10 @@
   "repository_tests_passed": 371,
   "document_subtests_passed": 11,
   "review": "review.md",
-  "remote_ci": "pending_after_push",
+  "remote_ci": {
+    "status": "passed",
+    "source_commit": "eeec8f1739e555c2ce84f65777754db3288e7e8e",
+    "record": "docs/coordination/S005A/ci-verification.json"
+  },
   "pypi_upload": false
 }

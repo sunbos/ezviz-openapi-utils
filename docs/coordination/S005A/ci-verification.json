@@ -1,0 +1,18 @@
+{
+  "source_commit": "eeec8f1739e555c2ce84f65777754db3288e7e8e",
+  "pull_request": "https://github.com/sunbos/ezviz-openapi-utils/pull/1",
+  "run_url": "https://github.com/sunbos/ezviz-openapi-utils/actions/runs/43525107848",
+  "run_id": 43525107848,
+  "event": "pull_request",
+  "conclusion": "success",
+  "python_versions": ["3.12", "3.13", "3.14", "3.15"],
+  "tests_passed_per_job": 371,
+  "document_subtests_passed_per_job": 11,
+  "sdk_mypy_source_files": 11,
+  "wheel_clean_install_smoke": "passed in each job",
+  "sdist_clean_install_smoke": "passed in each job",
+  "metadata_and_contents": "passed in each job",
+  "job_ids": [132228794382, 132228794468, 132228794279, 132228794434],
+  "live_api_coverage": "not tested by CI",
+  "scope": "This is a historical verification of the named source commit, not a claim about future commits."
+}
