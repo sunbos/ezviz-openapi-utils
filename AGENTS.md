@@ -2,7 +2,7 @@
 
 ## 项目结构与模块组织
 
-项目命名为 EZVIZ Unified，发行包为 `ezviz-unified`，导入名为 `ezviz_unified`，定位第三方 Python SDK。当前已有响应核心、文档采集工具和契约资料；HTTP客户端及业务域继续按实施路线推进。本地开发分支保留原仓库历史。
+项目命名为 EZVIZ Unified，发行包为 `ezviz-unified`，导入名为 `ezviz_unified`，定位第三方 Python SDK。当前已有响应核心、同步/异步HTTP与认证、文档采集工具和契约资料；业务客户端与各业务域继续按实施路线推进。本地开发分支保留原仓库历史。
 
 - `src/`：存放实现代码，按职责拆分模块。
 - `tests/`：存放自动化测试，目录结构与源码对应。
@@ -49,7 +49,7 @@ SDK使用pytest；文档工具的unittest也由pytest收集，未设覆盖率阈
 
 ## Commit 与 Pull Request
 
-暂无提交历史可供归纳。建议使用 Conventional Commits，例如 `feat: add API client`、`fix: handle expired token`、`docs: update setup guide`。每次提交围绕一个明确目的。
+历史提交混用中文说明与 Conventional Commits；新开发分支采用后者，例如 `feat: add API client`、`fix: handle expired token`、`docs: update setup guide`。每次提交围绕一个明确目的。
 
 PR 应说明变更目的、影响范围、验证命令与结果，并关联已有 issue。未执行验证时说明原因；涉及行为或配置变化时同步更新文档。仅在存在界面变化时附截图。
 

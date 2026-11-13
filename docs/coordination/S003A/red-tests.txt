@@ -1,0 +1,303 @@
+EEEEEEEEEEEEEEEEEEEEEEE                                                  [100%]
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_china_defaults_and_millisecond_conversion _______
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+____ ERROR at setup of test_short_lifetime_does_not_cause_immediate_refresh ____
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+________ ERROR at setup of test_overseas_token_binds_to_returned_region ________
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_overseas_without_route_fails_unless_explicitly_configured _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_invalid_overseas_config_is_rejected[http://isgpopen.ezviz.com] _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_invalid_overseas_config_is_rejected[https://evil.example] _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_invalid_overseas_config_is_rejected[https://isgpopen.ezviz.com.evil.example] _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_invalid_overseas_config_is_rejected[https://user:secret@isgpopen.ezviz.com] _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_invalid_overseas_config_is_rejected[https://isgpopen.ezviz.com/path] _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_invalid_overseas_config_is_rejected[https://isgpopen.ezviz.com?key=x] _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+___ ERROR at setup of test_region_mismatch_does_not_override_explicit_route ____
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+__ ERROR at setup of test_malformed_or_expired_token_is_protocol_error[None] ___
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+__ ERROR at setup of test_malformed_or_expired_token_is_protocol_error[data1] __
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+__ ERROR at setup of test_malformed_or_expired_token_is_protocol_error[data2] __
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+__ ERROR at setup of test_malformed_or_expired_token_is_protocol_error[data3] __
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+__ ERROR at setup of test_malformed_or_expired_token_is_protocol_error[data4] __
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+__ ERROR at setup of test_malformed_or_expired_token_is_protocol_error[data5] __
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+__ ERROR at setup of test_malformed_or_expired_token_is_protocol_error[data6] __
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_ ERROR at setup of test_untrusted_returned_domain_is_rejected_without_echoing_secrets _
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_________ ERROR at setup of test_invalid_refresh_skew_is_rejected[-1] __________
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+________ ERROR at setup of test_invalid_refresh_skew_is_rejected[True] _________
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_________ ERROR at setup of test_invalid_refresh_skew_is_rejected[inf] _________
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+_________ ERROR at setup of test_invalid_refresh_skew_is_rejected[nan] _________
+
+    @pytest.fixture
+    def auth():
+>       assert importlib.util.find_spec("ezviz_unified.auth_models") is not None, "Auth models missing"
+E       AssertionError: Auth models missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10675da80>('ezviz_unified.auth_models')
+E        +    where <function find_spec at 0x10675da80> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_auth_models.py:9: AssertionError
+=========================== short test summary info ============================
+ERROR tests/test_sdk_auth_models.py::test_china_defaults_and_millisecond_conversion
+ERROR tests/test_sdk_auth_models.py::test_short_lifetime_does_not_cause_immediate_refresh
+ERROR tests/test_sdk_auth_models.py::test_overseas_token_binds_to_returned_region
+ERROR tests/test_sdk_auth_models.py::test_overseas_without_route_fails_unless_explicitly_configured
+ERROR tests/test_sdk_auth_models.py::test_invalid_overseas_config_is_rejected[http://isgpopen.ezviz.com]
+ERROR tests/test_sdk_auth_models.py::test_invalid_overseas_config_is_rejected[https://evil.example]
+ERROR tests/test_sdk_auth_models.py::test_invalid_overseas_config_is_rejected[https://isgpopen.ezviz.com.evil.example]
+ERROR tests/test_sdk_auth_models.py::test_invalid_overseas_config_is_rejected[https://user:secret@isgpopen.ezviz.com]
+ERROR tests/test_sdk_auth_models.py::test_invalid_overseas_config_is_rejected[https://isgpopen.ezviz.com/path]
+ERROR tests/test_sdk_auth_models.py::test_invalid_overseas_config_is_rejected[https://isgpopen.ezviz.com?key=x]
+ERROR tests/test_sdk_auth_models.py::test_region_mismatch_does_not_override_explicit_route
+ERROR tests/test_sdk_auth_models.py::test_malformed_or_expired_token_is_protocol_error[None]
+ERROR tests/test_sdk_auth_models.py::test_malformed_or_expired_token_is_protocol_error[data1]
+ERROR tests/test_sdk_auth_models.py::test_malformed_or_expired_token_is_protocol_error[data2]
+ERROR tests/test_sdk_auth_models.py::test_malformed_or_expired_token_is_protocol_error[data3]
+ERROR tests/test_sdk_auth_models.py::test_malformed_or_expired_token_is_protocol_error[data4]
+ERROR tests/test_sdk_auth_models.py::test_malformed_or_expired_token_is_protocol_error[data5]
+ERROR tests/test_sdk_auth_models.py::test_malformed_or_expired_token_is_protocol_error[data6]
+ERROR tests/test_sdk_auth_models.py::test_untrusted_returned_domain_is_rejected_without_echoing_secrets
+ERROR tests/test_sdk_auth_models.py::test_invalid_refresh_skew_is_rejected[-1]
+ERROR tests/test_sdk_auth_models.py::test_invalid_refresh_skew_is_rejected[True]
+ERROR tests/test_sdk_auth_models.py::test_invalid_refresh_skew_is_rejected[inf]
+ERROR tests/test_sdk_auth_models.py::test_invalid_refresh_skew_is_rejected[nan]
+23 errors in 0.42s

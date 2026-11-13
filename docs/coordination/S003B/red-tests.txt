@@ -1,0 +1,2 @@
+预实现验证：.venv/bin/python -m pytest tests/test_sdk_auth.py -q --tb=no
+12 errors，全部为 auth 模块尚不存在（Auth managers missing）。

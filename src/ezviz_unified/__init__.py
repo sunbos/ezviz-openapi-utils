@@ -1,7 +1,9 @@
-"""Third-party EZVIZ SDK: response core; network clients follow separately."""
+"""Third-party EZVIZ SDK: response, HTTP transport, and regional authentication."""
 
 from importlib.metadata import version
 
+from .auth import AsyncTokenManager, TokenManager
+from .auth_models import RegionConfig, Token, parse_token
 from .errors import (
     ApiError,
     AuthenticationError,
@@ -21,14 +23,19 @@ __all__ = [
     "ApiError",
     "ApiResponse",
     "AsyncTransport",
+    "AsyncTokenManager",
     "AuthenticationError",
     "DeviceError",
     "EzvizError",
     "PermissionDeniedError",
     "ProtocolError",
+    "RegionConfig",
     "ResponsePolicy",
     "SyncTransport",
+    "Token",
+    "TokenManager",
     "TransportError",
     "__version__",
     "decode_response",
+    "parse_token",
 ]

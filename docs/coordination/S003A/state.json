@@ -1,0 +1,19 @@
+{
+  "task_id": "S003A",
+  "status": "accepted",
+  "accepted_at_utc": "2026-11-13T22:01:13.063195+00:00",
+  "session_id": "96f9715f-91b6-46cd-bb43-f562f60bc6fb",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "route": "local Magpie configuration",
+  "candidate_complete": true,
+  "usage_reported_deduplicated": {
+    "output_tokens": 13080,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "input_tokens": 13923
+  },
+  "provider_bill": "not independently verified",
+  "review": "review.md",
+  "live_api_verified": false
+}

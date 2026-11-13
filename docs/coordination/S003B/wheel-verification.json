@@ -1,0 +1,10 @@
+{
+  "wheel": "dist/ezviz_unified-0.1.0a1-py3-none-any.whl",
+  "sha256": "7ad476d29c09d0ca330b17ab3508d92828de93b403700750be44ee537ca2d811",
+  "clean_environment_install": true,
+  "install_offline": true,
+  "sync_auth_smoke": true,
+  "async_auth_smoke": true,
+  "real_network_used": false,
+  "stdout": "installed wheel sync/async authentication smoke passed"
+}
