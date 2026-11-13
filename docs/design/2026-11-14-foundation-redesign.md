@@ -1,6 +1,6 @@
 # EZVIZ Unified 基础架构设计
 
-日期：2026-11-14。状态：基于旧版审查与用户委托作出的设计决策，尚未实现。项目名确定为 EZVIZ Unified，发行包名确定为 `ezviz-unified`，Python 导入名为 `ezviz_unified`。名称注册及仓库迁移尚未执行。
+日期：2026-11-14。状态：基于旧版审查与用户委托作出的设计，已分阶段实现基础客户端和设备查询；实际进度及验证范围见[实施路线](../plans/2026-11-14-delivery-roadmap.md)。项目名为 EZVIZ Unified，发行包名为 `ezviz-unified`，Python 导入名为 `ezviz_unified`。名称注册及仓库迁移尚未执行。
 
 依据：[旧版评估](../research/2026-11-14-legacy-assessment.md)、[平台调研](../research/2026-11-13-ezviz-api-survey.md)。
 

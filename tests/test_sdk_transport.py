@@ -218,6 +218,20 @@ def test_authorization_credential_fragment_is_redacted(sdk):
     assert "BEARER_PRIVATE" not in str(caught.value)
 
 
+def test_device_identifiers_and_verification_codes_are_redacted(sdk):
+    def handler(request):
+        return httpx.Response(200, json={"code": "10001", "msg": "DEVICE_PRIVATE VERIFY_PRIVATE"})
+
+    with sdk.SyncTransport("https://api.example.test", transport=httpx.MockTransport(handler)) as c:
+        with pytest.raises(sdk.ApiError) as caught:
+            c.request(
+                "POST",
+                "/api",
+                data={"deviceSerial": "DEVICE_PRIVATE", "validateCode": "VERIFY_PRIVATE"},
+            )
+    assert "PRIVATE" not in str(caught.value)
+
+
 def test_sdk_log_context_masks_unlisted_query_secret_and_preserves_integer_format(sdk, caplog):
     def handler(request):
         logging.getLogger("httpx").info("status=%d url=%s", 200, "/api?accessToken=UNLISTED_SECRET")

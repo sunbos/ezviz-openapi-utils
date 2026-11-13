@@ -1,0 +1,2 @@
+预实现：.venv/bin/python -m pytest tests/test_sdk_devices.py -q --tb=no
+50 failed，均为设备 façade 模块尚不存在。

@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-11-13T22:20:29.545216+00:00",
+  "region": "domestic",
+  "auth_origin": "https://open.ys7.com",
+  "business_origins": [
+    "https://open.ys7.com"
+  ],
+  "read_only": true,
+  "results": [
+    {
+      "operation": "devices.list",
+      "status": "passed",
+      "returned_items": 0
+    },
+    {
+      "operation": "device_details",
+      "status": "not_verified",
+      "reason": "no_device"
+    }
+  ]
+}

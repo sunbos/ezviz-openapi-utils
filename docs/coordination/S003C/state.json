@@ -1,0 +1,24 @@
+{
+  "task_id": "S003C",
+  "status": "accepted",
+  "session_id": "11987608-0257-4ef2-8e48-1e637265f0d2",
+  "accepted_at_utc": "2026-11-13T22:24:46.352009+00:00",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 4096,
+    "output_tokens": 30592,
+    "input_tokens": 17790
+  },
+  "provider_bill": "not independently verified",
+  "candidate_complete": true,
+  "repository_tests_passed": 274,
+  "document_subtests_passed": 11,
+  "mypy": "passed (10 source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "live_evidence": "docs/validation/live/2026-11-14/domestic.json",
+  "live_scope": "domestic authentication and empty device list only",
+  "remote_ci": "not_run"
+}

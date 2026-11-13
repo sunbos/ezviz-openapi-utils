@@ -27,8 +27,8 @@ jobs:
       - name: Type check
         run: python -m mypy src/ezviz_unified
       - name: Lint SDK and SDK tests
-        run: python -m ruff check src/ezviz_unified tests/test_sdk*.py tests/conftest.py tests/test_offline_policy.py
+        run: python -m ruff check src/ezviz_unified tests/test_sdk*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
       - name: Check SDK formatting
-        run: python -m ruff format --check src/ezviz_unified tests/test_sdk*.py tests/conftest.py tests/test_offline_policy.py
+        run: python -m ruff format --check src/ezviz_unified tests/test_sdk*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
       - name: Build distribution
         run: python -m build

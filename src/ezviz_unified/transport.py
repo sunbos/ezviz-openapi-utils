@@ -32,6 +32,9 @@ _SECRET_KEYS = frozenset(
         "secret",
         "password",
         "authorization",
+        "deviceserial",
+        "verifycode",
+        "validatecode",
     }
 )
 

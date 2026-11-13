@@ -1,0 +1,2 @@
+预实现：.venv/bin/python -m pytest tests/test_sdk_client.py -q --tb=no
+32 failed，均为统一客户端模块尚不存在。
