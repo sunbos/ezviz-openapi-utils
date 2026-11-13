@@ -1,0 +1,24 @@
+{
+  "task_id": "H001",
+  "status": "accepted",
+  "session_id": "4d493e54-cae7-4540-b342-97c919b6dc2c",
+  "accepted_at_utc": "2026-11-13T22:44:28.569659+00:00",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "output_tokens": 8425,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "input_tokens": 11357
+  },
+  "provider_bill": "not independently verified",
+  "candidate_complete": true,
+  "task_tests_passed": 17,
+  "repository_tests_passed": 350,
+  "document_subtests_passed": 11,
+  "mypy": "passed (11 SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "live_recordings_verified": false,
+  "remote_ci": "not_run"
+}

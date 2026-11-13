@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "note": "Documentation and offline mappings do not prove live support.",
+  "bindings": [
+    {
+      "operation_id": "cn.token.get",
+      "region": "domestic",
+      "source_doc_id": "81",
+      "module": "src/ezviz_unified/auth.py",
+      "symbols": [
+        "TokenManager.get_token",
+        "AsyncTokenManager.get_token"
+      ],
+      "offline_status": "passed",
+      "live_status": "authentication_succeeded"
+    },
+    {
+      "operation_id": "cn.device.status",
+      "region": "domestic",
+      "source_doc_id": "675",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.status",
+        "AsyncDevices.status"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.device.status",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.status",
+        "AsyncDevices.status"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "region": "overseas",
+      "source_doc_id": "2867",
+      "module": "src/ezviz_unified/recordings.py",
+      "symbols": [
+        "Recordings.local",
+        "AsyncRecordings.local"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.list",
+      "region": "domestic",
+      "source_doc_id": "673",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.list",
+        "AsyncDevices.list"
+      ],
+      "offline_status": "passed",
+      "live_status": "empty_list_succeeded"
+    },
+    {
+      "operation_id": "cn.devices.get",
+      "region": "domestic",
+      "source_doc_id": "672",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.get",
+        "AsyncDevices.get"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.channels",
+      "region": "domestic",
+      "source_doc_id": "1478",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.channels",
+        "AsyncDevices.channels"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.list",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.list",
+        "AsyncDevices.list"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.get",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.get",
+        "AsyncDevices.get"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.channels",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.channels",
+        "AsyncDevices.channels"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.token.get",
+      "region": "overseas",
+      "source_doc_id": "473",
+      "module": "src/ezviz_unified/auth.py",
+      "symbols": [
+        "TokenManager.get_token",
+        "AsyncTokenManager.get_token"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.local.recordings",
+      "region": "domestic",
+      "source_doc_id": "3922",
+      "module": "src/ezviz_unified/recordings.py",
+      "symbols": [
+        "Recordings.local",
+        "AsyncRecordings.local"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    }
+  ]
+}

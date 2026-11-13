@@ -279,7 +279,8 @@
         "method": "Query local video record（GET）",
         "path": "{areaDomain}/api/v3/das/device/local/video/query",
         "encoding": null
-      }
+      },
+      "source_content_sha256": "0c0fecab582147b8db645a9d703b0d62d8e01c1856e06ed3415e23fc85131a1e"
     },
     {
       "operation_id": "cn.devices.list",
@@ -630,6 +631,162 @@
         "path": "{areaDomain}/api/lapp/device/camera/list",
         "encoding": "application/x-www-form-urlencoded"
       }
+    },
+    {
+      "operation_id": "global.token.get",
+      "region": "overseas",
+      "source_doc_id": "473",
+      "source_url": "https://open.ys7.com/help/en/473",
+      "source_content_sha256": "9593c796fe05d711b44477ffbe13d0689f164cac329e9b3ef0165b054ce4fe14",
+      "method": "POST",
+      "path": "/api/lapp/token/get",
+      "base_url": "https://open.ezvizlife.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "none",
+      "parameters": [
+        {
+          "name": "appKey",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "appSecret",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "request parameter table in the hash-verified source"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "constraints": [
+        {
+          "fact": "expireTime uses millisecond precision; token is valid only in the returned areaDomain.",
+          "evidence": "response field table"
+        }
+      ],
+      "uncertainties": [
+        "This page does not promise a fixed seven-day token lifetime."
+      ],
+      "transport_evidence": {
+        "method": "Request Type: POST",
+        "path": "URL section",
+        "encoding": "form-urlencoded request example"
+      }
+    },
+    {
+      "operation_id": "cn.local.recordings",
+      "region": "domestic",
+      "source_doc_id": "3922",
+      "source_url": "https://open.ys7.com/help/3922",
+      "source_content_sha256": "1eb732d02195ab18900cebce9ffd066c6c82f5f72579d4b7393a26e91462c8ed",
+      "method": "GET",
+      "path": "/api/v3/device/local/video/unify/query",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": false,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "recordType",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "startTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "endTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "isQueryByNvr",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "location",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "request parameter table in the hash-verified source"
+        },
+        {
+          "name": "pageSize",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "request parameter table in the hash-verified source"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200
+        ],
+        "evidence": "response example and return field table"
+      },
+      "constraints": [
+        {
+          "fact": "Both times are required, ordered and within one day; timestamp examples are ten-digit numeric strings.",
+          "evidence": "startTime/endTime parameter rows"
+        },
+        {
+          "fact": "recordType includes 1–5; isQueryByNvr is 0/1; location is 1/2; pageSize defaults to 50 with maximum 500.",
+          "evidence": "request parameter table"
+        },
+        {
+          "fact": "data contains records, hasMore, nextFileTime and the resolved device/channel; Replay permission is required.",
+          "evidence": "response field table and accessToken row"
+        }
+      ],
+      "uncertainties": [
+        "Unix-second interpretation is inferred from numeric examples and awaits a live recording response.",
+        "The page does not identify the timezone used for the same-day boundary."
+      ],
+      "transport_evidence": {
+        "method": "GET request-method section",
+        "path": "request-address section",
+        "encoding": null
+      }
     }
   ],
   "reviews": [
@@ -642,6 +799,11 @@
       "review": "docs/coordination/C002/review.json",
       "result": "docs/coordination/C002/result.json",
       "sha256": "ad37028cbc1a1793bddbb506f242814c6e139f0a53341ab121d2073e647e36bc"
+    },
+    {
+      "review": "docs/coordination/S004B/contracts-review.json",
+      "result": "contracts/reviewed-transport-contracts.json",
+      "note": "C003 additions use source_content_sha256 for source binding."
     }
   ]
 }

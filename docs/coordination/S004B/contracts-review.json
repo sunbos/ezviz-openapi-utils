@@ -1,0 +1,15 @@
+{
+  "task_id": "C003",
+  "status": "documentation_reviewed",
+  "reviewed_contracts": [
+    "global.token.get",
+    "cn.local.recordings",
+    "global.local.recordings"
+  ],
+  "source_bodies_rehashed": true,
+  "live_recordings_verified": false,
+  "notes": [
+    "Source unit/timezone uncertainty is preserved, not silently converted into official guarantees.",
+    "Overseas optional start/end fields remain independently optional."
+  ]
+}

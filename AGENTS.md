@@ -9,6 +9,7 @@
 - `docs/`：存放配置说明、接口约定和设计决策。
 - `examples/`：存放最小可运行示例，仅使用占位配置。
 - `tools/documents/`：官方文档采集、结构提取和校验工具。
+- `harness/`：独立于SDK的文档变化检测；`contracts/`保存审核契约与代码绑定。
 - `data/official-docs/`：按采集日期保存原始证据、分类数据及缺项；不打包进 SDK。
 
 SDK代码位于 `src/ezviz_unified/`；`examples/` 尚未创建。SDK与文档工具回归均位于 `tests/`。

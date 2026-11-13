@@ -26,6 +26,7 @@ from .devices import AsyncDevices, Devices
 from .errors import AuthenticationError, ProtocolError, TransportError
 from .models import ApiResponse
 from .operations import Operation
+from .recordings import AsyncRecordings, Recordings
 from .transport import AsyncTransport, ParamMapping, SyncTransport
 
 __all__ = ["AsyncClient", "Client"]
@@ -191,6 +192,7 @@ class Client:
         self._active = 0
         self._closed = False
         self.devices = Devices(self)
+        self.recordings = Recordings(self)
 
     @property
     def region(self) -> RegionConfig:
@@ -353,6 +355,7 @@ class AsyncClient:
         self._closing: asyncio.Task[None] | None = None
         self._closed = False
         self.devices = AsyncDevices(self)
+        self.recordings = AsyncRecordings(self)
 
     @property
     def region(self) -> RegionConfig:

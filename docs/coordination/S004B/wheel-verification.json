@@ -1,0 +1,11 @@
+{
+  "wheel": "dist/ezviz_unified-0.1.0a1-py3-none-any.whl",
+  "sha256": "f7a8e38f974b5b4581fd374b55197498f3e941aa265c1a7b6230ce37bce3d191",
+  "install_offline": true,
+  "clean_environment_install": true,
+  "sync_recordings_smoke": true,
+  "async_recordings_smoke": true,
+  "harness_excluded_from_wheel": true,
+  "real_network_used": false,
+  "stdout": "installed wheel sync/async recording smoke passed"
+}

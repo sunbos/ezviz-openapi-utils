@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "evidence": "catalog_declared_hashes_only",
+  "summary": {
+    "added": 0,
+    "removed": 0,
+    "content_changed": 0,
+    "status_changed": 0,
+    "source_changed": 0,
+    "title_changed": 0,
+    "navigation_changed": 0,
+    "unchanged": 2269
+  },
+  "needs_review": false,
+  "events": []
+}

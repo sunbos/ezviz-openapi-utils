@@ -17,6 +17,7 @@ from .errors import (
 )
 from .models import ApiResponse, ResponsePolicy
 from .operations import Operation
+from .recordings import AsyncRecordings, Recordings
 from .response import decode_response
 from .transport import AsyncTransport, SyncTransport
 
@@ -27,6 +28,7 @@ __all__ = [
     "ApiResponse",
     "AsyncClient",
     "AsyncDevices",
+    "AsyncRecordings",
     "AsyncTransport",
     "AsyncTokenManager",
     "AuthenticationError",
@@ -38,6 +40,7 @@ __all__ = [
     "PermissionDeniedError",
     "ProtocolError",
     "RegionConfig",
+    "Recordings",
     "ResponsePolicy",
     "SyncTransport",
     "Token",

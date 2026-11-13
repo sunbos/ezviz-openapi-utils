@@ -4,6 +4,8 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
+本地录像查询已加入 `client.recordings.local(...)`，国内/海外共用方法名并保留协议差异；当前SDK覆盖12项已审核地区契约（含认证、设备、录像），全部真实支持情况另列。
+
 ## 设备查询
 
 ```python
@@ -25,7 +27,13 @@ with Client(
 
 国内分页页码不超过400；海外文档未声明相同限制。每页1–50条。国内 `channels`/`status` 要求序列号英文字母大写。SDK不自动翻页，不自行解释有文档矛盾的海外状态字段。当前设备方法已做离线契约验证；[真实记录](docs/validation/live/2026-11-14/README.md)仅证明国内认证和空设备列表成功，设备详情与海外账户尚待验证。
 
-## 当前可用能力
+## 本地录像查询
+
+`client.recordings.local(device_serial, start_time=..., end_time=..., channel=...)`支持同步/异步调用，返回ApiResponse。国内要求同一显式时区、同一天的aware datetime，按文档数值示例转换为秒；海外时间可分别省略，传入时须为naive datetime，以服务器wall time格式发送，不猜测时区。
+
+国内支持 `record_type=1..5`、`page_size=1..500`、`query_by_nvr`、`location=1/2`；海外record_type仅1..4，其他三个参数会明确拒绝。国内data包含records与翻页游标，海外data为数组；不自动翻页、不获取媒体内容。[契约差异与待验证项](docs/research/2026-11-14-recording-contracts.md)中保留时间单位/时区及错误表的证据限制。
+
+## 底层响应与传输
 
 ```python
 from ezviz_unified import ResponsePolicy, decode_response
@@ -74,7 +82,7 @@ uv venv .venv --python 3.12
 uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirements.txt
 .venv/bin/python -m pytest -q
 .venv/bin/python -m mypy src/ezviz_unified
-.venv/bin/python -m ruff check src/ezviz_unified tests/test_sdk*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
+.venv/bin/python -m ruff check src/ezviz_unified harness tests/test_sdk*.py tests/test_harness*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
 .venv/bin/python -m build --wheel --no-isolation
 ```
 
@@ -85,6 +93,7 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 - [重设计依据](docs/research/2026-11-14-legacy-assessment.md)与[架构设计](docs/design/2026-11-14-foundation-redesign.md)。
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
+- [维护harness](harness/README.md)：比较门户catalog的内容与来源变化，输出待审查报告；当前不自动改代码或发布。
 
 旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
 

@@ -1,0 +1,9 @@
+{
+  "bindings": 12,
+  "unique_contract_ids": true,
+  "source_identities_match": true,
+  "all_source_bodies_rehashed": true,
+  "paths_present_in_sources": true,
+  "code_symbols_exist": true,
+  "live_evidence_not_inferred": true
+}
