@@ -1,0 +1,2818 @@
+{
+  "source_repository": "sunbos/ezviz-openapi-utils",
+  "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
+  "package_version": "0.3.4",
+  "audit_date": "2026-11-14",
+  "evidence_type": "AST extraction, implementation inventory only",
+  "public_method_count": 150,
+  "operations": [
+    {
+      "name": "is_device_support_ezviz",
+      "source_line": 179,
+      "summary": "查询设备是否支持萤石协议",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/support/ezviz'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "search_device_info",
+      "source_line": 226,
+      "summary": "设备基础信息查询",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/searchDeviceInfo'"
+      ],
+      "request_methods": [
+        "method"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "add_device",
+      "source_line": 329,
+      "summary": "添加设备",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/add'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "delete_device",
+      "source_line": 383,
+      "summary": "删除设备",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/delete'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "device_wifi_qrcode",
+      "source_line": 423,
+      "summary": "生成设备配网二维码",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/wifi/qrcode'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "device_permission_check",
+      "source_line": 467,
+      "summary": "自动确权",
+      "url_expressions": [
+        "f'{self._base_url}/api/userdevice/v3/devices/op/permission'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_realtime_status",
+      "source_line": 519,
+      "summary": "离线确认接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/userdevice/v3/devices/realtimestatus'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_permissions",
+      "source_line": 564,
+      "summary": "在线确权",
+      "url_expressions": [
+        "f'{self._base_url}/api/userdevice/v3/devices/permission'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "update_device_name",
+      "source_line": 610,
+      "summary": "修改云端设备名称",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/name/update'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "update_camera_name",
+      "source_line": 653,
+      "summary": "修改云端通道名称",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/camera/name/update'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "add_ipc_device",
+      "source_line": 703,
+      "summary": "NVR设备关联IPC",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/ipc/add'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "delete_ipc_device",
+      "source_line": 776,
+      "summary": "NVR设备删除关联IPC",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/ipc/delete'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "nvr_device_camera_limit",
+      "source_line": 830,
+      "summary": "NVR设备隐藏IPC",
+      "url_expressions": [
+        "f'{self._base_url}/api/open/device/camera/limit'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_gb_license_list",
+      "source_line": 878,
+      "summary": "获取国标License列表",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/register/gb/license/list'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_info",
+      "source_line": 919,
+      "summary": "获取单个设备信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/info'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "list_devices_by_page",
+      "source_line": 962,
+      "summary": "分页查询设备列表（POST）",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/list'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "list_devices_by_id",
+      "source_line": 1003,
+      "summary": "根据设备索引id分页查询设备列表（POST）",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/list'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_camera_list",
+      "source_line": 1044,
+      "summary": "获取视频通道列表",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/camera/list'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_camera_list",
+      "source_line": 1087,
+      "summary": "获取指定设备的通道信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/camera/list'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_status",
+      "source_line": 1127,
+      "summary": "获取设备状态信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/status/get'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_channel_status",
+      "source_line": 1170,
+      "summary": "获取NVR通道状态信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/open/device/metadata/channel/status'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_connection_info",
+      "source_line": 1213,
+      "summary": "获取单个设备连接信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/connection/info'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "create_device_add_token_url",
+      "source_line": 1257,
+      "summary": "创建授权连接（POST）",
+      "url_expressions": [
+        "f'{self._base_url}/api/service/device/add/tokenUrl'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "json"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_add_note_info",
+      "source_line": 1309,
+      "summary": "设备备注信息查询（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/service/device/add/tokenNote'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "list_device_add_token_urls",
+      "source_line": 1367,
+      "summary": "开发者授权列表查询（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/service/device/add/tokenUrls'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_capacity",
+      "source_line": 1417,
+      "summary": "获取设备能力集",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/capacity'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "start_ptz_control",
+      "source_line": 1460,
+      "summary": "开始云台控制",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/ptz/start'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "stop_ptz_control",
+      "source_line": 1524,
+      "summary": "停止云台控制",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/ptz/stop'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "device_mirror_ptz",
+      "source_line": 1579,
+      "summary": "镜像翻转",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/ptz/mirror'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "add_device_preset",
+      "source_line": 1633,
+      "summary": "添加预置点",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/preset/add'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "move_device_preset",
+      "source_line": 1684,
+      "summary": "调用预置点",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/preset/move'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "clear_device_preset",
+      "source_line": 1741,
+      "summary": "清除预置点",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/preset/clear'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "compose_panorama_image",
+      "source_line": 1795,
+      "summary": "全景图片抓拍",
+      "url_expressions": [
+        "f'{self._base_url}/api/service/cloudrecord/pic/panoramic/compose'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "calibrate_ptz",
+      "source_line": 1838,
+      "summary": "校准云台",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/ptz/manual/adjust'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "reset_ptz",
+      "source_line": 1877,
+      "summary": "云台复位",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/ctrl/ptz/reset'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "control_ptz",
+      "source_line": 1922,
+      "summary": "云台八向控制",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/otap/action'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "json"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_preset_list",
+      "source_line": 1992,
+      "summary": "查询设备预置点列表（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/service/device/preset/list'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_cruise_time_plan",
+      "source_line": 2038,
+      "summary": "查询巡航计划",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/ptz/cruise/timePlan'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_cruise_time_plan",
+      "source_line": 2073,
+      "summary": "设置巡航计划",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/ptz/cruise/timePlan'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_cruise_auto_switch",
+      "source_line": 2116,
+      "summary": "查询自动巡航开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/ptz/cruise/auto/switch'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_cruise_auto_switch",
+      "source_line": 2154,
+      "summary": "设置自动巡航开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/ptz/cruise/auto/switch'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "capture_image",
+      "source_line": 2196,
+      "summary": "设备抓拍图片",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/capture'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_passenger_flow_switch_status",
+      "source_line": 2249,
+      "summary": "获取客流统计开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/passengerflow/switch/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_passenger_flow_switch",
+      "source_line": 2293,
+      "summary": "设置客流统计开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/passengerflow/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_daily_passenger_flow",
+      "source_line": 2348,
+      "summary": "查询设备某一天的统计客流数据",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/passengerflow/daily'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_hourly_passenger_flow",
+      "source_line": 2400,
+      "summary": "查询设备某一天每小时的客流数据",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/passengerflow/hourly'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_passenger_flow_config",
+      "source_line": 2451,
+      "summary": "配置客流统计信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/passengerflow/config/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_passenger_flow_config",
+      "source_line": 2511,
+      "summary": "获取客流统计配置信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/passengerflow/config/get'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_otap_property",
+      "source_line": 2561,
+      "summary": "otap设备属性查询接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/otap/prop'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_otap_property",
+      "source_line": 2612,
+      "summary": "OTAP设备属性设置接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/otap/prop'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "json"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "execute_device_otap_action",
+      "source_line": 2669,
+      "summary": "OTAP设备操作指令接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/otap/action'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "json"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_voice_device_list",
+      "source_line": 2726,
+      "summary": "获取设备语音列表接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/route/voice/v3/devices/voices'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "add_voice_to_device",
+      "source_line": 2760,
+      "summary": "新增设备语音接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/route/voice/v3/devices/voices'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "modify_voice_name",
+      "source_line": 2798,
+      "summary": "修改设备语音名称接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/route/voice/v3/devices/voices'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "delete_voice_from_device",
+      "source_line": 2840,
+      "summary": "删除设备语音接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/route/voice/v3/devices/voices'"
+      ],
+      "request_methods": [
+        "'DELETE'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_alarm_sound",
+      "source_line": 2881,
+      "summary": "设备告警提示音设置接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/route/alarm/v3/devices/{device_serial}/alarm/sound'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "transmit_isapi_command",
+      "source_line": 2938,
+      "summary": "ISAPI下行指令透传",
+      "url_expressions": [
+        "f'{self._base_url}/api/hikvision{isapi_path}'"
+      ],
+      "request_methods": [
+        "method"
+      ],
+      "request_keyword_arguments": [],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_encrypt_off",
+      "source_line": 3025,
+      "summary": "关闭设备视频加密",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/encrypt/off'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_encrypt_on",
+      "source_line": 3069,
+      "summary": "开启设备视频加密",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/encrypt/on'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "update_device_password",
+      "source_line": 3113,
+      "summary": "修改设备视频加密密码",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/password/update'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_defence",
+      "source_line": 3165,
+      "summary": "设置设备撤/布防",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/defence/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_defence_plan",
+      "source_line": 3211,
+      "summary": "获取设备布撤防计划",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/defence/plan/get'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_defence_plan",
+      "source_line": 3257,
+      "summary": "设置布撤防时间计划",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/defence/plan/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_wifi_sound_switch_status",
+      "source_line": 3322,
+      "summary": "获取wifi配置提示音开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/sound/switch/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_wifi_sound_switch_status",
+      "source_line": 3364,
+      "summary": "设置wifi配置提示音开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/sound/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_scene_switch_status",
+      "source_line": 3417,
+      "summary": "获取镜头遮蔽开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/scene/switch/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_scene_switch_status",
+      "source_line": 3459,
+      "summary": "设置镜头遮蔽开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/scene/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_ssl_switch_status",
+      "source_line": 3512,
+      "summary": "获取声源定位开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/ssl/switch/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_ssl_switch_status",
+      "source_line": 3554,
+      "summary": "设置声源定位开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/ssl/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_indicator_light_switch_status",
+      "source_line": 3607,
+      "summary": "获取摄像机指示灯开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/light/switch/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_indicator_light_switch_status",
+      "source_line": 3651,
+      "summary": "设置摄像机指示灯开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/light/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_fullday_record_switch_status",
+      "source_line": 3706,
+      "summary": "获取全天录像开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/fullday/record/switch/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_fullday_record_switch_status",
+      "source_line": 3750,
+      "summary": "设置全天录像开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/fullday/record/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_motion_detection_sensitivity_config",
+      "source_line": 3805,
+      "summary": "获取移动侦测灵敏度配置",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/algorithm/config/get'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_motion_detection_sensitivity",
+      "source_line": 3849,
+      "summary": "设置移动侦测灵敏度",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/algorithm/config/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_sound_alarm",
+      "source_line": 3908,
+      "summary": "设置告警声音模式",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/alarm/sound/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_offline_notify",
+      "source_line": 3957,
+      "summary": "开启或关闭设备下线通知",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/notify/switch'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_sound_status",
+      "source_line": 4006,
+      "summary": "获取设备麦克风开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/camera/video/sound/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_sound_status",
+      "source_line": 4049,
+      "summary": "设置设备麦克风开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/camera/video/sound/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_mobile_status",
+      "source_line": 4096,
+      "summary": "设置设备移动跟踪开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/mobile/status/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_mobile_status",
+      "source_line": 4150,
+      "summary": "获取设备移动跟踪开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/mobile/status/get'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_osd_name",
+      "source_line": 4196,
+      "summary": "设置设备的osd名称",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/update/osd/name'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_osd_name",
+      "source_line": 4247,
+      "summary": "查询osd",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/osd'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_intelligence_detection_switch_status",
+      "source_line": 4282,
+      "summary": "获取设备智能检测开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/intelligence/detection/switch/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_intelligence_detection_switch_status",
+      "source_line": 4331,
+      "summary": "设置设备智能检测开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/intelligence/detection/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_human_track_switch",
+      "source_line": 4387,
+      "summary": "获取人形追踪开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/switch/human/track'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_human_track_switch",
+      "source_line": 4432,
+      "summary": "配置人形追踪开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/switch/human/track'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_system_operate",
+      "source_line": 4482,
+      "summary": "发送系统操作命令（远程重启）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/systemOperate'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_timing_plan",
+      "source_line": 4539,
+      "summary": "工作模式计划设置",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/timing/plan/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_timing_plan",
+      "source_line": 4589,
+      "summary": "查询设备工作模式计划",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/timing/plan/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "open_human_detection_area",
+      "source_line": 4620,
+      "summary": "开启人形/PIR检测",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/alarm/detect/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_pir_detection_area",
+      "source_line": 4658,
+      "summary": "设置PIR检测区域",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/pir/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_human_detection_area",
+      "source_line": 4700,
+      "summary": "查询人形检测区域",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/motion/detect/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_human_detection_area",
+      "source_line": 4734,
+      "summary": "设置人形检测区域",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/motion/detect/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_detect_config",
+      "source_line": 4774,
+      "summary": "获取检测灵敏度",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/detect/config/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_detect_config",
+      "source_line": 4810,
+      "summary": "设置检测灵敏度",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/detect/config/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_display_mode",
+      "source_line": 4854,
+      "summary": "设置设备图像风格",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/display/mode/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_display_mode",
+      "source_line": 4893,
+      "summary": "查询图像风格",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/display/mode/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_work_mode",
+      "source_line": 4925,
+      "summary": "设置设备工作模式",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/battery/work/mode/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_work_mode",
+      "source_line": 4961,
+      "summary": "查询设备工作模式",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/battery/work/mode/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_power_status",
+      "source_line": 4993,
+      "summary": "查询电池充电状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/power/status/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_switch_status",
+      "source_line": 5025,
+      "summary": "平台向设备设置各种开关量",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/switchStatus/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_switch_status",
+      "source_line": 5064,
+      "summary": "查询开关状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/switchStatus/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_advanced_alarm_detection_types",
+      "source_line": 5102,
+      "summary": "查询高级告警侦测类型",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/das/device/detect/switch/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_format_status",
+      "source_line": 5134,
+      "summary": "设备存储介质状态查询接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/format/status'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "format_device_disk",
+      "source_line": 5174,
+      "summary": "设备存储介质格式化接口",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/format/disk'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_video_level",
+      "source_line": 5221,
+      "summary": "设置视频清晰度",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/setVideoLevel'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_video_encode",
+      "source_line": 5273,
+      "summary": "设备视频参数设置",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/video/encode/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_video_encode",
+      "source_line": 5343,
+      "summary": "设备视频参数查询",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/encode/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_audio_encode_type",
+      "source_line": 5393,
+      "summary": "音频编码格式切换（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/audio/encodeType'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_video_encode_type",
+      "source_line": 5448,
+      "summary": "切换设备编码格式（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/encodeType'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_white_balance",
+      "source_line": 5506,
+      "summary": "查询设备白平衡参数（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/white/balance'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_white_balance",
+      "source_line": 5548,
+      "summary": "设置设备白平衡参数（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/white/balance'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_backlight_compensation",
+      "source_line": 5602,
+      "summary": "查询设备背光补偿参数（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/blc'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_backlight_compensation",
+      "source_line": 5644,
+      "summary": "设置设备背光补偿参数（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/blc'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_denoising",
+      "source_line": 5690,
+      "summary": "查询设备图像降噪参数（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/image/denoising'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_denoising",
+      "source_line": 5732,
+      "summary": "设置设备图像降噪参数（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/image/denoising'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_exposure_time",
+      "source_line": 5791,
+      "summary": "查询设备曝光时间参数（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/exposure/time'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_exposure_time",
+      "source_line": 5833,
+      "summary": "设置设备曝光时间参数（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/exposure/time'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_anti_flicker",
+      "source_line": 5880,
+      "summary": "查询设备防闪烁参数（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/anti/flicker'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_anti_flicker",
+      "source_line": 5922,
+      "summary": "设置设备防闪烁参数（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/anti/flicker'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_disk_capacity",
+      "source_line": 5968,
+      "summary": "查询设备存储空间",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/diskCapacity'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_video_switch_status",
+      "source_line": 6011,
+      "summary": "设置设备视频类开关状态（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/switch/status'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_video_switch_status",
+      "source_line": 6065,
+      "summary": "查询设备视频类开关状态（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/switch/status'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_fill_light_mode",
+      "source_line": 6111,
+      "summary": "设置补光灯模式",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/fillLight/mode'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_fill_light_switch",
+      "source_line": 6164,
+      "summary": "设置补光灯开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/fillLight/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_talk_speaker_volume",
+      "source_line": 6203,
+      "summary": "配置音量",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/talkSpeakerVolume'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_talk_speaker_volume",
+      "source_line": 6242,
+      "summary": "查询音量",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/talkSpeakerVolume'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_alarm_detect_switch",
+      "source_line": 6277,
+      "summary": "查询人形/PIR检测状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/alarm/detect/switch/get'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_defense",
+      "source_line": 6309,
+      "summary": "设备主动防御（DeviceDefence）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/defence'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "play_device_audition",
+      "source_line": 6355,
+      "summary": "播放铃声",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/audition'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_detect_switch",
+      "source_line": 6394,
+      "summary": "设置侦测开关",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/detect/switch/set'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_image_params",
+      "source_line": 6436,
+      "summary": "查询设备图像参数（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/image/params'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_device_image_params",
+      "source_line": 6478,
+      "summary": "设置设备图像参数",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/video/image/params'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_ptz_homing_point",
+      "source_line": 6550,
+      "summary": "查询设备归位点模式（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_ptz_homing_point",
+      "source_line": 6595,
+      "summary": "设置设备归位点模式（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_ptz_homing_point_status",
+      "source_line": 6641,
+      "summary": "查询自定义归位点设置状态（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_preset_point",
+      "source_line": 6686,
+      "summary": "设置自定义归位点（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_night_vision_model",
+      "source_line": 6733,
+      "summary": "查询暖光调节、亮灯时长（GET）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_night_vision_model",
+      "source_line": 6782,
+      "summary": "设置暖光调节、亮灯时长（PUT）",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/keyValue/{device_serial}/{channel_no}/op'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_intelligent_model_device_support",
+      "source_line": 6842,
+      "summary": "查询设备支持算法列表",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/intelligent/model/device/support'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_intelligent_model_device_list",
+      "source_line": 6883,
+      "summary": "查询智能设备列表",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/intelligent/model/device'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "load_intelligent_model_app",
+      "source_line": 6931,
+      "summary": "设备智能算法下发",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/intelligent/model/app/load'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "set_intelligent_model_device_onoffline",
+      "source_line": 6975,
+      "summary": "设备启用/停用智能算法",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/intelligent/model/device/onoffline'"
+      ],
+      "request_methods": [
+        "'PUT'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_version_info",
+      "source_line": 7021,
+      "summary": "获取设备版本信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/version/info'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "upgrade_device_firmware",
+      "source_line": 7061,
+      "summary": "设备升级固件",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/upgrade'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_upgrade_status",
+      "source_line": 7105,
+      "summary": "获取设备升级状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/lapp/device/upgrade/status'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data"
+      ],
+      "region_guards": [],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_upgrade_modules",
+      "source_line": 7146,
+      "summary": "获取设备模块升级信息",
+      "url_expressions": [
+        "f'{self._base_url}/api/service/device/upgrade/modules'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "upgrade_device_modules",
+      "source_line": 7186,
+      "summary": "触发设备模块升级",
+      "url_expressions": [
+        "f'{self._base_url}/api/v3/device/upgrade/modules'"
+      ],
+      "request_methods": [
+        "'POST'"
+      ],
+      "request_keyword_arguments": [
+        "data",
+        "headers"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    },
+    {
+      "name": "get_device_module_upgrade_status",
+      "source_line": 7231,
+      "summary": "获取设备模块升级状态",
+      "url_expressions": [
+        "f'{self._base_url}/api/service/device/upgrade/modules/status'"
+      ],
+      "request_methods": [
+        "'GET'"
+      ],
+      "request_keyword_arguments": [
+        "headers",
+        "params"
+      ],
+      "region_guards": [
+        "self._client.region != 'cn'"
+      ],
+      "official_contract_status": "not_individually_verified",
+      "live_validation": "not_performed"
+    }
+  ]
+}

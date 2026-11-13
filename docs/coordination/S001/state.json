@@ -1,0 +1,18 @@
+{
+  "task_id": "S001",
+  "status": "accepted",
+  "model": "devin/swe-2",
+  "effort": "max",
+  "protected_files": {
+    "tests/test_sdk_response.py": "fe97fe664c4d7b6016d5b82446c1d321375ccc07778cd28b991224faf4fe6a83",
+    "pyproject.toml": "1bcfca9ee10de2e6503613c89dc2f2d27a9e0e459cd0e3bf1b8e1d168f366da3"
+  },
+  "started_at_utc": "2026-11-13T20:36:34.263734+00:00",
+  "background_id": "88576b94",
+  "session_id": "88576b94-8318-4c88-9e9c-0311dc4628e9",
+  "pid": 68208,
+  "observed_state": "stopped",
+  "acceptance_scope": "response-core only; no HTTP client/auth/live API claim",
+  "worker_outcome": "upstream_response_truncated",
+  "integration_status": "accepted"
+}

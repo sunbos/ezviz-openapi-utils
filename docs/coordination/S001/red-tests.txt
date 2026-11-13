@@ -1,0 +1,264 @@
+EEEEEEEEEEEEEEEEEEEE                                                     [100%]
+==================================== ERRORS ====================================
+____ ERROR at setup of test_lapp_response_preserves_data_and_original_code _____
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_policy_selects_meta_instead_of_unrelated_top_level_code _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+__ ERROR at setup of test_result_envelope_supports_endpoint_specific_success ___
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+________ ERROR at setup of test_device_failure_is_not_platform_success _________
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+______ ERROR at setup of test_missing_optional_device_metadata_is_allowed ______
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+______ ERROR at setup of test_required_device_metadata_cannot_be_missing _______
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+____ ERROR at setup of test_http_failure_wins_over_successful_business_code ____
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_authentication_and_permission_failures_are_distinct[10002-AuthenticationError] _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_authentication_and_permission_failures_are_distinct[10031-PermissionDeniedError] _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_______ ERROR at setup of test_unknown_error_codes_do_not_cause_keyerror _______
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_malformed_success_payload_is_a_protocol_error[payload0] _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+__ ERROR at setup of test_malformed_success_payload_is_a_protocol_error[None] __
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_malformed_success_payload_is_a_protocol_error[payload2] _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_malformed_success_payload_is_a_protocol_error[payload3] _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_malformed_success_payload_is_a_protocol_error[payload4] _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_ ERROR at setup of test_malformed_success_payload_is_a_protocol_error[payload5] _
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_____ ERROR at setup of test_non_json_http_failure_still_has_http_context ______
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+___ ERROR at setup of test_exception_strings_redact_secrets_and_query_tokens ___
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+___ ERROR at setup of test_response_repr_does_not_expose_payload_or_message ____
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+_____________ ERROR at setup of test_decoder_does_not_mutate_input _____________
+
+    @pytest.fixture
+    def sdk():
+>       assert importlib.util.find_spec("ezviz_unified") is not None, "SDK is not implemented"
+E       AssertionError: SDK is not implemented
+E       assert None is not None
+E        +  where None = <function find_spec at 0x10b50a340>('ezviz_unified')
+E        +    where <function find_spec at 0x10b50a340> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_sdk_response.py:11: AssertionError
+=========================== short test summary info ============================
+ERROR tests/test_sdk_response.py::test_lapp_response_preserves_data_and_original_code
+ERROR tests/test_sdk_response.py::test_policy_selects_meta_instead_of_unrelated_top_level_code
+ERROR tests/test_sdk_response.py::test_result_envelope_supports_endpoint_specific_success
+ERROR tests/test_sdk_response.py::test_device_failure_is_not_platform_success
+ERROR tests/test_sdk_response.py::test_missing_optional_device_metadata_is_allowed
+ERROR tests/test_sdk_response.py::test_required_device_metadata_cannot_be_missing
+ERROR tests/test_sdk_response.py::test_http_failure_wins_over_successful_business_code
+ERROR tests/test_sdk_response.py::test_authentication_and_permission_failures_are_distinct[10002-AuthenticationError]
+ERROR tests/test_sdk_response.py::test_authentication_and_permission_failures_are_distinct[10031-PermissionDeniedError]
+ERROR tests/test_sdk_response.py::test_unknown_error_codes_do_not_cause_keyerror
+ERROR tests/test_sdk_response.py::test_malformed_success_payload_is_a_protocol_error[payload0]
+ERROR tests/test_sdk_response.py::test_malformed_success_payload_is_a_protocol_error[None]
+ERROR tests/test_sdk_response.py::test_malformed_success_payload_is_a_protocol_error[payload2]
+ERROR tests/test_sdk_response.py::test_malformed_success_payload_is_a_protocol_error[payload3]
+ERROR tests/test_sdk_response.py::test_malformed_success_payload_is_a_protocol_error[payload4]
+ERROR tests/test_sdk_response.py::test_malformed_success_payload_is_a_protocol_error[payload5]
+ERROR tests/test_sdk_response.py::test_non_json_http_failure_still_has_http_context
+ERROR tests/test_sdk_response.py::test_exception_strings_redact_secrets_and_query_tokens
+ERROR tests/test_sdk_response.py::test_response_repr_does_not_expose_payload_or_message
+ERROR tests/test_sdk_response.py::test_decoder_does_not_mutate_input - Assert...
+20 errors in 0.22s

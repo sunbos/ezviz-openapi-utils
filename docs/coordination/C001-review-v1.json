@@ -1,0 +1,55 @@
+{
+  "task_id": "C001",
+  "status": "needs_revision",
+  "reviewed_at_utc": "2026-11-13T19:32:48.210101+00:00",
+  "reported_model_verified": true,
+  "critical_checks_passed": 24,
+  "issues": [
+    {
+      "operation_id": "cn.token.get",
+      "field": "success.evidence",
+      "reason": "evidence_not_contiguous_in_source"
+    },
+    {
+      "operation_id": "cn.token.get",
+      "field": "constraints",
+      "reason": "missing_expireTime_millisecond_unit"
+    },
+    {
+      "operation_id": "cn.device.status",
+      "field": "success.evidence",
+      "reason": "evidence_not_contiguous_in_source"
+    },
+    {
+      "operation_id": "global.device.status",
+      "field": "success.evidence",
+      "reason": "evidence_not_contiguous_in_source"
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "field": "success.evidence",
+      "reason": "evidence_not_contiguous_in_source"
+    },
+    {
+      "operation_id": "cn.token.get",
+      "field": "constraints",
+      "reason": "Compound claim about new tokens needs its own matching evidence; include invalidation on account deletion/password change."
+    },
+    {
+      "operation_id": "global.device.status",
+      "field": "constraints",
+      "reason": "Split compound facts so example Host and channel default each have matching evidence."
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "field": "constraints",
+      "reason": "endTime default is claimed but only startTime is quoted; use atomic facts with corresponding evidence."
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "field": "uncertainties",
+      "reason": "Header table explicitly names header parameters; do not introduce uncertainty about whether these are header names."
+    }
+  ],
+  "live_api_verified": false
+}

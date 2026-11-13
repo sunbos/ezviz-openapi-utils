@@ -1,0 +1,103 @@
+{
+  "task_id": "C001",
+  "updates": [
+    {
+      "operation_id": "cn.token.get",
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\""
+      },
+      "constraints": [
+        {
+          "fact": "accessToken 有效期为 7 天，有效期内不需要重复申请，可以重复使用",
+          "evidence": "有效期为 7 天，有效期内不需要重复申请，可以重复使用"
+        },
+        {
+          "fact": "新获取 Token 不会使老 Token 失效，每个 Token 独立拥有 7 天生命周期",
+          "evidence": "新获取 Token 不会使老 Token 失效，每个 Token 独立拥有 7 天生命周期"
+        },
+        {
+          "fact": "用户注销或密码修改等身份信息变更后，旧 Token 会失效",
+          "evidence": "在用户变更身份信息（用户注销、密码修改）后会将旧的 Token 进行失效处理"
+        },
+        {
+          "fact": "即将过期或接口报错 10002 时重新获取 accessToken",
+          "evidence": "请在即将过期或接口报错 10002 时重新获取 accessToken"
+        },
+        {
+          "fact": "expireTime 为毫秒级时间戳",
+          "evidence": "expireTime\nLong\naccessToken 过期时间，毫秒级时间戳"
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.device.status",
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\""
+      }
+    },
+    {
+      "operation_id": "global.device.status",
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\""
+      },
+      "constraints": [
+        {
+          "fact": "请求地址使用 {areaDomain} 占位",
+          "evidence": "Request Address:\n{areaDomain}/api/lapp/device/status/get"
+        },
+        {
+          "fact": "示例 Host 为 isgpopen.ezvizlife.com",
+          "evidence": "Host: isgpopen.ezvizlife.com"
+        },
+        {
+          "fact": "Sub token 最小权限为 Get，Resource 为 dev:serial",
+          "evidence": "\"Permission\":\"Get\"\n\"Resource\":\"dev:serial\""
+        },
+        {
+          "fact": "channel 默认值为 1",
+          "evidence": "channel\nint\nchannel number,default is 1\nN"
+        }
+      ]
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200
+        ],
+        "evidence": "\"meta\": {\n\t\t\"code\": 200"
+      },
+      "constraints": [
+        {
+          "fact": "recordType 默认全部类型，取值 1 timing record、2 event record、3 intelligent-car、4 intelligent-human",
+          "evidence": "record type 1 timing record 2 event record  3 intelligent-car 4 intelligent-human The default value is all types"
+        },
+        {
+          "fact": "startTime 格式形如 2022-08-22 13:59:13，默认值为当天 0 点",
+          "evidence": "Start time, format is 2022-08-22 13:59:13, optional, the default value is 0 o'clock on the day"
+        },
+        {
+          "fact": "endTime 格式形如 2022-08-22 13:59:13，默认值为当前时间",
+          "evidence": "End time, format i is 2022-08-22 13:59:13, optional, the default value is the current time"
+        }
+      ],
+      "uncertainties": [
+        "文档未显式说明请求体；recordType/startTime/endTime 位于 query 段",
+        "Error code 表同时有 Return Code 与 Error code 两列，200/2003 等对应关系未解释"
+      ]
+    }
+  ]
+}

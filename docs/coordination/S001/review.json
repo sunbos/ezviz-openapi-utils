@@ -1,0 +1,41 @@
+{
+  "task_id": "S001",
+  "status": "accepted",
+  "scope": "response-core only; no HTTP client/auth/live API claim",
+  "accepted_at_utc": "2026-11-13T20:55:18.160236+00:00",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "worker_outcome": "upstream response truncated",
+  "complete_candidate_files_recovered": 3,
+  "coordinator_added_files": [
+    "src/ezviz_unified/__init__.py",
+    "src/ezviz_unified/py.typed"
+  ],
+  "coordinator_fixes": [
+    "reject invalid/empty policy paths",
+    "do not retain supplied redaction secrets in exception attributes",
+    "redact longer overlapping secrets first"
+  ],
+  "sdk_tests_passed": 28,
+  "repository_tests_passed": 89,
+  "document_subtests_passed": 11,
+  "mypy": "passed",
+  "ruff": "passed",
+  "wheel_clean_install": "passed",
+  "files": {
+    "src/ezviz_unified/__init__.py": "befcdf74511c1a765fb8d0faf07745a7c91597fdc17bc6fac4886f938878b0eb",
+    "src/ezviz_unified/errors.py": "056082778a4b6b63dfb003c977e7535c4d18145bd4c5249f160e30ce2d806f5a",
+    "src/ezviz_unified/models.py": "6ab42293011fa50ab5bb5622d7c8cdd9f1ce1d414ad99eebb2211a33ccd5d4dc",
+    "src/ezviz_unified/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ezviz_unified/response.py": "b29600586b1251fefb8ef3095086768caae302f5ab18b6856d8e733f35e30ad6"
+  },
+  "live_api_verified": false,
+  "wheel_sha256": "755871d43eaf452948bf294222a6b61b7d3e5be20a7fe5fdc66ad420c0398029",
+  "ruff_scope": [
+    "src/ezviz_unified",
+    "tests/test_sdk_response.py"
+  ],
+  "mypy_scope": [
+    "src/ezviz_unified"
+  ]
+}

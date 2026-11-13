@@ -1,0 +1,262 @@
+{
+  "task_id": "C001",
+  "contracts": [
+    {
+      "operation_id": "cn.token.get",
+      "region": "domestic",
+      "source_doc_id": "81",
+      "source_url": "https://open.ys7.com/help/81",
+      "method": "POST",
+      "path": "/api/lapp/token/get",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "none",
+      "parameters": [
+        {
+          "name": "appKey",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "Body\nappKey\nString\n应用唯一标识，可在官网-开发者服务-\n我的应用\n中获取\nY"
+        },
+        {
+          "name": "appSecret",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "Body\nappSecret\nString\n应用密钥，可在官网-开发者服务-\n我的应用\n中获取\nY"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\",\r\n    \"msg\": \"操作成功!\"\n}\n返回码\n返回码\n返回消息\n详细描述\n200\n操作成功\n请求成功"
+      },
+      "constraints": [
+        {
+          "fact": "accessToken 有效期为 7 天，有效期内可重复使用；新 Token 不使老 Token 失效，每个 Token 独立 7 天生命周期",
+          "evidence": "有效期为 7 天，有效期内不需要重复申请，可以重复使用；② 有效期 7 天无法变更"
+        },
+        {
+          "fact": "建议在即将过期或接口报错 10002 时重新获取 accessToken，并本地缓存",
+          "evidence": "请在即将过期或接口报错 10002 时重新获取 accessToken，请勿频繁调用"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "请求方式\nPOST",
+        "path": "https://open.ys7.com/api/lapp/token/get",
+        "encoding": "--header 'Content-Type: application/x-www-form-urlencoded'"
+      }
+    },
+    {
+      "operation_id": "cn.device.status",
+      "region": "domestic",
+      "source_doc_id": "675",
+      "source_url": "https://open.ys7.com/help/675",
+      "method": "POST",
+      "path": "/api/lapp/device/status/get",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Header\nContent-Type\nString\napplication/x-www-form-urlencoded\nY"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "Body\naccessToken\nString\n授权过程获取的access_token\nY"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "Body\ndeviceSerial\nString\n设备序列号,存在英文字母的设备序列号，字母需为大写\nY"
+        },
+        {
+          "name": "channel",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "Body\nchannel\nInt\n通道号,默认为1\nN"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"操作成功!\"\n}\n返回码\n返回码\n返回消息\n描述\n200\n操作成功\n请求成功"
+      },
+      "constraints": [
+        {
+          "fact": "子账户 token 最小权限为 Get 且资源为 dev:序列号",
+          "evidence": "子账户token请求所需最小权限 \"Permission\":\"Get\" \"Resource\":\"dev:序列号\""
+        },
+        {
+          "fact": "deviceSerial 中英文字母需大写；channel 默认为 1",
+          "evidence": "存在英文字母的设备序列号，字母需为大写\nY\nBody\nchannel\nInt\n通道号,默认为1"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "请求方式\nPOST",
+        "path": "https://open.ys7.com/api/lapp/device/status/get",
+        "encoding": "Header\nContent-Type\nString\napplication/x-www-form-urlencoded\nY"
+      }
+    },
+    {
+      "operation_id": "global.device.status",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "source_url": "https://open.ys7.com/help/en/476",
+      "method": "POST",
+      "path": "/api/lapp/device/status/get",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "accessToken\nString\nThe access_token during authentication\nY"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "deviceSerial\nString\nDevice serial No\nY"
+        },
+        {
+          "name": "channel",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "channel\nint\nchannel number,default is 1\nN"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\"\n}\nReturned Code\nReturned Code\nReturned Message\nDescription\n200\nOperation succeeded.\nRequesting succeeded."
+      },
+      "constraints": [
+        {
+          "fact": "请求地址使用 {areaDomain} 占位；示例 Host 为 isgpopen.ezvizlife.com",
+          "evidence": "Request Address:\n{areaDomain}/api/lapp/device/status/get"
+        },
+        {
+          "fact": "Sub token 最小权限为 Get，Resource 为 dev:serial；channel 默认 1",
+          "evidence": "\"Permission\":\"Get\"\n\"Resource\":\"dev:serial\"\nRequest Parameter"
+        }
+      ],
+      "uncertainties": [
+        "参数表未单列参数位置列；位置依据 HTTP Request Message 的 form-urlencoded 请求体判定",
+        "{areaDomain} 的具体取值未给出，Host 仅为示例"
+      ],
+      "transport_evidence": {
+        "method": "Request Type\nPOST",
+        "path": "{areaDomain}/api/lapp/device/status/get",
+        "encoding": "Content-Type: application/x-www-form-urlencoded\n\naccessToken=at.REDACTED_PUBLIC_EXAMPLE&deviceSerial=427734168&channel=1"
+      }
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "region": "overseas",
+      "source_doc_id": "2867",
+      "source_url": "https://open.ys7.com/help/en/2867",
+      "method": "GET",
+      "path": "/api/v3/das/device/local/video/query",
+      "base_url": "{areaDomain}",
+      "body_encoding": "none",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "string",
+          "required": true,
+          "evidence": "Header\nParameter\nType\nRequired\nDescription\nExample\naccessToken\nstring\nY\naccessToken"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "string",
+          "required": true,
+          "evidence": "deviceSerial\nstring\nY\ndevice serial"
+        },
+        {
+          "name": "channelNo",
+          "location": "header",
+          "type": "string",
+          "required": false,
+          "evidence": "channelNo\nstring\nN\nchannel number"
+        },
+        {
+          "name": "recordType",
+          "location": "query",
+          "type": "int",
+          "required": false,
+          "evidence": "query\nParameter\nType\nRequired\nDescription\nExample\nrecordType\nint\nN\nrecord type 1 timing record 2 event record  3 intelligent-car 4 intelligent-human The default value is all types"
+        },
+        {
+          "name": "startTime",
+          "location": "query",
+          "type": "string",
+          "required": false,
+          "evidence": "startTime\nstring\nN\nStart time, format is 2022-08-22 13:59:13, optional, the default value is 0 o'clock on the day"
+        },
+        {
+          "name": "endTime",
+          "location": "query",
+          "type": "string",
+          "required": false,
+          "evidence": "endTime\nstring\nN\nEnd time, format i is 2022-08-22 13:59:13, optional, the default value is the current time"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "values": [
+          200
+        ],
+        "evidence": "\"meta\": {\n\t\t\"code\": 200,\n\t\t\"message\": \"操作成功\",\n\t\t\"moreInfo\": null\n\t}\nError code\nReturn Code\nError code\nDescription\nSolution\n200\n200\nOperation succeeded"
+      },
+      "constraints": [
+        {
+          "fact": "recordType 默认全部类型：1 timing record、2 event record、3 intelligent-car、4 intelligent-human",
+          "evidence": "record type 1 timing record 2 event record  3 intelligent-car 4 intelligent-human The default value is all types"
+        },
+        {
+          "fact": "startTime/endTime 格式形如 2022-08-22 13:59:13；startTime 默认当天 0 点，endTime 默认当前时间",
+          "evidence": "Start time, format is 2022-08-22 13:59:13, optional, the default value is 0 o'clock on the day"
+        }
+      ],
+      "uncertainties": [
+        "文档把 accessToken/deviceSerial/channelNo 列在 Header 段，但 Example 列为空，未给 header 名称是否即参数名的额外说明",
+        "未显式说明请求体或无请求体；GET/query 段表明 recordType/startTime/endTime 在 query",
+        "Error code 表同时有 Return Code 与 Error code 两列，200/2003 等对应关系未解释"
+      ],
+      "transport_evidence": {
+        "method": "Query local video record（GET）",
+        "path": "{areaDomain}/api/v3/das/device/local/video/query",
+        "encoding": null
+      }
+    }
+  ],
+  "notes": []
+}

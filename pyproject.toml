@@ -1,40 +1,38 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ezviz-openapi-utils"
-version = "0.3.4"
-authors = [
-  { name="SunBo", email="1443584939@qq.com" },
-]
-description = "A Python library for the EZVIZ OpenAPI platform, handling authentication and API requests."
-readme = "README.md"
-requires-python = ">=3.8"
-classifiers = [
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
-dependencies = [
-    "requests",
-]
+name = "ezviz-unified"
+version = "0.1.0a1"
+description = "A third-party Python SDK for unified EZVIZ platform access"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["httpx>=0.28.1,<1"]
 
 [project.optional-dependencies]
-dev = [
-    "pytest",
-    "python-dotenv",
-]
-
-[project.urls]
-"Homepage" = "https://github.com/sunbos/ezviz-openapi-utils"
-"Bug Tracker" = "https://github.com/sunbos/ezviz-openapi-utils/issues"
+dev = ["pytest>=8", "mypy>=1.14", "ruff>=0.9", "build>=1.2"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["ezviz_unified*"]
 
+[tool.setuptools.package-data]
+ezviz_unified = ["py.typed"]
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/ezviz_unified"]

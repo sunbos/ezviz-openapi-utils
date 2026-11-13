@@ -1,117 +1,45 @@
-# EZVIZ OpenAPI Utils
+# EZVIZ Unified
 
-[![PyPI version](https://badge.fury.io/py/ezviz-openapi-utils.svg)](https://pypi.org/project/ezviz-openapi-utils/)
-[![Python Versions](https://img.shields.io/pypi/pyversions/ezviz-openapi-utils.svg?logo=python&logoColor=white)](https://pypi.org/project/ezviz-openapi-utils/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+面向萤石国内与海外平台的第三方 Python SDK，目标是统一调用体验、明确地区与权限边界，并以可验证的契约持续维护。
 
-[简体中文](README.zh-CN.md) | English
+当前为开发中的 `0.1.0a1`：已实现响应策略、平台/设备双层错误处理和诊断脱敏。HTTP 客户端、认证、设备 façade 及其他业务域仍按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-A Python library designed to simplify interactions with the EZVIZ OpenAPI platform. It handles authentication, automatic token refreshing, and provides a clean, unified interface for all API endpoints.
-
-## ✨ Key Features
-
-- **Automatic Token Management**: The client automatically handles Access Token expiration and renewal, requiring no manual intervention from the user.
-- **Multi-Region Support**: Fully supports all 8 global regions (cn, en, eu, us, sa, sg, in, ru), ensuring compatibility worldwide.
-- **Type Safe**: Uses `TypedDict` for API responses, providing excellent IDE support and code completion for developers.
-- **Clean Architecture**: Clearly separates concerns: `Client` handles authentication, and `EZVIZOpenAPI` handles API calls, resulting in a codebase that is easy to understand and maintain.
-
-## 📦 Installation
-
-Install the package:
-
-```bash
-pip install ezviz-openapi-utils
-```
-
-This will install the package along with its core dependency `requests`.
-
-*(Note: For development, clone the repository and use `pip install -e .[dev]` to include dev dependencies.)*
-
-## 🧪 Testing
-
-### Setup
-
-Create a `.env` file in the repository root with your EZVIZ credentials:
-
-```env
-EZVIZ_APP_KEY=your_app_key_here
-EZVIZ_APP_SECRET=your_app_secret_here
-```
-
-### Running Tests
-
-```bash
-# Run all tests
-pytest
-
-# Run specific test file
-pytest tests/test_client.py
-
-# Tests automatically skip integration tests if credentials are not configured
-```
-
-## 🚀 Getting Started
+## 当前可用能力
 
 ```python
-from ezviz_openapi_utils import Client, EZVIZOpenAPI
+from ezviz_unified import ResponsePolicy, decode_response
 
-# 1. Create a client instance (automatically fetches the access token)
-client = Client(
-    app_key="YOUR_APP_KEY",
-    app_secret="YOUR_APP_SECRET",
-    region="cn"  # Specify your region
+response = decode_response(
+    {"meta": {"code": 200, "message": "success"}, "data": {"online": True}},
+    policy=ResponsePolicy(code_path="meta.code", message_path="meta.message"),
+    operation="example.read",
 )
-
-# 2. Create an API instance
-api = EZVIZOpenAPI(client)
-
-# Add a device
-add_device_response = api.add_device(device_serial="427734888", validate_code="ABCDEF")
-print(add_device_response)
-# Output: {'code': '200', 'msg': 'Operation succeeded!'}
-
-# Get device information
-device_info_response = api.get_device_info(device_serial="427734888")
-print(device_info_response)
-# Output: {'data': {'deviceSerial': '427734888', 'deviceName': 'niuxiaoge device', 'model': 'CS-C1-11WPFR', 'status': 0, 'defence': 1, 'isEncrypt': 0}, 'code': '200', 'msg': 'Operating succeeded!'}
-
-# Delete a device
-delete_response = api.delete_device(device_serial="427734888")
-print(delete_response)
-# Output: {'code': '200', 'msg': 'Operation succeeded!'}
+print(response.data)
 ```
 
-## 🛡️ Error Handling
+解析器支持 `code`、`meta.code`、`result.code` 等显式策略，保留原始响应，区分认证、权限、设备和协议错误。它本身不发起网络请求。
 
-The library provides custom exceptions for different error scenarios:
+## 本地开发
 
-```python
-from ezviz_openapi_utils import Client, EZVIZOpenAPI
-from ezviz_openapi_utils.exceptions import EZVIZAuthError, EZVIZAPIError
+要求 Python 3.12+，以下命令使用 uv：
 
-client = Client(app_key="YOUR_APP_KEY", app_secret="YOUR_APP_SECRET", region="cn")
-api = EZVIZOpenAPI(client)
-
-try:
-    response = api.add_device(device_serial="427734888", validate_code="ABCDEF")
-    print(f"Success: {response}")
-except EZVIZAuthError as e:
-    print(f"Authentication error: {e.code} - {e.message}")
-except EZVIZAPIError as e:
-    print(f"API error: {e.code} - {e.message}")
-except Exception as e:
-    print(f"Unexpected error: {e}")
+```sh
+uv venv .venv --python 3.12
+uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirements.txt
+.venv/bin/python -m pytest -q
+.venv/bin/python -m mypy src/ezviz_unified
+.venv/bin/python -m ruff check src/ezviz_unified tests/test_sdk_response.py
+.venv/bin/python -m build --wheel --no-isolation
 ```
 
-## 🔒 Security
+默认测试均离线，不加载真实应用密钥。原始文档归档保存在本地 `data/official-docs/`，不进入源码提交或 SDK wheel；采集和校验方法见[工具说明](tools/documents/README.md)。
 
-- **Never commit credentials**: Keep your `EZVIZ_APP_KEY` and `EZVIZ_APP_SECRET` out of version control
-- **Use environment variables**: Store credentials in `.env` file (ensure `.gitignore` includes `.env`)
-- **Regular rotation**: Rotate your API credentials periodically for security
-- **Least privilege**: Use API keys with minimal required permissions
+## 契约与维护
 
-## 🤝 Contributing
+- [重设计依据](docs/research/2026-11-14-legacy-assessment.md)与[架构设计](docs/design/2026-11-14-foundation-redesign.md)。
+- [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
+- [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to set up the development environment, run tests, and submit pull requests.
+旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
 
-If you find a bug or have a feature request, please [open an issue](https://github.com/sunbos/ezviz-openapi-utils/issues).
+MIT License。项目为第三方实现，不属于萤石官方 SDK。

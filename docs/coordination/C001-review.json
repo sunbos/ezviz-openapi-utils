@@ -1,0 +1,22 @@
+{
+  "task_id": "C001",
+  "status": "accepted",
+  "acceptance_scope": "four documentation transport-contract samples; not SDK or live API validation",
+  "reviewed_at_utc": "2026-11-13T19:56:43.002633+00:00",
+  "reported_model_verified": "devin/swe-2",
+  "critical_checks_passed": 28,
+  "exact_source_evidence_quotes_checked": 44,
+  "source_file_hashes_checked": 4,
+  "reviewer_changes": [
+    {
+      "operation_id": "global.local.recordings",
+      "field": "body_encoding",
+      "from": "none",
+      "to": "unknown",
+      "reason": "Source defines Header and Query parameters but does not explicitly specify a body encoding; preserve the unknown."
+    }
+  ],
+  "issues": [],
+  "live_api_verified": false,
+  "result_sha256": "938f2e7838ecd1abf991a4b313d508f46e8f37732991095240a68b0ceb484112"
+}

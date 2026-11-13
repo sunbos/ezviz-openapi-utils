@@ -1,0 +1,355 @@
+{
+  "task_id": "C002",
+  "contracts": [
+    {
+      "operation_id": "cn.devices.list",
+      "region": "domestic",
+      "source_doc_id": "673",
+      "source_url": "https://open.ys7.com/help/673",
+      "method": "POST",
+      "path": "/api/lapp/device/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "Header\nContent-Type\nString\napplication/x-www-form-urlencoded\nY"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "Body\naccessToken\nString\n萤石开放API访问令牌\nY"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "default": null,
+          "evidence": "Body\npageStart\nInteger\n分页页码，起始页从0开始，不超过400页\nN"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "default": "10",
+          "evidence": "Body\npageSize\nInteger\n分页大小，默认为10，不超过50\nN"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"msg\": \"操作成功\",\r\n    \"code\": \"200\""
+      },
+      "constraints": [
+        {
+          "fact": "分页页码起始页从0开始，不超过400页",
+          "evidence": "起始页从0开始，不超过400页"
+        },
+        {
+          "fact": "每页默认查询数默认为10，不超过50",
+          "evidence": "每页默认查询数默认为10，不超过50"
+        },
+        {
+          "fact": "支持子账号查询，可分页查询出授权给子账号的设备，最小授权权限\"Permission\":\"Get\" \"Resource\":\"dev:序列号\"",
+          "evidence": "支持子账号查询。可分页查询出授权给子账号的设备，最小授权权限\"Permission\":\"Get\" \"Resource\":\"dev:序列号\""
+        },
+        {
+          "fact": "不支持查询托管设备",
+          "evidence": "不支持查询托管设备"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "https://open.ys7.com/api/lapp/device/list",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.devices.get",
+      "region": "domestic",
+      "source_doc_id": "672",
+      "source_url": "https://open.ys7.com/help/672",
+      "method": "POST",
+      "path": "/api/lapp/device/info",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "Header\nContent-Type\nString\napplication/x-www-form-urlencoded\nY"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "Body\naccessToken\nString\n访问令牌\nY"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "Body\ndeviceSerial\nString\n设备序列号\nY"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"msg\": \"Operation succeeded\",\r\n    \"code\": \"200\""
+      },
+      "constraints": [
+        {
+          "fact": "deviceSerial为必选参数，类型为String",
+          "evidence": "Body\ndeviceSerial\nString\n设备序列号\nY"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "https://open.ys7.com/api/lapp/device/info",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.devices.channels",
+      "region": "domestic",
+      "source_doc_id": "1478",
+      "source_url": "https://open.ys7.com/help/1478",
+      "method": "POST",
+      "path": "/api/lapp/device/camera/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "body\naccessToken\nString\n授权过程获取的access_token\nY"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "body\ndeviceSerial\nString\n设备序列号，存在英文字母的设备序列号，字母需为大写\nY"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\",\r\n    \"msg\": \"操作成功!\""
+      },
+      "constraints": [
+        {
+          "fact": "deviceSerial存在英文字母时，字母需为大写",
+          "evidence": "存在英文字母的设备序列号，字母需为大写"
+        },
+        {
+          "fact": "若NVR设备自动上报关联的IPC信息则返回的是IPC的信息，若NVR设备不进行上报，将获取不到关联的IPC信息",
+          "evidence": "若NVR设备自动上报关联的IPC信息则返回的是IPC的信息，若NVR设备不进行上报，将获取不到关联的IPC信息"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "https://open.ys7.com/api/lapp/device/camera/list",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.devices.list",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "source_url": "https://open.ys7.com/help/en/476",
+      "method": "POST",
+      "path": "/api/lapp/device/list",
+      "base_url": "https://isgpopen.ezvizlife.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "accessToken\nString\nThe access_token during authentication.\nY"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "default": null,
+          "evidence": "pageStart\nint\nStart page,\nfrom 0\nN"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "default": "10",
+          "evidence": "pageSize\nint\nPaging size,\nthe default size is 10, the maximum size is 50.\nN"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\""
+      },
+      "constraints": [
+        {
+          "fact": "pageStart从0开始",
+          "evidence": "Start page,\nfrom 0"
+        },
+        {
+          "fact": "pageSize默认值为10，最大值为50",
+          "evidence": "the default size is 10, the maximum size is 50"
+        }
+      ],
+      "uncertainties": [
+        "文档使用{areaDomain}作为请求地址占位符，示例Host为isgpopen.ezvizlife.com，base_url以示例为准"
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "{areaDomain}/api/lapp/device/list",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.devices.get",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "source_url": "https://open.ys7.com/help/en/476",
+      "method": "POST",
+      "path": "/api/lapp/device/info",
+      "base_url": "https://isgpopen.ezvizlife.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "accessToken\nString\nThe access_token during authentication.\nY"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "deviceSerial\nString\nThe device serial No..\nY"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\""
+      },
+      "constraints": [
+        {
+          "fact": "deviceSerial为必选参数，类型为String",
+          "evidence": "deviceSerial\nString\nThe device serial No..\nY"
+        }
+      ],
+      "uncertainties": [
+        "文档使用{areaDomain}作为请求地址占位符，示例Host为isgpopen.ezvizlife.com，base_url以示例为准"
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "{areaDomain}/api/lapp/device/info",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.devices.channels",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "source_url": "https://open.ys7.com/help/en/476",
+      "method": "POST",
+      "path": "/api/lapp/device/camera/list",
+      "base_url": "https://isgpopen.ezvizlife.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "accessToken\nString\nThe access_token during authentication.\nY"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "default": null,
+          "evidence": "deviceSerial\nString\nDevice serial No.\nY"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\""
+      },
+      "constraints": [
+        {
+          "fact": "deviceSerial为必选参数，类型为String",
+          "evidence": "deviceSerial\nString\nDevice serial No.\nY"
+        },
+        {
+          "fact": "若NVR自动上报关联的IPC信息则返回IPC的信息，若NVR不上报则获取不到关联的IPC信息",
+          "evidence": "If the NVR automaticly reports the information of IPC which has been related ,it will returns IPC's information . If the NVR never report the IPC's information .it will get nothing."
+        }
+      ],
+      "uncertainties": [
+        "文档使用{areaDomain}作为请求地址占位符，示例Host为isgpopen.ezvizlife.com，base_url以示例为准"
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "{areaDomain}/api/lapp/device/camera/list",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    }
+  ]
+}

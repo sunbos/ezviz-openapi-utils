@@ -1,0 +1,49 @@
+{
+  "task_id": "C002",
+  "status": "accepted",
+  "acceptance_scope": "six documentation transport-contract candidates after coordinator corrections",
+  "reviewed_at_utc": "2026-11-13T20:34:42.951796+00:00",
+  "model": "devin/swe-2",
+  "effort_requested": "max",
+  "source_packets_checked": 6,
+  "exact_evidence_quotes_checked": 52,
+  "reviewer_changes": [
+    {
+      "operation_id": "cn.devices.list",
+      "field": "parameters.pageSize.default",
+      "from": "10",
+      "to": 10,
+      "reason": "Preserve the documented integer parameter type."
+    },
+    {
+      "operation_id": "global.devices.list",
+      "field": "base_url",
+      "from": "https://isgpopen.ezvizlife.com",
+      "to": "{areaDomain}",
+      "reason": "Normative request address is regional; example Host must not become a universal endpoint."
+    },
+    {
+      "operation_id": "global.devices.list",
+      "field": "parameters.pageSize.default",
+      "from": "10",
+      "to": 10,
+      "reason": "Preserve the documented integer parameter type."
+    },
+    {
+      "operation_id": "global.devices.get",
+      "field": "base_url",
+      "from": "https://isgpopen.ezvizlife.com",
+      "to": "{areaDomain}",
+      "reason": "Normative request address is regional; example Host must not become a universal endpoint."
+    },
+    {
+      "operation_id": "global.devices.channels",
+      "field": "base_url",
+      "from": "https://isgpopen.ezvizlife.com",
+      "to": "{areaDomain}",
+      "reason": "Normative request address is regional; example Host must not become a universal endpoint."
+    }
+  ],
+  "live_api_verified": false,
+  "result_sha256": "ad37028cbc1a1793bddbb506f242814c6e139f0a53341ab121d2073e647e36bc"
+}

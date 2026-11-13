@@ -1,0 +1,20 @@
+{
+  "wheel": "dist/ezviz_unified-0.1.0a1-py3-none-any.whl",
+  "wheel_members": [
+    "ezviz_unified/__init__.py",
+    "ezviz_unified/errors.py",
+    "ezviz_unified/models.py",
+    "ezviz_unified/py.typed",
+    "ezviz_unified/response.py",
+    "ezviz_unified-0.1.0a1.dist-info/licenses/LICENSE",
+    "ezviz_unified-0.1.0a1.dist-info/METADATA",
+    "ezviz_unified-0.1.0a1.dist-info/WHEEL",
+    "ezviz_unified-0.1.0a1.dist-info/top_level.txt",
+    "ezviz_unified-0.1.0a1.dist-info/RECORD"
+  ],
+  "clean_environment_import": true,
+  "version": "0.1.0a1",
+  "raw_data_excluded": true,
+  "stdout": "clean wheel import and response decoding passed",
+  "wheel_sha256": "755871d43eaf452948bf294222a6b61b7d3e5be20a7fe5fdc66ad420c0398029"
+}

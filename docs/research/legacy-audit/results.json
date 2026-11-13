@@ -1,0 +1,47 @@
+{
+  "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
+  "mode": "offline mocks, real network blocked",
+  "observations": {
+    "token_not_refreshed": {
+      "reproduced": true,
+      "token_acquisitions": 1,
+      "expired_business_requests": 2,
+      "token_expire_time": 1
+    },
+    "missing_request_timeout": {
+      "reproduced": true
+    },
+    "device_failure_accepted": {
+      "reproduced": true
+    },
+    "missing_foreign_domain_routes_to_china": {
+      "reproduced": true
+    },
+    "repr_contains_token": {
+      "reproduced": true
+    },
+    "http_error_contains_query_token": {
+      "reproduced": true
+    },
+    "status_channel_parameter": {
+      "reproduced": true,
+      "sent_field": "channelNo"
+    },
+    "format_call_before_skip": {
+      "reproduced": true,
+      "api_calls_before_skip": 1
+    }
+  },
+  "original_test_suite": {
+    "tests": "151",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "151"
+  },
+  "original_test_conditions": [
+    "credentials cleared",
+    "dotenv loading disabled",
+    "socket networking blocked",
+    "pytest plugin autoload disabled"
+  ]
+}
