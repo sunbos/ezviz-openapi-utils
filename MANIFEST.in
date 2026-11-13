@@ -1,0 +1,12 @@
+include README.md LICENSE pyproject.toml
+recursive-include src/ezviz_unified *.py py.typed
+prune tests
+include tests/conftest.py tests/test_offline_policy.py
+recursive-include tests test_sdk*.py
+prune data
+prune docs
+prune harness
+prune tools
+prune .claude
+exclude AGENTS.md .env .env.*
+global-exclude *.py[cod] .DS_Store

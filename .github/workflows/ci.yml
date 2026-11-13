@@ -27,8 +27,25 @@ jobs:
       - name: Type check
         run: python -m mypy src/ezviz_unified
       - name: Lint SDK and SDK tests
-        run: python -m ruff check src/ezviz_unified harness tests/test_sdk*.py tests/test_harness*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
+        run: python -m ruff check src/ezviz_unified harness tools/release tests/test_sdk*.py tests/test_harness*.py tests/test_release*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
       - name: Check SDK formatting
-        run: python -m ruff format --check src/ezviz_unified harness tests/test_sdk*.py tests/test_harness*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
+        run: python -m ruff format --check src/ezviz_unified harness tools/release tests/test_sdk*.py tests/test_harness*.py tests/test_release*.py tests/test_live_verifier.py tools/live/verify_devices.py tests/conftest.py tests/test_offline_policy.py
       - name: Build distribution
         run: python -m build
+      - name: Check distribution contents and metadata
+        run: |
+          python tools/release/check_artifacts.py
+          python -m twine check dist/*
+      - name: Verify clean wheel and sdist installations
+        shell: bash
+        run: |
+          for kind in wheel sdist; do
+            check_env="$RUNNER_TEMP/ezviz-$kind"
+            python -m venv "$check_env"
+            if [ "$kind" = wheel ]; then
+              "$check_env/bin/python" -m pip install dist/*.whl
+            else
+              "$check_env/bin/python" -m pip install dist/*.tar.gz
+            fi
+            "$check_env/bin/python" -I tools/release/smoke_installed.py
+          done

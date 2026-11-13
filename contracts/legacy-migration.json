@@ -1,0 +1,1221 @@
+{
+  "schema_version": 1,
+  "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
+  "legacy_version": "0.3.4",
+  "new_version": "0.1.0a1",
+  "mapped_count": 4,
+  "pending_count": 146,
+  "compatibility_shim": false,
+  "methods": [
+    {
+      "legacy_method": "is_device_support_ezviz",
+      "source_line": 179,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "search_device_info",
+      "source_line": 226,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "add_device",
+      "source_line": 329,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "delete_device",
+      "source_line": 383,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "device_wifi_qrcode",
+      "source_line": 423,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "device_permission_check",
+      "source_line": 467,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_realtime_status",
+      "source_line": 519,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_permissions",
+      "source_line": 564,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "update_device_name",
+      "source_line": 610,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "update_camera_name",
+      "source_line": 653,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "add_ipc_device",
+      "source_line": 703,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "delete_ipc_device",
+      "source_line": 776,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "nvr_device_camera_limit",
+      "source_line": 830,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_gb_license_list",
+      "source_line": 878,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_info",
+      "source_line": 919,
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.get",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse replaces the raw envelope dict; signatures and validation must be reviewed."
+    },
+    {
+      "legacy_method": "list_devices_by_page",
+      "source_line": 962,
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.list",
+      "argument_map": {
+        "page_start": "page_start",
+        "page_size": "page_size"
+      },
+      "notes": "ApiResponse replaces the raw envelope dict; signatures and validation must be reviewed."
+    },
+    {
+      "legacy_method": "list_devices_by_id",
+      "source_line": 1003,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_camera_list",
+      "source_line": 1044,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_camera_list",
+      "source_line": 1087,
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.channels",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse replaces the raw envelope dict; signatures and validation must be reviewed."
+    },
+    {
+      "legacy_method": "get_device_status",
+      "source_line": 1127,
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.status",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel"
+      },
+      "notes": "ApiResponse replaces the raw envelope dict; signatures and validation must be reviewed."
+    },
+    {
+      "legacy_method": "get_device_channel_status",
+      "source_line": 1170,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_connection_info",
+      "source_line": 1213,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "create_device_add_token_url",
+      "source_line": 1257,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_add_note_info",
+      "source_line": 1309,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "list_device_add_token_urls",
+      "source_line": 1367,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_capacity",
+      "source_line": 1417,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "start_ptz_control",
+      "source_line": 1460,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "stop_ptz_control",
+      "source_line": 1524,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "device_mirror_ptz",
+      "source_line": 1579,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "add_device_preset",
+      "source_line": 1633,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "move_device_preset",
+      "source_line": 1684,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "clear_device_preset",
+      "source_line": 1741,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "compose_panorama_image",
+      "source_line": 1795,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "calibrate_ptz",
+      "source_line": 1838,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "reset_ptz",
+      "source_line": 1877,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "control_ptz",
+      "source_line": 1922,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_preset_list",
+      "source_line": 1992,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_cruise_time_plan",
+      "source_line": 2038,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_cruise_time_plan",
+      "source_line": 2073,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_cruise_auto_switch",
+      "source_line": 2116,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_cruise_auto_switch",
+      "source_line": 2154,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "capture_image",
+      "source_line": 2196,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_passenger_flow_switch_status",
+      "source_line": 2249,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_passenger_flow_switch",
+      "source_line": 2293,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_daily_passenger_flow",
+      "source_line": 2348,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_hourly_passenger_flow",
+      "source_line": 2400,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_passenger_flow_config",
+      "source_line": 2451,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_passenger_flow_config",
+      "source_line": 2511,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_otap_property",
+      "source_line": 2561,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_otap_property",
+      "source_line": 2612,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "execute_device_otap_action",
+      "source_line": 2669,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_voice_device_list",
+      "source_line": 2726,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "add_voice_to_device",
+      "source_line": 2760,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "modify_voice_name",
+      "source_line": 2798,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "delete_voice_from_device",
+      "source_line": 2840,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_alarm_sound",
+      "source_line": 2881,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "transmit_isapi_command",
+      "source_line": 2938,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_encrypt_off",
+      "source_line": 3025,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_encrypt_on",
+      "source_line": 3069,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "update_device_password",
+      "source_line": 3113,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_defence",
+      "source_line": 3165,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_defence_plan",
+      "source_line": 3211,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_defence_plan",
+      "source_line": 3257,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_wifi_sound_switch_status",
+      "source_line": 3322,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_wifi_sound_switch_status",
+      "source_line": 3364,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_scene_switch_status",
+      "source_line": 3417,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_scene_switch_status",
+      "source_line": 3459,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_ssl_switch_status",
+      "source_line": 3512,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_ssl_switch_status",
+      "source_line": 3554,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_indicator_light_switch_status",
+      "source_line": 3607,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_indicator_light_switch_status",
+      "source_line": 3651,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_fullday_record_switch_status",
+      "source_line": 3706,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_fullday_record_switch_status",
+      "source_line": 3750,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_motion_detection_sensitivity_config",
+      "source_line": 3805,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_motion_detection_sensitivity",
+      "source_line": 3849,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_sound_alarm",
+      "source_line": 3908,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_offline_notify",
+      "source_line": 3957,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_sound_status",
+      "source_line": 4006,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_sound_status",
+      "source_line": 4049,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_mobile_status",
+      "source_line": 4096,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_mobile_status",
+      "source_line": 4150,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_osd_name",
+      "source_line": 4196,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_osd_name",
+      "source_line": 4247,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_intelligence_detection_switch_status",
+      "source_line": 4282,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_intelligence_detection_switch_status",
+      "source_line": 4331,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_human_track_switch",
+      "source_line": 4387,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_human_track_switch",
+      "source_line": 4432,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_system_operate",
+      "source_line": 4482,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_timing_plan",
+      "source_line": 4539,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_timing_plan",
+      "source_line": 4589,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "open_human_detection_area",
+      "source_line": 4620,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_pir_detection_area",
+      "source_line": 4658,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_human_detection_area",
+      "source_line": 4700,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_human_detection_area",
+      "source_line": 4734,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_detect_config",
+      "source_line": 4774,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_detect_config",
+      "source_line": 4810,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_display_mode",
+      "source_line": 4854,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_display_mode",
+      "source_line": 4893,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_work_mode",
+      "source_line": 4925,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_work_mode",
+      "source_line": 4961,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_power_status",
+      "source_line": 4993,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_switch_status",
+      "source_line": 5025,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_switch_status",
+      "source_line": 5064,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_advanced_alarm_detection_types",
+      "source_line": 5102,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_format_status",
+      "source_line": 5134,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "format_device_disk",
+      "source_line": 5174,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_video_level",
+      "source_line": 5221,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_video_encode",
+      "source_line": 5273,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_video_encode",
+      "source_line": 5343,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_audio_encode_type",
+      "source_line": 5393,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_video_encode_type",
+      "source_line": 5448,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_white_balance",
+      "source_line": 5506,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_white_balance",
+      "source_line": 5548,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_backlight_compensation",
+      "source_line": 5602,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_backlight_compensation",
+      "source_line": 5644,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_denoising",
+      "source_line": 5690,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_denoising",
+      "source_line": 5732,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_exposure_time",
+      "source_line": 5791,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_exposure_time",
+      "source_line": 5833,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_anti_flicker",
+      "source_line": 5880,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_anti_flicker",
+      "source_line": 5922,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_disk_capacity",
+      "source_line": 5968,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_video_switch_status",
+      "source_line": 6011,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_video_switch_status",
+      "source_line": 6065,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_fill_light_mode",
+      "source_line": 6111,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_fill_light_switch",
+      "source_line": 6164,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_talk_speaker_volume",
+      "source_line": 6203,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_talk_speaker_volume",
+      "source_line": 6242,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_alarm_detect_switch",
+      "source_line": 6277,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_defense",
+      "source_line": 6309,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "play_device_audition",
+      "source_line": 6355,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_detect_switch",
+      "source_line": 6394,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_image_params",
+      "source_line": 6436,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_device_image_params",
+      "source_line": 6478,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_ptz_homing_point",
+      "source_line": 6550,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_ptz_homing_point",
+      "source_line": 6595,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_ptz_homing_point_status",
+      "source_line": 6641,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_preset_point",
+      "source_line": 6686,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_night_vision_model",
+      "source_line": 6733,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_night_vision_model",
+      "source_line": 6782,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_intelligent_model_device_support",
+      "source_line": 6842,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_intelligent_model_device_list",
+      "source_line": 6883,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "load_intelligent_model_app",
+      "source_line": 6931,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "set_intelligent_model_device_onoffline",
+      "source_line": 6975,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_version_info",
+      "source_line": 7021,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "upgrade_device_firmware",
+      "source_line": 7061,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_upgrade_status",
+      "source_line": 7105,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_upgrade_modules",
+      "source_line": 7146,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "upgrade_device_modules",
+      "source_line": 7186,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    },
+    {
+      "legacy_method": "get_device_module_upgrade_status",
+      "source_line": 7231,
+      "status": "not_migrated",
+      "target": null,
+      "argument_map": null,
+      "notes": "Requires separate official-contract verification and implementation."
+    }
+  ]
+}

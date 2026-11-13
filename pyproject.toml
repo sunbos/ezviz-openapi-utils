@@ -6,13 +6,28 @@ build-backend = "setuptools.build_meta"
 name = "ezviz-unified"
 version = "0.1.0a1"
 description = "A third-party Python SDK for unified EZVIZ platform access"
+readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
 license-files = ["LICENSE"]
 dependencies = ["httpx>=0.28.1,<1"]
+keywords = ["ezviz", "ys7", "sdk", "iot"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Repository = "https://github.com/sunbos/ezviz-openapi-utils"
+Issues = "https://github.com/sunbos/ezviz-openapi-utils/issues"
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "mypy>=1.14", "ruff>=0.9", "build>=1.2"]
+dev = ["pytest>=8", "mypy>=1.14", "ruff>=0.9", "build>=1.2", "twine>=6"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

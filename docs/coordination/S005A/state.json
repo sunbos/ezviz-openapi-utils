@@ -1,0 +1,20 @@
+{
+  "task_id": "S005A",
+  "status": "accepted",
+  "session_id": "69b71952-0425-43ed-a7a8-553b11d7c464",
+  "accepted_at_utc": "2026-11-13T23:08:03.168253+00:00",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "input_tokens": 11586,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 14422,
+    "cache_creation_input_tokens": 0
+  },
+  "provider_bill": "not independently verified",
+  "repository_tests_passed": 371,
+  "document_subtests_passed": 11,
+  "review": "review.md",
+  "remote_ci": "pending_after_push",
+  "pypi_upload": false
+}

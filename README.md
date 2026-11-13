@@ -94,6 +94,7 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
 - [维护harness](harness/README.md)：比较门户catalog的内容与来源变化，输出待审查报告；当前不自动改代码或发布。
+- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确4项方法映射、146项待迁移范围，以及wheel/sdist的验证边界。
 
 旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
 
