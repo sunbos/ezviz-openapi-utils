@@ -24,6 +24,7 @@ ezviz_unified = ["py.typed"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = [".", "src"]
+markers = ["live: explicitly enabled, separately authorized integration tests"]
 
 [tool.ruff]
 target-version = "py312"

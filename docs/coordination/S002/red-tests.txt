@@ -1,0 +1,304 @@
+EEEEEEEEEEEEEEEEEEEEEEEEE                                                [100%]
+==================================== ERRORS ====================================
+___ ERROR at setup of test_lazy_constructor_form_encoding_timeout_and_close ____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+____ ERROR at setup of test_header_query_and_json_locations_remain_explicit ____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_invalid_base_url_is_rejected[http://api.example.test] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_invalid_base_url_is_rejected[https://user:pass@api.example.test] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_invalid_base_url_is_rejected[https://api.example.test/prefix] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_invalid_base_url_is_rejected[https://api.example.test?x=1] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+___ ERROR at setup of test_unbounded_or_invalid_timeouts_are_rejected[None] ____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_____ ERROR at setup of test_unbounded_or_invalid_timeouts_are_rejected[0] _____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+____ ERROR at setup of test_unbounded_or_invalid_timeouts_are_rejected[-1] _____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+____ ERROR at setup of test_unbounded_or_invalid_timeouts_are_rejected[inf] ____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+____ ERROR at setup of test_unbounded_or_invalid_timeouts_are_rejected[nan] ____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+___ ERROR at setup of test_unbounded_or_invalid_timeouts_are_rejected[True] ____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_path_cannot_override_authority_or_smuggle_query[https://other.test/api] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_path_cannot_override_authority_or_smuggle_query[//other.test/api] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_path_cannot_override_authority_or_smuggle_query[/api?accessToken=x] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_path_cannot_override_authority_or_smuggle_query[/api#x] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+___________ ERROR at setup of test_json_and_form_cannot_be_combined ____________
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_________ ERROR at setup of test_redirect_is_not_followed_or_replayed __________
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+___ ERROR at setup of test_non_json_has_stable_sdk_errors[200-ProtocolError] ___
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_____ ERROR at setup of test_non_json_has_stable_sdk_errors[503-ApiError] ______
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_network_errors_are_redacted_and_not_retried[ReadTimeout-timeout] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+_ ERROR at setup of test_network_errors_are_redacted_and_not_retried[ConnectError-network] _
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+______ ERROR at setup of test_request_after_close_is_sdk_transport_error _______
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+____ ERROR at setup of test_httpx_info_log_is_redacted_only_in_sdk_context _____
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+________ ERROR at setup of test_async_parity_concurrency_and_lifecycle _________
+
+    @pytest.fixture
+    def sdk():
+        module = importlib.import_module("ezviz_unified")
+>       assert hasattr(module, "SyncTransport"), "HTTP transport is not implemented"
+E       AssertionError: HTTP transport is not implemented
+E       assert False
+E        +  where False = hasattr(<module 'ezviz_unified' from '/Users/sunbo/Desktop/ezviz-openapi-utils/src/ezviz_unified/__init__.py'>, 'SyncTransport')
+
+tests/test_sdk_transport.py:15: AssertionError
+=========================== short test summary info ============================
+ERROR tests/test_sdk_transport.py::test_lazy_constructor_form_encoding_timeout_and_close
+ERROR tests/test_sdk_transport.py::test_header_query_and_json_locations_remain_explicit
+ERROR tests/test_sdk_transport.py::test_invalid_base_url_is_rejected[http://api.example.test]
+ERROR tests/test_sdk_transport.py::test_invalid_base_url_is_rejected[https://user:pass@api.example.test]
+ERROR tests/test_sdk_transport.py::test_invalid_base_url_is_rejected[https://api.example.test/prefix]
+ERROR tests/test_sdk_transport.py::test_invalid_base_url_is_rejected[https://api.example.test?x=1]
+ERROR tests/test_sdk_transport.py::test_unbounded_or_invalid_timeouts_are_rejected[None]
+ERROR tests/test_sdk_transport.py::test_unbounded_or_invalid_timeouts_are_rejected[0]
+ERROR tests/test_sdk_transport.py::test_unbounded_or_invalid_timeouts_are_rejected[-1]
+ERROR tests/test_sdk_transport.py::test_unbounded_or_invalid_timeouts_are_rejected[inf]
+ERROR tests/test_sdk_transport.py::test_unbounded_or_invalid_timeouts_are_rejected[nan]
+ERROR tests/test_sdk_transport.py::test_unbounded_or_invalid_timeouts_are_rejected[True]
+ERROR tests/test_sdk_transport.py::test_path_cannot_override_authority_or_smuggle_query[https://other.test/api]
+ERROR tests/test_sdk_transport.py::test_path_cannot_override_authority_or_smuggle_query[//other.test/api]
+ERROR tests/test_sdk_transport.py::test_path_cannot_override_authority_or_smuggle_query[/api?accessToken=x]
+ERROR tests/test_sdk_transport.py::test_path_cannot_override_authority_or_smuggle_query[/api#x]
+ERROR tests/test_sdk_transport.py::test_json_and_form_cannot_be_combined - As...
+ERROR tests/test_sdk_transport.py::test_redirect_is_not_followed_or_replayed
+ERROR tests/test_sdk_transport.py::test_non_json_has_stable_sdk_errors[200-ProtocolError]
+ERROR tests/test_sdk_transport.py::test_non_json_has_stable_sdk_errors[503-ApiError]
+ERROR tests/test_sdk_transport.py::test_network_errors_are_redacted_and_not_retried[ReadTimeout-timeout]
+ERROR tests/test_sdk_transport.py::test_network_errors_are_redacted_and_not_retried[ConnectError-network]
+ERROR tests/test_sdk_transport.py::test_request_after_close_is_sdk_transport_error
+ERROR tests/test_sdk_transport.py::test_httpx_info_log_is_redacted_only_in_sdk_context
+ERROR tests/test_sdk_transport.py::test_async_parity_concurrency_and_lifecycle
+25 errors in 0.68s

@@ -1,0 +1,13 @@
+{
+  "task_id": "S002",
+  "status": "accepted",
+  "model": "devin/swe-2",
+  "effort": "max",
+  "protected_files": {
+    "tests/test_sdk_transport.py": "e40d5cc8b63f3bbf6fbdb0c80cbd6d09817e41aa2a3069670bc893cb5ce3effb"
+  },
+  "started_at_utc": "2026-11-13T21:11:50.291054+00:00",
+  "background_id": "233b47ce",
+  "session_id": "233b47ce-fb80-4506-8135-10b29de687ba",
+  "worker_state": "stopped_after_acceptance"
+}

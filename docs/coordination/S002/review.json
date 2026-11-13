@@ -1,0 +1,40 @@
+{
+  "task_id": "S002",
+  "status": "accepted",
+  "scope": "HTTP transport and offline safety; authentication and live services remain separate",
+  "accepted_at_utc": "2026-11-13T21:37:06.799370+00:00",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "candidate_complete": true,
+  "coordinator_fixes": [
+    "format log records before redaction, preserving numeric formatting",
+    "redact unknown query secrets in every SDK context",
+    "redact Authorization credential fragments",
+    "do not misclassify arbitrary RuntimeError as closed",
+    "do not echo raw invalid URL values",
+    "do not claim network failure implies remote non-execution"
+  ],
+  "transport_tests_passed": 31,
+  "repository_tests_passed": 121,
+  "document_subtests_passed": 11,
+  "offline_socket_guard_test": "passed",
+  "mypy": "passed",
+  "ruff": "passed",
+  "wheel_verification": {
+    "wheel": "dist/ezviz_unified-0.1.0a1-py3-none-any.whl",
+    "sha256": "3ad52dbf7aacedf3a63e35db8da54afa8bbd88bd45bce5521ab2213879b7579d",
+    "clean_environment_install": true,
+    "sync_smoke": true,
+    "async_smoke": true,
+    "real_network_used": false,
+    "stdout": "installed wheel sync/async smoke passed"
+  },
+  "remote_ci": "configured_not_run",
+  "live_api_verified": false,
+  "files": {
+    "src/ezviz_unified/transport.py": "fc063a4c239b15cb9fe49aad840b79c0b9cae06ab16b59f5befe6dab365291c1",
+    "src/ezviz_unified/errors.py": "f02fbeb064ae4ebd4ab6d84a33954da87d85266424e8d6e7b2b658aea113c41f",
+    "tests/test_sdk_transport.py": "c976f73baabdebed10f40e446b791405dc9e2cdca3b295bd722f9ef023739a5f",
+    "tests/conftest.py": "6bb1dff82d106429186d415309f8407741dd79763e467ef96a01abaa1e904504"
+  }
+}

@@ -91,3 +91,18 @@ class DeviceError(ApiError):
 
 class ProtocolError(EzvizError):
     """The response body does not match the expected envelope schema."""
+
+
+class TransportError(EzvizError):
+    """A request timed out, failed at the network layer, or used a closed client."""
+
+    def __init__(
+        self,
+        message: object = "",
+        *,
+        reason: str,
+        operation: str = "",
+        secrets: Iterable[str] = (),
+    ) -> None:
+        self.reason = reason
+        super().__init__(message, operation=operation, secrets=secrets)

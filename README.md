@@ -2,7 +2,7 @@
 
 面向萤石国内与海外平台的第三方 Python SDK，目标是统一调用体验、明确地区与权限边界，并以可验证的契约持续维护。
 
-当前为开发中的 `0.1.0a1`：已实现响应策略、平台/设备双层错误处理和诊断脱敏。HTTP 客户端、认证、设备 façade 及其他业务域仍按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
+当前为开发中的 `0.1.0a1`：已实现响应策略、平台/设备双层错误处理、同步/异步 HTTP 传输和诊断脱敏。认证、设备 façade 及其他业务域仍按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
 ## 当前可用能力
 
@@ -19,6 +19,10 @@ print(response.data)
 
 解析器支持 `code`、`meta.code`、`result.code` 等显式策略，保留原始响应，区分认证、权限、设备和协议错误。它本身不发起网络请求。
 
+`SyncTransport` 与 `AsyncTransport` 提供显式的 query/form/JSON/header 请求入口，默认各 HTTPX I/O 阶段超时为10秒，不自动重试或跟随重定向，支持上下文管理关闭。该超时不是整个请求的总时限。认证token目前仍由调用方显式提供；自动认证将在后续客户端层实现。
+
+SDK请求期间会对HTTPX请求日志脱敏，不改变应用日志等级或handler。自定义transport中的编程错误原样传播；网络失败不会被表述为“远端肯定没有执行”。
+
 ## 本地开发
 
 要求 Python 3.12+，以下命令使用 uv：
@@ -28,11 +32,11 @@ uv venv .venv --python 3.12
 uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirements.txt
 .venv/bin/python -m pytest -q
 .venv/bin/python -m mypy src/ezviz_unified
-.venv/bin/python -m ruff check src/ezviz_unified tests/test_sdk_response.py
+.venv/bin/python -m ruff check src/ezviz_unified tests/test_sdk*.py tests/conftest.py tests/test_offline_policy.py
 .venv/bin/python -m build --wheel --no-isolation
 ```
 
-默认测试均离线，不加载真实应用密钥。原始文档归档保存在本地 `data/official-docs/`，不进入源码提交或 SDK wheel；采集和校验方法见[工具说明](tools/documents/README.md)。
+默认测试均离线，socket连接与DNS被阻断，不加载真实应用密钥。明确标记的集成测试还需显式 `--run-live`，且调用范围需单独授权。原始文档归档保存在本地 `data/official-docs/`，不进入源码提交或 SDK wheel；采集和校验方法见[工具说明](tools/documents/README.md)。
 
 ## 契约与维护
 
