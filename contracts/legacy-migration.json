@@ -3,25 +3,33 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 16,
-  "pending_count": 134,
+  "mapped_count": 23,
+  "pending_count": 127,
   "compatibility_shim": false,
   "methods": [
     {
       "legacy_method": "is_device_support_ezviz",
       "source_line": 179,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.diagnostics.protocol_support",
+      "argument_map": {
+        "model": "model",
+        "version": "version",
+        "app_key": "app_key (required keyword)"
+      },
+      "notes": "See diagnostics migration section for explicit app_key, channel and response-envelope differences; offline verified only."
     },
     {
       "legacy_method": "search_device_info",
       "source_line": 226,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.diagnostics.search",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "model": "model",
+        "method": "removed; documented POST only"
+      },
+      "notes": "See diagnostics migration section for explicit app_key, channel and response-envelope differences; offline verified only."
     },
     {
       "legacy_method": "add_device",
@@ -180,10 +188,12 @@
     {
       "legacy_method": "get_device_channel_status",
       "source_line": 1170,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.diagnostics.channel_status",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "See diagnostics migration section for explicit app_key, channel and response-envelope differences; offline verified only."
     },
     {
       "legacy_method": "get_device_connection_info",
@@ -220,10 +230,12 @@
     {
       "legacy_method": "get_device_capacity",
       "source_line": 1417,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.diagnostics.capabilities",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "See diagnostics migration section for explicit app_key, channel and response-envelope differences; offline verified only."
     },
     {
       "legacy_method": "start_ptz_control",
@@ -893,10 +905,12 @@
     {
       "legacy_method": "get_device_format_status",
       "source_line": 5134,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.diagnostics.storage_status",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "See diagnostics migration section for explicit app_key, channel and response-envelope differences; offline verified only."
     },
     {
       "legacy_method": "format_device_disk",
@@ -1029,10 +1043,12 @@
     {
       "legacy_method": "get_device_disk_capacity",
       "source_line": 5968,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.diagnostics.disk_capacity",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "See diagnostics migration section for explicit app_key, channel and response-envelope differences; offline verified only."
     },
     {
       "legacy_method": "set_device_video_switch_status",
@@ -1213,10 +1229,12 @@
     {
       "legacy_method": "get_device_version_info",
       "source_line": 7021,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.diagnostics.version",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "See diagnostics migration section for explicit app_key, channel and response-envelope differences; offline verified only."
     },
     {
       "legacy_method": "upgrade_device_firmware",

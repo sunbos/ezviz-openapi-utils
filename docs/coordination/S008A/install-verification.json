@@ -1,0 +1,22 @@
+{
+  "python": "3.12",
+  "results": [
+    {
+      "kind": "wheel",
+      "artifact_sha256": "119a7b67d5c74c30b86f700d4d31b510302d3f511769d1a531b780f342ff6fb3",
+      "clean_install": true,
+      "install_offline": true,
+      "smoke": "Installed SDK sync/async mock smoke passed",
+      "real_api_used": false
+    },
+    {
+      "kind": "sdist",
+      "artifact_sha256": "b775cad2751ea9c5c10861cd69d22cfbe12e6bdac391fca82d81d00bb7f86109",
+      "clean_install": true,
+      "install_offline": true,
+      "smoke": "Installed SDK sync/async mock smoke passed",
+      "real_api_used": false,
+      "source_archive_tests": "451 passed in 3.07s"
+    }
+  ]
+}

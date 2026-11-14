@@ -2055,6 +2055,560 @@
         "path": "request address",
         "encoding": "application/x-www-form-urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.diagnostics.protocol_support",
+      "region": "domestic",
+      "source_doc_id": "652",
+      "source_url": "https://open.ys7.com/help/652",
+      "source_content_sha256": "c49c409f380cd2e78b8049b24af54fda8830e62b69d77dd09742a30990a4fdd4",
+      "method": "POST",
+      "path": "/api/lapp/device/support/ezviz",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "appKey",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "model",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "version",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Explicit appKey, model and version are required; no device identifier is required.",
+          "evidence": "request parameter table"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request-address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.search",
+      "region": "domestic",
+      "source_doc_id": "660",
+      "source_url": "https://open.ys7.com/help/660",
+      "source_content_sha256": "a286cf98424534621f0650f78238217d8d2116406afe046ba135e524ef754b99",
+      "method": "POST",
+      "path": "/api/v3/device/searchDeviceInfo",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "model",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "result.code",
+        "message_path": "result.msg",
+        "data_path": "result.data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Can query unassociated devices; devices added by another user cannot be queried through this interface.",
+          "evidence": "API function section"
+        }
+      ],
+      "uncertainties": [
+        "supportCloud is typed Int but shown as string; preserve raw data."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request-address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.channel_status",
+      "region": "domestic",
+      "source_doc_id": "676",
+      "source_url": "https://open.ys7.com/help/676",
+      "source_content_sha256": "1bddb7ab738a91fa65d212543cf36908bf8bdfc9a4902ce327e985a80e208c79",
+      "method": "GET",
+      "path": "/api/v3/open/device/metadata/channel/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "result.code",
+        "message_path": "result.msg",
+        "data_path": "result.data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial parameter row"
+        }
+      ],
+      "uncertainties": [
+        "channelInfoList is typed Object but shown as an array; preserve raw data."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request-address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.capabilities",
+      "region": "domestic",
+      "source_doc_id": "678",
+      "source_url": "https://open.ys7.com/help/678",
+      "source_content_sha256": "8e29e58cffb169d8ef08be7702fca557c64c67f023acda1b9ed7a1d780fac1e6",
+      "method": "POST",
+      "path": "/api/lapp/device/capacity",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Capability values remain raw; documented capabilities absent from the response default to unsupported.",
+          "evidence": "return-field section"
+        },
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial parameter row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request-address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.diagnostics.capabilities",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/capacity",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example",
+          "type_original": "Strring"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Capability values remain raw; documented capabilities absent from the response default to unsupported.",
+          "evidence": "return-field section"
+        }
+      ],
+      "uncertainties": [
+        "The deviceSerial type typo Strring is interpreted as String based on the parameter and example."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request-address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.version",
+      "region": "domestic",
+      "source_doc_id": "734",
+      "source_url": "https://open.ys7.com/help/734",
+      "source_content_sha256": "4ee5deaf0dc9c3ade4c4500505b2c900bb353e3845002918c3f55ce2ce46f90d",
+      "method": "POST",
+      "path": "/api/lapp/device/version/info",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial parameter row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request-address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.diagnostics.version",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "source_url": "https://open.ys7.com/help/en/478",
+      "source_content_sha256": "f22dbba0d31b65ea267b18e92019e6d1c4cdfac06a02ea653e2c37389b3be172",
+      "method": "POST",
+      "path": "/api/lapp/device/version/info",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [
+        "HTTP example points to encrypt/off with an unrelated validateCode; use the Request Address and parameter table, never that mutation example."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request-address section",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.storage_status",
+      "region": "domestic",
+      "source_doc_id": "2010",
+      "source_url": "https://open.ys7.com/help/2010",
+      "source_content_sha256": "312aff45c774f93a3e5c4f1148c5974fea4503c8af16b577a33af1833cf69e8b",
+      "method": "GET",
+      "path": "/api/v3/device/format/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request-address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "global.diagnostics.storage_status",
+      "region": "overseas",
+      "source_doc_id": "3731",
+      "source_url": "https://open.ys7.com/help/en/3731",
+      "source_content_sha256": "bb88fc4d32d6d7574da2803d4c2cd1261129ae5b325de07485227234f76c32a3",
+      "method": "GET",
+      "path": "/api/v3/device/format/status",
+      "base_url": "{areaDomain}",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "body.meta.code",
+        "message_path": "body.meta.message",
+        "data_path": "body.data",
+        "values": [
+          200
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [
+        "The published response includes status/body wrapping; literal body.meta/body.data parsing has not been verified on a real device."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request-address section",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.disk_capacity",
+      "region": "domestic",
+      "source_doc_id": "1722",
+      "source_url": "https://open.ys7.com/help/1722",
+      "source_content_sha256": "f667496600438929e470f60caf4393218d5330c0b42ddc4e9d5aba5d693cb385",
+      "method": "GET",
+      "path": "/api/v3/device/diskCapacity",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table or request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response fields and example"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request-address section",
+        "encoding": null
+      }
     }
   ],
   "reviews": [
@@ -2080,6 +2634,10 @@
     {
       "review": "docs/coordination/S007A/contracts-review.json",
       "note": "C005 managed-list contract; token refresh document conflict remains unresolved."
+    },
+    {
+      "review": "docs/coordination/S008A/contracts-review.json",
+      "note": "C006 adds ten read-only diagnostic contracts; source example/type conflicts remain explicit."
     }
   ]
 }

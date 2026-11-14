@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "evidence": "catalog_diff_and_declared_bindings_only",
+  "needs_review": false,
+  "affected": [],
+  "unmapped": [],
+  "metadata_only": [],
+  "summary": {
+    "affected_operations": 0,
+    "affected_modules": 0,
+    "unmapped_documents": 0,
+    "metadata_only_documents": 0
+  },
+  "unresolved_issue_ids": [],
+  "inputs_sha256": {
+    "diff": "368290340d1acaaf4ff086b4e805820505efabd490b8073045479499c01c8fba",
+    "bindings": "6bdd61d0ac1ac45317f20af709b12e2e74b561cff8fe5c744a10037b02904063",
+    "issues": "e801446bebf9b802282cb210b81bea39119197c7f7b1dc73f55199783bbe4ba4"
+  }
+}

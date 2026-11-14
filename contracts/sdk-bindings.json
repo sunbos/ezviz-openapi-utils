@@ -374,6 +374,127 @@
       "offline_status": "passed",
       "live_status": "empty_list_succeeded_application_token",
       "live_evidence": "docs/validation/live/2026-11-14-managed/domestic.json"
+    },
+    {
+      "operation_id": "cn.diagnostics.protocol_support",
+      "region": "domestic",
+      "source_doc_id": "652",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.protocol_support",
+        "AsyncDiagnostics.protocol_support"
+      ],
+      "offline_status": "passed",
+      "live_status": "request_failed_http_500",
+      "live_evidence": "docs/validation/live/2026-11-14-protocol/domestic.json"
+    },
+    {
+      "operation_id": "cn.diagnostics.search",
+      "region": "domestic",
+      "source_doc_id": "660",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.search",
+        "AsyncDiagnostics.search"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.diagnostics.channel_status",
+      "region": "domestic",
+      "source_doc_id": "676",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.channel_status",
+        "AsyncDiagnostics.channel_status"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.diagnostics.capabilities",
+      "region": "domestic",
+      "source_doc_id": "678",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.capabilities",
+        "AsyncDiagnostics.capabilities"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.diagnostics.capabilities",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.capabilities",
+        "AsyncDiagnostics.capabilities"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.diagnostics.version",
+      "region": "domestic",
+      "source_doc_id": "734",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.version",
+        "AsyncDiagnostics.version"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.diagnostics.version",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.version",
+        "AsyncDiagnostics.version"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.diagnostics.storage_status",
+      "region": "domestic",
+      "source_doc_id": "2010",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.storage_status",
+        "AsyncDiagnostics.storage_status"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.diagnostics.storage_status",
+      "region": "overseas",
+      "source_doc_id": "3731",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.storage_status",
+        "AsyncDiagnostics.storage_status"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.diagnostics.disk_capacity",
+      "region": "domestic",
+      "source_doc_id": "1722",
+      "module": "src/ezviz_unified/diagnostics.py",
+      "symbols": [
+        "Diagnostics.disk_capacity",
+        "AsyncDiagnostics.disk_capacity"
+      ],
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

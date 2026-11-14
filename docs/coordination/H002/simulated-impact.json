@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "evidence": "catalog_diff_and_declared_bindings_only",
+  "needs_review": true,
+  "affected": [
+    {
+      "operation_id": "global.device.status",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.status",
+        "AsyncDevices.status"
+      ],
+      "changes": [
+        "content_changed"
+      ],
+      "source_issue_ids": [
+        "overseas.476.existing-conflict"
+      ]
+    },
+    {
+      "operation_id": "global.devices.channels",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.channels",
+        "AsyncDevices.channels"
+      ],
+      "changes": [
+        "content_changed"
+      ],
+      "source_issue_ids": [
+        "overseas.476.existing-conflict"
+      ]
+    },
+    {
+      "operation_id": "global.devices.get",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.get",
+        "AsyncDevices.get"
+      ],
+      "changes": [
+        "content_changed"
+      ],
+      "source_issue_ids": [
+        "overseas.476.existing-conflict"
+      ]
+    },
+    {
+      "operation_id": "global.devices.list",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.list",
+        "AsyncDevices.list"
+      ],
+      "changes": [
+        "content_changed"
+      ],
+      "source_issue_ids": [
+        "overseas.476.existing-conflict"
+      ]
+    }
+  ],
+  "unmapped": [
+    {
+      "region": "domestic",
+      "doc_id": "821",
+      "changes": [
+        "content_changed"
+      ]
+    }
+  ],
+  "metadata_only": [
+    {
+      "region": "domestic",
+      "doc_id": "3922",
+      "changes": [
+        "title_changed"
+      ]
+    }
+  ],
+  "summary": {
+    "affected_operations": 4,
+    "affected_modules": 1,
+    "unmapped_documents": 1,
+    "metadata_only_documents": 1
+  },
+  "unresolved_issue_ids": [
+    "cn.trust.token.refresh.method_encoding",
+    "overseas.476.existing-conflict"
+  ],
+  "inputs_sha256": {
+    "diff": "bdd4e75e6c5fa6e2acd1f5c915f0551bc1b2164ee0c139d140871cfdca5f2084",
+    "bindings": "6bdd61d0ac1ac45317f20af709b12e2e74b561cff8fe5c744a10037b02904063",
+    "issues": "e801446bebf9b802282cb210b81bea39119197c7f7b1dc73f55199783bbe4ba4"
+  }
+}

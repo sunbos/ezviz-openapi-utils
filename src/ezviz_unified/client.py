@@ -24,6 +24,7 @@ import httpx
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token
 from .devices import AsyncDevices, Devices
+from .diagnostics import AsyncDiagnostics, Diagnostics
 from .errors import AuthenticationError, ProtocolError, TransportError
 from .models import ApiResponse
 from .operations import Operation
@@ -223,6 +224,7 @@ class Client:
         self._active = 0
         self._closed = False
         self.devices = Devices(self)
+        self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
 
@@ -418,6 +420,7 @@ class AsyncClient:
         self._closing: asyncio.Task[None] | None = None
         self._closed = False
         self.devices = AsyncDevices(self)
+        self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)
 

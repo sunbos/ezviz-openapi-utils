@@ -1,0 +1,9 @@
+{
+  "task_id": "C006",
+  "new_contracts": 10,
+  "total_contracts": 41,
+  "known_source_conflicts": 10,
+  "mapped_legacy_methods": 23,
+  "live_diagnostics_verified": false,
+  "source_bodies_rehashed": true
+}

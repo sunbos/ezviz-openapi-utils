@@ -7,6 +7,7 @@ from .auth_models import RegionConfig, Token, parse_token
 from .client import AsyncClient, Client
 from .cruise import AsyncCruise, Cruise, CruisePeriod
 from .devices import AsyncDevices, Devices
+from .diagnostics import AsyncDiagnostics, Diagnostics
 from .errors import (
     ApiError,
     AuthenticationError,
@@ -37,6 +38,7 @@ __all__ = [
     "AsyncClient",
     "AsyncCruise",
     "AsyncDevices",
+    "AsyncDiagnostics",
     "AsyncRecordings",
     "AsyncPtz",
     "AsyncStaticTokenProvider",
@@ -49,6 +51,7 @@ __all__ = [
     "CruisePeriod",
     "DeviceError",
     "Devices",
+    "Diagnostics",
     "EzvizError",
     "Operation",
     "PermissionDeniedError",

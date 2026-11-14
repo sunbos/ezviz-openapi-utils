@@ -105,3 +105,34 @@ def test_managed_inventory_is_opt_in_and_does_not_trigger_detail_queries(monkeyp
         "results"
     ]
     assert "PRIVATE" not in json.dumps(result)
+
+
+def test_protocol_probe_uses_public_sample_and_does_not_query_devices(monkeypatch):
+    calls = []
+
+    class Client:
+        def __init__(self, *args, **kwargs):
+            self.diagnostics = self
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+        def protocol_support(self, model, version, *, app_key):
+            calls.append((model, version, app_key))
+            return ApiResponse(200, "200", data=[{"isSupport": 1}])
+
+    monkeypatch.setattr(verify_devices, "Client", Client)
+    result = verify_devices.verify(
+        {
+            "region": "domestic",
+            "app_key": "PRIVATE_KEY",
+            "app_secret": "PRIVATE_SECRET",
+            "protocol_only": "true",
+        }
+    )
+    assert calls == [("CS-C1-10F", "V4.1.0 build 130101", "PRIVATE_KEY")]
+    assert result["results"][0]["operation"] == "diagnostics.protocol_support"
+    assert result["results"][0]["reported_support"] == [1] and "PRIVATE" not in json.dumps(result)

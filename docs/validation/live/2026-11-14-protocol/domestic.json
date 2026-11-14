@@ -1,0 +1,18 @@
+{
+  "recorded_at_utc": "2026-11-14T01:17:43.291836+00:00",
+  "region": "domestic",
+  "auth_origin": "https://open.ys7.com",
+  "business_origins": [
+    "https://open.ys7.com"
+  ],
+  "read_only": true,
+  "results": [
+    {
+      "operation": "diagnostics.protocol_support",
+      "status": "failed",
+      "error_type": "ApiError",
+      "code": null,
+      "http_status": 500
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-本地录像、云台、巡航和国内托管列表接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖31项已审核地区契约，全部真实支持情况另列。
+本地录像、云台、巡航、诊断和国内托管列表接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖41项已审核地区契约，全部真实支持情况另列。
 
 ## 设备查询
 
@@ -40,6 +40,10 @@ with Client(
 `client.ptz`提供start/stop/mirror、add_preset/move_preset/clear_preset，以及仅国内的presets/calibrate/reset。写操作不自动重放。start后需显式stop；关闭客户端不会停止设备。国内允许方向16，海外仅0–11且stop必须提供direction。型号能力与预置点上限由设备决定。
 
 国内 `client.ptz.cruise` 提供get_enabled、get_schedule、set_schedule。设置时间计划使用 `CruisePeriod("08:00", "12:00", (0, 1, 2, 3, 4))`，其中0为周一；enabled须为bool，periods为时间段序列。设置会覆盖旧计划，并不自动配置巡航点或开关。开关设置文档存在编码矛盾，暂未提供set_enabled；[差异说明](docs/research/2026-11-14-ptz-contracts.md)保留待核实项。
+
+## 设备诊断
+
+诊断入口为 `client.diagnostics`：protocol_support、search、channel_status、capabilities、version、storage_status、disk_capacity。protocol_support需显式app_key；capabilities可传channel。仅capabilities/version/storage_status有海外契约，其他仅国内。字段和响应差异见[诊断说明](docs/research/2026-11-14-diagnostics.md)；不自动升级、格式化或关闭加密。公开型号查询本次实测返回HTTP500，其余诊断未实测。
 
 ## 底层响应与传输
 
@@ -121,7 +125,7 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
 - [维护harness](harness/README.md)：比较门户catalog的内容与来源变化，输出待审查报告；当前不自动改代码或发布。
-- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确16项方法映射、134项待迁移范围，以及wheel/sdist的验证边界。
+- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确23项方法映射、127项待迁移范围，以及wheel/sdist的验证边界。
 
 旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
 

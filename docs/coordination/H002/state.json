@@ -1,0 +1,22 @@
+{
+  "task_id": "H002",
+  "status": "accepted",
+  "session_id": "384382a0-c4fc-40c3-bb10-5283a4c4b770",
+  "accepted_at_utc": "2026-11-14T01:39:58.591293+00:00",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "input_tokens": 18287,
+    "output_tokens": 27775,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+  },
+  "task_tests_passed": 19,
+  "repository_tests_passed": 573,
+  "document_subtests_passed": 11,
+  "mypy": "passed (15 SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "live_diagnostics": "protocol support sample returned HTTP500; no success claim",
+  "remote_ci": "see PR1 current checks"
+}

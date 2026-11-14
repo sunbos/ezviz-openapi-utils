@@ -23,6 +23,9 @@ def verify(config: dict[str, str]) -> dict[str, object]:
     if scope not in {"domestic", "overseas"}:
         raise ValueError("invalid region")
     include_managed = config.get("include_managed") == "true"
+    protocol_only = config.get("protocol_only") == "true"
+    if protocol_only and (include_managed or scope != "domestic"):
+        raise ValueError("protocol probe requires domestic scope without managed inventory")
     if include_managed and scope != "domestic":
         raise ValueError("managed inventory is only documented for domestic accounts")
     region = (
@@ -66,6 +69,34 @@ def verify(config: dict[str, str]) -> dict[str, object]:
         timeout=10,
         transport_factory=transport,
     ) as client:
+        if protocol_only:
+            try:
+                sample = client.diagnostics.protocol_support(
+                    "CS-C1-10F", "V4.1.0 build 130101", app_key=config["app_key"]
+                )
+                if isinstance(sample.data, list):
+                    flags = [row.get("isSupport") for row in sample.data if isinstance(row, dict)]
+                    results.append(
+                        {
+                            "operation": "diagnostics.protocol_support",
+                            "status": "passed",
+                            "sample_source_doc": "652",
+                            "returned_items": len(sample.data),
+                            "reported_support": [
+                                flag for flag in flags if type(flag) is int and flag in (0, 1)
+                            ],
+                        }
+                    )
+                else:
+                    results.append(
+                        {
+                            "operation": "diagnostics.protocol_support",
+                            "status": "unexpected_data_shape",
+                        }
+                    )
+            except EzvizError as exc:
+                record_error("diagnostics.protocol_support", exc)
+            return report
         try:
             response = client.devices.list(page_size=1)
         except EzvizError as exc:
@@ -117,7 +148,7 @@ def verify(config: dict[str, str]) -> dict[str, object]:
     return report
 
 
-def serve(output: Path, *, include_managed: bool = False) -> None:
+def serve(output: Path, *, include_managed: bool = False, protocol_only: bool = False) -> None:
     """Temporary loopback form lets authorized browser inputs reach the local SDK."""
     route = "/" + secrets.token_urlsafe(24)
     form = """<!doctype html><meta charset=utf-8><title>EZVIZ 只读验收</title>
@@ -136,6 +167,14 @@ def serve(output: Path, *, include_managed: bool = False) -> None:
         )
         form = form.replace(
             "</form>", '<input type="hidden" name="include_managed" value="true"></form>'
+        )
+    if protocol_only:
+        form = form.replace(
+            "仅认证、查询一页设备及第一台设备的资料、通道、状态。",
+            "仅认证并查询文档652公开示例型号的协议支持，不查询或操作具体设备。",
+        )
+        form = form.replace(
+            "</form>", '<input type="hidden" name="protocol_only" value="true"></form>'
         )
 
     class Handler(BaseHTTPRequestHandler):
@@ -195,16 +234,20 @@ def serve(output: Path, *, include_managed: bool = False) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--serve", action="store_true")
-    parser.add_argument("--include-managed", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--include-managed", action="store_true")
+    mode.add_argument("--protocol-only", action="store_true")
     parser.add_argument("--output", type=Path, default=Path("docs/validation/live"))
     args = parser.parse_args()
     if args.serve:
-        serve(args.output, include_managed=args.include_managed)
+        serve(args.output, include_managed=args.include_managed, protocol_only=args.protocol_only)
     else:
         try:
             config = json.load(sys.stdin)
             if args.include_managed:
                 config["include_managed"] = "true"
+            if args.protocol_only:
+                config["protocol_only"] = "true"
             print(json.dumps(verify(config), ensure_ascii=False, indent=2))
         except Exception as error:
             print(json.dumps({"status": "stopped", "error_type": type(error).__name__}))

@@ -106,6 +106,36 @@
       "description": "Request method says GET while the HTTP request example says POST; parameter header label and form example also conflict.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "No built-in managed-token refresh flow; caller-owned providers must use a separately verified issuer integration."
+    },
+    {
+      "id": "global.version.request_example",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "source_url": "https://open.ys7.com/help/en/478",
+      "source_content_sha256": "f22dbba0d31b65ea267b18e92019e6d1c4cdfac06a02ea653e2c37389b3be172",
+      "description": "Version-query Request Address is version/info, but its HTTP example points to encrypt/off and adds validateCode.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "use the request address and parameter table; never issue the encryption mutation"
+    },
+    {
+      "id": "cn.channel_status.list_type",
+      "region": "domestic",
+      "source_doc_id": "676",
+      "source_url": "https://open.ys7.com/help/676",
+      "source_content_sha256": "1bddb7ab738a91fa65d212543cf36908bf8bdfc9a4902ce327e985a80e208c79",
+      "description": "channelInfoList is typed Object but illustrated as an array.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "preserve raw data"
+    },
+    {
+      "id": "cn.search.support_cloud_type",
+      "region": "domestic",
+      "source_doc_id": "660",
+      "source_url": "https://open.ys7.com/help/660",
+      "source_content_sha256": "a286cf98424534621f0650f78238217d8d2116406afe046ba135e524ef754b99",
+      "description": "supportCloud is typed Int but illustrated as a string.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "preserve raw data"
     }
   ]
 }

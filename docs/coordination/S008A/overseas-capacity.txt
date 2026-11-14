@@ -1,0 +1,112 @@
+1.23 Get device capability
+API Function
+Query the capability set of user device
+Request Address
+{areaDomain}/api/lapp/device/capacity
+Request Type
+POST
+Minimum permissions required for sub-account token requests
+"Permission":"Get"
+"Resource":"cam:序列号"
+Request Parameters
+Parameter name
+Type
+Description
+Required
+accessToken
+String
+access_token obtained by the authorization process
+Y
+deviceSerial
+Strring
+Device serial number
+Y
+channelNo
+String
+Device channel number
+N
+http请求报文
+POST /api/lapp/device/capacity HTTP/1.1
+ Host: https://isgpopen.ezvizlife.com
+ Content-Type: application/x-www-form-urlencoded
+
+ accessToken=at.REDACTED_PUBLIC_EXAMPLE&deviceSerial=Q00737272
+Return Data
+{
+     "code": "200",
+     "data": {
+         "ptz_left_right": "0",
+         "ptz_top_bottom": "0",
+         "support_add_del_detector": "1",
+         "support_alarm_voice": "1",
+         "support_alert_tone": "1",
+         "support_anti_open": "1",
+         "support_ap_allseries": "1",
+         "support_ap_mode": "2",
+         "support_auto_offline": "0",
+         "support_battery_manage": "1",
+         "support_channel_number": 0,
+         "support_cloud": "0",
+         "support_defence": "1",
+         "support_defenceplan": "1",
+         "support_device_rf_signal_report": "1",
+         "support_devicelog": "1",
+         "support_disk": "0",
+         "support_encrypt": "0",
+         "support_ipc_link": "1",
+         "support_language": "FRENCH,SPANISH,RUSSIAN,KOREAN,ITALIAN,GERMAN,ENGLISH",
+         "support_message": "0",
+         "support_modify_detectorguard": "0,0,7,7,7,0,7,0,0,0",
+         "support_modify_detectorname": "1",
+         "support_privacy": "0",
+         "support_protection_mode": "1",
+         "support_ptz": "0",
+         "support_related_device": "2",
+         "support_remote_quiet": "1",
+         "support_safe_mode_plan": "1",
+         "support_sim_card": "1",
+         "support_smart_wifi": "1",
+         "support_sound_light_alarm": "1",
+         "support_talk": "0",
+         "support_timezone": "1",
+         "support_unbind": "0",
+         "support_upgrade": "1",
+         "support_weixin": "1",
+         "support_wifi": "3",
+         "support_wifi_userId": "1",
+         "video_quality_capacity": []
+     },
+     "msg": "Operation succeeded"
+ }
+Return Field
+See [Device Capability Set Description] (# capacity_list) for details
+Capabilities that are in the capability set specification but not in the return field are not supported by default
+Return Code
+Return code
+Return message
+Description
+200
+Operate successfully
+Requested successfully
+10001
+Parameter error
+The parameter is empty or the format is incorrect
+10002
+Abnormal or expired AccessToken
+re-accessAccessToken
+10005
+Abnormal appKey
+appKey is frozen
+20002
+Device does not exist
+20014
+deviceSerial is illegal
+20018
+The user does not own the device
+Check if the device belongs to the current account
+49999
+Data exception
+Interface call exception
+50000
+Service exception
+System service exception

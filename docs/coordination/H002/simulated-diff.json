@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "needs_review": false,
+  "events": [
+    {
+      "region": "overseas",
+      "doc_id": "476",
+      "changes": [
+        "content_changed"
+      ]
+    },
+    {
+      "region": "domestic",
+      "doc_id": "821",
+      "changes": [
+        "content_changed"
+      ]
+    },
+    {
+      "region": "domestic",
+      "doc_id": "3922",
+      "changes": [
+        "title_changed"
+      ]
+    }
+  ]
+}
