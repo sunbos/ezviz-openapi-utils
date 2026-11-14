@@ -495,6 +495,306 @@
       ],
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.get",
+      "region": "domestic",
+      "source_doc_id": "704",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "wifi_prompt"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.set",
+      "region": "domestic",
+      "source_doc_id": "705",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "wifi_prompt"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "wifi_prompt"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "wifi_prompt"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.scene.get",
+      "region": "domestic",
+      "source_doc_id": "706",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "scene"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.scene.set",
+      "region": "domestic",
+      "source_doc_id": "707",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "scene"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.scene.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "scene"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.scene.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "scene"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.get",
+      "region": "domestic",
+      "source_doc_id": "708",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "sound_localization"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.set",
+      "region": "domestic",
+      "source_doc_id": "709",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "sound_localization"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.sound_localization.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "sound_localization"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.sound_localization.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "sound_localization"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.get",
+      "region": "domestic",
+      "source_doc_id": "710",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "indicator_light"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.set",
+      "region": "domestic",
+      "source_doc_id": "711",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "indicator_light"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.get",
+      "region": "domestic",
+      "source_doc_id": "712",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "all_day_record"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.set",
+      "region": "domestic",
+      "source_doc_id": "713",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "all_day_record"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.microphone.get",
+      "region": "domestic",
+      "source_doc_id": "720",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "microphone"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.settings.microphone.set",
+      "region": "domestic",
+      "source_doc_id": "721",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "microphone"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.microphone.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.get_switch",
+        "AsyncSettings.get_switch"
+      ],
+      "argument_constants": {
+        "switch": "microphone"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.settings.microphone.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/settings.py",
+      "symbols": [
+        "Settings.set_switch",
+        "AsyncSettings.set_switch"
+      ],
+      "argument_constants": {
+        "switch": "microphone"
+      },
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

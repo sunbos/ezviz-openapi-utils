@@ -28,6 +28,7 @@ from .providers import (
 from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .response import decode_response
+from .settings import AsyncSettings, DeviceSwitch, Settings
 from .transport import AsyncTransport, SyncTransport
 
 __version__ = version("ezviz-unified")
@@ -40,6 +41,7 @@ __all__ = [
     "AsyncDevices",
     "AsyncDiagnostics",
     "AsyncRecordings",
+    "AsyncSettings",
     "AsyncPtz",
     "AsyncStaticTokenProvider",
     "AsyncTokenProvider",
@@ -50,6 +52,7 @@ __all__ = [
     "Cruise",
     "CruisePeriod",
     "DeviceError",
+    "DeviceSwitch",
     "Devices",
     "Diagnostics",
     "EzvizError",
@@ -60,6 +63,7 @@ __all__ = [
     "RegionConfig",
     "Recordings",
     "ResponsePolicy",
+    "Settings",
     "SyncTransport",
     "StaticTokenProvider",
     "Token",

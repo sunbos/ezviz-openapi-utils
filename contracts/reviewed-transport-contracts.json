@@ -2609,6 +2609,1243 @@
         "path": "request-address section",
         "encoding": null
       }
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.get",
+      "region": "domestic",
+      "source_doc_id": "704",
+      "source_url": "https://open.ys7.com/help/704",
+      "source_content_sha256": "3e60459042faa4c8289b42a3baefcc1b119f0559ee92f3b58ab8de7cbfb7106c",
+      "method": "POST",
+      "path": "/api/lapp/device/sound/switch/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.set",
+      "region": "domestic",
+      "source_doc_id": "705",
+      "source_url": "https://open.ys7.com/help/705",
+      "source_content_sha256": "8b78059e915bb009a40b64a2fbe76adeda3710aba667ffb68aa8c2be8f71c4fa",
+      "method": "POST",
+      "path": "/api/lapp/device/sound/switch/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/sound/switch/status",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [
+        "channelNo is typed String but illustrated as an integer; preserve raw data."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/sound/switch/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.scene.get",
+      "region": "domestic",
+      "source_doc_id": "706",
+      "source_url": "https://open.ys7.com/help/706",
+      "source_content_sha256": "7d3b323892c071f0ee70ac0d60fd0b0096183b555c13a0959712f40aa7e6bbcd",
+      "method": "POST",
+      "path": "/api/lapp/device/scene/switch/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.scene.set",
+      "region": "domestic",
+      "source_doc_id": "707",
+      "source_url": "https://open.ys7.com/help/707",
+      "source_content_sha256": "9859993509cb8dd86e3d7ec13623511630d81ecd5274e4f2463d0b1d6affa390",
+      "method": "POST",
+      "path": "/api/lapp/device/scene/switch/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        },
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.scene.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/scene/switch/status",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [
+        "The English documentation calls this video tampering, while Chinese calls it lens occlusion; use neutral SCENE naming."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.scene.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/scene/switch/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        },
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [
+        "The English documentation calls this video tampering, while Chinese calls it lens occlusion; use neutral SCENE naming."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.get",
+      "region": "domestic",
+      "source_doc_id": "708",
+      "source_url": "https://open.ys7.com/help/708",
+      "source_content_sha256": "23d4cc2710209674e54770922bdfd0b8dced4f508853bc038495e89d84441b0b",
+      "method": "POST",
+      "path": "/api/lapp/device/ssl/switch/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "ssl denotes sound source localization, not TLS; the device must support this feature.",
+          "evidence": "API title/function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.set",
+      "region": "domestic",
+      "source_doc_id": "709",
+      "source_url": "https://open.ys7.com/help/709",
+      "source_content_sha256": "d6bacd5ca26a99022729e15918c7c64930c8cbf25ccd003599078eae4f1c8d04",
+      "method": "POST",
+      "path": "/api/lapp/device/ssl/switch/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        },
+        {
+          "fact": "ssl denotes sound source localization, not TLS; the device must support this feature. The setter requires support_ssl.",
+          "evidence": "709 API function requirement"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.sound_localization.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/ssl/switch/status",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "ssl denotes sound source localization, not TLS; the device must support this feature.",
+          "evidence": "API title/function description"
+        }
+      ],
+      "uncertainties": [
+        "HTTP example incorrectly points to scene; use the ssl Request Address."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.sound_localization.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/ssl/switch/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        },
+        {
+          "fact": "ssl denotes sound source localization, not TLS; the device must support this feature.",
+          "evidence": "API title/function description"
+        }
+      ],
+      "uncertainties": [
+        "HTTP example incorrectly points to scene; use the ssl Request Address."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.get",
+      "region": "domestic",
+      "source_doc_id": "710",
+      "source_url": "https://open.ys7.com/help/710",
+      "source_content_sha256": "cb2a115ff1b50dd273b350fe2f8daf345dff97add42e1b8f23028efdfe44a8b9",
+      "method": "POST",
+      "path": "/api/lapp/device/light/switch/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.set",
+      "region": "domestic",
+      "source_doc_id": "711",
+      "source_url": "https://open.ys7.com/help/711",
+      "source_content_sha256": "72b6800bbd6249d7b84c3bc90437d253a39c964109728b263c3d53458506f5d2",
+      "method": "POST",
+      "path": "/api/lapp/device/light/switch/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        },
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.get",
+      "region": "domestic",
+      "source_doc_id": "712",
+      "source_url": "https://open.ys7.com/help/712",
+      "source_content_sha256": "01bbc1ca2dd6e275cf6fd30c91c02b5ba336f06bd224a9dfbf66c922be681e15",
+      "method": "POST",
+      "path": "/api/lapp/device/fullday/record/switch/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.set",
+      "region": "domestic",
+      "source_doc_id": "713",
+      "source_url": "https://open.ys7.com/help/713",
+      "source_content_sha256": "5f8726acb97667c0e869908f9d3d6127242945cc9fb84eb1ecf9cf7a803d5f75",
+      "method": "POST",
+      "path": "/api/lapp/device/fullday/record/switch/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Omitting channelNo targets the device itself; the SDK does not invent channel 1.",
+          "evidence": "channelNo description"
+        },
+        {
+          "fact": "The device must support the selected feature.",
+          "evidence": "API function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.microphone.get",
+      "region": "domestic",
+      "source_doc_id": "720",
+      "source_url": "https://open.ys7.com/help/720",
+      "source_content_sha256": "ca08763d689e64eedbb1db62867aea6ad1958e7140ae4070b1f0b5eadcd3cee5",
+      "method": "POST",
+      "path": "/api/lapp/camera/video/sound/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.settings.microphone.set",
+      "region": "domestic",
+      "source_doc_id": "721",
+      "source_url": "https://open.ys7.com/help/721",
+      "source_content_sha256": "f3918fc0c3e391b741a0215a6ab8d0fd7db0b892e7806c836885e80c49625228",
+      "method": "POST",
+      "path": "/api/lapp/camera/video/sound/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.get",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/camera/video/sound/status",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.set",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/camera/video/sound/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": false,
+      "constraints": [],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -2638,6 +3875,10 @@
     {
       "review": "docs/coordination/S008A/contracts-review.json",
       "note": "C006 adds ten read-only diagnostic contracts; source example/type conflicts remain explicit."
+    },
+    {
+      "review": "docs/coordination/S009A/contracts-review.json",
+      "note": "C007 adds twenty switch contracts via an explicit enum; no real setting changes."
     }
   ]
 }

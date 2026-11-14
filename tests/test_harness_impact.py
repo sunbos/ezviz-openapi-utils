@@ -7,6 +7,15 @@ from pathlib import Path
 import pytest
 
 
+def test_shared_entry_selector_is_preserved_without_mutating_binding():
+    selected = binding()
+    selected["argument_constants"] = {"switch": "wifi_prompt"}
+    result = impact([event()], [selected])
+    assert result["affected"][0]["argument_constants"] == {"switch": "wifi_prompt"}
+    result["affected"][0]["argument_constants"]["switch"] = "changed"
+    assert selected["argument_constants"] == {"switch": "wifi_prompt"}
+
+
 def event(doc="1", changes=None):
     return {"region": "domestic", "doc_id": doc, "changes": changes or ["content_changed"]}
 

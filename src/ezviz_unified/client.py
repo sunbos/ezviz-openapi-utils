@@ -31,6 +31,7 @@ from .operations import Operation
 from .providers import AsyncTokenProvider, TokenProvider, validate_provider_token
 from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
+from .settings import AsyncSettings, Settings
 from .transport import AsyncTransport, ParamMapping, SyncTransport
 
 __all__ = ["AsyncClient", "Client"]
@@ -224,6 +225,7 @@ class Client:
         self._active = 0
         self._closed = False
         self.devices = Devices(self)
+        self.settings = Settings(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -420,6 +422,7 @@ class AsyncClient:
         self._closing: asyncio.Task[None] | None = None
         self._closed = False
         self.devices = AsyncDevices(self)
+        self.settings = AsyncSettings(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)

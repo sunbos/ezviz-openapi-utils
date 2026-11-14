@@ -1,0 +1,7 @@
+{
+  "session_id": "d6fc0213-f6c3-4158-af14-e3274c886fbe",
+  "status": "needs_revision",
+  "reason": "Final response only identified the requested filename; no code candidate was produced.",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max"
+}

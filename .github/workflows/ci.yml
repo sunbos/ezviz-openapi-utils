@@ -2,6 +2,7 @@ name: SDK checks
 
 on:
   push:
+    branches: ["main"]
   pull_request:
   workflow_dispatch:
 
@@ -37,15 +38,4 @@ jobs:
           python tools/release/check_artifacts.py
           python -m twine check dist/*
       - name: Verify clean wheel and sdist installations
-        shell: bash
-        run: |
-          for kind in wheel sdist; do
-            check_env="$RUNNER_TEMP/ezviz-$kind"
-            python -m venv "$check_env"
-            if [ "$kind" = wheel ]; then
-              "$check_env/bin/python" -m pip install dist/*.whl
-            else
-              "$check_env/bin/python" -m pip install dist/*.tar.gz
-            fi
-            "$check_env/bin/python" -I tools/release/smoke_installed.py
-          done
+        run: python tools/release/verify_installations.py --installer pip

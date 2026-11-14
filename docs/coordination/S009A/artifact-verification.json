@@ -1,0 +1,19 @@
+{
+  "artifacts": [
+    {
+      "filename": "ezviz_unified-0.1.0a1-py3-none-any.whl",
+      "kind": "wheel",
+      "member_count": 22,
+      "sha256": "08469ac6772a652c12c7905005d05db8c585e9e925fc63b2bbc188ac9b553c36"
+    },
+    {
+      "filename": "ezviz_unified-0.1.0a1.tar.gz",
+      "kind": "sdist",
+      "member_count": 51,
+      "sha256": "394bb30ece94916a3eb3567eb74aa41a54cea9d5af79dac37d464e030e7d5cd8"
+    }
+  ],
+  "name": "ezviz-unified",
+  "validation": "metadata_and_contents_only",
+  "version": "0.1.0a1"
+}

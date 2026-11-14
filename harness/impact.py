@@ -125,6 +125,12 @@ def _bindings(bindings: object) -> list:
         if op in seen:
             raise ImpactError(f"{where}: duplicate operation_id {op!r}")
         seen.add(op)
+        constants = entry.get("argument_constants", {})
+        if not isinstance(constants, dict) or not all(
+            isinstance(key, str) and key.isidentifier() and isinstance(value, str) and value.strip()
+            for key, value in constants.items()
+        ):
+            raise ImpactError("invalid argument constants")
         out.append(
             {
                 "operation_id": op,
@@ -132,6 +138,7 @@ def _bindings(bindings: object) -> list:
                 "source_doc_id": _text(entry.get("source_doc_id"), "source_doc_id", where),
                 "module": _module(entry.get("module"), where),
                 "symbols": _symbols(entry.get("symbols"), where),
+                **({"argument_constants": dict(constants)} if constants else {}),
             }
         )
     return out
@@ -187,6 +194,11 @@ def map_impact(diff: object, bindings: object, issues: object) -> dict[str, obje
                     "symbols": entry["symbols"],
                     "changes": event["changes"],
                     "source_issue_ids": sorted(pending.get(key, ())),
+                    **(
+                        {"argument_constants": dict(entry["argument_constants"])}
+                        if "argument_constants" in entry
+                        else {}
+                    ),
                 }
             )
     affected.sort(key=lambda item: item["operation_id"])

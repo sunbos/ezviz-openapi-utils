@@ -1,0 +1,9 @@
+{
+  "task_id": "C007",
+  "added_contracts": 20,
+  "total_contracts": 61,
+  "mapped_legacy_methods": 35,
+  "source_issues": 13,
+  "source_bodies_rehashed": true,
+  "real_device_setting_changes": false
+}

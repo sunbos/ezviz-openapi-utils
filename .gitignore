@@ -19,3 +19,6 @@ data/
 docs/coordination/*/input.json
 docs/coordination/*-input.json
 docs/coordination/*/launcher-output.txt
+docs/coordination/*/*launcher-output.txt
+docs/coordination/*/overseas-capacity.txt
+docs/coordination/*/overseas-switches.txt

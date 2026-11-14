@@ -136,6 +136,36 @@
       "description": "supportCloud is typed Int but illustrated as a string.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "preserve raw data"
+    },
+    {
+      "id": "global.sound_localization.example_path",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "description": "Sound localization request addresses use ssl while sections 1.8/1.9 HTTP examples use scene.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "use explicit ssl request addresses"
+    },
+    {
+      "id": "global.scene.feature_description",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "description": "Same scene paths are described as lens occlusion in CN706/707 and video tampering in EN477.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "retain neutral SCENE name; device behavior is unverified"
+    },
+    {
+      "id": "global.wifi_prompt.channel_type",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "description": "Wi-Fi prompt status return table declares channelNo String but example uses integer.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "preserve raw response types"
     }
   ]
 }

@@ -20,6 +20,16 @@ wheel仅含SDK；sdist还含SDK测试。完整文档采集、维护harness和相
 
 ## 独立安装验证
 
+仓库内可一次执行完整检查，替代手工创建环境：
+
+```sh
+python tools/release/verify_installations.py --installer pip
+# 已具备uv缓存时，明确使用离线模式：
+python tools/release/verify_installations.py --installer uv --offline --output reports/install.json
+```
+
+工具验证并固定发行文件快照，分别安装wheel/sdist、运行mock smoke，并默认运行sdist中的SDK测试。--skip-source-tests可显式省略最后一项，报告不会将省略内容标记为通过。子进程不继承常见模型/EZVIZ凭据和安装目标覆盖设置，正常网络配置可通过环境传入；这不是运行不可信代码的安全沙箱。
+
 分别创建干净环境安装wheel与sdist，再运行：
 
 ```sh
@@ -31,7 +41,7 @@ wheel仅含SDK；sdist还含SDK测试。完整文档采集、维护harness和相
 ## 发布条件
 
 - 冻结拟发布版本和提交，所有检查针对该版本通过。
-- 确认迁移清单和支持范围；目前旧150项业务方法有23项新入口，其余127项尚未迁移。
+- 确认迁移清单和支持范围；目前旧150项业务方法有35项新入口，其余115项尚未迁移。
 - 发布说明分别列出离线验证、真实验证和缺项；空设备列表不能证明设备接口可用。
 - 检查公开文档链接、包名归属及发布权限。当前没有自动发布workflow，也没有上传本地生成的文件。
 

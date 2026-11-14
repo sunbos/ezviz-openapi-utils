@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 23,
-  "pending_count": 127,
+  "mapped_count": 35,
+  "pending_count": 115,
   "compatibility_shim": false,
   "methods": [
     {
@@ -577,82 +577,122 @@
     {
       "legacy_method": "get_wifi_sound_switch_status",
       "source_line": 3322,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.get_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.WIFI_PROMPT"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "set_wifi_sound_switch_status",
       "source_line": 3364,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.set_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.WIFI_PROMPT",
+        "enable": "enabled (strict bool)",
+        "channel_no": "channel (optional where documented)"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "get_scene_switch_status",
       "source_line": 3417,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.get_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.SCENE"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "set_scene_switch_status",
       "source_line": 3459,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.set_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.SCENE",
+        "enable": "enabled (strict bool)",
+        "channel_no": "channel (optional where documented)"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "get_ssl_switch_status",
       "source_line": 3512,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.get_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.SOUND_LOCALIZATION"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "set_ssl_switch_status",
       "source_line": 3554,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.set_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.SOUND_LOCALIZATION",
+        "enable": "enabled (strict bool)",
+        "channel_no": "channel (optional where documented)"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "get_indicator_light_switch_status",
       "source_line": 3607,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.get_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.INDICATOR_LIGHT"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "set_indicator_light_switch_status",
       "source_line": 3651,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.set_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.INDICATOR_LIGHT",
+        "enable": "enabled (strict bool)",
+        "channel_no": "channel (optional where documented)"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "get_fullday_record_switch_status",
       "source_line": 3706,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.get_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.ALL_DAY_RECORD"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "set_fullday_record_switch_status",
       "source_line": 3750,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.set_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.ALL_DAY_RECORD",
+        "enable": "enabled (strict bool)",
+        "channel_no": "channel (optional where documented)"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "get_motion_detection_sensitivity_config",
@@ -689,18 +729,25 @@
     {
       "legacy_method": "get_sound_status",
       "source_line": 4006,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.get_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.MICROPHONE"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "set_sound_status",
       "source_line": 4049,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.settings.set_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "switch": "constant DeviceSwitch.MICROPHONE",
+        "enable": "enabled (strict bool)"
+      },
+      "notes": "Explicit switch kind; get has no channel; microphone set accepts no channel. Region and bool conversion differences apply."
     },
     {
       "legacy_method": "set_mobile_status",
