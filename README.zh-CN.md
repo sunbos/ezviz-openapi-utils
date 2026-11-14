@@ -1,5 +1,9 @@
 # EZVIZ OpenAPI Utils (萤石开放平台工具库)
 
+> **旧项目已停止演进，新开发请访问 [EZVIZ Unified](https://github.com/sunbos/ezviz-unified)。**
+> 新SDK使用独立发行名 `ezviz-unified`、导入名 `ezviz_unified` 与独立API，不提供旧utils兼容层。
+> 旧发行与历史记录保留。下文为旧项目的历史说明，当前开发范围和验证状态以新仓库为准。
+
 [![PyPI version](https://badge.fury.io/py/ezviz-openapi-utils.svg)](https://pypi.org/project/ezviz-openapi-utils/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/ezviz-openapi-utils.svg?logo=python&logoColor=white)](https://pypi.org/project/ezviz-openapi-utils/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
