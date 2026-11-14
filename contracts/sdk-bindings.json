@@ -1029,6 +1029,154 @@
       "public_entry": "ownership.verify_online",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.imaging.image_params.get",
+      "region": "domestic",
+      "source_doc_id": "3678",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.get",
+        "AsyncImaging.get"
+      ],
+      "public_entry": "imaging.get",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "setting": "image_params"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.white_balance.get",
+      "region": "domestic",
+      "source_doc_id": "3680",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.get",
+        "AsyncImaging.get"
+      ],
+      "public_entry": "imaging.get",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "setting": "white_balance"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.backlight.get",
+      "region": "domestic",
+      "source_doc_id": "3682",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.get",
+        "AsyncImaging.get"
+      ],
+      "public_entry": "imaging.get",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "setting": "backlight"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.backlight.set",
+      "region": "domestic",
+      "source_doc_id": "3683",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.set_backlight",
+        "AsyncImaging.set_backlight"
+      ],
+      "public_entry": "imaging.set_backlight",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.imaging.denoising.get",
+      "region": "domestic",
+      "source_doc_id": "3684",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.get",
+        "AsyncImaging.get"
+      ],
+      "public_entry": "imaging.get",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "setting": "denoising"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.denoising.set",
+      "region": "domestic",
+      "source_doc_id": "3685",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.set_denoising",
+        "AsyncImaging.set_denoising"
+      ],
+      "public_entry": "imaging.set_denoising",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.imaging.exposure.get",
+      "region": "domestic",
+      "source_doc_id": "3686",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.get",
+        "AsyncImaging.get"
+      ],
+      "public_entry": "imaging.get",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "setting": "exposure"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.exposure.set",
+      "region": "domestic",
+      "source_doc_id": "3687",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.set_exposure",
+        "AsyncImaging.set_exposure"
+      ],
+      "public_entry": "imaging.set_exposure",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.imaging.anti_flicker.get",
+      "region": "domestic",
+      "source_doc_id": "3688",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.get",
+        "AsyncImaging.get"
+      ],
+      "public_entry": "imaging.get",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "setting": "anti_flicker"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.anti_flicker.set",
+      "region": "domestic",
+      "source_doc_id": "3689",
+      "module": "src/ezviz_unified/imaging.py",
+      "symbols": [
+        "Imaging.set_anti_flicker",
+        "AsyncImaging.set_anti_flicker"
+      ],
+      "public_entry": "imaging.set_anti_flicker",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

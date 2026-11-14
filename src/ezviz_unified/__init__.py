@@ -17,6 +17,7 @@ from .errors import (
     ProtocolError,
     TransportError,
 )
+from .imaging import AsyncImaging, ImageSetting, Imaging
 from .models import ApiResponse, ResponsePolicy
 from .operations import Operation
 from .ownership import AsyncOwnership, Ownership
@@ -41,6 +42,7 @@ __all__ = [
     "AsyncCruise",
     "AsyncDevices",
     "AsyncDiagnostics",
+    "AsyncImaging",
     "AsyncRecordings",
     "AsyncSettings",
     "AsyncPtz",
@@ -58,6 +60,8 @@ __all__ = [
     "Devices",
     "Diagnostics",
     "EzvizError",
+    "ImageSetting",
+    "Imaging",
     "Operation",
     "Ownership",
     "PermissionDeniedError",

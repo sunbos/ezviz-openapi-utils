@@ -1,0 +1,22 @@
+{
+  "task_id": "S011A",
+  "status": "accepted",
+  "session_id": "e57ac55d-5eb4-4969-9336-d883e35d8c79",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "input_tokens": 22093,
+    "cache_read_input_tokens": 31744,
+    "output_tokens": 3493,
+    "cache_creation_input_tokens": 0
+  },
+  "accepted_at_utc": "2026-11-14T03:48:56.563365+00:00",
+  "task_tests_passed": 74,
+  "repository_tests_passed": 816,
+  "document_subtests_passed": 11,
+  "mypy": "passed (19 SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "real_device_changes": false,
+  "remote_ci": "see current PR1 checks"
+}

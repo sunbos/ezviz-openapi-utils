@@ -4966,6 +4966,566 @@
         "path": "request address",
         "encoding": null
       }
+    },
+    {
+      "operation_id": "cn.imaging.image_params.get",
+      "region": "domestic",
+      "source_doc_id": "3678",
+      "source_url": "https://open.ys7.com/help/3678",
+      "source_content_sha256": "16665f17c3753c8f31119d223bea2633045a7ea606fe6692f436eb355271ff3a",
+      "method": "GET",
+      "path": "/api/v3/device/video/image/params",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level GET permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [
+        "Preserve source response spellings (saturatio/manul) without normalization; associated setter is deferred due to conflicting source spellings."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.imaging.white_balance.get",
+      "region": "domestic",
+      "source_doc_id": "3680",
+      "source_url": "https://open.ys7.com/help/3680",
+      "source_content_sha256": "596999a5abb0896e416d8b8c6f72e550f8d2b9a904c1d79dddb3d5880bce74bc",
+      "method": "GET",
+      "path": "/api/v3/device/video/white/balance",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level GET permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [
+        "Preserve source response spellings (saturatio/manul) without normalization; associated setter is deferred due to conflicting source spellings."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.imaging.backlight.get",
+      "region": "domestic",
+      "source_doc_id": "3682",
+      "source_url": "https://open.ys7.com/help/3682",
+      "source_content_sha256": "e3673393818557ab3dbc27871abb4d14f1d81b54836203cf9b67a7f268cb3385",
+      "method": "GET",
+      "path": "/api/v3/device/video/blc",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level GET permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.imaging.backlight.set",
+      "region": "domestic",
+      "source_doc_id": "3683",
+      "source_url": "https://open.ys7.com/help/3683",
+      "source_content_sha256": "73a59725a730e46e3d841cd3567714b8a0a466ccf315872f87aff45cdc8d040a",
+      "method": "PUT",
+      "path": "/api/v3/device/video/blc",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "mode",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "description": "close/up/down/left/right/center",
+          "evidence": "parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level Config permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "request address",
+        "encoding": "curl application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.denoising.get",
+      "region": "domestic",
+      "source_doc_id": "3684",
+      "source_url": "https://open.ys7.com/help/3684",
+      "source_content_sha256": "199a71002019d50bf624dcbab5934334257a389c69de5648bdfd14ea76bb689e",
+      "method": "GET",
+      "path": "/api/v3/device/video/image/denoising",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level GET permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.imaging.denoising.set",
+      "region": "domestic",
+      "source_doc_id": "3685",
+      "source_url": "https://open.ys7.com/help/3685",
+      "source_content_sha256": "1214b4537ec015bfb27f37528f76b5d04dbbbb2dc7ab2b4bc8443814db764739",
+      "method": "PUT",
+      "path": "/api/v3/device/video/image/denoising",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "mode",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "description": "close/general/advanced",
+          "evidence": "parameter table"
+        },
+        {
+          "name": "generalLevel",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "description": "1–100; required for general",
+          "evidence": "parameter table"
+        },
+        {
+          "name": "spatialLevel",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "description": "1–100; required for advanced",
+          "evidence": "parameter table"
+        },
+        {
+          "name": "temporalLevel",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "description": "1–100; required for advanced",
+          "evidence": "parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level Config permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "request address",
+        "encoding": "curl application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.exposure.get",
+      "region": "domestic",
+      "source_doc_id": "3686",
+      "source_url": "https://open.ys7.com/help/3686",
+      "source_content_sha256": "c507bb6f2b3ad4ee05d55a39d5db25fc90ce6d0510faea72d9f4e551c72bcd9a",
+      "method": "GET",
+      "path": "/api/v3/device/video/exposure/time",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level GET permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.imaging.exposure.set",
+      "region": "domestic",
+      "source_doc_id": "3687",
+      "source_url": "https://open.ys7.com/help/3687",
+      "source_content_sha256": "ab82a8bcf60b44970ca739c1838a45ec2a82908a8b3df9813bf79b6e5ecbf525",
+      "method": "PUT",
+      "path": "/api/v3/device/video/exposure/time",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "exposureTarget",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "description": "microseconds; 1–40000",
+          "evidence": "parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level Config permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "request address",
+        "encoding": "curl application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.anti_flicker.get",
+      "region": "domestic",
+      "source_doc_id": "3688",
+      "source_url": "https://open.ys7.com/help/3688",
+      "source_content_sha256": "c5018be30f5261a47b60cd7da869e4be9688b2d5f20ec97ad99c8e755b0c0f3a",
+      "method": "GET",
+      "path": "/api/v3/device/video/anti/flicker",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level GET permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.imaging.anti_flicker.set",
+      "region": "domestic",
+      "source_doc_id": "3689",
+      "source_url": "https://open.ys7.com/help/3689",
+      "source_content_sha256": "01a5a73d365ada1278071374bfe1cd88d2d8818dfe577176597e92d3a4a31ddc",
+      "method": "PUT",
+      "path": "/api/v3/device/video/anti/flicker",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "parameter table and curl example"
+        },
+        {
+          "name": "mode",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "description": "50Hz/60Hz",
+          "evidence": "parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Requires device capability support_image_param; managed/subaccounts supported with device-level Config permission.",
+          "evidence": "function description"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "request address",
+        "encoding": "curl application/x-www-form-urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -5003,6 +5563,10 @@
     {
       "review": "docs/coordination/S010A/contracts-review.json",
       "note": "C008 adds management and explicit ownership steps; no real account mutations."
+    },
+    {
+      "review": "docs/coordination/S011A/contracts-review.json",
+      "note": "C009 adds six image queries and four explicit setters; two ambiguous setters deferred, no real device changes."
     }
   ]
 }

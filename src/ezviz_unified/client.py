@@ -26,6 +26,7 @@ from .auth_models import RegionConfig, Token
 from .devices import AsyncDevices, Devices
 from .diagnostics import AsyncDiagnostics, Diagnostics
 from .errors import AuthenticationError, ProtocolError, TransportError
+from .imaging import AsyncImaging, Imaging
 from .models import ApiResponse
 from .operations import Operation
 from .ownership import AsyncOwnership, Ownership
@@ -228,6 +229,7 @@ class Client:
         self.devices = Devices(self)
         self.ownership = Ownership(self)
         self.settings = Settings(self)
+        self.imaging = Imaging(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -426,6 +428,7 @@ class AsyncClient:
         self.devices = AsyncDevices(self)
         self.ownership = AsyncOwnership(self)
         self.settings = AsyncSettings(self)
+        self.imaging = AsyncImaging(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)

@@ -186,6 +186,26 @@
       "description": "SSID is a header String but non-ASCII encoding is unspecified.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Refuse unverified encodings; do not silently move to query or collect network data."
+    },
+    {
+      "id": "cn.imaging.saturation_spelling",
+      "region": "domestic",
+      "source_doc_id": "3679",
+      "source_url": "https://open.ys7.com/help/3679",
+      "source_content_sha256": "815cb87573c600954ead7affc764ec2e0f2d9eca49e454ea2943ee1842be1745",
+      "description": "Parameter table uses saturatio; request example uses saturation.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Defer the setter; retain GET response fields exactly. Do not infer a correction or send device writes to choose a spelling."
+    },
+    {
+      "id": "cn.imaging.white_balance_manual_spelling",
+      "region": "domestic",
+      "source_doc_id": "3681",
+      "source_url": "https://open.ys7.com/help/3681",
+      "source_content_sha256": "b30b0575ac508059aec9f19ac33c5333bff9e2b9e615526774a13ba4b93e1d19",
+      "description": "Parameter table uses manul for manual mode; request example uses manual.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Defer the setter; retain GET response fields exactly. Do not infer a correction or send device writes to choose a spelling."
     }
   ]
 }

@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 47,
-  "pending_count": 103,
+  "mapped_count": 57,
+  "pending_count": 93,
   "compatibility_shim": false,
   "methods": [
     {
@@ -1048,10 +1048,13 @@
     {
       "legacy_method": "get_device_white_balance",
       "source_line": 5506,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.get",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "setting": "constant:white_balance"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "set_device_white_balance",
@@ -1059,71 +1062,98 @@
       "status": "not_migrated",
       "target": null,
       "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "notes": "Not migrated: conflicting official field/mode spellings; see contracts/source-issues.json. No guessed wire payload."
     },
     {
       "legacy_method": "get_device_backlight_compensation",
       "source_line": 5602,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.get",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "setting": "constant:backlight"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "set_device_backlight_compensation",
       "source_line": 5644,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.set_backlight",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "mode": "mode"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "get_device_denoising",
       "source_line": 5690,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.get",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "setting": "constant:denoising"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "set_device_denoising",
       "source_line": 5732,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.set_denoising",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "mode": "mode",
+        "general_level": "general_level (keyword-only)",
+        "spatial_level": "spatial_level (keyword-only)",
+        "temporal_level": "temporal_level (keyword-only)"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "get_device_exposure_time",
       "source_line": 5791,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.get",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "setting": "constant:exposure"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "set_device_exposure_time",
       "source_line": 5833,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.set_exposure",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "exposure_target": "microseconds (integer microseconds; 1–40000)"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "get_device_anti_flicker",
       "source_line": 5880,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.get",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "setting": "constant:anti_flicker"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "set_device_anti_flicker",
       "source_line": 5922,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.set_anti_flicker",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "mode": "mode"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "get_device_disk_capacity",
@@ -1218,10 +1248,13 @@
     {
       "legacy_method": "get_device_image_params",
       "source_line": 6436,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.imaging.get",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "setting": "constant:image_params"
+      },
+      "notes": "Returns ApiResponse; domestic-only reviewed contract, no live validation. Managed token in Header; writes never automatically replay."
     },
     {
       "legacy_method": "set_device_image_params",
@@ -1229,7 +1262,7 @@
       "status": "not_migrated",
       "target": null,
       "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "notes": "Not migrated: conflicting official field/mode spellings; see contracts/source-issues.json. No guessed wire payload."
     },
     {
       "legacy_method": "get_ptz_homing_point",
