@@ -31,10 +31,12 @@ from .providers import (
     TokenProvider,
 )
 from .ptz import AsyncPtz, Ptz
+from .ram_models import RamStatement, ram_password_digest
 from .recordings import AsyncRecordings, Recordings
 from .response import decode_response
 from .settings import AsyncSettings, DeviceSwitch, Settings
 from .snapshots import AsyncSnapshots, Snapshots
+from .subaccounts import AsyncSubaccounts, Subaccounts
 from .transport import AsyncTransport, SyncTransport
 from .video import AsyncVideo, PreviewEncoding, Video, VideoSwitch
 
@@ -46,6 +48,7 @@ __all__ = [
     "Alarms",
     "AsyncAlarms",
     "AsyncCloudStorage",
+    "AsyncSubaccounts",
     "ApiResponse",
     "AsyncClient",
     "AsyncCruise",
@@ -84,10 +87,12 @@ __all__ = [
     "PlaybackOptions",
     "Ptz",
     "RegionConfig",
+    "RamStatement",
     "Recordings",
     "ResponsePolicy",
     "Settings",
     "StorageOrderOptions",
+    "Subaccounts",
     "Snapshots",
     "SyncTransport",
     "StaticTokenProvider",
@@ -100,4 +105,5 @@ __all__ = [
     "__version__",
     "decode_response",
     "parse_token",
+    "ram_password_digest",
 ]

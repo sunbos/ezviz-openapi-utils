@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import math
 from collections.abc import Iterable, Mapping
@@ -88,6 +89,31 @@ def _validate_path(path: str) -> None:
         raise ValueError("path must not carry scheme, authority, query or fragment")
 
 
+def _collect_policy_resources(value: str, out: set[str]) -> None:
+    """Extract only RAM's documented nested resources from encoded form JSON."""
+    try:
+        parsed = json.loads(value)
+    except (ValueError, RecursionError):
+        return
+    if not isinstance(parsed, dict):
+        return
+    statements = parsed.get("Statement", [parsed])
+    if not isinstance(statements, list):
+        return
+    for statement in statements:
+        if not isinstance(statement, dict):
+            continue
+        resources = statement.get("Resource")
+        if not isinstance(resources, list):
+            continue
+        for resource in resources:
+            if isinstance(resource, str):
+                out.add(resource)
+                parts = resource.split(":")
+                if len(parts) in (2, 3) and parts[0] in {"dev", "cam"}:
+                    out.add(parts[1])
+
+
 def _collect_into(node: object, out: set[str]) -> None:
     if isinstance(node, Mapping):
         for key, value in node.items():
@@ -97,6 +123,8 @@ def _collect_into(node: object, out: set[str]) -> None:
                     parts = value.split(None, 1)
                     if len(parts) == 2 and parts[0].lower() in {"bearer", "basic", "token"}:
                         out.add(parts[1])
+                elif key.lower() in {"policy", "statement"}:
+                    _collect_policy_resources(value, out)
             else:
                 _collect_into(value, out)
     elif isinstance(node, (list, tuple)):

@@ -1565,6 +1565,149 @@
       "public_entry": "cloud_storage.transfer",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.subaccounts.create",
+      "region": "domestic",
+      "source_doc_id": "649",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.create",
+        "AsyncSubaccounts.create"
+      ],
+      "public_entry": "subaccounts.create",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.create",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.create",
+        "AsyncSubaccounts.create"
+      ],
+      "public_entry": "subaccounts.create",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.get",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.get",
+        "AsyncSubaccounts.get"
+      ],
+      "public_entry": "subaccounts.get",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.list",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.list",
+        "AsyncSubaccounts.list"
+      ],
+      "public_entry": "subaccounts.list",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.change_password",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.change_password",
+        "AsyncSubaccounts.change_password"
+      ],
+      "public_entry": "subaccounts.change_password",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.set_policy",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.set_policy",
+        "AsyncSubaccounts.set_policy"
+      ],
+      "public_entry": "subaccounts.set_policy",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.subaccounts.add_statement",
+      "region": "domestic",
+      "source_doc_id": "777",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.add_statement",
+        "AsyncSubaccounts.add_statement"
+      ],
+      "public_entry": "subaccounts.add_statement",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.add_statement",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.add_statement",
+        "AsyncSubaccounts.add_statement"
+      ],
+      "public_entry": "subaccounts.add_statement",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.remove_device_permissions",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.remove_device_permissions",
+        "AsyncSubaccounts.remove_device_permissions"
+      ],
+      "public_entry": "subaccounts.remove_device_permissions",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.issue_token",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.issue_token",
+        "AsyncSubaccounts.issue_token"
+      ],
+      "public_entry": "subaccounts.issue_token",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.subaccounts.delete",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "module": "src/ezviz_unified/subaccounts.py",
+      "symbols": [
+        "Subaccounts.delete",
+        "AsyncSubaccounts.delete"
+      ],
+      "public_entry": "subaccounts.delete",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

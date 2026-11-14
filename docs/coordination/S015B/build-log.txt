@@ -1,0 +1,258 @@
+* Getting build dependencies for sdist...
+running egg_info
+writing src/ezviz_unified.egg-info/PKG-INFO
+writing dependency_links to src/ezviz_unified.egg-info/dependency_links.txt
+writing requirements to src/ezviz_unified.egg-info/requires.txt
+writing top-level names to src/ezviz_unified.egg-info/top_level.txt
+reading manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+no previously-included directories found matching 'data'
+no previously-included directories found matching 'docs'
+no previously-included directories found matching 'harness'
+no previously-included directories found matching 'tools'
+no previously-included directories found matching '.claude'
+warning: no previously-included files found matching 'AGENTS.md'
+warning: no previously-included files found matching '.env'
+warning: no previously-included files found matching '.env.*'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing src/ezviz_unified.egg-info/PKG-INFO
+writing dependency_links to src/ezviz_unified.egg-info/dependency_links.txt
+writing requirements to src/ezviz_unified.egg-info/requires.txt
+writing top-level names to src/ezviz_unified.egg-info/top_level.txt
+reading manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+no previously-included directories found matching 'data'
+no previously-included directories found matching 'docs'
+no previously-included directories found matching 'harness'
+no previously-included directories found matching 'tools'
+no previously-included directories found matching '.claude'
+warning: no previously-included files found matching 'AGENTS.md'
+warning: no previously-included files found matching '.env'
+warning: no previously-included files found matching '.env.*'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+running check
+creating ezviz_unified-0.1.0a1
+creating ezviz_unified-0.1.0a1/src/ezviz_unified
+creating ezviz_unified-0.1.0a1/src/ezviz_unified.egg-info
+creating ezviz_unified-0.1.0a1/tests
+copying files to ezviz_unified-0.1.0a1...
+copying LICENSE -> ezviz_unified-0.1.0a1
+copying MANIFEST.in -> ezviz_unified-0.1.0a1
+copying README.md -> ezviz_unified-0.1.0a1
+copying pyproject.toml -> ezviz_unified-0.1.0a1
+copying src/ezviz_unified/__init__.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/alarms.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/auth.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/auth_models.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/client.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/cloud_storage.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/cruise.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/devices.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/diagnostics.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/errors.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/imaging.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/management.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/models.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/operations.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/ownership.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/playback.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/providers.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/ptz.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/py.typed -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/ram_models.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/recordings.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/response.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/settings.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/snapshots.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/subaccounts.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/transport.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified/video.py -> ezviz_unified-0.1.0a1/src/ezviz_unified
+copying src/ezviz_unified.egg-info/PKG-INFO -> ezviz_unified-0.1.0a1/src/ezviz_unified.egg-info
+copying src/ezviz_unified.egg-info/SOURCES.txt -> ezviz_unified-0.1.0a1/src/ezviz_unified.egg-info
+copying src/ezviz_unified.egg-info/dependency_links.txt -> ezviz_unified-0.1.0a1/src/ezviz_unified.egg-info
+copying src/ezviz_unified.egg-info/requires.txt -> ezviz_unified-0.1.0a1/src/ezviz_unified.egg-info
+copying src/ezviz_unified.egg-info/top_level.txt -> ezviz_unified-0.1.0a1/src/ezviz_unified.egg-info
+copying tests/conftest.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_offline_policy.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_alarms.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_auth.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_auth_lifecycle.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_auth_models.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_auth_validation.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_client.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_client_lifecycle.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_cloud_storage.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_cruise.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_devices.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_diagnostics.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_imaging.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_management.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_media_secrets.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_operations.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_ownership.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_playback.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_providers.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_ptz.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_ram_models.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_recordings.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_response.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_settings.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_snapshots.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_subaccounts.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_transport.py -> ezviz_unified-0.1.0a1/tests
+copying tests/test_sdk_video.py -> ezviz_unified-0.1.0a1/tests
+Writing ezviz_unified-0.1.0a1/setup.cfg
+Creating tar archive
+removing 'ezviz_unified-0.1.0a1' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing src/ezviz_unified.egg-info/PKG-INFO
+writing dependency_links to src/ezviz_unified.egg-info/dependency_links.txt
+writing requirements to src/ezviz_unified.egg-info/requires.txt
+writing top-level names to src/ezviz_unified.egg-info/top_level.txt
+reading manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+no previously-included directories found matching 'data'
+no previously-included directories found matching 'docs'
+no previously-included directories found matching 'harness'
+no previously-included directories found matching 'tools'
+no previously-included directories found matching '.claude'
+warning: no previously-included files found matching 'AGENTS.md'
+warning: no previously-included files found matching '.env'
+warning: no previously-included files found matching '.env.*'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/ezviz_unified
+copying src/ezviz_unified/cloud_storage.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/ownership.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/auth.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/snapshots.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/recordings.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/playback.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/cruise.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/models.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/transport.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/diagnostics.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/auth_models.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/client.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/ptz.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/ram_models.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/__init__.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/response.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/operations.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/providers.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/subaccounts.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/management.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/settings.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/errors.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/alarms.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/imaging.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/devices.py -> build/lib/ezviz_unified
+copying src/ezviz_unified/video.py -> build/lib/ezviz_unified
+running egg_info
+writing src/ezviz_unified.egg-info/PKG-INFO
+writing dependency_links to src/ezviz_unified.egg-info/dependency_links.txt
+writing requirements to src/ezviz_unified.egg-info/requires.txt
+writing top-level names to src/ezviz_unified.egg-info/top_level.txt
+reading manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+no previously-included directories found matching 'data'
+no previously-included directories found matching 'docs'
+no previously-included directories found matching 'harness'
+no previously-included directories found matching 'tools'
+no previously-included directories found matching '.claude'
+warning: no previously-included files found matching 'AGENTS.md'
+warning: no previously-included files found matching '.env'
+warning: no previously-included files found matching '.env.*'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+warning: no previously-included files matching '.DS_Store' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'src/ezviz_unified.egg-info/SOURCES.txt'
+copying src/ezviz_unified/py.typed -> build/lib/ezviz_unified
+installing to build/bdist.macosx-10.15-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.macosx-10.15-x86_64/wheel
+creating build/bdist.macosx-10.15-x86_64/wheel/ezviz_unified
+copying build/lib/ezviz_unified/cloud_storage.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/ownership.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/auth.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/snapshots.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/recordings.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/playback.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/cruise.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/models.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/transport.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/diagnostics.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/auth_models.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/client.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/ptz.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/ram_models.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/__init__.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/response.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/operations.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/providers.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/subaccounts.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/management.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/settings.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/py.typed -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/errors.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/alarms.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/imaging.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/devices.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+copying build/lib/ezviz_unified/video.py -> build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified
+running install_egg_info
+Copying src/ezviz_unified.egg-info to build/bdist.macosx-10.15-x86_64/wheel/./ezviz_unified-0.1.0a1-py3.12.egg-info
+running install_scripts
+creating build/bdist.macosx-10.15-x86_64/wheel/ezviz_unified-0.1.0a1.dist-info/WHEEL
+creating '/Users/sunbo/Desktop/ezviz-openapi-utils/dist/.tmp-6n_1f81e/ezviz_unified-0.1.0a1-py3-none-any.whl' and adding 'build/bdist.macosx-10.15-x86_64/wheel' to it
+adding 'ezviz_unified/__init__.py'
+adding 'ezviz_unified/alarms.py'
+adding 'ezviz_unified/auth.py'
+adding 'ezviz_unified/auth_models.py'
+adding 'ezviz_unified/client.py'
+adding 'ezviz_unified/cloud_storage.py'
+adding 'ezviz_unified/cruise.py'
+adding 'ezviz_unified/devices.py'
+adding 'ezviz_unified/diagnostics.py'
+adding 'ezviz_unified/errors.py'
+adding 'ezviz_unified/imaging.py'
+adding 'ezviz_unified/management.py'
+adding 'ezviz_unified/models.py'
+adding 'ezviz_unified/operations.py'
+adding 'ezviz_unified/ownership.py'
+adding 'ezviz_unified/playback.py'
+adding 'ezviz_unified/providers.py'
+adding 'ezviz_unified/ptz.py'
+adding 'ezviz_unified/py.typed'
+adding 'ezviz_unified/ram_models.py'
+adding 'ezviz_unified/recordings.py'
+adding 'ezviz_unified/response.py'
+adding 'ezviz_unified/settings.py'
+adding 'ezviz_unified/snapshots.py'
+adding 'ezviz_unified/subaccounts.py'
+adding 'ezviz_unified/transport.py'
+adding 'ezviz_unified/video.py'
+adding 'ezviz_unified-0.1.0a1.dist-info/licenses/LICENSE'
+adding 'ezviz_unified-0.1.0a1.dist-info/METADATA'
+adding 'ezviz_unified-0.1.0a1.dist-info/WHEEL'
+adding 'ezviz_unified-0.1.0a1.dist-info/top_level.txt'
+adding 'ezviz_unified-0.1.0a1.dist-info/RECORD'
+removing build/bdist.macosx-10.15-x86_64/wheel
+Successfully built ezviz_unified-0.1.0a1.tar.gz and ezviz_unified-0.1.0a1-py3-none-any.whl

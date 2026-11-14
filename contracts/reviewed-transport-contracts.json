@@ -7886,6 +7886,706 @@
         "path": "request address",
         "encoding": "application/x-www-form-urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.subaccounts.create",
+      "region": "domestic",
+      "source_doc_id": "649",
+      "source_url": "https://open.ys7.com/help/649",
+      "source_content_sha256": "bfdd31e3506c1242fca060a56f82da141c8cf1354ddd6c28f1221fc0debe966a",
+      "method": "POST",
+      "path": "/api/lapp/ram/account/create",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountName",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "password",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Password wire field is lower-case MD5(AppKey#plaintext); public API accepts an explicitly prepared 32-character lower-case hexadecimal digest.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Domestic accountName allows ASCII letters/digits/underscore, length 4–40; overseas describes 4–40 characters without the same closed charset.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "Password digest source does not specify character encoding; helper requires caller-supplied encoding."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.create",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/account/create",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountName",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "password",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Password wire field is lower-case MD5(AppKey#plaintext); public API accepts an explicitly prepared 32-character lower-case hexadecimal digest.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Domestic accountName allows ASCII letters/digits/underscore, length 4–40; overseas describes 4–40 characters without the same closed charset.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "Password digest source does not specify character encoding; helper requires caller-supplied encoding."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.1"
+    },
+    {
+      "operation_id": "global.subaccounts.get",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/account/get",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountName",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "When the token is a subaccount token, both selectors may be omitted. When both are supplied, accountId takes platform precedence; SDK sends both without inferring token subject.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.2"
+    },
+    {
+      "operation_id": "global.subaccounts.list",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/account/list",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "pageStart starts at zero, pageSize1–50, optional paging omitted; raw.page preserved.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "HTTP example uses account/get but Request Address specifies account/list."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.3"
+    },
+    {
+      "operation_id": "global.subaccounts.change_password",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/account/updatePassword",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "oldPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "newPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Both password fields are caller-prepared lowercase MD5 digests; no automatic rehashing.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "Character encoding for digest input is not specified."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.4"
+    },
+    {
+      "operation_id": "global.subaccounts.set_policy",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/policy/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "policy",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Policy/statement is JSON text inside a form field. Preserve permission spelling, resource identifiers and order; perform structural checks only.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "Permission-name case and available lists vary across API examples and grammar documents; no case normalization or exhaustive enum."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.5"
+    },
+    {
+      "operation_id": "cn.subaccounts.add_statement",
+      "region": "domestic",
+      "source_doc_id": "777",
+      "source_url": "https://open.ys7.com/help/777",
+      "source_content_sha256": "38642f4c95db7ddde294bbff06ed6dcce8842077658c067d9f248c1e255d5976",
+      "method": "POST",
+      "path": "/api/lapp/ram/statement/add",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "statement",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Policy/statement is JSON text inside a form field. Preserve permission spelling, resource identifiers and order; perform structural checks only.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "Permission-name case and available lists vary across API examples and grammar documents; no case normalization or exhaustive enum."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.add_statement",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/statement/add",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "statement",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Policy/statement is JSON text inside a form field. Preserve permission spelling, resource identifiers and order; perform structural checks only.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "Permission-name case and available lists vary across API examples and grammar documents; no case normalization or exhaustive enum.",
+        "HTTP example has a duplicated equals sign; encode the named form field once."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.6"
+    },
+    {
+      "operation_id": "global.subaccounts.remove_device_permissions",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/statement/delete",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "One device identifier selects all its subaccount permissions; SDK does not delete the account or loop through other devices.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "HTTP example has an extra equals sign after deviceSerial; parameter-table name is used."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.7"
+    },
+    {
+      "operation_id": "global.subaccounts.issue_token",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/token/get",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Credential issuance is not replayed. Return accessToken/expireTime/areaDomain raw without replacing the parent client token or constructing a provider.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [
+        "Expiry has a 13-digit example but no independently specified unit."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.8"
+    },
+    {
+      "operation_id": "global.subaccounts.delete",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "method": "POST",
+      "path": "/api/lapp/ram/account/delete",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "accountId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response examples and common code table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "No implicit identity changes, permission expansion, pagination or follow-up mutations.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        },
+        {
+          "fact": "Single explicit account deletion; SDK performs no follow-up cleanup.",
+          "evidence": "source description/grammar and explicit SDK boundary"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.9"
     }
   ],
   "reviews": [
@@ -7943,6 +8643,10 @@
     {
       "review": "docs/coordination/S014A/contracts-review.json",
       "note": "C012 adds four regional alarm queries and eleven cloud-storage contracts; no paid or real-device calls."
+    },
+    {
+      "review": "docs/coordination/S015B/contracts-review.json",
+      "note": "C013 adds eleven regional RAM contracts; unproven domestic parity remains unsupported, no real account/permission changes."
     }
   ]
 }

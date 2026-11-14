@@ -1,0 +1,24 @@
+{
+  "task_id": "S015A",
+  "status": "accepted",
+  "session_id": "37d3daf5-e3d7-44c6-8a4a-8f6c4a6393c8",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "cache_creation_input_tokens": 0,
+    "input_tokens": 33536,
+    "output_tokens": 2672,
+    "cache_read_input_tokens": 27456
+  },
+  "accepted_at_utc": "2026-11-14T05:49:26.203875+00:00",
+  "task_tests_passed": 28,
+  "repository_tests_passed": 1381,
+  "document_subtests_passed": 11,
+  "mypy": "passed (26 SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "real_api_requests": false,
+  "account_or_permission_changes": false,
+  "remote_ci": "see current PR1 checks",
+  "installation_verification": "../S015B/install-verification.json"
+}

@@ -44,6 +44,12 @@ _SENSITIVE_KEYS = (
     "phone",
     "fromDeviceSerial",
     "toDeviceSerial",
+    "accountId",
+    "accountName",
+    "oldPassword",
+    "newPassword",
+    "policy",
+    "statement",
 )
 _SENSITIVE_PARAM_RE = re.compile(
     r"\b(" + "|".join(_SENSITIVE_KEYS) + r")\s*=\s*[^\s&\"']+",
@@ -106,6 +112,26 @@ class ApiError(EzvizError):
 
 class AuthenticationError(ApiError):
     """HTTP 401 or platform authentication code (e.g. 10002)."""
+
+    def __init__(
+        self,
+        message: object = "",
+        *,
+        code: str | int | None = None,
+        http_status: int | None = None,
+        operation: str = "",
+        secrets: Iterable[str] = (),
+    ) -> None:
+        # Retain a boolean semantic marker, never the unredacted diagnostic code.
+        self._invalid_token = type(code) in (str, int) and code in (10002, "10002")
+        super().__init__(
+            message, code=code, http_status=http_status, operation=operation, secrets=secrets
+        )
+
+    @property
+    def invalid_token(self) -> bool:
+        """Whether the original platform status was invalid/expired token 10002."""
+        return self._invalid_token
 
 
 class PermissionDeniedError(ApiError):

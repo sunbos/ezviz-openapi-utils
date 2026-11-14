@@ -316,6 +316,76 @@
       "description": "HTTP examples show a corrupted phone parameter label instead of phone.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Use the explicitly named phone parameter table field."
+    },
+    {
+      "id": "cn.ram.password_encoding",
+      "region": "domestic",
+      "source_doc_id": "649",
+      "source_url": "https://open.ys7.com/help/649",
+      "source_content_sha256": "bfdd31e3506c1242fca060a56f82da141c8cf1354ddd6c28f1221fc0debe966a",
+      "description": "MD5(AppKey#plaintext) is specified without the character encoding for its byte input.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Require explicit encoding in the local digest helper; facade accepts prepared digests only."
+    },
+    {
+      "id": "global.ram.password_encoding",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "description": "Create/change password specifies MD5 input concatenation but not character encoding.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Require explicit encoding; do not derive a password from client credentials."
+    },
+    {
+      "id": "global.ram.list_example_path",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "description": "Subaccount list Request Address uses account/list while its HTTP example uses account/get.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use Request Address for the list operation."
+    },
+    {
+      "id": "global.ram.example_extra_equals",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "description": "Statement add and device permission delete examples contain an extra equals sign in form values.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use one normal form field encoding from the parameter table."
+    },
+    {
+      "id": "global.ram.permission_case",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "description": "API examples use uppercase permission names whereas grammar page 487 uses mixed-case names.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Preserve caller spelling; platform determines accepted values, no automatic case conversion."
+    },
+    {
+      "id": "global.ram.token_expiry_unit",
+      "region": "overseas",
+      "source_doc_id": "485",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "source_content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "description": "Subaccount token response shows a 13-digit expireTime without an independent unit definition.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Return the raw value; no implicit TokenProvider or expiry conversion."
+    },
+    {
+      "id": "cn.ram.permission_list_difference",
+      "region": "domestic",
+      "source_doc_id": "69",
+      "source_url": "https://open.ys7.com/help/69",
+      "source_content_sha256": "6a2fcb9d6a279989e900dba8bb6fffe9177407e2cd1ee76631da0df7a6d18c2e",
+      "description": "Policy page 69 omits Alarm from its list while introduction page 68 includes it.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Do not publish a closed enum inferred from either list; validate structure and retain caller-provided permission names."
     }
   ]
 }

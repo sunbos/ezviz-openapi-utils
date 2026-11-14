@@ -1,0 +1,53 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "68",
+      "title": "account-introduction.md",
+      "source_url": "https://open.ys7.com/help/68",
+      "content_sha256": "2485a4dae27d6c98b5807be6e13c737d0480a8c98c679d6b8c0dbeae85c516aa",
+      "raw_file_sha256": "e87e09b6713fb098f00f59bcbcf22815eca0d7f90c5b815fd8fb8bd7024862f5"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "69",
+      "title": "account-policy.md",
+      "source_url": "https://open.ys7.com/help/69",
+      "content_sha256": "6a2fcb9d6a279989e900dba8bb6fffe9177407e2cd1ee76631da0df7a6d18c2e",
+      "raw_file_sha256": "26314d24b2dcd16aede97d7b1983f0c6bd5710bc0e4c206904760ee198d0bac0"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "649",
+      "title": "创建子账户",
+      "source_url": "https://open.ys7.com/help/649",
+      "content_sha256": "bfdd31e3506c1242fca060a56f82da141c8cf1354ddd6c28f1221fc0debe966a",
+      "raw_file_sha256": "c8cfa55c4faa17efa5423665d2f9f6d6865bbbbe4e785fdd8d8822b039687286"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "777",
+      "title": "增加子账户权限",
+      "source_url": "https://open.ys7.com/help/777",
+      "content_sha256": "38642f4c95db7ddde294bbff06ed6dcce8842077658c067d9f248c1e255d5976",
+      "raw_file_sha256": "de247f499f707cfbde5b429d58a19a8498c080edc93a2329c2f288c01fa1d80b"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "485",
+      "title": "account api",
+      "source_url": "https://open.ys7.com/help/en/485",
+      "content_sha256": "dafd4d066c305bfba084a2befca954a0ecdc9be4794c700a01cb8ff13001356b",
+      "raw_file_sha256": "02ba4531efb32576f8ac82d9bc9ca0ef8ac6bbc5a0fcbd0921c34c55152b2847"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "487",
+      "title": "account policy",
+      "source_url": "https://open.ys7.com/help/en/487",
+      "content_sha256": "ba3fbad62ed3fee54cf2e6157ed2b66c50c309b05624b921ad303fd494c5c3ae",
+      "raw_file_sha256": "00d276c52c5691b455f493d814f5a356be83b22c7045fac7370635fac07ead43"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

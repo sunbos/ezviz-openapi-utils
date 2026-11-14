@@ -2,23 +2,23 @@
   "schema_version": 1,
   "evidence": "registry_structure_only",
   "summary": {
-    "contracts": 118,
-    "bindings": 118,
-    "source_documents": 93,
-    "source_issues": 28,
+    "contracts": 129,
+    "bindings": 129,
+    "source_documents": 96,
+    "source_issues": 35,
     "legacy_methods": 150,
     "mapped_legacy_methods": 65,
     "pending_legacy_methods": 85
   },
   "regions": {
-    "domestic": 82,
-    "overseas": 36
+    "domestic": 84,
+    "overseas": 45
   },
   "live_status_counts": {
     "authentication_succeeded": 1,
     "empty_list_succeeded": 1,
     "empty_list_succeeded_application_token": 1,
-    "not_verified": 114,
+    "not_verified": 125,
     "request_failed_http_500": 1
   }
 }

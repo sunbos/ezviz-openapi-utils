@@ -38,13 +38,13 @@ from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .settings import AsyncSettings, Settings
 from .snapshots import AsyncSnapshots, Snapshots
+from .subaccounts import AsyncSubaccounts, Subaccounts
 from .transport import AsyncTransport, ParamMapping, SyncTransport
 from .video import AsyncVideo, Video
 
 __all__ = ["AsyncClient", "Client"]
 
 _TOKEN_FIELD = "accessToken"
-_TOKEN_ERROR_CODES = frozenset({10002, "10002"})
 
 SyncTransportFactory = Callable[[str], httpx.BaseTransport | None]
 AsyncTransportFactory = Callable[[str], httpx.AsyncBaseTransport | None]
@@ -240,6 +240,7 @@ class Client:
         self.snapshots = Snapshots(self)
         self.alarms = Alarms(self)
         self.cloud_storage = CloudStorage(self)
+        self.subaccounts = Subaccounts(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -307,7 +308,7 @@ class Client:
                     secrets=(*self._secrets, token.value),
                 )
             except AuthenticationError as exc:
-                if exc.code not in _TOKEN_ERROR_CODES:
+                if not exc.invalid_token:
                     raise
                 self._manager.invalidate(token.value)
                 if retried or not operation.read_only or not self._manager.can_refresh:
@@ -444,6 +445,7 @@ class AsyncClient:
         self.snapshots = AsyncSnapshots(self)
         self.alarms = AsyncAlarms(self)
         self.cloud_storage = AsyncCloudStorage(self)
+        self.subaccounts = AsyncSubaccounts(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)
@@ -508,7 +510,7 @@ class AsyncClient:
                     secrets=(*self._secrets, token.value),
                 )
             except AuthenticationError as exc:
-                if exc.code not in _TOKEN_ERROR_CODES:
+                if not exc.invalid_token:
                     raise
                 self._manager.invalidate(token.value)
                 if retried or not operation.read_only or not self._manager.can_refresh:
