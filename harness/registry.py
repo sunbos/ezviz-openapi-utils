@@ -1,8 +1,8 @@
 """Structural audit of the reviewed registry files (stdlib only).
 
-Pure data validation over the four registry documents (transport contracts,
-SDK bindings, source issues, legacy migration) and the legacy method
-inventory. Inputs are already-parsed JSON objects and are never modified.
+Pure data validation over the three registry documents (transport contracts,
+SDK bindings, source issues). Inputs are already-parsed JSON objects and are
+never modified.
 No SDK module is imported, no code is executed, and ``source_url`` targets
 are never fetched — they are only compared as opaque strings.
 
@@ -21,7 +21,6 @@ HTTP_METHODS = frozenset(("GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTI
 BODY_ENCODINGS = frozenset(("form_urlencoded", "json", "unknown"))
 TOKEN_LOCATIONS = frozenset(("none", "form", "json", "query", "header"))
 PARAMETER_LOCATIONS = frozenset(("body", "query", "header"))
-MIGRATION_STATUSES = frozenset(("not_migrated", "mapped_with_breaking_changes"))
 TOKEN_PARAMETER_LOCATIONS = {"form": "body", "json": "body", "query": "query", "header": "header"}
 SUCCESS_PATH_FIELDS = ("message_path", "data_path", "device_code_path")
 NOT_VERIFIED = "not_verified"
@@ -272,56 +271,8 @@ def _issue(raw, where, issue_ids, doc_identities):
         _fail(where, "source_url/source_content_sha256 differ for the same source document")
 
 
-def _method(raw, where, names):
-    method = _entry(raw, where)
-    name = _text(method.get("legacy_method"), "legacy_method", where)
-    if name in names:
-        _fail(where, "duplicate legacy_method")
-    names.add(name)
-    line = method.get("source_line")
-    if type(line) is not int or line <= 0:
-        _fail(where, "source_line must be a positive integer")
-    status = method.get("status")
-    if not isinstance(status, str) or status not in MIGRATION_STATUSES:
-        _fail(where, "status must be not_migrated or mapped_with_breaking_changes")
-    if status == "not_migrated":
-        if method.get("target") is not None or method.get("argument_map") is not None:
-            _fail(where, "not_migrated methods require null target and argument_map")
-    else:
-        _text(method.get("target"), "target", where)
-        argument_map = method.get("argument_map")
-        if not isinstance(argument_map, dict):
-            _fail(where, "argument_map must be an object")
-        for key, val in argument_map.items():
-            if not isinstance(key, str) or not isinstance(val, str) or not val.strip():
-                _fail(where, "argument_map must map strings to non-empty strings")
-    _text(method.get("notes"), "notes", where)
-    return name, line, status
-
-
-def _inventory(inventory):
-    inv = _entry(inventory, "inventory")
-    operations = inv.get("operations")
-    if not isinstance(operations, list):
-        _fail("inventory", "operations must be a list")
-    count = inv.get("public_method_count")
-    if type(count) is not int or count != len(operations):
-        _fail("inventory", "public_method_count must equal the operations length")
-    commit = _text(inv.get("source_commit"), "source_commit", "inventory")
-    pairs = []
-    for i, raw in enumerate(operations):
-        where = f"inventory.operations[{i}]"
-        operation = _entry(raw, where)
-        name = _text(operation.get("name"), "name", where)
-        line = operation.get("source_line")
-        if type(line) is not int or line <= 0:
-            _fail(where, "source_line must be a positive integer")
-        pairs.append((name, line))
-    return commit, pairs
-
-
-def audit_registry(contracts, bindings, issues, migration, inventory) -> dict:
-    """Validate the five registry payloads and return a structural summary.
+def audit_registry(contracts, bindings, issues) -> dict:
+    """Validate the three registry payloads and return a structural summary.
 
     Raises :class:`RegistryError` on the first structural violation. The
     returned report deliberately contains only registry structure counts —
@@ -330,7 +281,6 @@ def audit_registry(contracts, bindings, issues, migration, inventory) -> dict:
     contract_rows = _document(contracts, "contracts", "contracts")
     binding_rows = _document(bindings, "bindings", "bindings")
     issue_rows = _document(issues, "issues", "issues")
-    method_rows = _document(migration, "migration", "methods")
 
     doc_identities = {}
     contract_ids = set()
@@ -362,30 +312,6 @@ def audit_registry(contracts, bindings, issues, migration, inventory) -> dict:
     for i, raw in enumerate(issue_rows):
         _issue(raw, f"issues[{i}]", issue_ids, doc_identities)
 
-    mig_commit = _text(migration.get("source_commit"), "source_commit", "migration")
-    if type(migration.get("compatibility_shim")) is not bool:
-        _fail("migration", "compatibility_shim must be a boolean")
-    names = set()
-    method_pairs = []
-    mapped = pending = 0
-    for i, raw in enumerate(method_rows):
-        name, line, status = _method(raw, f"migration.methods[{i}]", names)
-        method_pairs.append((name, line))
-        if status == "mapped_with_breaking_changes":
-            mapped += 1
-        else:
-            pending += 1
-    if type(migration.get("mapped_count")) is not int or migration.get("mapped_count") != mapped:
-        _fail("migration", "mapped_count does not match methods")
-    if type(migration.get("pending_count")) is not int or migration.get("pending_count") != pending:
-        _fail("migration", "pending_count does not match methods")
-
-    inv_commit, inv_pairs = _inventory(inventory)
-    if inv_commit != mig_commit:
-        _fail("inventory", "source_commit does not match migration.source_commit")
-    if sorted(inv_pairs) != sorted(method_pairs):
-        _fail("migration.methods", "entries do not match inventory operations")
-
     return {
         "schema_version": SCHEMA_VERSION,
         "evidence": EVIDENCE,
@@ -396,9 +322,6 @@ def audit_registry(contracts, bindings, issues, migration, inventory) -> dict:
                 {(c["region"], c["source_doc_id"]) for c in contract_index.values()}
             ),
             "source_issues": len(issue_rows),
-            "legacy_methods": len(method_rows),
-            "mapped_legacy_methods": mapped,
-            "pending_legacy_methods": pending,
         },
         "regions": dict(sorted(region_counts.items())),
         "live_status_counts": dict(sorted(live_status_counts.items())),

@@ -5,10 +5,7 @@
     "contracts": 155,
     "bindings": 155,
     "source_documents": 115,
-    "source_issues": 43,
-    "legacy_methods": 150,
-    "mapped_legacy_methods": 80,
-    "pending_legacy_methods": 70
+    "source_issues": 43
   },
   "regions": {
     "domestic": 99,

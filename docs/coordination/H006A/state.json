@@ -1,0 +1,19 @@
+{
+  "task_id": "H006A",
+  "session_id": "164604af-928e-494d-baac-1dbfdf90c692",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "models_observed": [
+    "devin/swe-2"
+  ],
+  "status": "accepted",
+  "candidate_sha256": "4ceb9d79f693863e767f692acbd674e5bb872070212f155b45d8391f7312fd6f",
+  "usage_reported_deduplicated": {
+    "input_tokens": 23536,
+    "cache_read_input_tokens": 3776,
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 49125
+  },
+  "verification": "1585 pytest tests and 11 subtests passed; mypy 30 SDK source files; Ruff 88 files; 155 contracts and 1272 synthetic executions passed. Remote CI is recorded separately.",
+  "conversation_cleanup": "Accepted worker conversations deleted at user request; reviewed artifacts and verification retained."
+}

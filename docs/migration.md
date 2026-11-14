@@ -1,10 +1,10 @@
-# 从 ezviz-openapi-utils 迁移到 ezviz-unified
+# 旧版 utils 与新 SDK 的历史对照（已冻结）
 
-本文面向旧发行 `ezviz-openapi-utils`（版本 0.3.4，导入名 `ezviz_openapi_utils`）迁移到新发行 `ezviz-unified`（版本 0.1.0a1，导入名 `ezviz_unified`）的用户。
+本文保留早期对旧发行 `ezviz-openapi-utils` 0.3.4与新SDK 0.1.0a1的对照，仅供历史研究，不再持续维护。后续入口和支持范围以当前README、官方契约与发行说明为准。新SDK不提供旧API兼容层，表中的待迁移项不是待办或交付承诺。
 
 ## 发行与兼容边界
 
-新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[旧版150项清单](../contracts/legacy-migration.json)中，逐项记录新入口和待迁移状态，最新数量见[覆盖清单](../contracts/coverage.json)。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
+新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[冻结的旧版对照](research/legacy-audit/unified-comparison-2026-11-14.json)记录当时入口和未映射状态；这些历史数量不进入当前覆盖统计或CI。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
 
 ## 方法映射
 

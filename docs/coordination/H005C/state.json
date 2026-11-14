@@ -1,0 +1,27 @@
+{
+  "task_id": "H005C",
+  "status": "accepted",
+  "session_id": "52fb3ef1-67f1-4a85-802b-8e696bd310da",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "input_tokens": 155441,
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 39237,
+    "cache_read_input_tokens": 421376
+  },
+  "extraction": "Final complete AST-parsed build_cases block; preliminary fragments ignored.",
+  "models_observed": [
+    "devin/swe-2"
+  ],
+  "local_candidate_artifacts_sha256": {
+    "candidate.md": "a48b015c3b23549842dbc9783a7bd1284111df0768a0b304c06e5697824b4559",
+    "candidate-unparsed.md": "3707b4a5c30618ad232d8333c0f155717d348a848328b9f5433ffd816962af24",
+    "cases.json": "c364e27f8ef9fedf57817037c5365425b83dbf136c2a2a84b4dc1f79c443b7f6",
+    "candidate-code.txt": "934855cad336e2dd68d7fea993cd677ea71602855cbeafbcb3bc5ff05eda2a57",
+    "case_builder.py": "f799b5060f4ba714249398c6b508e2c4fe3566f8d5b204199e9a062db3b0048c"
+  },
+  "retention": "Raw public candidates retained in ignored .claude/coordination; current maintained cases live in evals/contracts/cases.json.",
+  "verification": "1585 pytest tests and 11 subtests passed; mypy 30 SDK source files; Ruff 88 files; 155 contracts and 1272 synthetic executions passed. Remote CI is recorded separately.",
+  "conversation_cleanup": "Accepted worker conversations deleted at user request; reviewed artifacts and verification retained."
+}

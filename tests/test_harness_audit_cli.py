@@ -12,7 +12,7 @@ def test_repository_audit_and_summary_are_machine_generated():
     assert result.returncode == 0, result.stderr
     report = json.loads(result.stdout)
     assert report["evidence"] == "registry_and_static_ast_only"
-    assert len(report["inputs_sha256"]) == 5
+    assert len(report["inputs_sha256"]) == 3
     summary = subprocess.run(
         [sys.executable, "-m", "harness.audit", "--repo", ".", "--summary-only"],
         capture_output=True,
@@ -49,7 +49,6 @@ def test_stale_summary_is_rejected(tmp_path):
         "contracts",
         "src/ezviz_unified",
         "docs/validation/live",
-        "docs/research/legacy-audit",
     ):
         shutil.copytree(Path(folder), root / folder)
     summary = json.loads((root / "contracts/coverage.json").read_text())
@@ -61,3 +60,30 @@ def test_stale_summary_is_rejected(tmp_path):
         text=True,
     )
     assert result.returncode == 2 and "summary" in result.stderr.lower()
+
+
+def test_audit_passes_without_legacy_migration_or_inventory(tmp_path):
+    import shutil
+
+    root = tmp_path / "repo"
+    shutil.copytree(Path("src/ezviz_unified"), root / "src/ezviz_unified")
+    shutil.copytree(Path("docs/validation/live"), root / "docs/validation/live")
+    (root / "contracts").mkdir(parents=True)
+    official = (
+        "reviewed-transport-contracts.json",
+        "sdk-bindings.json",
+        "source-issues.json",
+    )
+    for name in official:
+        shutil.copy(Path("contracts") / name, root / "contracts" / name)
+    assert not (root / "contracts/legacy-migration.json").exists()
+    assert not (root / "docs/research/legacy-audit").exists()
+    result = subprocess.run(
+        [sys.executable, "-m", "harness.audit", "--repo", str(root)],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    report = json.loads(result.stdout)
+    assert report["evidence"] == "registry_and_static_ast_only"
+    assert len(report["inputs_sha256"]) == 3

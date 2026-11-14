@@ -1,0 +1,25 @@
+{
+  "task_id": "H005B",
+  "status": "accepted",
+  "session_id": "54741bc8-8382-420a-8d30-d388e79bcb80",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "input_tokens": 94985,
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 6672,
+    "cache_read_input_tokens": 470976
+  },
+  "models_observed": [
+    "devin/swe-2"
+  ],
+  "local_candidate_artifacts_sha256": {
+    "candidate.md": "1d912bfee78ec0d63141c7e36e242982331b6906e6ab3298676aeed10a77ddc3",
+    "cases.json": "82bf78c28bd4a91b6bf5be7fcb3591f1eb7e0c50b9323d3683b06809dc8000d6",
+    "candidate-code.txt": "c77cf446725de28807f3dd795332c22d505cda0a8648fbf752776a169d506d27",
+    "case_builder.py": "1d0b6e0240f6c6f067a62e736869c4e4537e0cd562e67149d30b4bdf206aefb0"
+  },
+  "retention": "Raw public candidates retained in ignored .claude/coordination; current maintained cases live in evals/contracts/cases.json.",
+  "verification": "1585 pytest tests and 11 subtests passed; mypy 30 SDK source files; Ruff 88 files; 155 contracts and 1272 synthetic executions passed. Remote CI is recorded separately.",
+  "conversation_cleanup": "Accepted worker conversations deleted at user request; reviewed artifacts and verification retained."
+}

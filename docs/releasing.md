@@ -1,6 +1,6 @@
 # 发行准备与验证
 
-当前版本为未发布的 `0.1.0a1`，发行名 `ezviz-unified`，与旧 `ezviz-openapi-utils` 独立。发布前先阅读[迁移范围](migration.md)及[真实验证记录](validation/live/2026-11-14/README.md)。仓库仍使用原名称，未执行重命名或PyPI上传。
+当前版本为未发布的 `0.1.0a1`，发行名 `ezviz-unified`，与旧 `ezviz-openapi-utils` 独立。发布前先阅读[官方契约覆盖](../contracts/coverage.json)及[真实验证记录](validation/live/2026-11-14/README.md)。仓库仍使用原名称，未执行重命名或PyPI上传。
 
 ## 构建与检查
 
@@ -9,6 +9,8 @@
 ```sh
 python -m pytest -q
 python -m mypy src/ezviz_unified
+python -m harness.audit --repo . --check-summary
+python -m harness.contract_eval --repo . --require-all
 python -m build
 python tools/release/check_artifacts.py
 python -m twine check dist/*
@@ -41,7 +43,8 @@ python tools/release/verify_installations.py --installer uv --offline --output r
 ## 发布条件
 
 - 冻结拟发布版本和提交，所有检查针对该版本通过。
-- 确认迁移清单和支持范围；目前旧150项业务方法有47项新入口，其余103项尚未迁移。
+- 确认官方契约支持范围、来源缺项与离线评测完整性；不以旧方法映射或兼容性作为发布条件。
+- 核验新项目独立仓库的代码、文档、CI和包元数据链接，再执行旧仓库归档。当前仓库迁移、归档和发布均未执行。
 - 发布说明分别列出离线验证、真实验证和缺项；空设备列表不能证明设备接口可用。
 - 检查公开文档链接、包名归属及发布权限。当前没有自动发布workflow，也没有上传本地生成的文件。
 

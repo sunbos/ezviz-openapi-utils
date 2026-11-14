@@ -1,0 +1,467 @@
+{
+  "reply_path_declarations": [
+    {
+      "operation_id": "cn.token.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.device.status",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.device.status",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "reply_paths": {
+        "message_path": "meta.message",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.list",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.channels",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.list",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.channels",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.token.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.local.recordings",
+      "reply_paths": {
+        "message_path": "meta.message",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.start",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.stop",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.mirror",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.add_preset",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.move_preset",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.clear_preset",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.ptz.start",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.ptz.stop",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.ptz.mirror",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.ptz.add_preset",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.ptz.move_preset",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.ptz.clear_preset",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.presets",
+      "reply_paths": {
+        "message_path": "meta.message",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.calibrate",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.reset",
+      "reply_paths": {
+        "message_path": "meta.message",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_enabled",
+      "reply_paths": {
+        "message_path": "meta.message",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_schedule",
+      "reply_paths": {
+        "message_path": "meta.message",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.set_schedule",
+      "reply_paths": {
+        "message_path": "meta.message",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.list_managed",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.scene.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.scene.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.scene.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.scene.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.sound_localization.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.sound_localization.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.microphone.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.settings.microphone.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.get",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.set",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.bind",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.bind",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.unbind",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.unbind",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.rename",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.rename",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.rename_channel",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.link_ipc",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.link_ipc",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.unlink_ipc",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.unlink_ipc",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.set_channel_visible",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.cameras",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "global.devices.cameras",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    },
+    {
+      "operation_id": "cn.devices.connection_info",
+      "reply_paths": {
+        "message_path": "msg",
+        "data_path": "data"
+      }
+    }
+  ],
+  "note": "Make the already-reviewed root code/meta message/data conventions explicit for the evaluator; SDK runtime unchanged."
+}

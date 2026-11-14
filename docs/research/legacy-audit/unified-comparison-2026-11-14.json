@@ -1478,5 +1478,7 @@
       },
       "notes": "Domestic single-module query, no polling. Returns ApiResponse; device effects not live verified."
     }
-  ]
+  ],
+  "archive_status": "frozen_historical_comparison_not_product_scope",
+  "note": "Historical mapped/pending counts are not current SDK coverage or implementation commitments."
 }

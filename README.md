@@ -158,9 +158,9 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 - [重设计依据](docs/research/2026-11-14-legacy-assessment.md)与[架构设计](docs/design/2026-11-14-foundation-redesign.md)。
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
-- [维护harness](harness/README.md)：比较门户catalog的内容与来源变化，输出待审查报告；当前不自动改代码或发布。
-- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：列明已映射和待迁移范围，以及wheel/sdist的验证边界；数量由[覆盖清单](contracts/coverage.json)提供。
+- [维护harness](harness/README.md)：检查文档差异、契约与源码绑定，执行[离线传输评测](evals/contracts/README.md)；当前不自动改代码或发布。
+- [发行检查](docs/releasing.md)：核验独立包的wheel/sdist、官方契约及实际验证范围。旧版对照仅保留为[历史参考](docs/migration.md)，不作为产品完成度。
 
-旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
+`ezviz-unified` 是独立新产品：不依赖旧 `ezviz-openapi-utils`，不提供旧导入路径、方法别名或兼容适配层。API按官方契约和当前使用场景设计，旧方法数量不作为范围或发布门槛。新项目迁入独立仓库并核验完成后，再归档旧仓库；目前仍在原仓库开发分支中，尚未归档。
 
 MIT License。项目为第三方实现，不属于萤石官方 SDK。

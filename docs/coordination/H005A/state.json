@@ -1,0 +1,41 @@
+{
+  "task_id": "H005A",
+  "status": "accepted",
+  "session_id": "2c7d0562-8abf-4237-83b4-6525f622f615",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "input_tokens": 114336,
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 49583,
+    "cache_read_input_tokens": 1755264
+  },
+  "review_findings": [
+    "fabricated version fallback",
+    "purges SDK modules and defeats fault injection",
+    "self-derived auth origin",
+    "header normalization/content-type mismatch",
+    "JSON form objects rejected",
+    "extra requests not bounded immediately",
+    "cleanup failures ignored"
+  ],
+  "original_session_id": "b0e1a320-e8be-4aa9-ace2-12fa68bdc79a",
+  "original_usage_reported_deduplicated": {
+    "cache_read_input_tokens": 1746496,
+    "cache_creation_input_tokens": 0,
+    "input_tokens": 116542,
+    "output_tokens": 47001
+  },
+  "models_observed": [
+    "devin/swe-2"
+  ],
+  "local_candidate_artifacts_sha256": {
+    "revised-code.txt": "c5b0de52467e4abfc8f7baa203f5cc6c974e4aa1e9652df2e052d9173e6b8eca",
+    "candidate.md": "381045729a0df6eae28806d0937e99c4f139a0feda7fd8e2c1e4c2a32067797a",
+    "candidate-code.txt": "5d41b02ee3eaf8879e5e2ec6fdaf687f107fe0c25142674ea971ba4cd674abee",
+    "candidate-revised.md": "2c5ed4b9be4a4dbab7f4f50f7fd951ebfffbfdf7f4acad5f48bc0d963191f9e7"
+  },
+  "retention": "Raw public candidates retained in ignored .claude/coordination; current maintained cases live in evals/contracts/cases.json.",
+  "verification": "1585 pytest tests and 11 subtests passed; mypy 30 SDK source files; Ruff 88 files; 155 contracts and 1272 synthetic executions passed. Remote CI is recorded separately.",
+  "conversation_cleanup": "Accepted worker conversations deleted at user request; reviewed artifacts and verification retained."
+}

@@ -25,7 +25,8 @@
         "AsyncDevices.status"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "devices.status"
     },
     {
       "operation_id": "global.device.status",
@@ -37,7 +38,8 @@
         "AsyncDevices.status"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "devices.status"
     },
     {
       "operation_id": "global.local.recordings",
@@ -49,7 +51,8 @@
         "AsyncRecordings.local"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "recordings.local"
     },
     {
       "operation_id": "cn.devices.list",
@@ -62,7 +65,8 @@
       ],
       "offline_status": "passed",
       "live_status": "empty_list_succeeded",
-      "live_evidence": "docs/validation/live/2026-11-14/domestic.json"
+      "live_evidence": "docs/validation/live/2026-11-14/domestic.json",
+      "public_entry": "devices.list"
     },
     {
       "operation_id": "cn.devices.get",
@@ -74,7 +78,8 @@
         "AsyncDevices.get"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "devices.get"
     },
     {
       "operation_id": "cn.devices.channels",
@@ -86,7 +91,8 @@
         "AsyncDevices.channels"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "devices.channels"
     },
     {
       "operation_id": "global.devices.list",
@@ -98,7 +104,8 @@
         "AsyncDevices.list"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "devices.list"
     },
     {
       "operation_id": "global.devices.get",
@@ -110,7 +117,8 @@
         "AsyncDevices.get"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "devices.get"
     },
     {
       "operation_id": "global.devices.channels",
@@ -122,7 +130,8 @@
         "AsyncDevices.channels"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "devices.channels"
     },
     {
       "operation_id": "global.token.get",
@@ -146,7 +155,8 @@
         "AsyncRecordings.local"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "recordings.local"
     },
     {
       "operation_id": "cn.ptz.start",
@@ -158,7 +168,8 @@
         "AsyncPtz.start"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.start"
     },
     {
       "operation_id": "cn.ptz.stop",
@@ -170,7 +181,8 @@
         "AsyncPtz.stop"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.stop"
     },
     {
       "operation_id": "cn.ptz.mirror",
@@ -182,7 +194,8 @@
         "AsyncPtz.mirror"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.mirror"
     },
     {
       "operation_id": "cn.ptz.add_preset",
@@ -194,7 +207,8 @@
         "AsyncPtz.add_preset"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.add_preset"
     },
     {
       "operation_id": "cn.ptz.move_preset",
@@ -206,7 +220,8 @@
         "AsyncPtz.move_preset"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.move_preset"
     },
     {
       "operation_id": "cn.ptz.clear_preset",
@@ -218,7 +233,8 @@
         "AsyncPtz.clear_preset"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.clear_preset"
     },
     {
       "operation_id": "global.ptz.start",
@@ -230,7 +246,8 @@
         "AsyncPtz.start"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.start"
     },
     {
       "operation_id": "global.ptz.stop",
@@ -242,7 +259,8 @@
         "AsyncPtz.stop"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.stop"
     },
     {
       "operation_id": "global.ptz.mirror",
@@ -254,7 +272,8 @@
         "AsyncPtz.mirror"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.mirror"
     },
     {
       "operation_id": "global.ptz.add_preset",
@@ -266,7 +285,8 @@
         "AsyncPtz.add_preset"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.add_preset"
     },
     {
       "operation_id": "global.ptz.move_preset",
@@ -278,7 +298,8 @@
         "AsyncPtz.move_preset"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.move_preset"
     },
     {
       "operation_id": "global.ptz.clear_preset",
@@ -290,7 +311,8 @@
         "AsyncPtz.clear_preset"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.clear_preset"
     },
     {
       "operation_id": "cn.ptz.presets",
@@ -302,7 +324,8 @@
         "AsyncPtz.presets"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.presets"
     },
     {
       "operation_id": "cn.ptz.calibrate",
@@ -314,7 +337,8 @@
         "AsyncPtz.calibrate"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.calibrate"
     },
     {
       "operation_id": "cn.ptz.reset",
@@ -326,7 +350,8 @@
         "AsyncPtz.reset"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.reset"
     },
     {
       "operation_id": "cn.ptz.cruise.get_enabled",
@@ -338,7 +363,8 @@
         "AsyncCruise.get_enabled"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.cruise.get_enabled"
     },
     {
       "operation_id": "cn.ptz.cruise.get_schedule",
@@ -350,7 +376,8 @@
         "AsyncCruise.get_schedule"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.cruise.get_schedule"
     },
     {
       "operation_id": "cn.ptz.cruise.set_schedule",
@@ -362,7 +389,8 @@
         "AsyncCruise.set_schedule"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "ptz.cruise.set_schedule"
     },
     {
       "operation_id": "cn.devices.list_managed",
@@ -375,7 +403,8 @@
       ],
       "offline_status": "passed",
       "live_status": "empty_list_succeeded_application_token",
-      "live_evidence": "docs/validation/live/2026-11-14-managed/domestic.json"
+      "live_evidence": "docs/validation/live/2026-11-14-managed/domestic.json",
+      "public_entry": "devices.list_managed"
     },
     {
       "operation_id": "cn.diagnostics.protocol_support",
@@ -388,7 +417,8 @@
       ],
       "offline_status": "passed",
       "live_status": "request_failed_http_500",
-      "live_evidence": "docs/validation/live/2026-11-14-protocol/domestic.json"
+      "live_evidence": "docs/validation/live/2026-11-14-protocol/domestic.json",
+      "public_entry": "diagnostics.protocol_support"
     },
     {
       "operation_id": "cn.diagnostics.search",
@@ -400,7 +430,8 @@
         "AsyncDiagnostics.search"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.search"
     },
     {
       "operation_id": "cn.diagnostics.channel_status",
@@ -412,7 +443,8 @@
         "AsyncDiagnostics.channel_status"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.channel_status"
     },
     {
       "operation_id": "cn.diagnostics.capabilities",
@@ -424,7 +456,8 @@
         "AsyncDiagnostics.capabilities"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.capabilities"
     },
     {
       "operation_id": "global.diagnostics.capabilities",
@@ -436,7 +469,8 @@
         "AsyncDiagnostics.capabilities"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.capabilities"
     },
     {
       "operation_id": "cn.diagnostics.version",
@@ -448,7 +482,8 @@
         "AsyncDiagnostics.version"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.version"
     },
     {
       "operation_id": "global.diagnostics.version",
@@ -460,7 +495,8 @@
         "AsyncDiagnostics.version"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.version"
     },
     {
       "operation_id": "cn.diagnostics.storage_status",
@@ -472,7 +508,8 @@
         "AsyncDiagnostics.storage_status"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.storage_status"
     },
     {
       "operation_id": "global.diagnostics.storage_status",
@@ -484,7 +521,8 @@
         "AsyncDiagnostics.storage_status"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.storage_status"
     },
     {
       "operation_id": "cn.diagnostics.disk_capacity",
@@ -496,7 +534,8 @@
         "AsyncDiagnostics.disk_capacity"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "diagnostics.disk_capacity"
     },
     {
       "operation_id": "cn.settings.wifi_prompt.get",
@@ -511,7 +550,8 @@
         "switch": "wifi_prompt"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "cn.settings.wifi_prompt.set",
@@ -526,7 +566,8 @@
         "switch": "wifi_prompt"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "global.settings.wifi_prompt.get",
@@ -541,7 +582,8 @@
         "switch": "wifi_prompt"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "global.settings.wifi_prompt.set",
@@ -556,7 +598,8 @@
         "switch": "wifi_prompt"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "cn.settings.scene.get",
@@ -571,7 +614,8 @@
         "switch": "scene"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "cn.settings.scene.set",
@@ -586,7 +630,8 @@
         "switch": "scene"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "global.settings.scene.get",
@@ -601,7 +646,8 @@
         "switch": "scene"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "global.settings.scene.set",
@@ -616,7 +662,8 @@
         "switch": "scene"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "cn.settings.sound_localization.get",
@@ -631,7 +678,8 @@
         "switch": "sound_localization"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "cn.settings.sound_localization.set",
@@ -646,7 +694,8 @@
         "switch": "sound_localization"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "global.settings.sound_localization.get",
@@ -661,7 +710,8 @@
         "switch": "sound_localization"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "global.settings.sound_localization.set",
@@ -676,7 +726,8 @@
         "switch": "sound_localization"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "cn.settings.indicator_light.get",
@@ -691,7 +742,8 @@
         "switch": "indicator_light"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "cn.settings.indicator_light.set",
@@ -706,7 +758,8 @@
         "switch": "indicator_light"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "cn.settings.all_day_record.get",
@@ -721,7 +774,8 @@
         "switch": "all_day_record"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "cn.settings.all_day_record.set",
@@ -736,7 +790,8 @@
         "switch": "all_day_record"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "cn.settings.microphone.get",
@@ -751,7 +806,8 @@
         "switch": "microphone"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "cn.settings.microphone.set",
@@ -766,7 +822,8 @@
         "switch": "microphone"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "global.settings.microphone.get",
@@ -781,7 +838,8 @@
         "switch": "microphone"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.get_switch"
     },
     {
       "operation_id": "global.settings.microphone.set",
@@ -796,7 +854,8 @@
         "switch": "microphone"
       },
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "not_verified",
+      "public_entry": "settings.set_switch"
     },
     {
       "operation_id": "cn.devices.bind",

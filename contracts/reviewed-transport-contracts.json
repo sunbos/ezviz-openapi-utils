@@ -33,7 +33,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"code\": \"200\""
+        "evidence": "\"code\": \"200\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -111,7 +113,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"code\": \"200\""
+        "evidence": "\"code\": \"200\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -170,7 +174,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"code\": \"200\""
+        "evidence": "\"code\": \"200\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -261,7 +267,9 @@
         "values": [
           200
         ],
-        "evidence": "\"meta\": {\n\t\t\"code\": 200"
+        "evidence": "\"meta\": {\n\t\t\"code\": 200",
+        "message_path": "meta.message",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -338,7 +346,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"msg\": \"操作成功\",\r\n    \"code\": \"200\""
+        "evidence": "\"msg\": \"操作成功\",\r\n    \"code\": \"200\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -408,7 +418,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"msg\": \"Operation succeeded\",\r\n    \"code\": \"200\""
+        "evidence": "\"msg\": \"Operation succeeded\",\r\n    \"code\": \"200\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -458,7 +470,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"code\": \"200\",\r\n    \"msg\": \"操作成功!\""
+        "evidence": "\"code\": \"200\",\r\n    \"msg\": \"操作成功!\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -520,7 +534,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\""
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -576,7 +592,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\""
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -628,7 +646,9 @@
         "values": [
           "200"
         ],
-        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\""
+        "evidence": "\"code\": \"200\",\n    \"msg\": \"Operating succeeded!\"",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -683,7 +703,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -782,7 +804,9 @@
         "values": [
           200
         ],
-        "evidence": "response example and return field table"
+        "evidence": "response example and return field table",
+        "message_path": "meta.message",
+        "data_path": "data"
       },
       "constraints": [
         {
@@ -870,7 +894,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -952,7 +978,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1030,7 +1058,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1097,7 +1127,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1179,7 +1211,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1257,7 +1291,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1334,7 +1370,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1404,7 +1442,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1472,7 +1512,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1527,7 +1569,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1593,7 +1637,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1659,7 +1705,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1718,7 +1766,9 @@
         "values": [
           200
         ],
-        "evidence": "response table/example; any type conflict is listed in uncertainties"
+        "evidence": "response table/example; any type conflict is listed in uncertainties",
+        "message_path": "meta.message",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [],
@@ -1768,7 +1818,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response table/example; any type conflict is listed in uncertainties"
+        "evidence": "response table/example; any type conflict is listed in uncertainties",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1816,7 +1868,9 @@
         "values": [
           200
         ],
-        "evidence": "response table/example; any type conflict is listed in uncertainties"
+        "evidence": "response table/example; any type conflict is listed in uncertainties",
+        "message_path": "meta.message",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -1872,7 +1926,9 @@
           200,
           "200"
         ],
-        "evidence": "response table/example; any type conflict is listed in uncertainties"
+        "evidence": "response table/example; any type conflict is listed in uncertainties",
+        "message_path": "meta.message",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [],
@@ -1917,7 +1973,9 @@
         "values": [
           200
         ],
-        "evidence": "response table/example; any type conflict is listed in uncertainties"
+        "evidence": "response table/example; any type conflict is listed in uncertainties",
+        "message_path": "meta.message",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [],
@@ -1976,7 +2034,9 @@
         "values": [
           200
         ],
-        "evidence": "response table/example; any type conflict is listed in uncertainties"
+        "evidence": "response table/example; any type conflict is listed in uncertainties",
+        "message_path": "meta.message",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -2055,7 +2115,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -2676,7 +2738,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -2746,7 +2810,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -2798,7 +2864,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [],
@@ -2857,7 +2925,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -2913,7 +2983,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -2987,7 +3059,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3043,7 +3117,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -3107,7 +3183,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3169,7 +3247,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -3243,7 +3323,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3299,7 +3381,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -3363,7 +3447,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3425,7 +3511,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -3499,7 +3587,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3563,7 +3653,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -3637,7 +3729,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3701,7 +3795,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -3764,7 +3860,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3812,7 +3910,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [],
@@ -3862,7 +3962,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example"
+        "evidence": "response example",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [],
@@ -3920,7 +4022,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -3979,7 +4083,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4035,7 +4141,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4083,7 +4191,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [],
@@ -4141,7 +4251,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4202,7 +4314,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4274,7 +4388,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4361,7 +4477,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4438,7 +4556,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4504,7 +4624,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4570,7 +4692,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4632,7 +4756,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": false,
       "constraints": [
@@ -4695,7 +4821,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -4752,7 +4880,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [
@@ -4802,7 +4932,9 @@
         "values": [
           "200"
         ],
-        "evidence": "response example/return fields"
+        "evidence": "response example/return fields",
+        "message_path": "msg",
+        "data_path": "data"
       },
       "read_only": true,
       "constraints": [

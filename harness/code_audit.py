@@ -3,10 +3,9 @@
 Parses ``src/ezviz_unified`` modules without importing or executing them and
 checks that every declared ``Class.method`` symbol resolves through the C3
 method-resolution order, that every declared ``argument_constants`` key names
-a real parameter on every declared symbol, that ``public_entry`` attribute
-paths resolve from both ``Client`` and ``AsyncClient`` to one of the binding's
-declared implementation nodes, and that each migrated legacy ``client.*``
-target resolves on both client flavors to a declared implementation node.
+a real parameter on every declared symbol, and that ``public_entry``
+attribute paths resolve from both ``Client`` and ``AsyncClient`` to one of
+the binding's declared implementation nodes.
 
 The evidence is purely static: it proves names and paths exist in the AST,
 not runtime behavior, argument values, or live API correctness.
@@ -23,7 +22,6 @@ EVIDENCE = "static_ast_symbols_only"
 SDK_ROOT_REL = PurePosixPath("src/ezviz_unified")
 CLIENT_MODULE = "src/ezviz_unified/client.py"
 CLIENT_CLASSES = ("Client", "AsyncClient")
-MIGRATED_STATUS = "mapped_with_breaking_changes"
 MethodNode = ast.FunctionDef | ast.AsyncFunctionDef
 _FUNC_NODES = (ast.FunctionDef, ast.AsyncFunctionDef)
 _SCOPE_NODES = (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)
@@ -412,7 +410,7 @@ def _symbols(value: object, where: str) -> list[tuple[str, str]]:
     return parsed
 
 
-def _check_binding(model: _Model, raw: object, index: int, declared: list[MethodNode]) -> int:
+def _check_binding(model: _Model, raw: object, index: int) -> int:
     where = f"bindings[{index}]"
     if not isinstance(raw, dict):
         raise _err(where, "expected an object")
@@ -443,31 +441,10 @@ def _check_binding(model: _Model, raw: object, index: int, declared: list[Method
     evidence = raw.get("live_evidence")
     if evidence is not None:
         _resolve_under(model.root, _evidence_path(evidence, where), where, kind="file")
-    declared.extend(nodes)
     return len(symbols)
 
 
-def _check_migration(model: _Model, raw: object, index: int, declared: list[MethodNode]) -> int:
-    where = f"migration.methods[{index}]"
-    if not isinstance(raw, dict):
-        raise _err(where, "expected an object")
-    if raw.get("status") != MIGRATED_STATUS:
-        return 0
-    target = raw.get("target")
-    if not isinstance(target, str) or not target.startswith("client."):
-        raise _err(where, "migrated target must start with 'client.'")
-    path = _public_path(target[len("client.") :], where)
-    for client in CLIENT_CLASSES:
-        try:
-            node = model.resolve_path(path, client)
-        except CodeAuditError:
-            node = None
-        if node is None or not any(node is impl for impl in declared):
-            raise _err(where, "migrated target reaches no declared binding symbol")
-    return 1
-
-
-def audit_code(repo_root: Path, bindings: dict, migration: dict) -> dict:
+def audit_code(repo_root: Path, bindings: dict) -> dict:
     """Statically verify declared symbols and client paths against the SDK AST.
 
     Reads only ``.py`` files under ``repo_root/src/ezviz_unified`` plus any
@@ -477,23 +454,16 @@ def audit_code(repo_root: Path, bindings: dict, migration: dict) -> dict:
     model = _Model(repo_root)
     if not isinstance(bindings, dict) or not isinstance(bindings.get("bindings"), list):
         raise _err("bindings", "expected an object with a bindings list")
-    if not isinstance(migration, dict) or not isinstance(migration.get("methods"), list):
-        raise _err("migration", "expected an object with a methods list")
     rows = bindings["bindings"]
-    declared: list[MethodNode] = []
     symbols_checked = 0
     for i, raw in enumerate(rows):
-        symbols_checked += _check_binding(model, raw, i, declared)
-    migration_checked = 0
-    for i, raw in enumerate(migration["methods"]):
-        migration_checked += _check_migration(model, raw, i, declared)
+        symbols_checked += _check_binding(model, raw, i)
     return {
         "schema_version": SCHEMA_VERSION,
         "evidence": EVIDENCE,
         "summary": {
             "bindings_checked": len(rows),
             "symbols_checked": symbols_checked,
-            "migration_targets_checked": migration_checked,
         },
         "source_files_sha256": {rel: model.hashes[rel] for rel in sorted(model.hashes)},
     }

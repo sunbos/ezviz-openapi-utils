@@ -1,0 +1,3722 @@
+{
+  "schema_version": 1,
+  "evidence": "synthetic_sdk_wire_cases_not_real_api_results",
+  "cases": [
+    {
+      "operation_id": "cn.alarms.for_device",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$type": "AlarmQuery",
+          "args": [],
+          "kwargs": {
+            "status": 1,
+            "page_size": 10
+          }
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "status": "1",
+        "pageSize": "10"
+      },
+      "data": [
+        {
+          "alarmId": "EVAL_ALARM_2",
+          "alarmTime": 1767578400000,
+          "deviceSerial": "EV1234567",
+          "alarmPicUrl": "https://media.example.invalid/EVAL/alarm_2.jpg",
+          "_eval_marker": "cn.alarms.for_device"
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.alarms.list",
+      "args": [
+        {
+          "$type": "AlarmQuery",
+          "args": [],
+          "kwargs": {
+            "start_time": 1767578400000,
+            "end_time": 1767587400000,
+            "alarm_type": 10000,
+            "status": 2,
+            "page_start": 0,
+            "page_size": 20
+          }
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "startTime": "1767578400000",
+        "endTime": "1767587400000",
+        "alarmType": "10000",
+        "status": "2",
+        "pageStart": "0",
+        "pageSize": "20"
+      },
+      "data": [
+        {
+          "alarmId": "EVAL_ALARM_1",
+          "alarmTime": 1767578400000,
+          "alarmType": 10000,
+          "isChecked": 0,
+          "alarmPicUrl": "https://media.example.invalid/EVAL/alarm_1.jpg",
+          "_eval_marker": "cn.alarms.list"
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.arming.active_defence",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        2
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "status": "2"
+      },
+      "data": {
+        "_eval_marker": "cn.arming.active_defence"
+      }
+    },
+    {
+      "operation_id": "cn.arming.get_schedule",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 1
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "1"
+      },
+      "data": {
+        "startTime": "6:00",
+        "stopTime": "n00:00",
+        "period": "6,0",
+        "enable": 0,
+        "_eval_marker": "cn.arming.get_schedule"
+      }
+    },
+    {
+      "operation_id": "cn.arming.set_mode",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        8
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "isDefence": "8"
+      },
+      "data": {
+        "_eval_marker": "cn.arming.set_mode"
+      }
+    },
+    {
+      "operation_id": "cn.arming.set_schedule",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$type": "ArmingSchedule",
+          "args": [],
+          "kwargs": {
+            "start_time": "6:00",
+            "stop_time": "n00:00",
+            "weekdays": [
+              6,
+              0
+            ],
+            "enabled": false
+          }
+        }
+      ],
+      "kwargs": {
+        "channel": 1
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "1",
+        "startTime": "6:00",
+        "stopTime": "n00:00",
+        "period": "6,0",
+        "enable": "0"
+      },
+      "data": {
+        "_eval_marker": "cn.arming.set_schedule"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.activate_card",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "EVALCARD123456789"
+      ],
+      "kwargs": {
+        "channel": 1,
+        "phone": "",
+        "immediately": true
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "cardPassword": "EVALCARD123456789",
+        "channelNo": "1",
+        "phone": "",
+        "isImmediately": "1"
+      },
+      "data": {
+        "orderId": "EVAL_ORDER_CARD",
+        "_eval_marker": "cn.cloud_storage.activate_card"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.available_types",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 1,
+        "payment": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "1",
+        "payment": "2"
+      },
+      "data": [
+        {
+          "cloudType": "EVAL_TYPE_A",
+          "price": 990,
+          "_eval_marker": "cn.cloud_storage.available_types"
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.cloud_storage.info_v1",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "version": 1,
+        "channel": 2,
+        "phone": ""
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2",
+        "phone": ""
+      },
+      "data": {
+        "deviceSerial": "EV1234567",
+        "channelNo": 1,
+        "startTime": 1767578400000,
+        "expireTime": 1800000000000,
+        "status": 1,
+        "_eval_marker": "cn.cloud_storage.info_v1"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.info_v2",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "version": 2,
+        "channel": 3
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "3"
+      },
+      "data": [
+        {
+          "deviceSerial": "EV1234567",
+          "channelNo": 1,
+          "startTime": 1767578400000,
+          "expireTime": 1800000000000,
+          "status": 1,
+          "_eval_marker": "cn.cloud_storage.info_v2"
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.cloud_storage.open_service",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "EVAL_PLAN_7D",
+        {
+          "$ref": "request_id"
+        }
+      ],
+      "kwargs": {
+        "options": {
+          "$type": "StorageOrderOptions",
+          "args": [],
+          "kwargs": {
+            "channel": 1,
+            "immediately": false,
+            "payment": 10,
+            "upgrade_intelligent": true,
+            "device_auth": false,
+            "intelligent_id": "EVAL_MODEL_1"
+          }
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "cloudType": "EVAL_PLAN_7D",
+        "requestId": {
+          "$ref": "request_id"
+        },
+        "channelNo": "1",
+        "isImmediately": "0",
+        "payment": "10",
+        "upgradeIntelligentEnable": "1",
+        "deviceAuthEnable": "0",
+        "intelligentId": "EVAL_MODEL_1"
+      },
+      "data": {
+        "orderId": "EVAL_ORDER_SVC",
+        "_eval_marker": "cn.cloud_storage.open_service"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.opening_status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "isOpening": 1,
+        "orderId": "EVAL_ORDER_OPEN",
+        "_eval_marker": "cn.cloud_storage.opening_status"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.set_enabled",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        true
+      ],
+      "kwargs": {
+        "channel": 1
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": "1",
+        "channelNo": "1"
+      },
+      "data": {
+        "enable": 1,
+        "_eval_marker": "cn.cloud_storage.set_enabled"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.start_trial",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "request_id"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "requestId": {
+          "$ref": "request_id"
+        }
+      },
+      "data": {
+        "orderId": "EVAL_ORDER_TRIAL",
+        "_eval_marker": "cn.cloud_storage.start_trial"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.transfer",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "other_serial"
+        },
+        {
+          "$ref": "request_id"
+        }
+      ],
+      "kwargs": {
+        "from_channel": 1,
+        "to_channel": 2
+      },
+      "fields": {
+        "fromDeviceSerial": {
+          "$ref": "device_serial"
+        },
+        "fromChannelNo": "1",
+        "toDeviceSerial": {
+          "$ref": "other_serial"
+        },
+        "toChannelNo": "2",
+        "requestId": {
+          "$ref": "request_id"
+        }
+      },
+      "data": {
+        "orderId": "EVAL_ORDER_TRANS",
+        "_eval_marker": "cn.cloud_storage.transfer"
+      }
+    },
+    {
+      "operation_id": "cn.device.status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channel": 1
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.devices.bind",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "verification_code"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "validateCode": {
+          "$ref": "verification_code"
+        }
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.devices.cameras",
+      "args": [],
+      "kwargs": {
+        "page_start": 2,
+        "page_size": 50
+      },
+      "fields": {
+        "pageStart": 2,
+        "pageSize": 50
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.devices.channels",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.devices.connection_info",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.devices.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.devices.link_ipc",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "other_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2,
+        "verification_code": {
+          "$ref": "verification_code"
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "ipcSerial": {
+          "$ref": "other_serial"
+        },
+        "channelNo": 2,
+        "validateCode": {
+          "$ref": "verification_code"
+        }
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.devices.list",
+      "args": [],
+      "kwargs": {},
+      "fields": {
+        "pageStart": 0,
+        "pageSize": 10
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.devices.list_managed",
+      "args": [],
+      "kwargs": {
+        "page_start": 2,
+        "page_size": 50
+      },
+      "fields": {
+        "version": "3.0",
+        "pageStart": "2",
+        "pageSize": "50"
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.devices.rename",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "eval_name"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "deviceName": "eval_name"
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.devices.rename_channel",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "eval_channel"
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "name": "eval_channel",
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.devices.set_channel_visible",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        2,
+        false
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2",
+        "enable": 0
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.devices.unbind",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.devices.unlink_ipc",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "other_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "ipcSerial": {
+          "$ref": "other_serial"
+        },
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.diagnostics.capabilities",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.channel_status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.disk_capacity",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.protocol_support",
+      "args": [
+        "EVAL_MODEL",
+        "EVAL_VERSION_1_0"
+      ],
+      "kwargs": {
+        "app_key": "EVAL_PAYLOAD_APP_KEY"
+      },
+      "fields": {
+        "appKey": "EVAL_PAYLOAD_APP_KEY",
+        "model": "EVAL_MODEL",
+        "version": "EVAL_VERSION_1_0"
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.search",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "model": "EVAL_MODEL"
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "model": "EVAL_MODEL"
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.storage_status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.version",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.illumination.set_enabled",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        true
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": "1"
+      },
+      "data": {
+        "_eval_marker": "cn.illumination.set_enabled"
+      }
+    },
+    {
+      "operation_id": "cn.illumination.set_mode",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        3
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "mode": "3"
+      },
+      "data": {
+        "_eval_marker": "cn.illumination.set_mode"
+      }
+    },
+    {
+      "operation_id": "cn.imaging.anti_flicker.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "anti_flicker"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.imaging.anti_flicker.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "60Hz"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "mode": "60Hz"
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.imaging.backlight.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "backlight"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.imaging.backlight.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "center"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "mode": "center"
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.imaging.denoising.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "denoising"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.imaging.denoising.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "advanced"
+      ],
+      "kwargs": {
+        "spatial_level": 1,
+        "temporal_level": 100
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "mode": "advanced",
+        "spatialLevel": 1,
+        "temporalLevel": 100
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.imaging.exposure.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "exposure"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.imaging.exposure.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        40000
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "exposureTarget": 40000
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.imaging.image_params.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "image_params"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.imaging.white_balance.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "white_balance"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.local.recordings",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "start_time": {
+          "$type": "datetime",
+          "value": "2026-01-05T10:00:00+08:00"
+        },
+        "end_time": {
+          "$type": "datetime",
+          "value": "2026-01-05T12:30:00+08:00"
+        },
+        "channel": 2,
+        "record_type": 5,
+        "page_size": 100,
+        "query_by_nvr": true,
+        "location": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2",
+        "recordType": "5",
+        "startTime": "1767578400",
+        "endTime": "1767587400",
+        "isQueryByNvr": "1",
+        "location": "2",
+        "pageSize": "100"
+      },
+      "data": {
+        "records": [
+          {
+            "fileId": "EVAL_FILE_1",
+            "startTime": "1767578400",
+            "endTime": "1767579600",
+            "downloadUrl": "https://media.example.invalid/EVAL/cn_local_file_1",
+            "_eval_marker": "cn.local.recordings"
+          }
+        ],
+        "hasMore": 0,
+        "nextFileTime": "1767587400",
+        "_eval_marker": "cn.local.recordings"
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.format_disk",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "0"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "diskIndex": "0"
+      },
+      "data": {
+        "_eval_marker": "cn.maintenance.format_disk"
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.module_status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "EVAL_MODULE_1"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "module": "EVAL_MODULE_1"
+      },
+      "data": {
+        "module": "EVAL_MODULE_1",
+        "process": 35,
+        "status": 1,
+        "_eval_marker": "cn.maintenance.module_status"
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.modules",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": [
+        {
+          "module": "EVAL_MODULE_A",
+          "version": "1.0.0",
+          "_eval_marker": "cn.maintenance.modules"
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_firmware",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "_eval_marker": "cn.maintenance.upgrade_firmware"
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_modules",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        [
+          "EVAL_MOD_SECOND",
+          "EVAL_MOD_FIRST"
+        ]
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "modules": "EVAL_MOD_SECOND,EVAL_MOD_FIRST"
+      },
+      "data": {
+        "_eval_marker": "cn.maintenance.upgrade_modules"
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "progress": 42,
+        "status": 0,
+        "upgradeVersion": "V5.3.0 build 260101",
+        "_eval_marker": "cn.maintenance.upgrade_status"
+      }
+    },
+    {
+      "operation_id": "cn.ownership.auto_verify",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "ssid": {
+          "$ref": "ssid"
+        },
+        "client_ip": "203.0.113.8"
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "ssid": {
+          "$ref": "ssid"
+        },
+        "clientIP": "203.0.113.8"
+      },
+      "data": 0
+    },
+    {
+      "operation_id": "cn.ownership.confirm_offline",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": 0
+    },
+    {
+      "operation_id": "cn.ownership.verify_online",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": 0
+    },
+    {
+      "operation_id": "cn.playback.create",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$type": "PlaybackOptions",
+          "args": [],
+          "kwargs": {
+            "channel": 2,
+            "kind": 2,
+            "start_time": {
+              "$type": "datetime",
+              "value": "2026-01-05T10:00:00"
+            },
+            "end_time": {
+              "$type": "datetime",
+              "value": "2026-01-05T11:00:00"
+            }
+          }
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2",
+        "type": "2",
+        "startTime": "2026-01-05 10:00:00",
+        "stopTime": "2026-01-05 11:00:00"
+      },
+      "data": {
+        "id": "EVAL_URL_ID",
+        "url": "https://media.example.invalid/EVAL/playback_cn",
+        "ret": 200,
+        "expireTime": "2026-01-05 12:00:00",
+        "_eval_marker": "cn.playback.create"
+      }
+    },
+    {
+      "operation_id": "cn.playback.invalidate",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "url_id": {
+          "$ref": "url_id"
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "urlId": {
+          "$ref": "url_id"
+        }
+      },
+      "data": {
+        "_eval_marker": "cn.playback.invalidate"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.add_preset",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.ptz.calibrate",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2"
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.ptz.clear_preset",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        13
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "index": 13
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_enabled",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2"
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.get_schedule",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.ptz.cruise.set_schedule",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "enabled": true,
+        "periods": [
+          {
+            "$type": "CruisePeriod",
+            "args": [
+              "08:00",
+              "12:00",
+              [
+                0,
+                1,
+                4
+              ]
+            ],
+            "kwargs": {}
+          }
+        ]
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 1,
+        "timerDefenceQos": [
+          {
+            "startTime": "08:00",
+            "endTime": "12:00",
+            "week": "0,1,4"
+          }
+        ]
+      },
+      "data": null,
+      "json_fields": [
+        "timerDefenceQos"
+      ]
+    },
+    {
+      "operation_id": "cn.ptz.mirror",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        2
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "command": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.ptz.move_preset",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        13
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "index": 13
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.ptz.presets",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2"
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.ptz.reset",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.ptz.start",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        4
+      ],
+      "kwargs": {
+        "channel": 2,
+        "speed": 1
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "direction": 4,
+        "speed": 1
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.ptz.stop",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.security.disable_encryption",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "_eval_marker": "cn.security.disable_encryption"
+      }
+    },
+    {
+      "operation_id": "cn.security.enable_encryption",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "_eval_marker": "cn.security.enable_encryption"
+      }
+    },
+    {
+      "operation_id": "cn.security.update_password",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "old_password"
+        },
+        {
+          "$ref": "new_password"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "oldPassword": {
+          "$ref": "old_password"
+        },
+        "newPassword": {
+          "$ref": "new_password"
+        }
+      },
+      "data": {
+        "_eval_marker": "cn.security.update_password"
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "all_day_record"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "all_day_record",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "indicator_light"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "indicator_light",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.settings.microphone.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "microphone"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.settings.microphone.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "microphone",
+        false
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": "0"
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.settings.scene.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "scene"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.settings.scene.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "scene",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "sound_localization"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "sound_localization",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "wifi_prompt"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "wifi_prompt",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "cn.snapshots.capture",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 1
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "1"
+      },
+      "data": {
+        "picUrl": "https://media.example.invalid/EVAL/capture_cn.jpg",
+        "fileNodeId": "EVAL_NODE_1",
+        "_eval_marker": "cn.snapshots.capture"
+      }
+    },
+    {
+      "operation_id": "cn.snapshots.capture_to_space",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        24680
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2",
+        "resultSpaceId": "24680"
+      },
+      "data": {
+        "picUrl": "https://media.example.invalid/EVAL/capture_space.jpg",
+        "resultSpaceId": 24680,
+        "_eval_marker": "cn.snapshots.capture_to_space"
+      }
+    },
+    {
+      "operation_id": "cn.subaccounts.add_statement",
+      "args": [
+        {
+          "$ref": "account_id"
+        },
+        {
+          "$type": "RamStatement",
+          "args": [
+            [
+              "Get"
+            ],
+            [
+              {
+                "$format": "dev:{device_serial}"
+              }
+            ]
+          ],
+          "kwargs": {}
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        },
+        "statement": {
+          "Permission": "Get",
+          "Resource": [
+            {
+              "$format": "dev:{device_serial}"
+            }
+          ]
+        }
+      },
+      "data": {
+        "_eval_marker": "cn.subaccounts.add_statement"
+      },
+      "json_fields": [
+        "statement"
+      ]
+    },
+    {
+      "operation_id": "cn.subaccounts.create",
+      "args": [
+        {
+          "$ref": "account_name"
+        },
+        {
+          "$ref": "password_digest"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountName": {
+          "$ref": "account_name"
+        },
+        "password": {
+          "$ref": "password_digest"
+        }
+      },
+      "data": {
+        "accountId": "EVAL_ACCOUNT_ID",
+        "accountName": "eval_account",
+        "_eval_marker": "cn.subaccounts.create"
+      }
+    },
+    {
+      "operation_id": "cn.token.get",
+      "args": [],
+      "kwargs": {},
+      "fields": {},
+      "data": null
+    },
+    {
+      "operation_id": "cn.video.get_recording_encoding",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 3,
+        "stream": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "3",
+        "streamType": "2"
+      },
+      "data": {
+        "streamType": "2",
+        "resolution": "27",
+        "videoFrameRate": "14",
+        "intervalFrameI": "40",
+        "_eval_marker": "cn.video.get_recording_encoding"
+      }
+    },
+    {
+      "operation_id": "cn.video.get_switch",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        701
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "type": "701"
+      },
+      "data": {
+        "type": 701,
+        "enable": 1,
+        "_eval_marker": "cn.video.get_switch"
+      }
+    },
+    {
+      "operation_id": "cn.video.set_audio_codec",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "G711a"
+      ],
+      "kwargs": {
+        "channel": 1
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "1",
+        "encodeType": "G711a"
+      },
+      "data": {
+        "_eval_marker": "cn.video.set_audio_codec"
+      }
+    },
+    {
+      "operation_id": "cn.video.set_preview_encoding",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$type": "PreviewEncoding",
+          "args": [
+            1,
+            27,
+            0
+          ],
+          "kwargs": {
+            "iframe_interval": "40",
+            "audio_stream_type": "1",
+            "bitrate": 22,
+            "bitrate_type": 0,
+            "picture_quality": 5,
+            "codec": 2,
+            "complexity": 0
+          }
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "streamTypeIn": "1",
+        "resolution": "27",
+        "videoFrameRate": "0",
+        "intervalFrameI": "40",
+        "streamType": "1",
+        "videoBitRate": "22",
+        "bitRateType": "0",
+        "picQuality": "5",
+        "encodeType": "2",
+        "encodeComplex": "0",
+        "channelNo": "2"
+      },
+      "data": {
+        "_eval_marker": "cn.video.set_preview_encoding"
+      }
+    },
+    {
+      "operation_id": "cn.video.set_quality",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        6
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2",
+        "videoLevel": "6"
+      },
+      "data": {
+        "_eval_marker": "cn.video.set_quality"
+      }
+    },
+    {
+      "operation_id": "cn.video.set_switch",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        455,
+        false
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "type": "455",
+        "enable": "0"
+      },
+      "data": {
+        "_eval_marker": "cn.video.set_switch"
+      }
+    },
+    {
+      "operation_id": "cn.video.set_video_codec",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "H265"
+      ],
+      "kwargs": {
+        "stream": 1,
+        "channel": 4
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "4",
+        "encodeType": "H265",
+        "streamType": "1"
+      },
+      "data": {
+        "_eval_marker": "cn.video.set_video_codec"
+      }
+    },
+    {
+      "operation_id": "global.alarms.for_device",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$type": "AlarmQuery",
+          "args": [],
+          "kwargs": {
+            "status": 1,
+            "page_size": 10
+          }
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "status": "1",
+        "pageSize": "10"
+      },
+      "data": [
+        {
+          "alarmId": "EVAL_ALARM_2",
+          "alarmTime": 1767578400000,
+          "deviceSerial": "EV1234567",
+          "alarmPicUrl": "https://media.example.invalid/EVAL/alarm_2.jpg",
+          "_eval_marker": "global.alarms.for_device"
+        }
+      ]
+    },
+    {
+      "operation_id": "global.alarms.list",
+      "args": [
+        {
+          "$type": "AlarmQuery",
+          "args": [],
+          "kwargs": {
+            "start_time": 1767578400000,
+            "end_time": 1767587400000,
+            "alarm_type": 10000,
+            "status": 2,
+            "page_start": 0,
+            "page_size": 20
+          }
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "startTime": "1767578400000",
+        "endTime": "1767587400000",
+        "alarmType": "10000",
+        "status": "2",
+        "pageStart": "0",
+        "pageSize": "20"
+      },
+      "data": [
+        {
+          "alarmId": "EVAL_ALARM_1",
+          "alarmTime": 1767578400000,
+          "alarmType": 10000,
+          "isChecked": 0,
+          "alarmPicUrl": "https://media.example.invalid/EVAL/alarm_1.jpg",
+          "_eval_marker": "global.alarms.list"
+        }
+      ]
+    },
+    {
+      "operation_id": "global.arming.get_schedule",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "startTime": "22:00",
+        "stopTime": "n06:00",
+        "period": "1,2,3,4,5",
+        "enable": 1,
+        "_eval_marker": "global.arming.get_schedule"
+      }
+    },
+    {
+      "operation_id": "global.arming.set_mode",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        16
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "isDefence": "16"
+      },
+      "data": {
+        "_eval_marker": "global.arming.set_mode"
+      }
+    },
+    {
+      "operation_id": "global.arming.set_schedule",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$type": "ArmingSchedule",
+          "args": [],
+          "kwargs": {
+            "start_time": "22:00",
+            "stop_time": "n06:00",
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "enabled": true
+          }
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "startTime": "22:00",
+        "stopTime": "n06:00",
+        "period": "1,2,3,4,5",
+        "enable": "1"
+      },
+      "data": {
+        "_eval_marker": "global.arming.set_schedule"
+      }
+    },
+    {
+      "operation_id": "global.cloud_storage.activate_card",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "EVALCARD987654321"
+      ],
+      "kwargs": {
+        "channel": 2,
+        "phone": "",
+        "immediately": false
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "cardPassword": "EVALCARD987654321",
+        "channelNo": "2",
+        "phone": "",
+        "isImmediately": "0"
+      },
+      "data": {
+        "orderId": "EVAL_ORDER_CARD_OS",
+        "_eval_marker": "global.cloud_storage.activate_card"
+      }
+    },
+    {
+      "operation_id": "global.cloud_storage.info_v1",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "version": 1,
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2"
+      },
+      "data": {
+        "deviceSerial": "EV1234567",
+        "channelNo": 1,
+        "startTime": 1767578400000,
+        "expireTime": 1800000000000,
+        "status": 1,
+        "_eval_marker": "global.cloud_storage.info_v1"
+      }
+    },
+    {
+      "operation_id": "global.device.status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channel": 1
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.devices.bind",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "verification_code"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "validateCode": {
+          "$ref": "verification_code"
+        }
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.devices.cameras",
+      "args": [],
+      "kwargs": {
+        "page_start": 2,
+        "page_size": 50
+      },
+      "fields": {
+        "pageStart": 2,
+        "pageSize": 50
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.devices.channels",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.devices.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.devices.link_ipc",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "other_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2,
+        "verification_code": {
+          "$ref": "verification_code"
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "ipcSerial": {
+          "$ref": "other_serial"
+        },
+        "channelNo": 2,
+        "validateCode": {
+          "$ref": "verification_code"
+        }
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.devices.list",
+      "args": [],
+      "kwargs": {},
+      "fields": {
+        "pageStart": 0,
+        "pageSize": 10
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.devices.rename",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "eval_name"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "deviceName": "eval_name"
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.devices.unbind",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.devices.unlink_ipc",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "other_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "ipcSerial": {
+          "$ref": "other_serial"
+        },
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.diagnostics.capabilities",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2"
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.diagnostics.storage_status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.diagnostics.version",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.illumination.get_mode",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "graphicType": 2,
+        "luminance": 37,
+        "duration": 9,
+        "_eval_marker": "global.illumination.get_mode"
+      }
+    },
+    {
+      "operation_id": "global.illumination.set_mode",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        2
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "mode": "2"
+      },
+      "data": {
+        "_eval_marker": "global.illumination.set_mode"
+      }
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": "2",
+        "record_type": 4,
+        "start_time": {
+          "$type": "datetime",
+          "value": "2026-01-05T22:00:00"
+        },
+        "end_time": {
+          "$type": "datetime",
+          "value": "2026-01-06T01:00:00"
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2",
+        "recordType": "4",
+        "startTime": "2026-01-05 22:00:00",
+        "endTime": "2026-01-06 01:00:00"
+      },
+      "data": [
+        {
+          "recordId": "EVAL_RECORD_1",
+          "recordType": 4,
+          "startTime": "2026-01-05 22:10:00",
+          "endTime": "2026-01-05 22:40:00",
+          "fileUrl": "https://media.example.invalid/EVAL/global_local_record_1",
+          "_eval_marker": "global.local.recordings"
+        }
+      ]
+    },
+    {
+      "operation_id": "global.maintenance.format_disk",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "0"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "diskIndex": "0"
+      },
+      "data": {
+        "_eval_marker": "global.maintenance.format_disk"
+      }
+    },
+    {
+      "operation_id": "global.maintenance.upgrade_firmware",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "_eval_marker": "global.maintenance.upgrade_firmware"
+      }
+    },
+    {
+      "operation_id": "global.maintenance.upgrade_status",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "progress": 42,
+        "status": 0,
+        "upgradeVersion": "V5.3.0 build 260101",
+        "_eval_marker": "global.maintenance.upgrade_status"
+      }
+    },
+    {
+      "operation_id": "global.playback.create",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$type": "PlaybackOptions",
+          "args": [],
+          "kwargs": {
+            "protocol": 2,
+            "kind": 3,
+            "quality": 2,
+            "start_time": {
+              "$type": "datetime",
+              "value": "2026-01-05T23:00:00"
+            },
+            "end_time": {
+              "$type": "datetime",
+              "value": "2026-01-06T01:30:00"
+            }
+          }
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "protocol": "2",
+        "type": "3",
+        "quality": "2",
+        "startTime": "2026-01-05 23:00:00",
+        "stopTime": "2026-01-06 01:30:00"
+      },
+      "data": {
+        "id": "EVAL_URL_ID",
+        "url": "https://media.example.invalid/EVAL/playback_global",
+        "expireTime": "2026-01-06 02:30:00",
+        "_eval_marker": "global.playback.create"
+      }
+    },
+    {
+      "operation_id": "global.playback.invalidate",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "url_id": {
+          "$ref": "url_id"
+        },
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "2",
+        "urlId": {
+          "$ref": "url_id"
+        }
+      },
+      "data": {
+        "_eval_marker": "global.playback.invalidate"
+      }
+    },
+    {
+      "operation_id": "global.ptz.add_preset",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.ptz.clear_preset",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        13
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "index": 13
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.ptz.mirror",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        2
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "command": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.ptz.move_preset",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        13
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "index": 13
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.ptz.start",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        4
+      ],
+      "kwargs": {
+        "channel": 2,
+        "speed": 1
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "direction": 4,
+        "speed": 1
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.ptz.stop",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2,
+        "direction": 4
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": 2,
+        "direction": 4
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.security.disable_encryption",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "verification_code": {
+          "$ref": "verification_code"
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "validateCode": {
+          "$ref": "verification_code"
+        }
+      },
+      "data": {
+        "_eval_marker": "global.security.disable_encryption"
+      }
+    },
+    {
+      "operation_id": "global.security.enable_encryption",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "_eval_marker": "global.security.enable_encryption"
+      }
+    },
+    {
+      "operation_id": "global.security.update_password",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        {
+          "$ref": "old_password"
+        },
+        {
+          "$ref": "new_password"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "oldPassword": {
+          "$ref": "old_password"
+        },
+        "newPassword": {
+          "$ref": "new_password"
+        }
+      },
+      "data": {
+        "_eval_marker": "global.security.update_password"
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "microphone"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "microphone",
+        false
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": "0"
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.settings.scene.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "scene"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.settings.scene.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "scene",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.settings.sound_localization.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "sound_localization"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.settings.sound_localization.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "sound_localization",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.get",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "wifi_prompt"
+      ],
+      "kwargs": {},
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "evalMarker": "H005B",
+        "items": [
+          {
+            "id": "eval-item-1",
+            "status": 1,
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.set",
+      "args": [
+        {
+          "$ref": "device_serial"
+        },
+        "wifi_prompt",
+        false
+      ],
+      "kwargs": {
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "enable": 0,
+        "channelNo": 2
+      },
+      "data": null
+    },
+    {
+      "operation_id": "global.snapshots.capture",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 1,
+        "quality": 3
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "channelNo": "1",
+        "quality": "3"
+      },
+      "data": {
+        "picUrl": "https://media.example.invalid/EVAL/capture_global.jpg",
+        "fileNodeId": "EVAL_NODE_2",
+        "_eval_marker": "global.snapshots.capture"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.add_statement",
+      "args": [
+        {
+          "$ref": "account_id"
+        },
+        {
+          "$type": "RamStatement",
+          "args": [
+            [
+              "Get"
+            ],
+            [
+              {
+                "$format": "dev:{device_serial}"
+              }
+            ]
+          ],
+          "kwargs": {}
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        },
+        "statement": {
+          "Permission": "Get",
+          "Resource": [
+            {
+              "$format": "dev:{device_serial}"
+            }
+          ]
+        }
+      },
+      "data": {
+        "_eval_marker": "global.subaccounts.add_statement"
+      },
+      "json_fields": [
+        "statement"
+      ]
+    },
+    {
+      "operation_id": "global.subaccounts.change_password",
+      "args": [
+        {
+          "$ref": "account_id"
+        },
+        {
+          "$ref": "password_digest"
+        },
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        },
+        "oldPassword": {
+          "$ref": "password_digest"
+        },
+        "newPassword": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "data": {
+        "_eval_marker": "global.subaccounts.change_password"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.create",
+      "args": [
+        {
+          "$ref": "account_name"
+        },
+        {
+          "$ref": "password_digest"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountName": {
+          "$ref": "account_name"
+        },
+        "password": {
+          "$ref": "password_digest"
+        }
+      },
+      "data": {
+        "accountId": "EVAL_ACCOUNT_ID",
+        "accountName": "eval_account",
+        "_eval_marker": "global.subaccounts.create"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.delete",
+      "args": [
+        {
+          "$ref": "account_id"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        }
+      },
+      "data": {
+        "_eval_marker": "global.subaccounts.delete"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.get",
+      "args": [],
+      "kwargs": {
+        "account_id": {
+          "$ref": "account_id"
+        },
+        "account_name": {
+          "$ref": "account_name"
+        }
+      },
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        },
+        "accountName": {
+          "$ref": "account_name"
+        }
+      },
+      "data": {
+        "accountId": "EVAL_ACCOUNT_ID",
+        "accountName": "eval_account",
+        "_eval_marker": "global.subaccounts.get"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.issue_token",
+      "args": [
+        {
+          "$ref": "account_id"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        }
+      },
+      "data": {
+        "accessToken": "at.EVAL_SUB_TOKEN",
+        "expireTime": 1800000000000,
+        "areaDomain": "https://iusopen.ezvizlife.com",
+        "_eval_marker": "global.subaccounts.issue_token"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.list",
+      "args": [],
+      "kwargs": {
+        "page_start": 0,
+        "page_size": 10
+      },
+      "fields": {
+        "pageStart": "0",
+        "pageSize": "10"
+      },
+      "data": [
+        {
+          "accountId": "EVAL_ACCOUNT_ID",
+          "accountName": "eval_account",
+          "_eval_marker": "global.subaccounts.list"
+        }
+      ]
+    },
+    {
+      "operation_id": "global.subaccounts.remove_device_permissions",
+      "args": [
+        {
+          "$ref": "account_id"
+        },
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        },
+        "deviceSerial": {
+          "$ref": "device_serial"
+        }
+      },
+      "data": {
+        "_eval_marker": "global.subaccounts.remove_device_permissions"
+      }
+    },
+    {
+      "operation_id": "global.subaccounts.set_policy",
+      "args": [
+        {
+          "$ref": "account_id"
+        },
+        [
+          {
+            "$type": "RamStatement",
+            "args": [
+              [
+                "Get",
+                "Replay"
+              ],
+              [
+                {
+                  "$format": "dev:{device_serial}"
+                },
+                {
+                  "$format": "cam:{device_serial}:1"
+                }
+              ]
+            ],
+            "kwargs": {}
+          }
+        ]
+      ],
+      "kwargs": {},
+      "fields": {
+        "accountId": {
+          "$ref": "account_id"
+        },
+        "policy": {
+          "Statement": [
+            {
+              "Permission": "Get,Replay",
+              "Resource": [
+                {
+                  "$format": "dev:{device_serial}"
+                },
+                {
+                  "$format": "cam:{device_serial}:1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "data": {
+        "_eval_marker": "global.subaccounts.set_policy"
+      },
+      "json_fields": [
+        "policy"
+      ]
+    },
+    {
+      "operation_id": "global.token.get",
+      "args": [],
+      "kwargs": {},
+      "fields": {},
+      "data": null
+    }
+  ]
+}

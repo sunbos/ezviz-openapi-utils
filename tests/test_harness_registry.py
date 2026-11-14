@@ -67,28 +67,6 @@ def fixtures():
                 }
             ],
         },
-        {
-            "schema_version": 1,
-            "source_commit": "b" * 40,
-            "compatibility_shim": False,
-            "mapped_count": 1,
-            "pending_count": 0,
-            "methods": [
-                {
-                    "legacy_method": "old_get",
-                    "source_line": 7,
-                    "status": "mapped_with_breaking_changes",
-                    "target": "client.feature.get",
-                    "argument_map": {"old_arg": "new_arg"},
-                    "notes": "breaking change",
-                }
-            ],
-        },
-        {
-            "source_commit": "b" * 40,
-            "public_method_count": 1,
-            "operations": [{"name": "old_get", "source_line": 7}],
-        },
     ]
 
 
@@ -103,9 +81,6 @@ def test_registry_cross_references_and_counts_without_mutation():
         "bindings": 1,
         "source_documents": 1,
         "source_issues": 1,
-        "legacy_methods": 1,
-        "mapped_legacy_methods": 1,
-        "pending_legacy_methods": 0,
     }
     assert result["regions"] == {"domestic": 1}
     assert result["live_status_counts"] == {"not_verified": 1}
@@ -118,7 +93,6 @@ def test_registry_cross_references_and_counts_without_mutation():
         (0, ("schema_version",), True),
         (1, ("schema_version",), 2),
         (2, ("issues",), {}),
-        (3, ("schema_version",), "1"),
         (0, ("contracts", 0, "source_content_sha256"), None),
         (0, ("contracts", 0, "source_content_sha256"), "A" * 64),
         (0, ("contracts", 0, "read_only"), 1),
@@ -152,17 +126,6 @@ def test_registry_cross_references_and_counts_without_mutation():
         (1, ("bindings", 0, "live_status"), "empty_list_succeeded"),
         (2, ("issues", 0, "source_content_sha256"), "c" * 64),
         (2, ("issues", 0, "source_url"), "https://open.ys7.com/help/2"),
-        (3, ("mapped_count",), 0),
-        (3, ("pending_count",), True),
-        (3, ("compatibility_shim",), "false"),
-        (3, ("methods", 0, "source_line"), 8),
-        (3, ("methods", 0, "source_line"), True),
-        (3, ("methods", 0, "legacy_method"), "other"),
-        (3, ("methods", 0, "status"), "verified"),
-        (3, ("methods", 0, "argument_map"), {"x": None}),
-        (3, ("methods", 0, "target"), None),
-        (4, ("public_method_count",), True),
-        (4, ("source_commit",), "different"),
     ],
 )
 def test_registry_rejects_corruption_without_echoing_input(index, path, value):
@@ -178,7 +141,7 @@ def test_registry_rejects_corruption_without_echoing_input(index, path, value):
 
 @pytest.mark.parametrize(
     "index,key",
-    [(0, "contracts"), (1, "bindings"), (2, "issues"), (3, "methods"), (4, "operations")],
+    [(0, "contracts"), (1, "bindings"), (2, "issues")],
 )
 def test_duplicate_identities_are_never_silently_collapsed(index, key):
     data = fixtures()
@@ -197,11 +160,8 @@ def test_unmapped_source_issue_and_reported_live_failure_remain_distinct():
     data[1]["bindings"][0].update(
         live_status="request_failed_http_500", live_evidence="docs/report.json"
     )
-    data[3]["methods"][0].update(status="not_migrated", target=None, argument_map=None)
-    data[3].update(mapped_count=0, pending_count=1)
     result = module().audit_registry(*data)
     assert result["live_status_counts"] == {"request_failed_http_500": 1}
-    assert result["summary"]["mapped_legacy_methods"] == 0
     assert result["summary"]["source_documents"] == 1
 
 

@@ -9,7 +9,7 @@
 - `docs/`：存放配置说明、接口约定和设计决策。
 - `examples/`：存放最小可运行示例，仅使用占位配置。
 - `tools/documents/`：官方文档采集、结构提取和校验工具。
-- `harness/`：独立于SDK的文档变化检测；`contracts/`保存审核契约与代码绑定。
+- `harness/`：独立于SDK的文档变化检测与契约校验；`contracts/`保存审核契约与代码绑定，`evals/`保存独立评测案例。
 - `data/official-docs/`：按采集日期保存原始证据、分类数据及缺项；不打包进 SDK。
 
 SDK代码位于 `src/ezviz_unified/`；`examples/` 尚未创建。SDK与文档工具回归均位于 `tests/`。
@@ -21,6 +21,8 @@ SDK代码位于 `src/ezviz_unified/`；`examples/` 尚未创建。SDK与文档�
 - `uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirements.txt`：安装SDK及开发依赖。
 - `.venv/bin/python -m pytest -q`：运行离线回归。
 - `.venv/bin/python -m mypy src/ezviz_unified`：严格类型检查。
+- `.venv/bin/python -m harness.audit --repo . --check-summary`：核对官方契约、代码绑定和覆盖摘要。
+- `.venv/bin/python -m harness.contract_eval --repo . --require-all`：执行全部已登记契约的离线传输评测。
 - `.venv/bin/python -m build --wheel --no-isolation`：构建发行包。
 
 - `python3 -m pip install -r tools/documents/requirements.txt`：安装采集依赖。
@@ -31,6 +33,10 @@ SDK代码位于 `src/ezviz_unified/`；`examples/` 尚未创建。SDK与文档�
 - Git 初始化后，使用 `git diff --check` 检查未暂存改动；暂存后用 `git diff --cached --check` 检查待提交内容的空白问题。
 
 引入技术栈时，应在同一 PR 中添加依赖清单、适用的锁文件及 README，记录环境要求、安装、运行、测试与格式检查命令。
+
+## 独立产品边界
+
+新SDK不继承旧utils的导入、签名、默认行为或兼容义务，不添加兼容shim。官方契约和实际场景决定范围；旧方法清单仅为历史调研，不能作为CI输入或发布门槛。先完成独立仓库交接，再归档旧仓库；保留历史不等于维护旧实现。
 
 ## 协作与验收
 

@@ -15,8 +15,6 @@ _INPUTS = (
     "contracts/reviewed-transport-contracts.json",
     "contracts/sdk-bindings.json",
     "contracts/source-issues.json",
-    "contracts/legacy-migration.json",
-    "docs/research/legacy-audit/legacy-method-inventory.json",
 )
 _COVERAGE = "contracts/coverage.json"
 
@@ -62,7 +60,7 @@ def audit_repository(repo_root: Path) -> dict:
         values.append(data)
         hashes[relative] = digest
     registry = audit_registry(*values)
-    code = audit_code(root, values[1], values[3])
+    code = audit_code(root, values[1])
     return {
         "schema_version": 1,
         "evidence": "registry_and_static_ast_only",
