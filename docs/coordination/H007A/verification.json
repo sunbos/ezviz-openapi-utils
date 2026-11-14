@@ -10,9 +10,9 @@
   },
   "input_sha256": {
     "catalog": "7befa1e5ba706e2ff897a5da512f821874a8054252a1bb3dd6be870d5941e406",
-    "contracts": "b03e264d4814b17a06ca642b8abb4acb1469a036c53a8992a9715d06458e4158"
+    "contracts": "02ea655211c60bf2d2d71ff7c23d26ee932daee5d802e877384428165d27338b"
   },
-  "full_report_sha256": "d3ef65cdbd1a1ebbc1a7bcb5af757e0bdefe10a4afb8f9ad0f6d892d27f7699a",
+  "full_report_sha256": "fb2ad26b45225d849a026dfa1ec51573ea6d44e53401be422a3515cd902f2105",
   "full_report_local_path": "data/reports/2026-11-14-sdk-document-links.json",
   "source_integrity": {
     "passed": true,

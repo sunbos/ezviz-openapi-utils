@@ -25,7 +25,7 @@ with Client(
 
 客户端按契约携带token，复用当前区域的连接。仅明确只读的操作遇到平台 `10002` 时刷新并重发一次；写操作、网络失败、一般HTTP401及设备层错误不自动重放。自定义接口可用 `Operation` 和 `client.request(...)`，其 `read_only` 默认False。禁止调用方覆盖受管token或Host。
 
-国内分页页码不超过400；海外文档未声明相同限制。每页1–50条。国内 `channels`/`status` 要求序列号英文字母大写。SDK不自动翻页，不自行解释有文档矛盾的海外状态字段。当前设备方法已做离线契约验证；[真实记录](docs/validation/live/2026-11-14/README.md)仅证明国内认证和空设备列表成功，设备详情与海外账户尚待验证。
+国内分页页码不超过400；海外文档未声明相同限制。每页1–50条。国内 `channels`/`status` 要求序列号英文字母大写。SDK不自动翻页，不自行解释有文档矛盾的海外状态字段。当前设备方法已做离线契约验证；[国内记录](docs/validation/live/2026-11-14/README.md)与[新加坡记录](docs/validation/live/2026-11-14-overseas/README.md)证明对应账号的认证和空设备列表成功，设备详情及其他海外集群仍未验证。
 
 国内托管设备使用 `client.devices.list_managed(page_start=0, page_size=10)`；与普通列表分开，不套用400页上限。最新[范围复核](docs/validation/live/2026-11-14-managed/README.md)中，当前开发者token的两个列表均成功且为空，其他授权主体仍未验证。
 
@@ -117,7 +117,7 @@ with TokenManager(
 
 可显式配置海外 `auth_base_url` 与 `api_base_url`，仅接受 EZVIZ 域名下的 HTTPS origin；显式业务地址必须与返回域名一致。刷新提前量默认60秒，最多为剩余寿命的一半。`invalidate(expected_value=旧token)` 只清除匹配缓存，防止迟到的失败响应清掉新 token。
 
-异步管理器在同一事件循环内使用；单个等待方取消不会取消共享刷新。关闭先禁止新调用，再等待在途刷新并释放连接；取消一个关闭等待方时，清理任务仍会继续。国内认证已完成一次真实联调，海外仍待验证；显式只读工具见[联调说明](tools/live/README.md)。
+异步管理器在同一事件循环内使用；单个等待方取消不会取消共享刷新。关闭先禁止新调用，再等待在途刷新并释放连接；取消一个关闭等待方时，清理任务仍会继续。国内与新加坡账号已完成同步只读联调；新加坡账号在文档默认认证入口返回10017，显式配置`RegionConfig.overseas(auth_base_url="https://isgpopen.ezvizlife.com")`后成功，SDK不自动回退区域。此配置仅适用于已确认区域的账号，详见[真实记录](docs/validation/live/2026-11-14-overseas/README.md)和[联调工具](tools/live/README.md)。
 
 ## RAM子账户
 

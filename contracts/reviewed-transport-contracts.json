@@ -714,7 +714,8 @@
         }
       ],
       "uncertainties": [
-        "This page does not promise a fixed seven-day token lifetime."
+        "This page does not promise a fixed seven-day token lifetime.",
+        "2026-11-14: this Singapore account returned 10017 at documented default https://open.ezvizlife.com; explicit regional auth origin https://isgpopen.ezvizlife.com succeeded. No automatic region fallback or universal origin mapping inferred; see docs/validation/live/2026-11-14-overseas/."
       ],
       "transport_evidence": {
         "method": "Request Type: POST",

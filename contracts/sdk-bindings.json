@@ -104,8 +104,10 @@
         "AsyncDevices.list"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified",
-      "public_entry": "devices.list"
+      "live_status": "empty_list_succeeded_singapore",
+      "public_entry": "devices.list",
+      "live_evidence": "docs/validation/live/2026-11-14-overseas/overseas.json",
+      "live_notes": "Synchronous developer-token request, one page with page_size=1; no devices, no detail validation."
     },
     {
       "operation_id": "global.devices.get",
@@ -143,7 +145,9 @@
         "AsyncTokenManager.get_token"
       ],
       "offline_status": "passed",
-      "live_status": "not_verified"
+      "live_status": "authentication_succeeded_explicit_regional_origin",
+      "live_evidence": "docs/validation/live/2026-11-14-overseas/overseas.json",
+      "live_notes": "For this Singapore account the documented default returned 10017. Explicit auth_base_url https://isgpopen.ezvizlife.com succeeded; not a global-default success claim."
     },
     {
       "operation_id": "cn.local.recordings",

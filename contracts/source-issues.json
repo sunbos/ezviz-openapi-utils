@@ -496,6 +496,16 @@
       "description": "The running-task query documents all task status values, including completed and cancelled.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Preserve every returned item and status; do not filter by the method name."
+    },
+    {
+      "id": "global.token.account_specific_auth_origin",
+      "region": "overseas",
+      "source_doc_id": "473",
+      "source_url": "https://open.ys7.com/help/en/473",
+      "source_content_sha256": "9593c796fe05d711b44477ffbe13d0689f164cac329e9b3ef0165b054ce4fe14",
+      "description": "For the tested Singapore account, the documented default auth origin returned 10017 while an explicit Singapore origin succeeded. This is account-specific live evidence, not proof that the default fails for every account.",
+      "status": "observed_account_specific_routing_difference",
+      "sdk_handling": "Keep explicit regional auth_base_url configuration and returned areaDomain validation; never retry blindly across regions. Retain both live receipts."
     }
   ]
 }

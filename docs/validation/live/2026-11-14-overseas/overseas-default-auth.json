@@ -1,0 +1,16 @@
+{
+  "recorded_at_utc": "2026-11-14T10:02:35.238306+00:00",
+  "region": "overseas",
+  "auth_origin": "https://open.ezvizlife.com",
+  "business_origins": [],
+  "read_only": true,
+  "results": [
+    {
+      "operation": "devices.list",
+      "status": "failed",
+      "error_type": "ApiError",
+      "code": "10017",
+      "http_status": 200
+    }
+  ]
+}

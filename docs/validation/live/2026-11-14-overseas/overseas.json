@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-11-14T10:06:37.512320+00:00",
+  "region": "overseas",
+  "auth_origin": "https://isgpopen.ezvizlife.com",
+  "business_origins": [
+    "https://isgpopen.ezvizlife.com"
+  ],
+  "read_only": true,
+  "results": [
+    {
+      "operation": "devices.list",
+      "status": "passed",
+      "returned_items": 0
+    },
+    {
+      "operation": "device_details",
+      "status": "not_verified",
+      "reason": "no_device"
+    }
+  ]
+}
