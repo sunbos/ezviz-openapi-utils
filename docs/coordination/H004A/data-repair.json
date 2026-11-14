@@ -1,0 +1,410 @@
+{
+  "contract_rows": [
+    {
+      "operation_id": "cn.token.get",
+      "added_or_normalized": {
+        "source_content_sha256": "f89f439095194409b0e3cdc8a8d8c188254c70ef510e61f4799694c863865ef3",
+        "read_only": false
+      }
+    },
+    {
+      "operation_id": "cn.device.status",
+      "added_or_normalized": {
+        "source_content_sha256": "ea009238b1eab936a99f45f1cafbc67b7f0a1495e2b073e55917070e8171d59c",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.device.status",
+      "added_or_normalized": {
+        "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.local.recordings",
+      "added_or_normalized": {
+        "read_only": true
+      }
+    },
+    {
+      "operation_id": "cn.devices.list",
+      "added_or_normalized": {
+        "source_content_sha256": "9b6636cd7a15e0660ffa100dfaa67f7a5a55b856b758e79e6d46622c5d69bce3",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.get",
+      "added_or_normalized": {
+        "source_content_sha256": "9a914b090262952baaf49601c36140f57b264d4fc1020df2fd24fd577828b2e8",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.channels",
+      "added_or_normalized": {
+        "source_content_sha256": "3805a44c99b81283abbd56941a5a7647bb4869eaf8f15cb14864c061785562c9",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.list",
+      "added_or_normalized": {
+        "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.get",
+      "added_or_normalized": {
+        "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.channels",
+      "added_or_normalized": {
+        "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+        "read_only": true,
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.token.get",
+      "added_or_normalized": {
+        "read_only": false
+      }
+    },
+    {
+      "operation_id": "cn.local.recordings",
+      "added_or_normalized": {
+        "read_only": true
+      }
+    },
+    {
+      "operation_id": "cn.ptz.start",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.stop",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.mirror",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.add_preset",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.move_preset",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.ptz.clear_preset",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.ptz.start",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.ptz.stop",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.ptz.mirror",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.ptz.add_preset",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.ptz.move_preset",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.ptz.clear_preset",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.list_managed",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.protocol_support",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.search",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.capabilities",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.diagnostics.capabilities",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.diagnostics.version",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.diagnostics.version",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.wifi_prompt.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.wifi_prompt.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.scene.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.scene.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.scene.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.scene.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.sound_localization.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.sound_localization.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.sound_localization.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.indicator_light.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.all_day_record.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.microphone.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.settings.microphone.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.get",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.settings.microphone.set",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.bind",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.bind",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.unbind",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.unbind",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.rename",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.rename",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.rename_channel",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.link_ipc",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.link_ipc",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.unlink_ipc",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.unlink_ipc",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "cn.devices.cameras",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    },
+    {
+      "operation_id": "global.devices.cameras",
+      "added_or_normalized": {
+        "token_location": "form"
+      }
+    }
+  ],
+  "live_evidence_added_to": [
+    "cn.token.get",
+    "cn.devices.list"
+  ],
+  "runtime_sdk_changes": false
+}

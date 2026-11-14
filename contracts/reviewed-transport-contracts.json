@@ -62,7 +62,9 @@
         "method": "请求方式\nPOST",
         "path": "https://open.ys7.com/api/lapp/token/get",
         "encoding": "--header 'Content-Type: application/x-www-form-urlencoded'"
-      }
+      },
+      "source_content_sha256": "f89f439095194409b0e3cdc8a8d8c188254c70ef510e61f4799694c863865ef3",
+      "read_only": false
     },
     {
       "operation_id": "cn.device.status",
@@ -73,7 +75,7 @@
       "path": "/api/lapp/device/status/get",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -126,7 +128,9 @@
         "method": "请求方式\nPOST",
         "path": "https://open.ys7.com/api/lapp/device/status/get",
         "encoding": "Header\nContent-Type\nString\napplication/x-www-form-urlencoded\nY"
-      }
+      },
+      "source_content_sha256": "ea009238b1eab936a99f45f1cafbc67b7f0a1495e2b073e55917070e8171d59c",
+      "read_only": true
     },
     {
       "operation_id": "global.device.status",
@@ -137,7 +141,7 @@
       "path": "/api/lapp/device/status/get",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -194,7 +198,9 @@
         "method": "Request Type\nPOST",
         "path": "{areaDomain}/api/lapp/device/status/get",
         "encoding": "Content-Type: application/x-www-form-urlencoded\n\naccessToken=at.REDACTED_PUBLIC_EXAMPLE&deviceSerial=427734168&channel=1"
-      }
+      },
+      "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+      "read_only": true
     },
     {
       "operation_id": "global.local.recordings",
@@ -280,7 +286,8 @@
         "path": "{areaDomain}/api/v3/das/device/local/video/query",
         "encoding": null
       },
-      "source_content_sha256": "0c0fecab582147b8db645a9d703b0d62d8e01c1856e06ed3415e23fc85131a1e"
+      "source_content_sha256": "0c0fecab582147b8db645a9d703b0d62d8e01c1856e06ed3415e23fc85131a1e",
+      "read_only": true
     },
     {
       "operation_id": "cn.devices.list",
@@ -291,7 +298,7 @@
       "path": "/api/lapp/device/list",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -356,7 +363,9 @@
         "method": "POST",
         "path": "https://open.ys7.com/api/lapp/device/list",
         "encoding": "application/x-www-form-urlencoded"
-      }
+      },
+      "source_content_sha256": "9b6636cd7a15e0660ffa100dfaa67f7a5a55b856b758e79e6d46622c5d69bce3",
+      "read_only": true
     },
     {
       "operation_id": "cn.devices.get",
@@ -367,7 +376,7 @@
       "path": "/api/lapp/device/info",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -412,7 +421,9 @@
         "method": "POST",
         "path": "https://open.ys7.com/api/lapp/device/info",
         "encoding": "application/x-www-form-urlencoded"
-      }
+      },
+      "source_content_sha256": "9a914b090262952baaf49601c36140f57b264d4fc1020df2fd24fd577828b2e8",
+      "read_only": true
     },
     {
       "operation_id": "cn.devices.channels",
@@ -423,7 +434,7 @@
       "path": "/api/lapp/device/camera/list",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -464,7 +475,9 @@
         "method": "POST",
         "path": "https://open.ys7.com/api/lapp/device/camera/list",
         "encoding": "application/x-www-form-urlencoded"
-      }
+      },
+      "source_content_sha256": "3805a44c99b81283abbd56941a5a7647bb4869eaf8f15cb14864c061785562c9",
+      "read_only": true
     },
     {
       "operation_id": "global.devices.list",
@@ -475,7 +488,7 @@
       "path": "/api/lapp/device/list",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -526,7 +539,9 @@
         "method": "POST",
         "path": "{areaDomain}/api/lapp/device/list",
         "encoding": "application/x-www-form-urlencoded"
-      }
+      },
+      "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+      "read_only": true
     },
     {
       "operation_id": "global.devices.get",
@@ -537,7 +552,7 @@
       "path": "/api/lapp/device/info",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -576,7 +591,9 @@
         "method": "POST",
         "path": "{areaDomain}/api/lapp/device/info",
         "encoding": "application/x-www-form-urlencoded"
-      }
+      },
+      "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+      "read_only": true
     },
     {
       "operation_id": "global.devices.channels",
@@ -587,7 +604,7 @@
       "path": "/api/lapp/device/camera/list",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -630,7 +647,9 @@
         "method": "POST",
         "path": "{areaDomain}/api/lapp/device/camera/list",
         "encoding": "application/x-www-form-urlencoded"
-      }
+      },
+      "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+      "read_only": true
     },
     {
       "operation_id": "global.token.get",
@@ -679,7 +698,8 @@
         "method": "Request Type: POST",
         "path": "URL section",
         "encoding": "form-urlencoded request example"
-      }
+      },
+      "read_only": false
     },
     {
       "operation_id": "cn.local.recordings",
@@ -786,7 +806,8 @@
         "method": "GET request-method section",
         "path": "request-address section",
         "encoding": null
-      }
+      },
+      "read_only": true
     },
     {
       "operation_id": "cn.ptz.start",
@@ -798,7 +819,7 @@
       "path": "/api/lapp/device/ptz/start",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -887,7 +908,7 @@
       "path": "/api/lapp/device/ptz/stop",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -965,7 +986,7 @@
       "path": "/api/lapp/device/ptz/mirror",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -1039,7 +1060,7 @@
       "path": "/api/lapp/device/preset/add",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -1114,7 +1135,7 @@
       "path": "/api/lapp/device/preset/move",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -1192,7 +1213,7 @@
       "path": "/api/lapp/device/preset/clear",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -1270,7 +1291,7 @@
       "path": "/api/lapp/device/ptz/start",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -1347,7 +1368,7 @@
       "path": "/api/lapp/device/ptz/stop",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -1415,7 +1436,7 @@
       "path": "/api/lapp/device/ptz/mirror",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -1477,7 +1498,7 @@
       "path": "/api/lapp/device/preset/add",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -1536,7 +1557,7 @@
       "path": "/api/lapp/device/preset/move",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -1602,7 +1623,7 @@
       "path": "/api/lapp/device/preset/clear",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -1989,7 +2010,7 @@
       "path": "/api/lapp/trust/device/list",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -2066,7 +2087,7 @@
       "path": "/api/lapp/device/support/ezviz",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -2138,7 +2159,7 @@
       "path": "/api/v3/device/searchDeviceInfo",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -2265,7 +2286,7 @@
       "path": "/api/lapp/device/capacity",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -2326,7 +2347,7 @@
       "path": "/api/lapp/device/capacity",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -2386,7 +2407,7 @@
       "path": "/api/lapp/device/version/info",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -2436,7 +2457,7 @@
       "path": "/api/lapp/device/version/info",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -2620,7 +2641,7 @@
       "path": "/api/lapp/device/sound/switch/status",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -2676,7 +2697,7 @@
       "path": "/api/lapp/device/sound/switch/set",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -2750,7 +2771,7 @@
       "path": "/api/lapp/device/sound/switch/status",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -2795,7 +2816,7 @@
       "path": "/api/lapp/device/sound/switch/set",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -2857,7 +2878,7 @@
       "path": "/api/lapp/device/scene/switch/status",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -2917,7 +2938,7 @@
       "path": "/api/lapp/device/scene/switch/set",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -2995,7 +3016,7 @@
       "path": "/api/lapp/device/scene/switch/status",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -3045,7 +3066,7 @@
       "path": "/api/lapp/device/scene/switch/set",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -3113,7 +3134,7 @@
       "path": "/api/lapp/device/ssl/switch/status",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3173,7 +3194,7 @@
       "path": "/api/lapp/device/ssl/switch/set",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3251,7 +3272,7 @@
       "path": "/api/lapp/device/ssl/switch/status",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -3301,7 +3322,7 @@
       "path": "/api/lapp/device/ssl/switch/set",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -3369,7 +3390,7 @@
       "path": "/api/lapp/device/light/switch/status",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3429,7 +3450,7 @@
       "path": "/api/lapp/device/light/switch/set",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3507,7 +3528,7 @@
       "path": "/api/lapp/device/fullday/record/switch/status",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3567,7 +3588,7 @@
       "path": "/api/lapp/device/fullday/record/switch/set",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3645,7 +3666,7 @@
       "path": "/api/lapp/camera/video/sound/status",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3701,7 +3722,7 @@
       "path": "/api/lapp/camera/video/sound/set",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3764,7 +3785,7 @@
       "path": "/api/lapp/camera/video/sound/status",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -3807,7 +3828,7 @@
       "path": "/api/lapp/camera/video/sound/set",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -3857,7 +3878,7 @@
       "path": "/api/lapp/device/add",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -3924,7 +3945,7 @@
       "path": "/api/lapp/device/add",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -3979,7 +4000,7 @@
       "path": "/api/lapp/device/delete",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -4035,7 +4056,7 @@
       "path": "/api/lapp/device/delete",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -4078,7 +4099,7 @@
       "path": "/api/lapp/device/name/update",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -4147,7 +4168,7 @@
       "path": "/api/lapp/device/name/update",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -4204,7 +4225,7 @@
       "path": "/api/lapp/camera/name/update",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -4284,7 +4305,7 @@
       "path": "/api/lapp/device/ipc/add",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -4369,7 +4390,7 @@
       "path": "/api/lapp/device/ipc/add",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -4442,7 +4463,7 @@
       "path": "/api/lapp/device/ipc/delete",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -4508,7 +4529,7 @@
       "path": "/api/lapp/device/ipc/delete",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -4632,7 +4653,7 @@
       "path": "/api/lapp/camera/list",
       "base_url": "https://open.ys7.com",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "Content-Type",
@@ -4697,7 +4718,7 @@
       "path": "/api/lapp/camera/list",
       "base_url": "{areaDomain}",
       "body_encoding": "form_urlencoded",
-      "token_location": "body",
+      "token_location": "form",
       "parameters": [
         {
           "name": "accessToken",
@@ -6711,6 +6732,10 @@
     {
       "review": "docs/coordination/S013A/contracts-review.json",
       "note": "C011 adds four regional playback contracts and three snapshot contracts, with no real media requests."
+    },
+    {
+      "review": "docs/coordination/H004A/data-repair.json",
+      "note": "H004 normalizes token locations and completes early source hash/read-only metadata; runtime SDK unchanged."
     }
   ]
 }

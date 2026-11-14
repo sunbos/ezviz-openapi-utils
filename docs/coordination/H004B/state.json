@@ -1,0 +1,40 @@
+{
+  "task_id": "H004B",
+  "status": "accepted",
+  "session_id": "13f4cbb3-121e-40cd-89fd-027ed32ac06f",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "cache_creation_input_tokens": 0,
+    "input_tokens": 62892,
+    "cache_read_input_tokens": 56576,
+    "output_tokens": 22066
+  },
+  "review_findings": [
+    "directory/file validation conflated",
+    "duplicate SDK path prefix",
+    "noncanonical paths collapsed",
+    "any instead of all for selector parameters",
+    "incorrect cycle state and inherited constructor handling",
+    "source-bearing exception chains",
+    "C3 and dynamic assignment ambiguity"
+  ],
+  "original_session_id": "65bc8a52-bca6-4431-9b30-22130ff6b990",
+  "original_usage_reported_deduplicated": {
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 4484,
+    "input_tokens": 56635,
+    "cache_read_input_tokens": 81280
+  },
+  "accepted_at_utc": "2026-11-14T04:44:37.340975+00:00",
+  "task_tests_passed": 37,
+  "repository_tests_passed": 1109,
+  "document_subtests_passed": 11,
+  "mypy": "passed (22 unchanged SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "runtime_sdk_changes": false,
+  "real_api_requests": false,
+  "remote_ci": "see current PR1 checks",
+  "repository_audit": "../H004A/repository-audit.json"
+}

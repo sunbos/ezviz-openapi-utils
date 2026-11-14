@@ -1,0 +1,24 @@
+{
+  "task_id": "H004A",
+  "status": "accepted",
+  "session_id": "955b48a8-3a24-43b7-865f-64b0053905c8",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 24117,
+    "input_tokens": 128920,
+    "cache_read_input_tokens": 196864
+  },
+  "accepted_at_utc": "2026-11-14T04:44:37.339513+00:00",
+  "task_tests_passed": 59,
+  "repository_tests_passed": 1109,
+  "document_subtests_passed": 11,
+  "mypy": "passed (22 unchanged SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "runtime_sdk_changes": false,
+  "real_api_requests": false,
+  "remote_ci": "see current PR1 checks",
+  "repository_audit": "../H004A/repository-audit.json"
+}

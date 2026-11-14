@@ -12,7 +12,8 @@
         "AsyncTokenManager.get_token"
       ],
       "offline_status": "passed",
-      "live_status": "authentication_succeeded"
+      "live_status": "authentication_succeeded",
+      "live_evidence": "docs/validation/live/2026-11-14/domestic.json"
     },
     {
       "operation_id": "cn.device.status",
@@ -60,7 +61,8 @@
         "AsyncDevices.list"
       ],
       "offline_status": "passed",
-      "live_status": "empty_list_succeeded"
+      "live_status": "empty_list_succeeded",
+      "live_evidence": "docs/validation/live/2026-11-14/domestic.json"
     },
     {
       "operation_id": "cn.devices.get",

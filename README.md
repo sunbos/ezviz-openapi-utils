@@ -4,7 +4,7 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置、播放地址、抓拍和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖103项已审核地区契约，全部真实支持情况另列。
+本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置、播放地址、抓拍和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前登记数量、地区分布与验证状态见[机器生成的覆盖清单](contracts/coverage.json)，真实支持情况另列。
 
 ## 设备查询
 
@@ -143,7 +143,7 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
 - [维护harness](harness/README.md)：比较门户catalog的内容与来源变化，输出待审查报告；当前不自动改代码或发布。
-- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确65项方法映射、85项待迁移范围，以及wheel/sdist的验证边界。
+- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：列明已映射和待迁移范围，以及wheel/sdist的验证边界；数量由[覆盖清单](contracts/coverage.json)提供。
 
 旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
 
