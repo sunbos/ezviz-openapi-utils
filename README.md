@@ -4,7 +4,7 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-本地录像、云台、巡航、诊断、设备开关、管理、图像参数和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖89项已审核地区契约，全部真实支持情况另列。
+本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖96项已审核地区契约，全部真实支持情况另列。
 
 ## 设备查询
 
@@ -46,6 +46,10 @@ with Client(
 ## 设备开关
 
 `client.settings.get_switch(device_serial, DeviceSwitch.INDICATOR_LIGHT)`读取状态；`set_switch(device_serial, switch, enabled, channel=None)`设置状态。enabled必须为bool，写请求不重放。省略channel表示设备本身，麦克风不接受channel。六类开关、地区限制和原文差异见[开关说明](docs/research/2026-11-14-switch-settings.md)。SOUND_LOCALIZATION是声源定位，与TLS无关；所有真实设置效果仍未验证。
+
+## 视频配置
+
+`client.video`提供清晰度、预览编码、音视频codec、视频类开关的设置，以及本地录像编码和开关查询，仅国内。预览参数使用`PreviewEncoding`，分辨率/帧率是官方枚举代码；本地录像查询不视为预览设置的逆操作。`VideoSwitch`包含隐私遮蔽、休眠、人脸开锁、特写追踪和LOGO；设置不自动重放。JSON/form位置、权限、参数省略规则和源码缺项见[视频说明](docs/research/2026-11-14-video-configuration.md)，真实效果仍未验证。
 
 ## 图像参数
 
@@ -135,7 +139,7 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
 - [维护harness](harness/README.md)：比较门户catalog的内容与来源变化，输出待审查报告；当前不自动改代码或发布。
-- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确57项方法映射、93项待迁移范围，以及wheel/sdist的验证边界。
+- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确64项方法映射、86项待迁移范围，以及wheel/sdist的验证边界。
 
 旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
 

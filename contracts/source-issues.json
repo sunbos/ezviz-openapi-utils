@@ -206,6 +206,16 @@
       "description": "Parameter table uses manul for manual mode; request example uses manual.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Defer the setter; retain GET response fields exactly. Do not infer a correction or send device writes to choose a spelling."
+    },
+    {
+      "id": "cn.video.custom_bitrate_value",
+      "region": "domestic",
+      "source_doc_id": "2297",
+      "source_url": "https://open.ys7.com/help/2297",
+      "source_content_sha256": "c3cfb7054ecbccbc4ff95998e66c72f6ef01c8978a5ea2fef18112329d47cf8e",
+      "description": "videoBitRate code 22 is described as custom, but no parameter for the custom bitrate value is documented.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Send the documented code only when explicitly supplied; do not invent a kbps field or claim arbitrary bitrate configuration."
     }
   ]
 }

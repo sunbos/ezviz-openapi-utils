@@ -32,6 +32,7 @@ from .recordings import AsyncRecordings, Recordings
 from .response import decode_response
 from .settings import AsyncSettings, DeviceSwitch, Settings
 from .transport import AsyncTransport, SyncTransport
+from .video import AsyncVideo, PreviewEncoding, Video, VideoSwitch
 
 __version__ = version("ezviz-unified")
 
@@ -43,6 +44,7 @@ __all__ = [
     "AsyncDevices",
     "AsyncDiagnostics",
     "AsyncImaging",
+    "AsyncVideo",
     "AsyncRecordings",
     "AsyncSettings",
     "AsyncPtz",
@@ -66,6 +68,7 @@ __all__ = [
     "Ownership",
     "PermissionDeniedError",
     "ProtocolError",
+    "PreviewEncoding",
     "Ptz",
     "RegionConfig",
     "Recordings",
@@ -77,6 +80,8 @@ __all__ = [
     "TokenManager",
     "TokenProvider",
     "TransportError",
+    "Video",
+    "VideoSwitch",
     "__version__",
     "decode_response",
     "parse_token",

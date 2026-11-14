@@ -4,7 +4,7 @@
 
 ## 发行与兼容边界
 
-新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[旧版150项清单](../contracts/legacy-migration.json)中，目前57项有可核对的新入口，其余93项尚未迁移。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
+新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[旧版150项清单](../contracts/legacy-migration.json)中，目前64项有可核对的新入口，其余86项尚未迁移。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
 
 ## 方法映射
 
@@ -32,6 +32,8 @@
 控制和计划设置不自动重放。旧set_cruise_auto_switch仍待核实body/query矛盾，不能用时间计划setter替代。所有新映射仍需按型号与权限做实际设备验证。
 
 ## 参数与返回值差异
+
+视频配置映射：set_video_level→video.set_quality（channel改为必填keyword-only int，level支持0–6）；set_device_video_encode→video.set_preview_encoding（使用PreviewEncoding，枚举代码转int，可选值默认省略）；get_device_video_encode→video.get_recording_encoding（明确为本地录像参数）。音视频encode_type分别映射set_audio_codec/set_video_codec；视频开关映射get_switch/set_switch（VideoSwitch，enabled须bool）。原先channel字符串应显式转int，不能将预览数字codec直接作为H264/H265字符串传入。完整限制见[视频说明](research/2026-11-14-video-configuration.md)。
 
 图像参数的六个旧get方法合并为`imaging.get(device_serial, ImageSetting.<名称>)`；背光、降噪、曝光、防闪烁setter对应`imaging.set_backlight/set_denoising/set_exposure/set_anti_flicker`。曝光`exposure_target`改为`microseconds`，降噪可选等级改为keyword-only；整数参数拒绝bool，按文档检查范围。旧白平衡和图像参数setter因拼写冲突继续待核实，见[图像说明](research/2026-11-14-imaging.md)。
 
@@ -82,7 +84,7 @@ with Client(
 
 ## 迁移前检查清单
 
-- [ ] 清点代码中实际调用的旧方法，确认是否落在57个已映射入口内，其余按清单逐项处理。
+- [ ] 清点代码中实际调用的旧方法，确认是否落在64个已映射入口内，其余按清单逐项处理。
 - [ ] 确认 appKey/appSecret 主体与目标区域匹配；海外账户确认 `areaDomain` 行为。
 - [ ] 按新错误分类重写异常处理与重试逻辑。
 - [ ] 先用只读方法（`list`/`get`/`channels`/`status`）做连通性验证，再切换业务流量。

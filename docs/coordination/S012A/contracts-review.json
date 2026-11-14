@@ -1,0 +1,11 @@
+{
+  "task_id": "C010",
+  "new_contracts": 7,
+  "total_contracts": 96,
+  "mapped_legacy_methods": 64,
+  "source_issues": 18,
+  "source_bodies_rehashed": true,
+  "provenance": "source-provenance.json",
+  "symbol_bindings_checked": true,
+  "real_device_changes": false
+}

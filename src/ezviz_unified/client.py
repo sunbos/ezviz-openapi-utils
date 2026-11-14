@@ -35,6 +35,7 @@ from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .settings import AsyncSettings, Settings
 from .transport import AsyncTransport, ParamMapping, SyncTransport
+from .video import AsyncVideo, Video
 
 __all__ = ["AsyncClient", "Client"]
 
@@ -230,6 +231,7 @@ class Client:
         self.ownership = Ownership(self)
         self.settings = Settings(self)
         self.imaging = Imaging(self)
+        self.video = Video(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -429,6 +431,7 @@ class AsyncClient:
         self.ownership = AsyncOwnership(self)
         self.settings = AsyncSettings(self)
         self.imaging = AsyncImaging(self)
+        self.video = AsyncVideo(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)

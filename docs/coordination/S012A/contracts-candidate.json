@@ -1,0 +1,523 @@
+{
+  "contracts": [
+    {
+      "operation_id": "cn.video.set_quality",
+      "region": "domestic",
+      "source_doc_id": "2286",
+      "source_url": "https://open.ys7.com/help/2286",
+      "source_content_sha256": "ad9a4ea9ddea69127db7aa14120e1632d84bd3ed7d2197d1a844110e11988dca",
+      "method": "POST",
+      "path": "/api/v3/device/setVideoLevel",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "videoLevel",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Config; device channel scope. videoLevel 0–6; localIndex required.",
+          "evidence": "function description and parameter table"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.video.set_preview_encoding",
+      "region": "domestic",
+      "source_doc_id": "2297",
+      "source_url": "https://open.ys7.com/help/2297",
+      "source_content_sha256": "c3cfb7054ecbccbc4ff95998e66c72f6ef01c8978a5ea2fef18112329d47cf8e",
+      "method": "POST",
+      "path": "/api/lapp/device/video/encode/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "streamTypeIn",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "resolution",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "videoFrameRate",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "intervalFrameI",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "streamType",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "videoBitRate",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "bitRateType",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "picQuality",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "encodeType",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "encodeComplex",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Config; managed/subaccounts supported. Enumerated fields use documented codes, not physical units. Optional values omitted when absent.",
+          "evidence": "function description and parameter table"
+        }
+      ],
+      "uncertainties": [
+        "Preview parameter setter is not assumed to be the inverse of local-recording parameter getter.",
+        "intervalFrameI unit is not specified by this setter.",
+        "videoBitRate=22 denotes custom, but the custom bitrate value field is not documented."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.video.get_recording_encoding",
+      "region": "domestic",
+      "source_doc_id": "2841",
+      "source_url": "https://open.ys7.com/help/2841",
+      "source_content_sha256": "49f9fee31d162f660ceb063599326c15225937d61cc5259287d64a2ecc945d87",
+      "method": "GET",
+      "path": "/api/v3/device/video/encode/get",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "streamType",
+          "location": "query",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Get; device channel scope; managed/subaccounts supported. streamType 1/2; localIndex and streamType default to 1 server-side.",
+          "evidence": "function description and parameter table"
+        }
+      ],
+      "uncertainties": [
+        "Local recording parameters are returned as strings; no conversion or assumed round trip to preview settings."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.video.set_audio_codec",
+      "region": "domestic",
+      "source_doc_id": "2372",
+      "source_url": "https://open.ys7.com/help/2372",
+      "source_content_sha256": "d9dbb54842cc529064c62a3ca4ace9ea77a00a8e25bf4efd6cd3d17fb1c686e8",
+      "method": "PUT",
+      "path": "/api/v3/device/audio/encodeType",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "json",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "encodeType",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Config; device channel scope; requires support_audio_encode_types; managed accounts supported.",
+          "evidence": "function description and parameter table"
+        }
+      ],
+      "uncertainties": [
+        "AAC description and G711a example are not a documented exhaustive codec list."
+      ],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "request address",
+        "encoding": "json"
+      }
+    },
+    {
+      "operation_id": "cn.video.set_video_codec",
+      "region": "domestic",
+      "source_doc_id": "2377",
+      "source_url": "https://open.ys7.com/help/2377",
+      "source_content_sha256": "e4d827aa01c1549588c7519fa3759f9e8f915d06c88cd4cf82bb1b7675356153",
+      "method": "PUT",
+      "path": "/api/v3/device/video/encodeType",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "encodeType",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "streamType",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Config; device channel scope; managed/subaccounts supported. Requires support_video_encode_switch_disable=0. encodeType H264/H265; streamType 1/2.",
+          "evidence": "function description and parameter table"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "request address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.video.get_switch",
+      "region": "domestic",
+      "source_doc_id": "4377",
+      "source_url": "https://open.ys7.com/help/4377",
+      "source_content_sha256": "eb98cb73b66ab8b328a94edbcd0b2f54e979c3354ade1cc7f3da0ffe649fadca",
+      "method": "GET",
+      "path": "/api/v3/device/video/switch/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "type",
+          "location": "query",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Get; device scope; managed/subaccounts supported. type 7/21/455/701/702 with respective device capability.",
+          "evidence": "function description and parameter table"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.video.set_switch",
+      "region": "domestic",
+      "source_doc_id": "4376",
+      "source_url": "https://open.ys7.com/help/4376",
+      "source_content_sha256": "227b5122cc8538c3ff8dd340b2e0210a40d994f9f407d15632db57ff8783c98f",
+      "method": "PUT",
+      "path": "/api/v3/device/video/switch/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "type",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Config; device scope; managed/subaccounts supported. type 7/21/455/701/702, enable 0/1 with respective device capability.",
+          "evidence": "function description and parameter table"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "request address",
+        "encoding": "form_urlencoded"
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "sources": [
+    {
+      "doc_id": "2286",
+      "title": "设置视频清晰度",
+      "source_url": "https://open.ys7.com/help/2286",
+      "content_sha256": "ad9a4ea9ddea69127db7aa14120e1632d84bd3ed7d2197d1a844110e11988dca",
+      "raw_file_sha256": "a092fdd05e23fb1ec3dae607f45b57122af14a66a2cd83e9e25af857dfb3f14b"
+    },
+    {
+      "doc_id": "2297",
+      "title": "设备视频预览参数设置",
+      "source_url": "https://open.ys7.com/help/2297",
+      "content_sha256": "c3cfb7054ecbccbc4ff95998e66c72f6ef01c8978a5ea2fef18112329d47cf8e",
+      "raw_file_sha256": "6c38ac5557dfbea0ae1f210106714733e6533864fef380ec2732832b9a18c7fe"
+    },
+    {
+      "doc_id": "2372",
+      "title": "音频编码格式切换",
+      "source_url": "https://open.ys7.com/help/2372",
+      "content_sha256": "d9dbb54842cc529064c62a3ca4ace9ea77a00a8e25bf4efd6cd3d17fb1c686e8",
+      "raw_file_sha256": "d31e223efb0bcd3ca2d06bd3074e39a2872bc360d07f19066b4080d09db4dbb6"
+    },
+    {
+      "doc_id": "2377",
+      "title": "视频编码格式切换",
+      "source_url": "https://open.ys7.com/help/2377",
+      "content_sha256": "e4d827aa01c1549588c7519fa3759f9e8f915d06c88cd4cf82bb1b7675356153",
+      "raw_file_sha256": "21a6a520f781f050712461bedc516bc5bec28b9783cab4304fadd320439169c8"
+    },
+    {
+      "doc_id": "2841",
+      "title": "设备视频本地录像参数查询",
+      "source_url": "https://open.ys7.com/help/2841",
+      "content_sha256": "49f9fee31d162f660ceb063599326c15225937d61cc5259287d64a2ecc945d87",
+      "raw_file_sha256": "d7f1967d6d98266b937b7864e2fde07da521687fc38dd73aa3a2f58d5e13ef78"
+    },
+    {
+      "doc_id": "4376",
+      "title": "设置设备视频类开关状态",
+      "source_url": "https://open.ys7.com/help/4376",
+      "content_sha256": "227b5122cc8538c3ff8dd340b2e0210a40d994f9f407d15632db57ff8783c98f",
+      "raw_file_sha256": "5a1d92ad6c8cae31e20d4c8c2ac4735cee02e3042ab14279ce695d0b589025f0"
+    },
+    {
+      "doc_id": "4377",
+      "title": "查询设备视频类开关状态",
+      "source_url": "https://open.ys7.com/help/4377",
+      "content_sha256": "eb98cb73b66ab8b328a94edbcd0b2f54e979c3354ade1cc7f3da0ffe649fadca",
+      "raw_file_sha256": "fce236ed3ce05386bc547375edf0d25994c234e8c41c7fe133134f724579edd6"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

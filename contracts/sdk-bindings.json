@@ -1177,6 +1177,97 @@
       "public_entry": "imaging.set_anti_flicker",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.video.set_quality",
+      "region": "domestic",
+      "source_doc_id": "2286",
+      "module": "src/ezviz_unified/video.py",
+      "symbols": [
+        "Video.set_quality",
+        "AsyncVideo.set_quality"
+      ],
+      "public_entry": "video.set_quality",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.video.set_preview_encoding",
+      "region": "domestic",
+      "source_doc_id": "2297",
+      "module": "src/ezviz_unified/video.py",
+      "symbols": [
+        "Video.set_preview_encoding",
+        "AsyncVideo.set_preview_encoding"
+      ],
+      "public_entry": "video.set_preview_encoding",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.video.get_recording_encoding",
+      "region": "domestic",
+      "source_doc_id": "2841",
+      "module": "src/ezviz_unified/video.py",
+      "symbols": [
+        "Video.get_recording_encoding",
+        "AsyncVideo.get_recording_encoding"
+      ],
+      "public_entry": "video.get_recording_encoding",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.video.set_audio_codec",
+      "region": "domestic",
+      "source_doc_id": "2372",
+      "module": "src/ezviz_unified/video.py",
+      "symbols": [
+        "Video.set_audio_codec",
+        "AsyncVideo.set_audio_codec"
+      ],
+      "public_entry": "video.set_audio_codec",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.video.set_video_codec",
+      "region": "domestic",
+      "source_doc_id": "2377",
+      "module": "src/ezviz_unified/video.py",
+      "symbols": [
+        "Video.set_video_codec",
+        "AsyncVideo.set_video_codec"
+      ],
+      "public_entry": "video.set_video_codec",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.video.get_switch",
+      "region": "domestic",
+      "source_doc_id": "4377",
+      "module": "src/ezviz_unified/video.py",
+      "symbols": [
+        "Video.get_switch",
+        "AsyncVideo.get_switch"
+      ],
+      "public_entry": "video.get_switch",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.video.set_switch",
+      "region": "domestic",
+      "source_doc_id": "4376",
+      "module": "src/ezviz_unified/video.py",
+      "symbols": [
+        "Video.set_switch",
+        "AsyncVideo.set_switch"
+      ],
+      "public_entry": "video.set_switch",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

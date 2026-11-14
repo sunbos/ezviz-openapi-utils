@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 57,
-  "pending_count": 93,
+  "mapped_count": 64,
+  "pending_count": 86,
   "compatibility_shim": false,
   "methods": [
     {
@@ -1008,42 +1008,70 @@
     {
       "legacy_method": "set_video_level",
       "source_line": 5221,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.video.set_quality",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "local_index": "channel (required keyword-only int)",
+        "video_level": "level (integer 0–6)"
+      },
+      "notes": "Channel has no implicit default; supports current documented levels 0–6. Domestic reviewed contract only; returns ApiResponse, no live validation."
     },
     {
       "legacy_method": "set_device_video_encode",
       "source_line": 5273,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.video.set_preview_encoding",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "stream_type_in": "encoding.stream (int code)",
+        "resolution": "encoding.resolution (int code)",
+        "video_frame_rate": "encoding.frame_rate (int code)",
+        "interval_frame_i": "encoding.iframe_interval (String, unit unspecified)",
+        "video_bit_rate": "encoding.bitrate (int code)",
+        "pic_quality": "encoding.picture_quality (int code)",
+        "encode_type": "encoding.codec (int code)",
+        "encode_complex": "encoding.complexity (int code)",
+        "channel_no": "channel (keyword-only int or None)"
+      },
+      "notes": "PreviewEncoding replaces the argument list; optional values are omitted instead of automatically sending old defaults. audio_stream_type/bitrate_type are newly exposed source fields. Domestic reviewed contract only; returns ApiResponse, no live validation."
     },
     {
       "legacy_method": "get_device_video_encode",
       "source_line": 5343,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.video.get_recording_encoding",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "local_index": "channel (keyword-only int or None)",
+        "stream_type": "stream (keyword-only int or None)"
+      },
+      "notes": "Explicitly named local-recording query; not assumed to be the inverse of preview setter. Optional values omitted; response strings retained. Domestic reviewed contract only; returns ApiResponse, no live validation."
     },
     {
       "legacy_method": "set_device_audio_encode_type",
       "source_line": 5393,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.video.set_audio_codec",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "encode_type": "codec",
+        "local_index": "channel (keyword-only int or None)"
+      },
+      "notes": "JSON body; codec list is not assumed to be exhaustive. Domestic reviewed contract only; returns ApiResponse, no live validation."
     },
     {
       "legacy_method": "set_device_video_encode_type",
       "source_line": 5448,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.video.set_video_codec",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "encode_type": "codec (H264/H265)",
+        "stream_type": "stream (required keyword-only int 1/2)",
+        "local_index": "channel (keyword-only int or None)"
+      },
+      "notes": "Form body; no conversion from preview codec numeric codes. Domestic reviewed contract only; returns ApiResponse, no live validation."
     },
     {
       "legacy_method": "get_device_white_balance",
@@ -1168,18 +1196,25 @@
     {
       "legacy_method": "set_device_video_switch_status",
       "source_line": 6011,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.video.set_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "type": "switch (VideoSwitch or documented int code)",
+        "enable": "enabled (bool)"
+      },
+      "notes": "Device-level write; no replay or automatic capabilities/security changes. Domestic reviewed contract only; returns ApiResponse, no live validation."
     },
     {
       "legacy_method": "get_device_video_switch_status",
       "source_line": 6065,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.video.get_switch",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "type": "switch (VideoSwitch or documented int code)"
+      },
+      "notes": "Device-level query; current documented codes 7/21/455/701/702. Domestic reviewed contract only; returns ApiResponse, no live validation."
     },
     {
       "legacy_method": "set_fill_light_mode",
