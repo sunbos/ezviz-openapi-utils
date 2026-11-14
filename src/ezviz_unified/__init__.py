@@ -3,6 +3,7 @@
 from importlib.metadata import version
 
 from .alarms import AlarmQuery, Alarms, AsyncAlarms
+from .arming import ActiveDefenceAction, Arming, ArmingSchedule, AsyncArming
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token, parse_token
 from .client import AsyncClient, Client
@@ -36,6 +37,7 @@ from .ptz import AsyncPtz, Ptz
 from .ram_models import RamStatement, ram_password_digest
 from .recordings import AsyncRecordings, Recordings
 from .response import decode_response
+from .security import AsyncSecurity, Security
 from .settings import AsyncSettings, DeviceSwitch, Settings
 from .snapshots import AsyncSnapshots, Snapshots
 from .subaccounts import AsyncSubaccounts, Subaccounts
@@ -47,6 +49,11 @@ __version__ = version("ezviz-unified")
 __all__ = [
     "ApiError",
     "AlarmQuery",
+    "ActiveDefenceAction",
+    "Arming",
+    "ArmingSchedule",
+    "AsyncArming",
+    "AsyncSecurity",
     "Alarms",
     "AsyncAlarms",
     "AsyncCloudStorage",
@@ -98,6 +105,7 @@ __all__ = [
     "Recordings",
     "ResponsePolicy",
     "Settings",
+    "Security",
     "StorageOrderOptions",
     "Subaccounts",
     "Snapshots",

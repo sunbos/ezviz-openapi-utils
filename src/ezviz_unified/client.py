@@ -22,6 +22,7 @@ from typing import NamedTuple
 import httpx
 
 from .alarms import Alarms, AsyncAlarms
+from .arming import Arming, AsyncArming
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token
 from .cloud_storage import AsyncCloudStorage, CloudStorage
@@ -38,6 +39,7 @@ from .playback import AsyncPlayback, Playback
 from .providers import AsyncTokenProvider, TokenProvider, validate_provider_token
 from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
+from .security import AsyncSecurity, Security
 from .settings import AsyncSettings, Settings
 from .snapshots import AsyncSnapshots, Snapshots
 from .subaccounts import AsyncSubaccounts, Subaccounts
@@ -245,6 +247,8 @@ class Client:
         self.subaccounts = Subaccounts(self)
         self.maintenance = Maintenance(self)
         self.illumination = Illumination(self)
+        self.security = Security(self)
+        self.arming = Arming(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -452,6 +456,8 @@ class AsyncClient:
         self.subaccounts = AsyncSubaccounts(self)
         self.maintenance = AsyncMaintenance(self)
         self.illumination = AsyncIllumination(self)
+        self.security = AsyncSecurity(self)
+        self.arming = AsyncArming(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)

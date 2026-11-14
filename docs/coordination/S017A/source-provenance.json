@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "697",
+      "title": "API-云接入-设备运维-设备配置-关闭设备视频加密",
+      "source_url": "https://open.ys7.com/help/697",
+      "content_sha256": "247c0d5423c29bfae0e094e6354591b9c157a44da232ca758a58fa5876d7d64e",
+      "raw_file_sha256": "7172806dd5ee8e283125980a2b7919144d563abb0c9de7b1c36f114ca30907d0"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "698",
+      "title": "API-云接入-设备运维-设备配置-开启设备视频加密",
+      "source_url": "https://open.ys7.com/help/698",
+      "content_sha256": "d153094f4478e8c2a7edf43af99c0381405560d4931b4210c6fdd4c6ecfd00c9",
+      "raw_file_sha256": "e8c1854690eddd542bf11f9fcc13825eed828387cccddd5f0550ba2da8a8533a"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "699",
+      "title": "API-云接入-设备运维-设备配置-修改设备视频加密密码",
+      "source_url": "https://open.ys7.com/help/699",
+      "content_sha256": "be6535e8f4e88e66d334b6bbaf48b22c61f9676281e2356b9edbe070e24210cd",
+      "raw_file_sha256": "6630bd7b7e1c7d5cc24d14417554cddf4102b85111625117eb7f8389e1f6b6ef"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "2868",
+      "title": "Change the video encryption password",
+      "source_url": "https://open.ys7.com/help/en/2868",
+      "content_sha256": "1dfff933af774a00e1a567610b9d1cfbb6648b5abbcf7bccc156f6d9c9ce7d12",
+      "raw_file_sha256": "e5c967bfe28383d670cbd1a6314ae5b0d157616a6188a105a3783db8d7717349"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "477",
+      "title": "device switch",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "raw_file_sha256": "ebda8402b062e18c6dbde8c9d09ff6d22de6dc9343d49fda6edf76b1dfca4f6f"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

@@ -406,6 +406,66 @@
       "description": "Firmware upgrade and upgrade-status HTTP examples use encrypt/off and validation-code fields unrelated to their Request Address tables.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Use the dedicated upgrade and upgrade/status paths and documented fields; never disable encryption as a prerequisite."
+    },
+    {
+      "id": "cn.security.disable_verification_gap",
+      "region": "domestic",
+      "source_doc_id": "697",
+      "source_url": "https://open.ys7.com/help/697",
+      "source_content_sha256": "247c0d5423c29bfae0e094e6354591b9c157a44da232ca758a58fa5876d7d64e",
+      "description": "Function description and error20010 refer to verification code, but request parameters and curl have none.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Follow the request table/example; do not infer an undocumented domestic field or claim absence of security proof."
+    },
+    {
+      "id": "cn.security.password_length",
+      "region": "domestic",
+      "source_doc_id": "699",
+      "source_url": "https://open.ys7.com/help/699",
+      "source_content_sha256": "be6535e8f4e88e66d334b6bbaf48b22c61f9676281e2356b9edbe070e24210cd",
+      "description": "New-password length text is malformed (长度大超过12字节) while the request example has six ASCII characters.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Validate nonblank UTF8 only domestically; let the service enforce its actual length rule rather than inventing a bound."
+    },
+    {
+      "id": "global.security.enable_description",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "description": "The enable-encryption section function description says Disable.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use section title, encrypt/on path, and already-enabled60019 code; do not send encrypt/off."
+    },
+    {
+      "id": "global.security.password_example_origin",
+      "region": "overseas",
+      "source_doc_id": "2868",
+      "source_url": "https://open.ys7.com/help/en/2868",
+      "source_content_sha256": "1dfff933af774a00e1a567610b9d1cfbb6648b5abbcf7bccc156f6d9c9ce7d12",
+      "description": "Request Address uses areaDomain but the HTTP example Host is open.ys7.com.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Route only through the configured client/token areaDomain."
+    },
+    {
+      "id": "global.arming.mode_example_path",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "description": "Arming/disarming HTTP example uses encrypt/off and validateCode.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use defence/set and isDefence from Request Address and parameter table."
+    },
+    {
+      "id": "cn.arming.active_serial_location",
+      "region": "domestic",
+      "source_doc_id": "1726",
+      "source_url": "https://open.ys7.com/help/1726",
+      "source_content_sha256": "5a48b04b4fc2de789e6ec9095a639941c56aef8e61553e3301b488299c2bb157",
+      "description": "Parameter table places deviceSerial in Header but curl puts it in form.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use Header per table; no duplicate placement or automatic fallback."
     }
   ]
 }

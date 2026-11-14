@@ -33,6 +33,8 @@
 
 ## 参数与返回值差异
 
+加密三个旧方法映射security.enable_encryption/disable_encryption/update_password；海外关闭需显式验证码，设备视频密码不使用RAM摘要。set_device_defence和set_device_defense分别映射arming.set_mode/active_defence，不可混同；时间计划改为ArmingSchedule，channel改为可选keyword-only，period/enable改为明确整数序列和bool。源矛盾与默认行为见[说明](research/2026-11-14-security-arming.md)。
+
 维护和补光映射见[说明](research/2026-11-14-maintenance-illumination.md)：旧format_device_disk的参数顺序调整为serial在前；upgrade_device_modules的逗号字符串改为显式模块序列；补光mode/enable不再省略，enable使用bool。触发操作不自动重放，进度查询不会启动后台轮询。
 
 抓拍capture_image→snapshots.capture，channel_no改为必填keyword-only channel；国内quality由旧版忽略改为明确拒绝，海外按当前文档接受0–4。不会重放抓拍或自动下载图片。指定空间抓拍和playback播放地址是新增能力，不属于旧150项的方法迁移，见[媒体说明](research/2026-11-14-media-access.md)。

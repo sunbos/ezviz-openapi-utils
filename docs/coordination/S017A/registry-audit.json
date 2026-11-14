@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "evidence": "registry_and_static_ast_only",
+  "registry": {
+    "schema_version": 1,
+    "evidence": "registry_structure_only",
+    "summary": {
+      "contracts": 155,
+      "bindings": 155,
+      "source_documents": 115,
+      "source_issues": 43,
+      "legacy_methods": 150,
+      "mapped_legacy_methods": 80,
+      "pending_legacy_methods": 70
+    },
+    "regions": {
+      "domestic": 99,
+      "overseas": 56
+    },
+    "live_status_counts": {
+      "authentication_succeeded": 1,
+      "empty_list_succeeded": 1,
+      "empty_list_succeeded_application_token": 1,
+      "not_verified": 151,
+      "request_failed_http_500": 1
+    }
+  },
+  "code": {
+    "schema_version": 1,
+    "evidence": "static_ast_symbols_only",
+    "summary": {
+      "bindings_checked": 155,
+      "symbols_checked": 310,
+      "migration_targets_checked": 80
+    },
+    "source_files_sha256": {
+      "src/ezviz_unified/alarms.py": "667229f5f6aae8c80449d8ccbb907c7aceefa02c697cb26e4394c9fbc20acb6b",
+      "src/ezviz_unified/arming.py": "745e76626817fbd19cfe533efd7f0e09c34eb3f5287065bb79020b5a7f3275fb",
+      "src/ezviz_unified/auth.py": "e6b53a75fefa81af507c6a7ab2fd2bbfc60420092f82152e5bde631d9608c9b1",
+      "src/ezviz_unified/client.py": "c06b9d93c07f442fbb5a75f5793a338fae4d622e06c818cc54ed4a7564b25cb5",
+      "src/ezviz_unified/cloud_storage.py": "f8cfb43b4d55c0962cb300a0b8d332b2bcc7704d5b79b227fac86348805a79ca",
+      "src/ezviz_unified/cruise.py": "5611551b0b0e1b45a971808080a67863e790037d1a579149c39c84c3e9be2697",
+      "src/ezviz_unified/devices.py": "8abf4ab3c9bc5f75996f7440a3fa8fe999e6b2aeeb7c09809503837caaae2841",
+      "src/ezviz_unified/diagnostics.py": "28c5584d985ae2a3452e0618abc3b1b2bab39b5e491f166ae49b6056afaf978e",
+      "src/ezviz_unified/illumination.py": "c5b242867271fe94b7ecb50867351601558c24bb10abbd52fa554b09f1a5efb3",
+      "src/ezviz_unified/imaging.py": "74a106fc8ac6bf683437d7b4ec49b77b2c8dfddf99065e2220cfc46b92411a86",
+      "src/ezviz_unified/maintenance.py": "be3125c1071b6cd591c78c81babd3b6114ab5efbb2b9ca6edc34d28518ce2eb0",
+      "src/ezviz_unified/management.py": "47fdef0ea19de024bc553b6e83961db64a01db8e06029592edd3d81067d81f30",
+      "src/ezviz_unified/ownership.py": "d5796e1f02c18ac1b68c53fef8d0e1f4e552e82094d000113e9362407a9651bc",
+      "src/ezviz_unified/playback.py": "52ed5c71067540ca7ae338fbfc80ab37fe7c44558ac05ba596e1c1acbca15759",
+      "src/ezviz_unified/ptz.py": "10e10636c0715f2d9791ea04bda66b11dbed1793bc846869aada421f0d3c168d",
+      "src/ezviz_unified/recordings.py": "fa627c1259de24bedbdea58503924fa474d505df07d2ca9dbcfe94394f26b584",
+      "src/ezviz_unified/security.py": "8b58138cc6e2d1c8ce56f9b6ab61efd0a3ebf157f1e01d53a8a8349336ab7cdc",
+      "src/ezviz_unified/settings.py": "5183abee26ab13f2316b50198be172f3f23867b5b79d31ff31e6aeb7897fa72c",
+      "src/ezviz_unified/snapshots.py": "cdf58ff350bd9d749e43fbb18cb087a8d3a9c93a75c2607275be995f5cf72ce3",
+      "src/ezviz_unified/subaccounts.py": "b8c93eacac83b9cad923ab4cd4d3d5c39646bf0395df12757116c13ac97196e1",
+      "src/ezviz_unified/video.py": "291838cc2a3a9085b7d6d9f89c29ae801aa9bd7db2556265cdb4c0a561e0521c"
+    }
+  },
+  "inputs_sha256": {
+    "contracts/reviewed-transport-contracts.json": "0498300fa4580140203c53bdef1dc9e59b93ad896f8326effac99606515fdcf0",
+    "contracts/sdk-bindings.json": "a5d91a7bab3b0117bcaae027327e5fdb80a5892223c524c4827c87fad6382d22",
+    "contracts/source-issues.json": "6cd4d153bfa388e910f66778749fba13978f27de306f956b6ffb24c8dff78608",
+    "contracts/legacy-migration.json": "16e626efa269f6486e642331e48035a87055472a847dab52043ae85ffb615e72",
+    "docs/research/legacy-audit/legacy-method-inventory.json": "54ea6a061bfa60eca4094044217a534b89745a3211485e8f9a04284f863a4fbb"
+  }
+}

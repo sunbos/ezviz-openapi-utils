@@ -9372,6 +9372,872 @@
         "path": "Request Address",
         "encoding": "form_urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.security.enable_encryption",
+      "region": "domestic",
+      "source_doc_id": "698",
+      "source_url": "https://open.ys7.com/help/698",
+      "source_content_sha256": "d153094f4478e8c2a7edf43af99c0381405560d4931b4210c6fdd4c6ecfd00c9",
+      "method": "POST",
+      "path": "/api/lapp/device/encrypt/on",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.security.disable_encryption",
+      "region": "domestic",
+      "source_doc_id": "697",
+      "source_url": "https://open.ys7.com/help/697",
+      "source_content_sha256": "247c0d5423c29bfae0e094e6354591b9c157a44da232ca758a58fa5876d7d64e",
+      "method": "POST",
+      "path": "/api/lapp/device/encrypt/off",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Function and errors mention verification code but request table/example omit it. SDK follows listed fields and does not claim no security proof is needed."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.security.update_password",
+      "region": "domestic",
+      "source_doc_id": "699",
+      "source_url": "https://open.ys7.com/help/699",
+      "source_content_sha256": "be6535e8f4e88e66d334b6bbaf48b22c61f9676281e2356b9edbe070e24210cd",
+      "method": "POST",
+      "path": "/api/lapp/device/password/update",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "oldPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "newPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Passwords sent verbatim, not RAM-MD5; no truncation, normalization or playback cache update.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "New-password byte-length wording is malformed and contradicts the six-byte example; no local bound is guessed."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.arming.set_mode",
+      "region": "domestic",
+      "source_doc_id": "701",
+      "source_url": "https://open.ys7.com/help/701",
+      "source_content_sha256": "ffc95bc25a818b478e199a8e8d2ebcd4f6966a96f7b2781dbaa1ad5f7ab80850",
+      "method": "POST",
+      "path": "/api/lapp/device/defence/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "isDefence",
+          "location": "body",
+          "type": "int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "isDefence is one of0/1/8/16; 0 and allowed mode families depend on device type/capability. SDK does not infer type or probe first.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.arming.get_schedule",
+      "region": "domestic",
+      "source_doc_id": "702",
+      "source_url": "https://open.ys7.com/help/702",
+      "source_content_sha256": "0d1193baf37c22219264adc08e5e5325aa53f656a2f6887051ba9dfdc2d2e3b5",
+      "method": "POST",
+      "path": "/api/lapp/device/defence/plan/get",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Omitted channel means the device; no default channel1 is injected. Returned strings and enable are preserved raw.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.arming.set_schedule",
+      "region": "domestic",
+      "source_doc_id": "703",
+      "source_url": "https://open.ys7.com/help/703",
+      "source_content_sha256": "bbd37fb76656207bde27995e2a74cf437b7ebfdd8337dcb6117713e05db405c0",
+      "method": "POST",
+      "path": "/api/lapp/device/defence/plan/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "stopTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "period",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Omitted channel means the device; no default channel1 is injected. Returned strings and enable are preserved raw.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Explicit nonempty schedule fields only; weekday sequence0–6 serialized in caller order, bool enable becomes String0/1. No separate mode request.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Omitted fields can use platform defaults including enable1; omission is not a promise to preserve old state.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Stop must follow start within24h, n marks next day; missing start uses documented00:00 for validation only.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.arming.active_defence",
+      "region": "domestic",
+      "source_doc_id": "1726",
+      "source_url": "https://open.ys7.com/help/1726",
+      "source_content_sha256": "5a48b04b4fc2de789e6ec9095a639941c56aef8e61553e3301b488299c2bb157",
+      "method": "POST",
+      "path": "/api/v3/device/defence",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "status",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "status1 clears,2 triggers active defence; requires support_active_defense and Config permission, managed/subaccounts supported.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "deviceSerial is Header in the parameter table but form in the curl example; SDK uses the table."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.security.enable_encryption",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/encrypt/on",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Function description says Disable although heading/path and code60019 describe enabling."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.security.disable_encryption",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/encrypt/off",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "validateCode",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "validateCode requires exactly six uppercase ASCII letters, provided explicitly by caller.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.security.update_password",
+      "region": "overseas",
+      "source_doc_id": "2868",
+      "source_url": "https://open.ys7.com/help/en/2868",
+      "source_content_sha256": "1dfff933af774a00e1a567610b9d1cfbb6648b5abbcf7bccc156f6d9c9ce7d12",
+      "method": "POST",
+      "path": "/api/lapp/device/password/update",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "oldPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "newPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Passwords sent verbatim, not RAM-MD5; no truncation, normalization or playback cache update.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "New password at most 12 characters per source; Request Address areaDomain overrides the domestic Host printed in the example.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.arming.set_mode",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/defence/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "isDefence",
+          "location": "body",
+          "type": "int",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "isDefence is one of0/1/8/16; 0 and allowed mode families depend on device type/capability. SDK does not infer type or probe first.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "HTTP example incorrectly points to encrypt/off with unrelated validateCode; use defence/set Request Address."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.arming.get_schedule",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/defence/plan/get",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Omitted channel means the device; no default channel1 is injected. Returned strings and enable are preserved raw.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.arming.set_schedule",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "source_content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "method": "POST",
+      "path": "/api/lapp/device/defence/plan/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "stopTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "period",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified request parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single explicit request; no automatic prerequisite mutations or write replay.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Omitted channel means the device; no default channel1 is injected. Returned strings and enable are preserved raw.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Explicit nonempty schedule fields only; weekday sequence0–6 serialized in caller order, bool enable becomes String0/1. No separate mode request.",
+          "evidence": "source description/table and explicit SDK policy"
+        },
+        {
+          "fact": "Omitted fields can use platform defaults including enable1; omission is not a promise to preserve old state.",
+          "evidence": "source description/table and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Overseas text explicitly illustrates n00:00 but does not state the domestic24h span restriction; raw next-day strings beyond examples remain unverified."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -9437,6 +10303,10 @@
     {
       "review": "docs/coordination/S016B/contracts-review.json",
       "note": "C014 adds thirteen maintenance/illumination contracts and revises overseas storage-status response layouts from limited protocol evidence."
+    },
+    {
+      "review": "docs/coordination/S017A/contracts-review.json",
+      "note": "C015 adds thirteen security/arming contracts and seven legacy mappings; no actual safety-state or password changes."
     }
   ]
 }

@@ -1877,6 +1877,175 @@
       "public_entry": "illumination.set_enabled",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.security.enable_encryption",
+      "region": "domestic",
+      "source_doc_id": "698",
+      "module": "src/ezviz_unified/security.py",
+      "symbols": [
+        "Security.enable_encryption",
+        "AsyncSecurity.enable_encryption"
+      ],
+      "public_entry": "security.enable_encryption",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.security.disable_encryption",
+      "region": "domestic",
+      "source_doc_id": "697",
+      "module": "src/ezviz_unified/security.py",
+      "symbols": [
+        "Security.disable_encryption",
+        "AsyncSecurity.disable_encryption"
+      ],
+      "public_entry": "security.disable_encryption",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.security.update_password",
+      "region": "domestic",
+      "source_doc_id": "699",
+      "module": "src/ezviz_unified/security.py",
+      "symbols": [
+        "Security.update_password",
+        "AsyncSecurity.update_password"
+      ],
+      "public_entry": "security.update_password",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.arming.set_mode",
+      "region": "domestic",
+      "source_doc_id": "701",
+      "module": "src/ezviz_unified/arming.py",
+      "symbols": [
+        "Arming.set_mode",
+        "AsyncArming.set_mode"
+      ],
+      "public_entry": "arming.set_mode",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.arming.get_schedule",
+      "region": "domestic",
+      "source_doc_id": "702",
+      "module": "src/ezviz_unified/arming.py",
+      "symbols": [
+        "Arming.get_schedule",
+        "AsyncArming.get_schedule"
+      ],
+      "public_entry": "arming.get_schedule",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.arming.set_schedule",
+      "region": "domestic",
+      "source_doc_id": "703",
+      "module": "src/ezviz_unified/arming.py",
+      "symbols": [
+        "Arming.set_schedule",
+        "AsyncArming.set_schedule"
+      ],
+      "public_entry": "arming.set_schedule",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.arming.active_defence",
+      "region": "domestic",
+      "source_doc_id": "1726",
+      "module": "src/ezviz_unified/arming.py",
+      "symbols": [
+        "Arming.active_defence",
+        "AsyncArming.active_defence"
+      ],
+      "public_entry": "arming.active_defence",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.security.enable_encryption",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/security.py",
+      "symbols": [
+        "Security.enable_encryption",
+        "AsyncSecurity.enable_encryption"
+      ],
+      "public_entry": "security.enable_encryption",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.security.disable_encryption",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/security.py",
+      "symbols": [
+        "Security.disable_encryption",
+        "AsyncSecurity.disable_encryption"
+      ],
+      "public_entry": "security.disable_encryption",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.security.update_password",
+      "region": "overseas",
+      "source_doc_id": "2868",
+      "module": "src/ezviz_unified/security.py",
+      "symbols": [
+        "Security.update_password",
+        "AsyncSecurity.update_password"
+      ],
+      "public_entry": "security.update_password",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.arming.set_mode",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/arming.py",
+      "symbols": [
+        "Arming.set_mode",
+        "AsyncArming.set_mode"
+      ],
+      "public_entry": "arming.set_mode",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.arming.get_schedule",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/arming.py",
+      "symbols": [
+        "Arming.get_schedule",
+        "AsyncArming.get_schedule"
+      ],
+      "public_entry": "arming.get_schedule",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.arming.set_schedule",
+      "region": "overseas",
+      "source_doc_id": "477",
+      "module": "src/ezviz_unified/arming.py",
+      "symbols": [
+        "Arming.set_schedule",
+        "AsyncArming.set_schedule"
+      ],
+      "public_entry": "arming.set_schedule",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

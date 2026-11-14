@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 73,
-  "pending_count": 77,
+  "mapped_count": 80,
+  "pending_count": 70,
   "compatibility_shim": false,
   "methods": [
     {
@@ -571,50 +571,71 @@
     {
       "legacy_method": "set_device_encrypt_off",
       "source_line": 3025,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.security.disable_encryption",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "Overseas additionally requires keyword verification_code; domestic follows its reviewed table without the field, with unresolved source gap. Returns ApiResponse; mutations are not automatically replayed and are not live verified."
     },
     {
       "legacy_method": "set_device_encrypt_on",
       "source_line": 3069,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.security.enable_encryption",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "Explicit enable operation; already-enabled errors remain errors. Returns ApiResponse; mutations are not automatically replayed and are not live verified."
     },
     {
       "legacy_method": "update_device_password",
       "source_line": 3113,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.security.update_password",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "old_password": "old_password",
+        "new_password": "new_password"
+      },
+      "notes": "Raw video passwords, no RAM digest; overseas max12 characters, domestic length typo remains unresolved. Returns ApiResponse; mutations are not automatically replayed and are not live verified."
     },
     {
       "legacy_method": "set_device_defence",
       "source_line": 3165,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.arming.set_mode",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "is_defence": "mode"
+      },
+      "notes": "Explicit int0/1/8/16; device-specific semantics not inferred. Returns ApiResponse; mutations are not automatically replayed and are not live verified."
     },
     {
       "legacy_method": "get_device_defence_plan",
       "source_line": 3211,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.arming.get_schedule",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "optional keyword-only channel"
+      },
+      "notes": "Channel omission retained rather than default1; response raw. Returns ApiResponse; mutations are not automatically replayed and are not live verified."
     },
     {
       "legacy_method": "set_device_defence_plan",
       "source_line": 3257,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.arming.set_schedule",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "optional keyword-only channel",
+        "start_time": "schedule.start_time",
+        "stop_time": "schedule.stop_time",
+        "period": "schedule.weekdays (Sequence[int])",
+        "enable": "schedule.enabled (bool or None)"
+      },
+      "notes": "Explicit ArmingSchedule replaces loose optional strings; at least one field required, domestic span rule and server omission defaults preserved. Returns ApiResponse; mutations are not automatically replayed and are not live verified."
     },
     {
       "legacy_method": "get_wifi_sound_switch_status",
@@ -1272,10 +1293,13 @@
     {
       "legacy_method": "set_device_defense",
       "source_line": 6309,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.arming.active_defence",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "status": "action (ActiveDefenceAction or int1/2)"
+      },
+      "notes": "Domestic active-alarm command, distinct from arming mode; deviceSerial moved to reviewed Header placement. Returns ApiResponse; mutations are not automatically replayed and are not live verified."
     },
     {
       "legacy_method": "play_device_audition",

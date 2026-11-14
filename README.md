@@ -4,7 +4,7 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置、播放地址、抓拍、告警、云存储、RAM子账户、维护、补光和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前登记数量、地区分布与验证状态见[机器生成的覆盖清单](contracts/coverage.json)，真实支持情况另列。
+本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置、播放地址、抓拍、告警、云存储、RAM子账户、维护、补光、加密/布撤防和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前登记数量、地区分布与验证状态见[机器生成的覆盖清单](contracts/coverage.json)，真实支持情况另列。
 
 ## 设备查询
 
@@ -66,6 +66,10 @@ with Client(
 ## 设备诊断
 
 诊断入口为 `client.diagnostics`：protocol_support、search、channel_status、capabilities、version、storage_status、disk_capacity。protocol_support需显式app_key；capabilities可传channel。仅capabilities/version/storage_status有海外契约，其他仅国内。字段和响应差异见[诊断说明](docs/research/2026-11-14-diagnostics.md)；不自动升级、格式化或关闭加密。公开型号查询本次实测返回HTTP500，其余诊断未实测。
+
+## 加密与布撤防
+
+`client.security`提供显式开启/关闭视频加密和修改视频密码；`client.arming`提供布撤防模式、时间计划和国内主动防御命令。计划使用`ArmingSchedule`，省略字段可能使用平台默认值（包括启用），不等于保留原计划。各地区验证码/长度约束、时间窗口及旧defence/defense的语义区别见[安全与布撤防说明](docs/research/2026-11-14-security-arming.md)。没有真实安全状态变更。
 
 ## 维护与补光
 

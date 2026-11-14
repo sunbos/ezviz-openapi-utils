@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "701",
+      "title": "API-云接入-设备运维-设备配置-设置设备撤/布防",
+      "source_url": "https://open.ys7.com/help/701",
+      "content_sha256": "ffc95bc25a818b478e199a8e8d2ebcd4f6966a96f7b2781dbaa1ad5f7ab80850",
+      "raw_file_sha256": "f854425229a925f2f28790f19aa0aa96ac7adc43cc5e460a83a837e1a4700df7"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "702",
+      "title": "API-云接入-设备运维-设备配置-获取设备布撤防时间计划",
+      "source_url": "https://open.ys7.com/help/702",
+      "content_sha256": "0d1193baf37c22219264adc08e5e5325aa53f656a2f6887051ba9dfdc2d2e3b5",
+      "raw_file_sha256": "30d955a1b685c517ee2dad1dd05bfb9c90e65b7f1ce82b6bb683747d545d7d31"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "703",
+      "title": "API-云接入-设备运维-设备配置-设置设备布撤防时间计划",
+      "source_url": "https://open.ys7.com/help/703",
+      "content_sha256": "bbd37fb76656207bde27995e2a74cf437b7ebfdd8337dcb6117713e05db405c0",
+      "raw_file_sha256": "f5579279afd5da208b1888a4bd4b6b8b75fc6b6d72ce994ee3eeab8208a411a4"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1726",
+      "title": "设备主动防御",
+      "source_url": "https://open.ys7.com/help/1726",
+      "content_sha256": "5a48b04b4fc2de789e6ec9095a639941c56aef8e61553e3301b488299c2bb157",
+      "raw_file_sha256": "4174beb7042c17aefec504168517638917f103ab227a9d1f33a806db53c9667e"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "477",
+      "title": "device switch",
+      "source_url": "https://open.ys7.com/help/en/477",
+      "content_sha256": "bdb6887fb10eb0fd94e67629c1b0fd6c25f8fc40c2c62a52847323a6737bac62",
+      "raw_file_sha256": "ebda8402b062e18c6dbde8c9d09ff6d22de6dc9343d49fda6edf76b1dfca4f6f"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

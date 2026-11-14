@@ -1,0 +1,14 @@
+{
+  "task_id": "C015",
+  "new_contracts": 13,
+  "total_contracts": 155,
+  "mapped_legacy_methods": 80,
+  "source_issues": 43,
+  "source_bodies_rehashed": true,
+  "provenance": [
+    "source-provenance.json",
+    "../S017B/source-provenance.json"
+  ],
+  "real_api_requests": false,
+  "security_state_changes": false
+}
