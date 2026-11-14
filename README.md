@@ -1,5 +1,9 @@
 # EZVIZ OpenAPI Utils
 
+> **Legacy project — development has moved to [EZVIZ Unified](https://github.com/sunbos/ezviz-unified).**
+> The new `ezviz-unified` SDK has an independent API and does not provide compatibility with `ezviz-openapi-utils`.
+> Existing releases and history are retained. The documentation below describes the legacy project; use the new repository for current development and verification status.
+
 [![PyPI version](https://badge.fury.io/py/ezviz-openapi-utils.svg)](https://pypi.org/project/ezviz-openapi-utils/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/ezviz-openapi-utils.svg?logo=python&logoColor=white)](https://pypi.org/project/ezviz-openapi-utils/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
