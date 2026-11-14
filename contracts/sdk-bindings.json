@@ -1268,6 +1268,97 @@
       "public_entry": "video.set_switch",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.playback.create",
+      "region": "domestic",
+      "source_doc_id": "1414",
+      "module": "src/ezviz_unified/playback.py",
+      "symbols": [
+        "Playback.create",
+        "AsyncPlayback.create"
+      ],
+      "public_entry": "playback.create",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.playback.invalidate",
+      "region": "domestic",
+      "source_doc_id": "1415",
+      "module": "src/ezviz_unified/playback.py",
+      "symbols": [
+        "Playback.invalidate",
+        "AsyncPlayback.invalidate"
+      ],
+      "public_entry": "playback.invalidate",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.snapshots.capture",
+      "region": "domestic",
+      "source_doc_id": "687",
+      "module": "src/ezviz_unified/snapshots.py",
+      "symbols": [
+        "Snapshots.capture",
+        "AsyncSnapshots.capture"
+      ],
+      "public_entry": "snapshots.capture",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.playback.create",
+      "region": "overseas",
+      "source_doc_id": "534",
+      "module": "src/ezviz_unified/playback.py",
+      "symbols": [
+        "Playback.create",
+        "AsyncPlayback.create"
+      ],
+      "public_entry": "playback.create",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.playback.invalidate",
+      "region": "overseas",
+      "source_doc_id": "534",
+      "module": "src/ezviz_unified/playback.py",
+      "symbols": [
+        "Playback.invalidate",
+        "AsyncPlayback.invalidate"
+      ],
+      "public_entry": "playback.invalidate",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.snapshots.capture",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "module": "src/ezviz_unified/snapshots.py",
+      "symbols": [
+        "Snapshots.capture",
+        "AsyncSnapshots.capture"
+      ],
+      "public_entry": "snapshots.capture",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.snapshots.capture_to_space",
+      "region": "domestic",
+      "source_doc_id": "5235",
+      "module": "src/ezviz_unified/snapshots.py",
+      "symbols": [
+        "Snapshots.capture_to_space",
+        "AsyncSnapshots.capture_to_space"
+      ],
+      "public_entry": "snapshots.capture_to_space",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

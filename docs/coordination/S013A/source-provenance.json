@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "1414",
+      "title": "API-云直播-播放地址-播放地址接口（新）-获取播放地址",
+      "source_url": "https://open.ys7.com/help/1414",
+      "content_sha256": "2bfe50f2aab9caded4b129a904011d1526b65791c15fca83c3a1605675d21df3",
+      "raw_file_sha256": "4a2e66fae0d91354cfe0b0fb2d0315f238af3d7d0b12f5131d7c3e27f58b7cf4"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1415",
+      "title": "API-云直播-播放地址-播放地址接口（新）-失效播放地址",
+      "source_url": "https://open.ys7.com/help/1415",
+      "content_sha256": "4347283529a36feb661d942eecf6727e1bbc23c580ce8ef1b9dfcd5b7d43cab5",
+      "raw_file_sha256": "acab7c19f30af124889261c3d9a9cac8fed8bdc511167aca6d1d0b79435ea8f0"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "534",
+      "title": "海外直播地址.md",
+      "source_url": "https://open.ys7.com/help/en/534",
+      "content_sha256": "94f2eedda4e0e15f2f20d1d255a3e45699ebc51341851f07259d4b14ff6302dd",
+      "raw_file_sha256": "ceb7863636a72bee6c44555166ebaa497b9e32951dbc60ee876c43c6627e3384"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

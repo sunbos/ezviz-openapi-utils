@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 64,
-  "pending_count": 86,
+  "mapped_count": 65,
+  "pending_count": 85,
   "compatibility_shim": false,
   "methods": [
     {
@@ -439,10 +439,14 @@
     {
       "legacy_method": "capture_image",
       "source_line": 2196,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.snapshots.capture",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel (required keyword-only int)",
+        "quality": "quality (optional keyword-only int; overseas only)"
+      },
+      "notes": "Domestic quality is rejected instead of ignored; overseas documents codes 0–4. Returns ApiResponse; no automatic replay or image download. New capture_to_space and playback endpoints are additional capabilities, not old-method mappings."
     },
     {
       "legacy_method": "get_passenger_flow_switch_status",

@@ -4,7 +4,7 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖96项已审核地区契约，全部真实支持情况另列。
+本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置、播放地址、抓拍和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖103项已审核地区契约，全部真实支持情况另列。
 
 ## 设备查询
 
@@ -30,6 +30,10 @@ with Client(
 国内托管设备使用 `client.devices.list_managed(page_start=0, page_size=10)`；与普通列表分开，不套用400页上限。最新[范围复核](docs/validation/live/2026-11-14-managed/README.md)中，当前开发者token的两个列表均成功且为空，其他授权主体仍未验证。
 
 `client.devices`另提供bind/unbind、rename/rename_channel、link_ipc/unlink_ipc、set_channel_visible、cameras和connection_info；写请求不会自动重放。仅国内提供rename_channel/set_channel_visible/connection_info，后者不支持子账户和托管权限。`client.ownership`提供国内三步确权调用，不自动串联、操控设备上下线或修改安全设置；具体约束见[管理与确权说明](docs/research/2026-11-14-management-ownership.md)。这些变更操作仍未实测。
+
+## 播放地址与抓拍
+
+`client.playback.create(serial, PlaybackOptions(...))`按地区创建播放地址；`invalidate(serial, url_id=...)`显式失效地址。`client.snapshots.capture(serial, channel=...)`支持两地普通抓拍，国内另有`capture_to_space`。这些操作不自动重放，也不下载或播放媒体；返回URL与密码应按凭证处理。协议/时间/存储差异和未解决项见[媒体说明](docs/research/2026-11-14-media-access.md)，尚未进行真实媒体请求。
 
 ## 本地录像查询
 
@@ -139,7 +143,7 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
 - [维护harness](harness/README.md)：比较门户catalog的内容与来源变化，输出待审查报告；当前不自动改代码或发布。
-- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确64项方法映射、86项待迁移范围，以及wheel/sdist的验证边界。
+- [旧版迁移](docs/migration.md)与[发行检查](docs/releasing.md)：明确65项方法映射、85项待迁移范围，以及wheel/sdist的验证边界。
 
 旧 `ezviz-openapi-utils` 与新 `ezviz-unified` 使用独立发行名和 API。原项目历史保留，旧发行不被自动替换；兼容映射与迁移说明会随实际迁移范围提供。
 

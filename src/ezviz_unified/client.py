@@ -30,10 +30,12 @@ from .imaging import AsyncImaging, Imaging
 from .models import ApiResponse
 from .operations import Operation
 from .ownership import AsyncOwnership, Ownership
+from .playback import AsyncPlayback, Playback
 from .providers import AsyncTokenProvider, TokenProvider, validate_provider_token
 from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .settings import AsyncSettings, Settings
+from .snapshots import AsyncSnapshots, Snapshots
 from .transport import AsyncTransport, ParamMapping, SyncTransport
 from .video import AsyncVideo, Video
 
@@ -232,6 +234,8 @@ class Client:
         self.settings = Settings(self)
         self.imaging = Imaging(self)
         self.video = Video(self)
+        self.playback = Playback(self)
+        self.snapshots = Snapshots(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -432,6 +436,8 @@ class AsyncClient:
         self.settings = AsyncSettings(self)
         self.imaging = AsyncImaging(self)
         self.video = AsyncVideo(self)
+        self.playback = AsyncPlayback(self)
+        self.snapshots = AsyncSnapshots(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)

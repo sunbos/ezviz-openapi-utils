@@ -21,6 +21,7 @@ from .imaging import AsyncImaging, ImageSetting, Imaging
 from .models import ApiResponse, ResponsePolicy
 from .operations import Operation
 from .ownership import AsyncOwnership, Ownership
+from .playback import AsyncPlayback, Playback, PlaybackOptions
 from .providers import (
     AsyncStaticTokenProvider,
     AsyncTokenProvider,
@@ -31,6 +32,7 @@ from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .response import decode_response
 from .settings import AsyncSettings, DeviceSwitch, Settings
+from .snapshots import AsyncSnapshots, Snapshots
 from .transport import AsyncTransport, SyncTransport
 from .video import AsyncVideo, PreviewEncoding, Video, VideoSwitch
 
@@ -45,6 +47,8 @@ __all__ = [
     "AsyncDiagnostics",
     "AsyncImaging",
     "AsyncVideo",
+    "AsyncPlayback",
+    "AsyncSnapshots",
     "AsyncRecordings",
     "AsyncSettings",
     "AsyncPtz",
@@ -69,11 +73,14 @@ __all__ = [
     "PermissionDeniedError",
     "ProtocolError",
     "PreviewEncoding",
+    "Playback",
+    "PlaybackOptions",
     "Ptz",
     "RegionConfig",
     "Recordings",
     "ResponsePolicy",
     "Settings",
+    "Snapshots",
     "SyncTransport",
     "StaticTokenProvider",
     "Token",

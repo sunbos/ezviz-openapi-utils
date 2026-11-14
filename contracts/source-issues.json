@@ -216,6 +216,36 @@
       "description": "videoBitRate code 22 is described as custom, but no parameter for the custom bitrate value is documented.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Send the documented code only when explicitly supplied; do not invent a kbps field or claim arbitrary bitrate configuration."
+    },
+    {
+      "id": "cn.playback.expiry_type",
+      "region": "domestic",
+      "source_doc_id": "1414",
+      "source_url": "https://open.ys7.com/help/1414",
+      "source_content_sha256": "2bfe50f2aab9caded4b129a904011d1526b65791c15fca83c3a1605675d21df3",
+      "description": "expireTime response field is typed long but shown as a date string.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Preserve the response value without coercion or timezone inference."
+    },
+    {
+      "id": "cn.playback.response_shape",
+      "region": "domestic",
+      "source_doc_id": "1414",
+      "source_url": "https://open.ys7.com/help/1414",
+      "source_content_sha256": "2bfe50f2aab9caded4b129a904011d1526b65791c15fca83c3a1605675d21df3",
+      "description": "Response note describes per-address ret/status/exception while the example contains a single object without them.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Check data.ret only if present; preserve status/exception and raw data. Platform success is not playback readiness."
+    },
+    {
+      "id": "global.playback.invalidation_scope",
+      "region": "overseas",
+      "source_doc_id": "534",
+      "source_url": "https://open.ys7.com/help/en/534",
+      "source_content_sha256": "94f2eedda4e0e15f2f20d1d255a3e45699ebc51341851f07259d4b14ff6302dd",
+      "description": "urlId is marked optional but the effect of omission is not documented.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Require explicit url_id argument; accept explicit None only overseas without assigning a guessed scope. No default omission or automatic replay."
     }
   ]
 }

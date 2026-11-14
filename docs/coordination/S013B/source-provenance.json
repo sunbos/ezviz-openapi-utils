@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "687",
+      "title": "API-云接入-设备能力-抓拍-设备抓拍图片",
+      "source_url": "https://open.ys7.com/help/687",
+      "content_sha256": "5aeb602dc1f5e71b3c50c598dddd4f58d56b9644d2f4f6b50c2e03558a2d8782",
+      "raw_file_sha256": "5fc1322174df4b4a2fcdadb507a8385509f312cf3afdefaf30e6261d5caeb395"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "5235",
+      "title": "设备抓拍图片(支持生命周期)",
+      "source_url": "https://open.ys7.com/help/5235",
+      "content_sha256": "dcdb1adffe541eb6b23f935599c4a09c16539e3328b5599593ff8514518da59a",
+      "raw_file_sha256": "b0a76dae0a53893e6f1fba3de2e7d43b2065e0841625c5f78b271e7d0e7f8ce6"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "475",
+      "title": "administrate",
+      "source_url": "https://open.ys7.com/help/en/475",
+      "content_sha256": "056022d3ebe1aaa263c47e942eb0bd1d18fe4042c98cb243f1e8e21dcbdd85e0",
+      "raw_file_sha256": "68ddb7551e539962cf37bbf1aad75145feae8d8e547015d835843b273e4d454c"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

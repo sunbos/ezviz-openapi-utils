@@ -6045,6 +6045,623 @@
         "path": "request address",
         "encoding": "form_urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.playback.create",
+      "region": "domestic",
+      "source_doc_id": "1414",
+      "source_url": "https://open.ys7.com/help/1414",
+      "source_content_sha256": "2bfe50f2aab9caded4b129a904011d1526b65791c15fca83c3a1605675d21df3",
+      "method": "POST",
+      "path": "/api/lapp/v2/live/address/get",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "protocol",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "code",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "expireTime",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "type",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "quality",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "stopTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "supportH265",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "containerFormat",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "mute",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "playbackSpeed",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "gbchannel",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "diserr",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and field table",
+        "device_code_path": "data.ret",
+        "device_success_values": [
+          200,
+          "200"
+        ],
+        "require_device_code": false
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Optional fields stay omitted; known server protocol/type defaults used only for validating combinations.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "Device password uses request code; SDK masks it in repr and diagnostic output.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "SDK disables automatic replay for address credential requests; returned URL is not fetched.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        }
+      ],
+      "uncertainties": [
+        "Response field table calls expireTime long, but example is a date string; preserved raw.",
+        "Response note mentions per-address ret/status/exception missing from the single-object example; only present data.ret is checked."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.playback.invalidate",
+      "region": "domestic",
+      "source_doc_id": "1415",
+      "source_url": "https://open.ys7.com/help/1415",
+      "source_content_sha256": "4347283529a36feb661d942eecf6727e1bbc23c580ce8ef1b9dfcd5b7d43cab5",
+      "method": "POST",
+      "path": "/api/lapp/v2/live/address/disable",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "urlId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "SDK disables automatic replay; no follow-up media download or implicit scope expansion.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.snapshots.capture",
+      "region": "domestic",
+      "source_doc_id": "687",
+      "source_url": "https://open.ys7.com/help/687",
+      "source_content_sha256": "5aeb602dc1f5e71b3c50c598dddd4f58d56b9644d2f4f6b50c2e03558a2d8782",
+      "method": "POST",
+      "path": "/api/lapp/device/capture",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "SDK disables automatic replay; no follow-up media download or implicit scope expansion.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "Domestic requires uppercase English letters and does not document quality; overseas quality is 0–4.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "Capture issues a device command; domestic source mentions billing, 2-hour image storage and recommends intervals above 4 seconds; these are not overseas guarantees.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.playback.create",
+      "region": "overseas",
+      "source_doc_id": "534",
+      "source_url": "https://open.ys7.com/help/en/534",
+      "source_content_sha256": "94f2eedda4e0e15f2f20d1d255a3e45699ebc51341851f07259d4b14ff6302dd",
+      "method": "POST",
+      "path": "/api/lapp/live/address/get",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "protocol",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "code",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "expireTime",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "type",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "quality",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "stopTime",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Optional fields stay omitted; known server protocol/type defaults used only for validating combinations.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "Device password uses request code; SDK masks it in repr and diagnostic output.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "SDK disables automatic replay for address credential requests; returned URL is not fetched.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.1 Obtain Play Address"
+    },
+    {
+      "operation_id": "global.playback.invalidate",
+      "region": "overseas",
+      "source_doc_id": "534",
+      "source_url": "https://open.ys7.com/help/en/534",
+      "source_content_sha256": "94f2eedda4e0e15f2f20d1d255a3e45699ebc51341851f07259d4b14ff6302dd",
+      "method": "POST",
+      "path": "/api/lapp/live/address/disable",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Integer",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "urlId",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "SDK disables automatic replay; no follow-up media download or implicit scope expansion.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        }
+      ],
+      "uncertainties": [
+        "urlId is optional but omission scope is unspecified; SDK requires an explicit url_id argument, with None allowed only overseas."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.2 Invalidate Play Address"
+    },
+    {
+      "operation_id": "global.snapshots.capture",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "source_url": "https://open.ys7.com/help/en/475",
+      "source_content_sha256": "056022d3ebe1aaa263c47e942eb0bd1d18fe4042c98cb243f1e8e21dcbdd85e0",
+      "method": "POST",
+      "path": "/api/lapp/device/capture",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "quality",
+          "location": "body",
+          "type": "int",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "SDK disables automatic replay; no follow-up media download or implicit scope expansion.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "Domestic requires uppercase English letters and does not document quality; overseas quality is 0–4.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "Capture issues a device command; domestic source mentions billing, 2-hour image storage and recommends intervals above 4 seconds; these are not overseas guarantees.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      },
+      "source_section": "1.4 Capture Pictures"
+    },
+    {
+      "operation_id": "cn.snapshots.capture_to_space",
+      "region": "domestic",
+      "source_doc_id": "5235",
+      "source_url": "https://open.ys7.com/help/5235",
+      "source_content_sha256": "dcdb1adffe541eb6b23f935599c4a09c16539e3328b5599593ff8514518da59a",
+      "method": "POST",
+      "path": "/api/service/open/capture/device/capture",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table and request example"
+        },
+        {
+          "name": "resultSpaceId",
+          "location": "body",
+          "type": "Long",
+          "required": true,
+          "evidence": "hash-verified parameter table and request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "response example and field table"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "SDK disables automatic replay; no follow-up media download or implicit scope expansion.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        },
+        {
+          "fact": "Managed accounts supported. Selects a capture result space; no explicit retention-duration parameter is documented.",
+          "evidence": "function/parameter/response description and explicit SDK replay policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -6090,6 +6707,10 @@
     {
       "review": "docs/coordination/S012A/contracts-review.json",
       "note": "C010 adds seven domestic video configuration contracts; preview and recording semantics remain separate, no real device changes."
+    },
+    {
+      "review": "docs/coordination/S013A/contracts-review.json",
+      "note": "C011 adds four regional playback contracts and three snapshot contracts, with no real media requests."
     }
   ]
 }
