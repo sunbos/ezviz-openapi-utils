@@ -6683,6 +6683,1209 @@
         "path": "request address",
         "encoding": "application/x-www-form-urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.alarms.list",
+      "region": "domestic",
+      "source_doc_id": "986",
+      "source_url": "https://open.ys7.com/help/986",
+      "source_content_sha256": "14459f361e4ee6a1dd0067d0372a66b7ede861b01df074375a74344df152dec8",
+      "method": "POST",
+      "path": "/api/lapp/alarm/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "endTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "alarmType",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "status",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Optional filters are omitted; default status is unread, pageStart starts at 0 and pageSize is 1–50.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Times are forwarded as integer values, never scaled or defaulted from the client clock; data/page and media URLs remain raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Source specifies millisecond input times and a server-side seven-day search window. Per-device serial requires uppercase English letters.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.alarms.for_device",
+      "region": "domestic",
+      "source_doc_id": "987",
+      "source_url": "https://open.ys7.com/help/987",
+      "source_content_sha256": "a2f77aedb34d03a1f1e083110f2cdeb26dbae9df7e5b465decfd326a1519e192",
+      "method": "POST",
+      "path": "/api/lapp/alarm/device/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "endTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "alarmType",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "status",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Optional filters are omitted; default status is unread, pageStart starts at 0 and pageSize is 1–50.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Times are forwarded as integer values, never scaled or defaulted from the client clock; data/page and media URLs remain raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Source specifies millisecond input times and a server-side seven-day search window. Per-device serial requires uppercase English letters.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.info_v1",
+      "region": "domestic",
+      "source_doc_id": "1409",
+      "source_url": "https://open.ys7.com/help/1409",
+      "source_content_sha256": "61b255051d2de28e9e6c989b1bfff5def5ab57a5261e344e9f7a27c75dcd3ed1",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/device/info",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "phone",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Domestic defaults to v2; overseas to v1. v1 supports phone; v2 does not. No silent downgrade.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Optional channel is omitted, not replaced with 1. Response object/array and timestamp values remain raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Time fields described as seconds but illustrated with 13-digit values; no conversion."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.info_v2",
+      "region": "domestic",
+      "source_doc_id": "1404",
+      "source_url": "https://open.ys7.com/help/1404",
+      "source_content_sha256": "f0f642ca863f14f0cfec7e829f3c20a76ac383909cd222221b825facdf5ae3f9",
+      "method": "POST",
+      "path": "/api/lapp/cloud/v2/storage/device/info",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Domestic defaults to v2; overseas to v1. v1 supports phone; v2 does not. No silent downgrade.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Optional channel is omitted, not replaced with 1. Response object/array and timestamp values remain raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.activate_card",
+      "region": "domestic",
+      "source_doc_id": "1402",
+      "source_url": "https://open.ys7.com/help/1402",
+      "source_content_sha256": "b9d487016171b021fd2d4cacf1787a624a402781fe6f36cbcfb19f649311e99a",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/open",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "cardPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "phone",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "isImmediately",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Explicit card redemption; phone empty string means current user; immediately is optional 0/1. No automatic replay or secret storage.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.alarms.list",
+      "region": "overseas",
+      "source_doc_id": "480",
+      "source_url": "https://open.ys7.com/help/en/480",
+      "source_content_sha256": "439059d7b40ad76b3790503215f1d6f70979bed17e01ffd66a721d04119c17ba",
+      "method": "POST",
+      "path": "/api/lapp/alarm/list",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "endTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "alarmType",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "status",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Optional filters are omitted; default status is unread, pageStart starts at 0 and pageSize is 1–50.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Times are forwarded as integer values, never scaled or defaulted from the client clock; data/page and media URLs remain raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Input time prose says second while examples are 13 digits.",
+        "Device section Request Address and HTTP example path differ.",
+        "Wi-Fi Recovered alarm type has no number in the original enum list."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.alarms.for_device",
+      "region": "overseas",
+      "source_doc_id": "480",
+      "source_url": "https://open.ys7.com/help/en/480",
+      "source_content_sha256": "439059d7b40ad76b3790503215f1d6f70979bed17e01ffd66a721d04119c17ba",
+      "method": "POST",
+      "path": "/api/lapp/alarm/device/list",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "endTime",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "alarmType",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "status",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Optional filters are omitted; default status is unread, pageStart starts at 0 and pageSize is 1–50.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Times are forwarded as integer values, never scaled or defaulted from the client clock; data/page and media URLs remain raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Input time prose says second while examples are 13 digits.",
+        "Device section Request Address and HTTP example path differ.",
+        "Wi-Fi Recovered alarm type has no number in the original enum list."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.cloud_storage.info_v1",
+      "region": "overseas",
+      "source_doc_id": "482",
+      "source_url": "https://open.ys7.com/help/en/482",
+      "source_content_sha256": "f811cbaa2821dedb294655c342b7cbd6e76f984c600b48c80b6622dbc42f5a53",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/device/info",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "long",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "phone",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Domestic defaults to v2; overseas to v1. v1 supports phone; v2 does not. No silent downgrade.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Optional channel is omitted, not replaced with 1. Response object/array and timestamp values remain raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Time fields described as seconds but illustrated with 13-digit values; no conversion.",
+        "deviceSerial request type is long while response identifier is String; SDK preserves supplied string on the form wire.",
+        "HTTP example contains a corrupted phone parameter label; parameter table phone is used."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.cloud_storage.activate_card",
+      "region": "overseas",
+      "source_doc_id": "482",
+      "source_url": "https://open.ys7.com/help/en/482",
+      "source_content_sha256": "f811cbaa2821dedb294655c342b7cbd6e76f984c600b48c80b6622dbc42f5a53",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/open",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "long",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "cardPassword",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "phone",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "isImmediately",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Explicit card redemption; phone empty string means current user; immediately is optional 0/1. No automatic replay or secret storage.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "deviceSerial request type long differs from identifier String convention; no integer coercion.",
+        "Use phone from parameter table, not corrupted HTTP example label."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.available_types",
+      "region": "domestic",
+      "source_doc_id": "1405",
+      "source_url": "https://open.ys7.com/help/1405",
+      "source_content_sha256": "195a25759d9e63108afb0e12485806fabaf2da3dd9cf07d87ad59142cbc1c8bf",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/device/support",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "payment",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Developer-only query; payment 1/2 sent as String when explicitly supplied; prices are documented in cents and returned raw.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.opening_status",
+      "region": "domestic",
+      "source_doc_id": "1410",
+      "source_url": "https://open.ys7.com/help/1410",
+      "source_content_sha256": "3c326fb7e9c0505f3007741bf0be0d3186002e2af1f976b9d15d72060b411a23",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/service/open/info",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Single query only; isOpening remains raw, not a polling loop or success conversion.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.open_service",
+      "region": "domestic",
+      "source_doc_id": "1400",
+      "source_url": "https://open.ys7.com/help/1400",
+      "source_content_sha256": "0a62a1cfb91a16920adcbda62a7ccd74b1cddca6ce7ee1103a1b3c5e67cce4e9",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/service/open",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "cloudType",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "requestId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "isImmediately",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "payment",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "validateCode",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "upgradeIntelligentEnable",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceAuthEnable",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "intelligentId",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Developer-only paid service opening; caller owns requestId idempotency key; no automatic retries or status polling.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "Public payment codes 1/2/10 only; FAQ explicitly says 6 is internal and not public.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        },
+        {
+          "fact": "isImmediately=1 can replace deferred service; deviceAuthEnable and AI fields are sent only when explicitly supplied.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.set_enabled",
+      "region": "domestic",
+      "source_doc_id": "1403",
+      "source_url": "https://open.ys7.com/help/1403",
+      "source_content_sha256": "dd5c9b3fb06b65e92c25f698ed72123460bda6d3aa02dfdb95c511a9b54e5d20",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/enable",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "phone",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Pause/resume upload; this does not cancel a plan or stop its validity countdown. No automatic replay.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.start_trial",
+      "region": "domestic",
+      "source_doc_id": "1406",
+      "source_url": "https://open.ys7.com/help/1406",
+      "source_content_sha256": "2d74c8ea1dad19e85f597a7764f901ac2c9298900f30567cb22dccec9b71550c",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/trial",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "requestId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Caller requestId required; first-use eligibility is platform-controlled, with no paid fallback. No automatic replay.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.transfer",
+      "region": "domestic",
+      "source_doc_id": "1407",
+      "source_url": "https://open.ys7.com/help/1407",
+      "source_content_sha256": "fb8aa9dbb19275e74773e451d5dedb18b82d70c0a03e27bd24d15e1b4057dd36",
+      "method": "POST",
+      "path": "/api/lapp/cloud/storage/trans",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "fromDeviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "fromChannelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "toDeviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "toChannelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "requestId",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example and fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Transfer affects all cloud storage under the device, target is left disabled by the platform; no automatic pause, resume or per-plan loop.",
+          "evidence": "source descriptions/tables and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -6736,6 +7939,10 @@
     {
       "review": "docs/coordination/H004A/data-repair.json",
       "note": "H004 normalizes token locations and completes early source hash/read-only metadata; runtime SDK unchanged."
+    },
+    {
+      "review": "docs/coordination/S014A/contracts-review.json",
+      "note": "C012 adds four regional alarm queries and eleven cloud-storage contracts; no paid or real-device calls."
     }
   ]
 }

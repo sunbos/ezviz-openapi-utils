@@ -1,0 +1,85 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "1400",
+      "title": "余额/资源包开通云存储",
+      "source_url": "https://open.ys7.com/help/1400",
+      "content_sha256": "0a62a1cfb91a16920adcbda62a7ccd74b1cddca6ce7ee1103a1b3c5e67cce4e9",
+      "raw_file_sha256": "7f496ca2ff15a265de2566a94a99cd477e7d4f0d17b426d4c077f4211b60b4a3"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1402",
+      "title": "使用卡密给设备开通云存储",
+      "source_url": "https://open.ys7.com/help/1402",
+      "content_sha256": "b9d487016171b021fd2d4cacf1787a624a402781fe6f36cbcfb19f649311e99a",
+      "raw_file_sha256": "5cacea5ef812baf07a5aca9105e115816da14ba41d6cc0c909c8d7263178ee63"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1403",
+      "title": "开启/暂停设备云存储",
+      "source_url": "https://open.ys7.com/help/1403",
+      "content_sha256": "dd5c9b3fb06b65e92c25f698ed72123460bda6d3aa02dfdb95c511a9b54e5d20",
+      "raw_file_sha256": "2c4c9169bc6a39d8386dda6b020cf8a81bcfd363be8cbbb5b44d5c52471c9628"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1404",
+      "title": "查询设备云存储信息",
+      "source_url": "https://open.ys7.com/help/1404",
+      "content_sha256": "f0f642ca863f14f0cfec7e829f3c20a76ac383909cd222221b825facdf5ae3f9",
+      "raw_file_sha256": "c6dcced977386579d2409b8777ea36634d94465610fe356a145b905a94ca017d"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1405",
+      "title": "获取设备可开通云存储类型",
+      "source_url": "https://open.ys7.com/help/1405",
+      "content_sha256": "195a25759d9e63108afb0e12485806fabaf2da3dd9cf07d87ad59142cbc1c8bf",
+      "raw_file_sha256": "2e507f1a5f696700dcd3e6cd55b2d3c69514257f72ffa4251042bf57ef4c444f"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1406",
+      "title": "试用云存储",
+      "source_url": "https://open.ys7.com/help/1406",
+      "content_sha256": "2d74c8ea1dad19e85f597a7764f901ac2c9298900f30567cb22dccec9b71550c",
+      "raw_file_sha256": "b99d7f26ac5f69f57c2289bc552104145fcff41478b5304971e739c8c5634a9c"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1407",
+      "title": "同一账号下设备间云存储转移",
+      "source_url": "https://open.ys7.com/help/1407",
+      "content_sha256": "fb8aa9dbb19275e74773e451d5dedb18b82d70c0a03e27bd24d15e1b4057dd36",
+      "raw_file_sha256": "c673a4ceb11f123a674f99d299ed9ed138f8a4850693d4950cc29c94d8351c3a"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1409",
+      "title": "查询设备云存储信息v1",
+      "source_url": "https://open.ys7.com/help/1409",
+      "content_sha256": "61b255051d2de28e9e6c989b1bfff5def5ab57a5261e344e9f7a27c75dcd3ed1",
+      "raw_file_sha256": "bb51b389e5a26ff000201fc9373959a7167ba441be4cb41f93a52f4290a4cabe"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1410",
+      "title": "获取设备云存储是否开通中",
+      "source_url": "https://open.ys7.com/help/1410",
+      "content_sha256": "3c326fb7e9c0505f3007741bf0be0d3186002e2af1f976b9d15d72060b411a23",
+      "raw_file_sha256": "4516883e984d770ffcc7163889e62b3cee8170e5244d51d317518094c342b93f"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "482",
+      "title": "cloud storage",
+      "source_url": "https://open.ys7.com/help/en/482",
+      "content_sha256": "f811cbaa2821dedb294655c342b7cbd6e76f984c600b48c80b6622dbc42f5a53",
+      "raw_file_sha256": "7db7ee7d04576143a2fae3e0ef6e9a6c9a17ee6a132b9035299b550b14323080"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

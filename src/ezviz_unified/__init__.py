@@ -2,9 +2,11 @@
 
 from importlib.metadata import version
 
+from .alarms import AlarmQuery, Alarms, AsyncAlarms
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token, parse_token
 from .client import AsyncClient, Client
+from .cloud_storage import AsyncCloudStorage, CloudStorage, StorageOrderOptions
 from .cruise import AsyncCruise, Cruise, CruisePeriod
 from .devices import AsyncDevices, Devices
 from .diagnostics import AsyncDiagnostics, Diagnostics
@@ -40,6 +42,10 @@ __version__ = version("ezviz-unified")
 
 __all__ = [
     "ApiError",
+    "AlarmQuery",
+    "Alarms",
+    "AsyncAlarms",
+    "AsyncCloudStorage",
     "ApiResponse",
     "AsyncClient",
     "AsyncCruise",
@@ -59,6 +65,7 @@ __all__ = [
     "AsyncTokenManager",
     "AuthenticationError",
     "Client",
+    "CloudStorage",
     "Cruise",
     "CruisePeriod",
     "DeviceError",
@@ -80,6 +87,7 @@ __all__ = [
     "Recordings",
     "ResponsePolicy",
     "Settings",
+    "StorageOrderOptions",
     "Snapshots",
     "SyncTransport",
     "StaticTokenProvider",

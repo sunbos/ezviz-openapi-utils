@@ -21,8 +21,10 @@ from typing import NamedTuple
 
 import httpx
 
+from .alarms import Alarms, AsyncAlarms
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token
+from .cloud_storage import AsyncCloudStorage, CloudStorage
 from .devices import AsyncDevices, Devices
 from .diagnostics import AsyncDiagnostics, Diagnostics
 from .errors import AuthenticationError, ProtocolError, TransportError
@@ -236,6 +238,8 @@ class Client:
         self.video = Video(self)
         self.playback = Playback(self)
         self.snapshots = Snapshots(self)
+        self.alarms = Alarms(self)
+        self.cloud_storage = CloudStorage(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -438,6 +442,8 @@ class AsyncClient:
         self.video = AsyncVideo(self)
         self.playback = AsyncPlayback(self)
         self.snapshots = AsyncSnapshots(self)
+        self.alarms = AsyncAlarms(self)
+        self.cloud_storage = AsyncCloudStorage(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)

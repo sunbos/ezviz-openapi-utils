@@ -1361,6 +1361,210 @@
       "public_entry": "snapshots.capture_to_space",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.alarms.list",
+      "region": "domestic",
+      "source_doc_id": "986",
+      "module": "src/ezviz_unified/alarms.py",
+      "symbols": [
+        "Alarms.list",
+        "AsyncAlarms.list"
+      ],
+      "public_entry": "alarms.list",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.alarms.for_device",
+      "region": "domestic",
+      "source_doc_id": "987",
+      "module": "src/ezviz_unified/alarms.py",
+      "symbols": [
+        "Alarms.for_device",
+        "AsyncAlarms.for_device"
+      ],
+      "public_entry": "alarms.for_device",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_storage.info_v1",
+      "region": "domestic",
+      "source_doc_id": "1409",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.info",
+        "AsyncCloudStorage.info"
+      ],
+      "public_entry": "cloud_storage.info",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "version": 1
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.info_v2",
+      "region": "domestic",
+      "source_doc_id": "1404",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.info",
+        "AsyncCloudStorage.info"
+      ],
+      "public_entry": "cloud_storage.info",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "version": 2
+      }
+    },
+    {
+      "operation_id": "cn.cloud_storage.activate_card",
+      "region": "domestic",
+      "source_doc_id": "1402",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.activate_card",
+        "AsyncCloudStorage.activate_card"
+      ],
+      "public_entry": "cloud_storage.activate_card",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.alarms.list",
+      "region": "overseas",
+      "source_doc_id": "480",
+      "module": "src/ezviz_unified/alarms.py",
+      "symbols": [
+        "Alarms.list",
+        "AsyncAlarms.list"
+      ],
+      "public_entry": "alarms.list",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.alarms.for_device",
+      "region": "overseas",
+      "source_doc_id": "480",
+      "module": "src/ezviz_unified/alarms.py",
+      "symbols": [
+        "Alarms.for_device",
+        "AsyncAlarms.for_device"
+      ],
+      "public_entry": "alarms.for_device",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.cloud_storage.info_v1",
+      "region": "overseas",
+      "source_doc_id": "482",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.info",
+        "AsyncCloudStorage.info"
+      ],
+      "public_entry": "cloud_storage.info",
+      "offline_status": "passed",
+      "live_status": "not_verified",
+      "argument_constants": {
+        "version": 1
+      }
+    },
+    {
+      "operation_id": "global.cloud_storage.activate_card",
+      "region": "overseas",
+      "source_doc_id": "482",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.activate_card",
+        "AsyncCloudStorage.activate_card"
+      ],
+      "public_entry": "cloud_storage.activate_card",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_storage.available_types",
+      "region": "domestic",
+      "source_doc_id": "1405",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.available_types",
+        "AsyncCloudStorage.available_types"
+      ],
+      "public_entry": "cloud_storage.available_types",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_storage.opening_status",
+      "region": "domestic",
+      "source_doc_id": "1410",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.opening_status",
+        "AsyncCloudStorage.opening_status"
+      ],
+      "public_entry": "cloud_storage.opening_status",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_storage.open_service",
+      "region": "domestic",
+      "source_doc_id": "1400",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.open_service",
+        "AsyncCloudStorage.open_service"
+      ],
+      "public_entry": "cloud_storage.open_service",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_storage.set_enabled",
+      "region": "domestic",
+      "source_doc_id": "1403",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.set_enabled",
+        "AsyncCloudStorage.set_enabled"
+      ],
+      "public_entry": "cloud_storage.set_enabled",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_storage.start_trial",
+      "region": "domestic",
+      "source_doc_id": "1406",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.start_trial",
+        "AsyncCloudStorage.start_trial"
+      ],
+      "public_entry": "cloud_storage.start_trial",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_storage.transfer",
+      "region": "domestic",
+      "source_doc_id": "1407",
+      "module": "src/ezviz_unified/cloud_storage.py",
+      "symbols": [
+        "CloudStorage.transfer",
+        "AsyncCloudStorage.transfer"
+      ],
+      "public_entry": "cloud_storage.transfer",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

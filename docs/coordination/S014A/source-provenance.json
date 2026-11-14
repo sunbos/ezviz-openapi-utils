@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "986",
+      "title": "获取所有告警信息列表",
+      "source_url": "https://open.ys7.com/help/986",
+      "content_sha256": "14459f361e4ee6a1dd0067d0372a66b7ede861b01df074375a74344df152dec8",
+      "raw_file_sha256": "08595c0195e551a726e08db3f39fa8146f9eccba49add70ae0d2d27f9a6d0484"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "987",
+      "title": "按照设备获取告警消息列表",
+      "source_url": "https://open.ys7.com/help/987",
+      "content_sha256": "a2f77aedb34d03a1f1e083110f2cdeb26dbae9df7e5b465decfd326a1519e192",
+      "raw_file_sha256": "66508b9691083dea37e0656d77819f5eb9952fd4dce6294a0f74abcf26f82d3d"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "480",
+      "title": "alarm message",
+      "source_url": "https://open.ys7.com/help/en/480",
+      "content_sha256": "439059d7b40ad76b3790503215f1d6f70979bed17e01ffd66a721d04119c17ba",
+      "raw_file_sha256": "079b7f804186014bacc5167b1544f0f86d8cea97609b115c4f380a8abd1e8cd9"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

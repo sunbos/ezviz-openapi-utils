@@ -40,6 +40,10 @@ _SENSITIVE_KEYS = (
     "natIp",
     "code",  # Playback request field: device encryption password, not response status.
     "urlId",
+    "cardPassword",
+    "phone",
+    "fromDeviceSerial",
+    "toDeviceSerial",
 )
 _SENSITIVE_PARAM_RE = re.compile(
     r"\b(" + "|".join(_SENSITIVE_KEYS) + r")\s*=\s*[^\s&\"']+",

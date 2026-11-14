@@ -246,6 +246,76 @@
       "description": "urlId is marked optional but the effect of omission is not documented.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Require explicit url_id argument; accept explicit None only overseas without assigning a guessed scope. No default omission or automatic replay."
+    },
+    {
+      "id": "global.alarms.timestamp_units",
+      "region": "overseas",
+      "source_doc_id": "480",
+      "source_url": "https://open.ys7.com/help/en/480",
+      "source_content_sha256": "439059d7b40ad76b3790503215f1d6f70979bed17e01ffd66a721d04119c17ba",
+      "description": "Request timestamp prose says second while examples use 13-digit values.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Forward caller-supplied integer timestamps unchanged; no unit or timezone guessing."
+    },
+    {
+      "id": "global.alarms.device_example_path",
+      "region": "overseas",
+      "source_doc_id": "480",
+      "source_url": "https://open.ys7.com/help/en/480",
+      "source_content_sha256": "439059d7b40ad76b3790503215f1d6f70979bed17e01ffd66a721d04119c17ba",
+      "description": "Per-device Request Address is /api/lapp/alarm/device/list but HTTP example uses /api/lapp/alarm/list.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use the dedicated per-device Request Address."
+    },
+    {
+      "id": "global.alarms.wifi_recovery_type",
+      "region": "overseas",
+      "source_doc_id": "480",
+      "source_url": "https://open.ys7.com/help/en/480",
+      "source_content_sha256": "439059d7b40ad76b3790503215f1d6f70979bed17e01ffd66a721d04119c17ba",
+      "description": "Original alarm enum contains :Wi-Fi Recovered with no numeric code.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Do not infer a missing number or publish a fabricated exhaustive enum; preserve raw types."
+    },
+    {
+      "id": "cn.cloud_storage.time_units",
+      "region": "domestic",
+      "source_doc_id": "1409",
+      "source_url": "https://open.ys7.com/help/1409",
+      "source_content_sha256": "61b255051d2de28e9e6c989b1bfff5def5ab57a5261e344e9f7a27c75dcd3ed1",
+      "description": "v1 startTime/expireTime are described as seconds but samples use 13-digit values.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Preserve raw response integers without datetime conversion."
+    },
+    {
+      "id": "global.cloud_storage.time_units",
+      "region": "overseas",
+      "source_doc_id": "482",
+      "source_url": "https://open.ys7.com/help/en/482",
+      "source_content_sha256": "f811cbaa2821dedb294655c342b7cbd6e76f984c600b48c80b6622dbc42f5a53",
+      "description": "v1 startTime/expireTime are described as seconds but samples use 13-digit values.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Preserve raw response integers without datetime conversion."
+    },
+    {
+      "id": "global.cloud_storage.serial_type",
+      "region": "overseas",
+      "source_doc_id": "482",
+      "source_url": "https://open.ys7.com/help/en/482",
+      "source_content_sha256": "f811cbaa2821dedb294655c342b7cbd6e76f984c600b48c80b6622dbc42f5a53",
+      "description": "Request deviceSerial is typed long while response identifiers use String and common platform APIs use string identifiers.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Keep the public SDK identifier as a string and send it unchanged in form; no numeric coercion or claimed live alphanumeric support."
+    },
+    {
+      "id": "global.cloud_storage.phone_example",
+      "region": "overseas",
+      "source_doc_id": "482",
+      "source_url": "https://open.ys7.com/help/en/482",
+      "source_content_sha256": "f811cbaa2821dedb294655c342b7cbd6e76f984c600b48c80b6622dbc42f5a53",
+      "description": "HTTP examples show a corrupted phone parameter label instead of phone.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use the explicitly named phone parameter table field."
     }
   ]
 }

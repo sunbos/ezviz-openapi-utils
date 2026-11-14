@@ -8,7 +8,10 @@ from ezviz_unified import ApiError, AsyncTransport, SyncTransport
 
 
 @pytest.mark.parametrize("kind", ["sync", "async"])
-def test_device_password_code_is_secret_without_hiding_business_error_code(kind, caplog):
+@pytest.mark.parametrize(
+    "field", ["code", "cardPassword", "phone", "fromDeviceSerial", "toDeviceSerial"]
+)
+def test_device_password_code_is_secret_without_hiding_business_error_code(kind, field, caplog):
     password = "PRIVATE_MEDIA_PASSWORD"
 
     def handler(request):
@@ -21,7 +24,7 @@ def test_device_password_code_is_secret_without_hiding_business_error_code(kind,
         try:
             with pytest.raises(ApiError) as caught:
                 value = transport.request(
-                    "POST", "/api/lapp/v2/live/address/get", data={"code": password}
+                    "POST", "/api/lapp/v2/live/address/get", data={field: password}
                 )
                 if kind == "async":
                     await value
