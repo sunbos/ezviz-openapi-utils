@@ -2,20 +2,20 @@
   "schema_version": 1,
   "evidence": "registry_structure_only",
   "summary": {
-    "contracts": 155,
-    "bindings": 155,
-    "source_documents": 115,
-    "source_issues": 43
+    "contracts": 165,
+    "bindings": 165,
+    "source_documents": 125,
+    "source_issues": 46
   },
   "regions": {
-    "domestic": 99,
+    "domestic": 109,
     "overseas": 56
   },
   "live_status_counts": {
     "authentication_succeeded": 1,
     "empty_list_succeeded": 1,
     "empty_list_succeeded_application_token": 1,
-    "not_verified": 151,
+    "not_verified": 161,
     "request_failed_http_500": 1
   }
 }

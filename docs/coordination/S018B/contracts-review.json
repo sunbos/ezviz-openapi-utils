@@ -1,0 +1,35 @@
+{
+  "status": "documentation_reviewed_not_live_verified",
+  "operations_added": 10,
+  "parameter_tables_independently_matched": 10,
+  "source_hashes": {
+    "2039": "76155d02bd8d4a3a03cad48c68af0af7c304a408ca6b07bc334c79d05315bb12",
+    "2047": "2ad231a17df2a537692a64c8d10bfaf6e25104b2b08342815b8ef1dac9fcc1e0",
+    "2048": "9d4d24c56ce8a7ef09e64eb894762387a301ad706d4429c7271f42f2fde3b873",
+    "2051": "f1b5b3c7c39209df7ef73d1f49ce07eb3016fe2c300d851b1f53b1619bd60f26",
+    "4860": "42edd70b0c7f69af8791aa7705b735a0f8d1e61516b41b93d62003d88ef29f1e",
+    "4861": "fb811c6f0c9d2968b646370eb23676f2dcdd36161cffb75b4612fa7c7622ef08",
+    "2042": "21cd36883d39b3555419ab1350dcdc344c98a75c1fd6e1785d2fb08050045b57",
+    "2043": "80dffd7fe475a707e585c55aa7f39c203ce6deeab6a12e8ade7d3e3cf73c877f",
+    "3974": "d599054da5ab0e703d3ff9b00b5e8a4d63bb7d6e84994499973b1e664c22de10",
+    "4382": "13914d4d2c236b5979c18c507de193368ec11ec1e2d8558dc2b77fd3aca7b669"
+  },
+  "message_path_undeclared_in_source": [
+    "2039",
+    "2047",
+    "2048",
+    "4860",
+    "4861"
+  ],
+  "timezone_not_specified": [
+    "2043",
+    "2051",
+    "3974",
+    "4861"
+  ],
+  "review_notes": [
+    "Legitimate differences between endpoints are not automatically source contradictions. Only three concrete ambiguities/example conflicts entered source-issues.json.",
+    "HLS busType is not transmitted; the declared parameter table omits it.",
+    "No overseas contract inferred from the missing Cloud Record page 2406."
+  ]
+}

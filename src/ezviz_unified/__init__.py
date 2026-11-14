@@ -7,6 +7,7 @@ from .arming import ActiveDefenceAction, Arming, ArmingSchedule, AsyncArming
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token, parse_token
 from .client import AsyncClient, Client
+from .cloud_recording import AsyncCloudRecording, CloudRecording
 from .cloud_storage import AsyncCloudStorage, CloudStorage, StorageOrderOptions
 from .cruise import AsyncCruise, Cruise, CruisePeriod
 from .devices import AsyncDevices, Devices
@@ -57,6 +58,7 @@ __all__ = [
     "Alarms",
     "AsyncAlarms",
     "AsyncCloudStorage",
+    "AsyncCloudRecording",
     "AsyncSubaccounts",
     "AsyncIllumination",
     "AsyncMaintenance",
@@ -80,6 +82,7 @@ __all__ = [
     "AuthenticationError",
     "Client",
     "CloudStorage",
+    "CloudRecording",
     "Cruise",
     "CruisePeriod",
     "DeviceError",

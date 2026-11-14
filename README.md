@@ -35,6 +35,10 @@ with Client(
 
 `client.alarms.list(AlarmQuery(status=2))`查询全部状态告警，`for_device(serial, query)`按设备查询；不自动翻页、标记已读或下载图片。省略status时由平台默认查询未读。`client.cloud_storage.info`默认国内v2、海外v1，另有套餐类型、开通状态查询及显式开通/兑换/暂停/试用/转移方法。服务变更不自动重放，也不自动轮询或更换付款方式。版本、时间、权限和原文缺项见[告警与云存储说明](docs/research/2026-11-14-alarms-cloud-storage.md)，未产生实际订单或服务变更。
 
+## 云录制2.0
+
+云录制2.0单列为`client.cloud_recording`，提供空间/一次性计划/任务查询、录像日历、片段与HLS信息、模板列表等10个只读入口，目前仅国内。时间使用整秒naive datetime；不自动翻页、下载或操作录制。详见[云录制约束](docs/research/2026-11-14-cloud-recording.md)，不等同于设备云存储套餐或本地录像。
+
 ## 播放地址与抓拍
 
 `client.playback.create(serial, PlaybackOptions(...))`按地区创建播放地址；`invalidate(serial, url_id=...)`显式失效地址。`client.snapshots.capture(serial, channel=...)`支持两地普通抓拍，国内另有`capture_to_space`。这些操作不自动重放，也不下载或播放媒体；返回URL与密码应按凭证处理。协议/时间/存储差异和未解决项见[媒体说明](docs/research/2026-11-14-media-access.md)，尚未进行真实媒体请求。
@@ -157,6 +161,7 @@ uv pip install --python .venv/bin/python -e '.[dev]' -r tools/documents/requirem
 
 - [重设计依据](docs/research/2026-11-14-legacy-assessment.md)与[架构设计](docs/design/2026-11-14-foundation-redesign.md)。
 - [已审核传输契约](contracts/reviewed-transport-contracts.json)：文档层面的证据，不表示已进行真实 API 验证。
+- [官方目录关联](docs/research/2026-11-14-official-scope.md)：按地区和分类定位未关联文档；文档数量不等于接口总数或支持率。
 - [主导与执行分工](docs/coordination/workflow.md)：执行模型产出候选，主导方核对来源、代码和测试后集成。
 - [维护harness](harness/README.md)：检查文档差异、契约与源码绑定，执行[离线传输评测](evals/contracts/README.md)；当前不自动改代码或发布。
 - [发行检查](docs/releasing.md)：核验独立包的wheel/sdist、官方契约及实际验证范围。旧版对照仅保留为[历史参考](docs/migration.md)，不作为产品完成度。

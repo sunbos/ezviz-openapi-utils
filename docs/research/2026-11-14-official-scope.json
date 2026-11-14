@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "evidence": "document_contract_links_only",
+  "summary": {
+    "documents": 2269,
+    "archived_documents": 2221,
+    "source_unavailable_documents": 48,
+    "documents_with_contract_links": 125,
+    "documents_without_contract_links": 2096,
+    "registered_contracts": 165
+  },
+  "regions": {
+    "domestic": {
+      "documents": 2217,
+      "archived_documents": 2178,
+      "source_unavailable_documents": 39,
+      "documents_with_contract_links": 109,
+      "documents_without_contract_links": 2069,
+      "registered_contracts": 109
+    },
+    "overseas": {
+      "documents": 52,
+      "archived_documents": 43,
+      "source_unavailable_documents": 9,
+      "documents_with_contract_links": 16,
+      "documents_without_contract_links": 27,
+      "registered_contracts": 56
+    }
+  },
+  "categories": [
+    {
+      "region": "domestic",
+      "top_category": "AI",
+      "summary": {
+        "documents": 138,
+        "archived_documents": 137,
+        "source_unavailable_documents": 1,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 137,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "OPEN API",
+      "summary": {
+        "documents": 1219,
+        "archived_documents": 1210,
+        "source_unavailable_documents": 9,
+        "documents_with_contract_links": 85,
+        "documents_without_contract_links": 1125,
+        "registered_contracts": 85
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "SDK及示例",
+      "summary": {
+        "documents": 178,
+        "archived_documents": 178,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 178,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "云存储",
+      "summary": {
+        "documents": 165,
+        "archived_documents": 165,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 19,
+        "documents_without_contract_links": 146,
+        "registered_contracts": 19
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "云接入",
+      "summary": {
+        "documents": 101,
+        "archived_documents": 101,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 101,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "官方文档中心补充入口",
+      "summary": {
+        "documents": 2,
+        "archived_documents": 1,
+        "source_unavailable_documents": 1,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 1,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "正文引用补充",
+      "summary": {
+        "documents": 119,
+        "archived_documents": 98,
+        "source_unavailable_documents": 21,
+        "documents_with_contract_links": 5,
+        "documents_without_contract_links": 93,
+        "registered_contracts": 5
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "生态产品",
+      "summary": {
+        "documents": 133,
+        "archived_documents": 133,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 133,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "蓝海 AIoT 一站式工作台",
+      "summary": {
+        "documents": 3,
+        "archived_documents": 3,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 3,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "domestic",
+      "top_category": "音视频",
+      "summary": {
+        "documents": 159,
+        "archived_documents": 152,
+        "source_unavailable_documents": 7,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 152,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "AI Model Service",
+      "summary": {
+        "documents": 3,
+        "archived_documents": 3,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 3,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "DDNS",
+      "summary": {
+        "documents": 1,
+        "archived_documents": 1,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 1,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "HTTP Interface",
+      "summary": {
+        "documents": 36,
+        "archived_documents": 32,
+        "source_unavailable_documents": 4,
+        "documents_with_contract_links": 16,
+        "documents_without_contract_links": 16,
+        "registered_contracts": 56
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "Introduction",
+      "summary": {
+        "documents": 1,
+        "archived_documents": 1,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 1,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "JS SDK",
+      "summary": {
+        "documents": 5,
+        "archived_documents": 3,
+        "source_unavailable_documents": 2,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 3,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "Mobile",
+      "summary": {
+        "documents": 4,
+        "archived_documents": 2,
+        "source_unavailable_documents": 2,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 2,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "PC SDK",
+      "summary": {
+        "documents": 1,
+        "archived_documents": 0,
+        "source_unavailable_documents": 1,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 0,
+        "registered_contracts": 0
+      }
+    },
+    {
+      "region": "overseas",
+      "top_category": "正文引用补充",
+      "summary": {
+        "documents": 1,
+        "archived_documents": 1,
+        "source_unavailable_documents": 0,
+        "documents_with_contract_links": 0,
+        "documents_without_contract_links": 1,
+        "registered_contracts": 0
+      }
+    }
+  ],
+  "category_totals_are_non_additive": true,
+  "disclaimer": "Document-to-contract link evidence only; not an API inventory, support level, or release-readiness statement.",
+  "limitations": [
+    "raw source files and their hashes are not re-verified",
+    "counts are document/contract link counts, not API totals or support rates",
+    "documents without contract links include guides, SDK pages, and other non-endpoint content",
+    "linked documents may still contain endpoints that have not been reviewed",
+    "links do not prove real API support or permission to publish"
+  ],
+  "inputs_sha256": {
+    "catalog": "7befa1e5ba706e2ff897a5da512f821874a8054252a1bb3dd6be870d5941e406",
+    "contracts": "b03e264d4814b17a06ca642b8abb4acb1469a036c53a8992a9715d06458e4158"
+  }
+}

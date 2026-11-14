@@ -1,0 +1,28 @@
+{
+  "task_id": "H007A",
+  "session_id": "c7273250-86e9-41b5-ad49-68b1f22eccdd",
+  "status": "accepted",
+  "worker_state_observed": "done",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "models_observed": [
+    "devin/swe-2"
+  ],
+  "candidate_sha256": "28b94672a723277cc691c9015afda1fc829b4552a7fd5631a086d1dd8df53369",
+  "usage_reported_deduplicated": {
+    "output_tokens": 17971,
+    "cache_read_input_tokens": 1728,
+    "cache_creation_input_tokens": 0,
+    "input_tokens": 12638
+  },
+  "verification": {
+    "pytest": 1743,
+    "subtests": 11,
+    "mypy_source_files": 31,
+    "ruff_formatted_files": 92,
+    "reviewed_contracts": 165,
+    "offline_eval_executions": 1352,
+    "real_api_used": false
+  },
+  "conversation_retention": "Accepted worker conversation is removed after receipts are captured; raw candidate retained in ignored .claude/coordination."
+}

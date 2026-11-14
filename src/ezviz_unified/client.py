@@ -25,6 +25,7 @@ from .alarms import Alarms, AsyncAlarms
 from .arming import Arming, AsyncArming
 from .auth import AsyncTokenManager, TokenManager
 from .auth_models import RegionConfig, Token
+from .cloud_recording import AsyncCloudRecording, CloudRecording
 from .cloud_storage import AsyncCloudStorage, CloudStorage
 from .devices import AsyncDevices, Devices
 from .diagnostics import AsyncDiagnostics, Diagnostics
@@ -244,6 +245,7 @@ class Client:
         self.snapshots = Snapshots(self)
         self.alarms = Alarms(self)
         self.cloud_storage = CloudStorage(self)
+        self.cloud_recording = CloudRecording(self)
         self.subaccounts = Subaccounts(self)
         self.maintenance = Maintenance(self)
         self.illumination = Illumination(self)
@@ -453,6 +455,7 @@ class AsyncClient:
         self.snapshots = AsyncSnapshots(self)
         self.alarms = AsyncAlarms(self)
         self.cloud_storage = AsyncCloudStorage(self)
+        self.cloud_recording = AsyncCloudRecording(self)
         self.subaccounts = AsyncSubaccounts(self)
         self.maintenance = AsyncMaintenance(self)
         self.illumination = AsyncIllumination(self)

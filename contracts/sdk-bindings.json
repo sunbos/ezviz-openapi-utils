@@ -2105,6 +2105,136 @@
       "public_entry": "arming.set_schedule",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.space",
+      "region": "domestic",
+      "source_doc_id": "2039",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.space",
+        "AsyncCloudRecording.space"
+      ],
+      "public_entry": "cloud_recording.space",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.one_off_plan",
+      "region": "domestic",
+      "source_doc_id": "2047",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.one_off_plan",
+        "AsyncCloudRecording.one_off_plan"
+      ],
+      "public_entry": "cloud_recording.one_off_plan",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.plan_devices",
+      "region": "domestic",
+      "source_doc_id": "2048",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.plan_devices",
+        "AsyncCloudRecording.plan_devices"
+      ],
+      "public_entry": "cloud_recording.plan_devices",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.plans",
+      "region": "domestic",
+      "source_doc_id": "2051",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.plans",
+        "AsyncCloudRecording.plans"
+      ],
+      "public_entry": "cloud_recording.plans",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.tasks",
+      "region": "domestic",
+      "source_doc_id": "4860",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.tasks",
+        "AsyncCloudRecording.tasks"
+      ],
+      "public_entry": "cloud_recording.tasks",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.running_tasks",
+      "region": "domestic",
+      "source_doc_id": "4861",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.running_tasks",
+        "AsyncCloudRecording.running_tasks"
+      ],
+      "public_entry": "cloud_recording.running_tasks",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.calendar",
+      "region": "domestic",
+      "source_doc_id": "2042",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.calendar",
+        "AsyncCloudRecording.calendar"
+      ],
+      "public_entry": "cloud_recording.calendar",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.recordings",
+      "region": "domestic",
+      "source_doc_id": "2043",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.recordings",
+        "AsyncCloudRecording.recordings"
+      ],
+      "public_entry": "cloud_recording.recordings",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.hls_recordings",
+      "region": "domestic",
+      "source_doc_id": "3974",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.hls_recordings",
+        "AsyncCloudRecording.hls_recordings"
+      ],
+      "public_entry": "cloud_recording.hls_recordings",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.cloud_recording.templates",
+      "region": "domestic",
+      "source_doc_id": "4382",
+      "module": "src/ezviz_unified/cloud_recording.py",
+      "symbols": [
+        "CloudRecording.templates",
+        "AsyncCloudRecording.templates"
+      ],
+      "public_entry": "cloud_recording.templates",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

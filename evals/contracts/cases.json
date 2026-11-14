@@ -171,6 +171,235 @@
       }
     },
     {
+      "operation_id": "cn.cloud_recording.calendar",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2,
+        "month": "202601"
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2",
+        "month": "202601"
+      },
+      "data": [
+        "2026-01-02"
+      ]
+    },
+    {
+      "operation_id": "cn.cloud_recording.hls_recordings",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2,
+        "format": "HLS",
+        "start_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T03:04:05"
+        },
+        "end_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T04:05:06"
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2",
+        "format": "HLS",
+        "pageSize": 50,
+        "startTime": "2026-01-02 03:04:05",
+        "endTime": "2026-01-02 04:05:06"
+      },
+      "data": {
+        "files": [],
+        "all": true,
+        "nextFileTime": ""
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.one_off_plan",
+      "args": [
+        "EVAL_PLAN"
+      ],
+      "kwargs": {},
+      "fields": {
+        "oneOffPlanId": "EVAL_PLAN"
+      },
+      "data": {
+        "oneOffPlanId": 12,
+        "planStatus": 4
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.plan_devices",
+      "args": [
+        12
+      ],
+      "kwargs": {},
+      "fields": {
+        "oneOffPlanId": 12
+      },
+      "data": [
+        {
+          "deviceSerial": {
+            "$ref": "device_serial"
+          },
+          "localIndex": "2",
+          "trustDevice": false
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.cloud_recording.plans",
+      "args": [
+        34
+      ],
+      "kwargs": {
+        "start_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T03:04:05"
+        },
+        "end_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T04:05:06"
+        }
+      },
+      "fields": {
+        "spaceId": 34,
+        "startTime": "20260102030405",
+        "endTime": "20260102040506",
+        "lastOneOffPlanId": 0,
+        "pageSize": 10
+      },
+      "data": {
+        "plansInfo": [],
+        "hasNext": false,
+        "lastOneOffPlanId": 0
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.recordings",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "channel": 2,
+        "space_id": 34,
+        "start_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T03:04:05"
+        },
+        "end_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T04:05:06"
+        }
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2",
+        "spaceId": 34,
+        "startTime": "2026-01-02 03:04:05",
+        "endTime": "2026-01-02 04:05:06"
+      },
+      "data": [
+        {
+          "fileId": "EVAL_FILE",
+          "videoLong": 1000
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.cloud_recording.running_tasks",
+      "args": [
+        {
+          "$ref": "device_serial"
+        }
+      ],
+      "kwargs": {
+        "start_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T03:04:05"
+        },
+        "end_time": {
+          "$type": "datetime",
+          "value": "2026-01-02T04:05:06"
+        },
+        "channel": 2
+      },
+      "fields": {
+        "deviceSerial": {
+          "$ref": "device_serial"
+        },
+        "localIndex": "2",
+        "startTime": "20260102030405",
+        "endTime": "20260102040506"
+      },
+      "data": [
+        {
+          "id": 56,
+          "taskStatus": 5
+        }
+      ]
+    },
+    {
+      "operation_id": "cn.cloud_recording.space",
+      "args": [
+        "EVAL_SPACE"
+      ],
+      "kwargs": {},
+      "fields": {
+        "spaceId": "EVAL_SPACE"
+      },
+      "data": {
+        "spaceId": 34,
+        "primarySpace": false
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.tasks",
+      "args": [
+        12
+      ],
+      "kwargs": {},
+      "fields": {
+        "planId": 12,
+        "pageStart": 0,
+        "pageSize": 10
+      },
+      "data": {
+        "result": [],
+        "total": 0
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.templates",
+      "args": [],
+      "kwargs": {},
+      "fields": {
+        "pageStart": 0,
+        "pageSize": 10
+      },
+      "data": {
+        "result": [],
+        "total": 0
+      }
+    },
+    {
       "operation_id": "cn.cloud_storage.activate_card",
       "args": [
         {

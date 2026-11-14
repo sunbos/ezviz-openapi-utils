@@ -10370,6 +10370,839 @@
         "path": "Request Address",
         "encoding": "application/x-www-form-urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.cloud_recording.space",
+      "region": "domestic",
+      "source_doc_id": "2039",
+      "source_url": "https://open.ys7.com/help/2039",
+      "source_content_sha256": "76155d02bd8d4a3a03cad48c68af0af7c304a408ca6b07bc334c79d05315bb12",
+      "method": "GET",
+      "path": "/api/service/cloudrecord/video/space",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "spaceId",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "只读接口",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "本接口为云录制2.0专用，与统一存储空间列表查询不同（返回计划数量等录制特有字段）",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Optional meta.message is an SDK convention; the page only shows meta.code. Absence is accepted and raw is preserved."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.one_off_plan",
+      "region": "domestic",
+      "source_doc_id": "2047",
+      "source_url": "https://open.ys7.com/help/2047",
+      "source_content_sha256": "2ad231a17df2a537692a64c8d10bfaf6e25104b2b08342815b8ef1dac9fcc1e0",
+      "method": "GET",
+      "path": "/api/service/cloudrecord/video/plan/oneOff",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "oneOffPlanId",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "只读接口",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "data.planStatus 取值 1-11，释义需参考创建计划接口返回说明（本页未列）",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Optional meta.message is an SDK convention; the page only shows meta.code. Absence is accepted and raw is preserved."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.plan_devices",
+      "region": "domestic",
+      "source_doc_id": "2048",
+      "source_url": "https://open.ys7.com/help/2048",
+      "source_content_sha256": "9d4d24c56ce8a7ef09e64eb894762387a301ad706d4429c7271f42f2fde3b873",
+      "method": "POST",
+      "path": "/api/service/cloudrecord/video/plan/oneOff/devInfos",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "oneOffPlanId",
+          "location": "body",
+          "type": "Long",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "只读接口",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "返回所有已配置设备；有效/无效设备区分（validDevInfos/invalidDevInfos）发生在创建时，本接口不区分",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Optional meta.message is an SDK convention; the page only shows meta.code. Absence is accepted and raw is preserved."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Interface information and curl example",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.plans",
+      "region": "domestic",
+      "source_doc_id": "2051",
+      "source_url": "https://open.ys7.com/help/2051",
+      "source_content_sha256": "f1b5b3c7c39209df7ef73d1f49ce07eb3016fe2c300d851b1f53b1619bd60f26",
+      "method": "GET",
+      "path": "/api/service/cloudrecord/video/plan/oneOff/listById",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "spaceId",
+          "location": "query",
+          "type": "Long",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "startTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "endTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "lastOneOffPlanId",
+          "location": "query",
+          "type": "Long",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "pageSize",
+          "location": "query",
+          "type": "Int",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "startTime 和 endTime 必须在同一天（格式 yyyyMMddHHmmss）",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "startTime/endTime 时区未定义",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "lastOneOffPlanId 首页传 0，之后传上一页返回的 data.lastOneOffPlanId 游标",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "pageSize 取值 1-50，默认 10",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "只读接口，无特殊频率限制",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Source does not specify timezone. SDK requires whole-second naive datetime and performs no timezone conversion.",
+        "pageSize is marked required while also documenting a default; SDK always sends its explicit default 10."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.tasks",
+      "region": "domestic",
+      "source_doc_id": "4860",
+      "source_url": "https://open.ys7.com/help/4860",
+      "source_content_sha256": "42edd70b0c7f69af8791aa7705b735a0f8d1e61516b41b93d62003d88ef29f1e",
+      "method": "GET",
+      "path": "/api/service/cloudrecord/video/plan/oneOff/task/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "planId",
+          "location": "query",
+          "type": "Long",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "pageStart",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "pageSize",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "pageSize 取值范围 [1,50]，默认 10",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "pageStart 默认 0",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "taskStatus=4 异常结束时需查 errorCode 对应错误码表（help/4488）",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "data.result[].taskStatus 枚举：0未开始/1等待中/2进行中/3暂停中/4异常结束/5已完成/6已取消",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Optional meta.message is an SDK convention; the page only shows meta.code. Absence is accepted and raw is preserved."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.running_tasks",
+      "region": "domestic",
+      "source_doc_id": "4861",
+      "source_url": "https://open.ys7.com/help/4861",
+      "source_content_sha256": "fb811c6f0c9d2968b646370eb23676f2dcdd36161cffb75b4612fa7c7622ef08",
+      "method": "GET",
+      "path": "/api/service/cloudrecord/video/plan/oneOff/task/listRunningByDevId",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "localIndex",
+          "location": "query",
+          "type": "String",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "startTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "endTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "startTime~endTime 间隔 ≤30 天（格式 yyyyMMddHHmmss）",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "startTime/endTime 时区未定义",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "localIndex 默认 1",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "与 help/4860 区别：4860 按 planId 查，本接口按设备+时间查",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Optional meta.message is an SDK convention; the page only shows meta.code. Absence is accepted and raw is preserved.",
+        "Source does not specify timezone. SDK requires whole-second naive datetime and performs no timezone conversion.",
+        "Running-task title coexists with an all-status response enum; SDK does not filter returned statuses."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.calendar",
+      "region": "domestic",
+      "source_doc_id": "2042",
+      "source_url": "https://open.ys7.com/help/2042",
+      "source_content_sha256": "21cd36883d39b3555419ab1350dcdc344c98a75c1fd6e1785d2fb08050045b57",
+      "method": "GET",
+      "path": "/api/service/cloudrecord/video/exist/month",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "spaceId",
+          "location": "query",
+          "type": "String",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "month",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "month 格式为 yyyyMM",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "spaceId 不填时默认查询主空间下录像日历",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "返回空列表表示该月无任何云录制2.0录像",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "只读接口，无特殊频率限制",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Example response dates are in a different month from the request example; SDK preserves returned dates without correction."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.recordings",
+      "region": "domestic",
+      "source_doc_id": "2043",
+      "source_url": "https://open.ys7.com/help/2043",
+      "source_content_sha256": "80dffd7fe475a707e585c55aa7f39c203ce6deeab6a12e8ade7d3e3cf73c877f",
+      "method": "GET",
+      "path": "/api/service/cloudrecord/video/info/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "startTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "endTime",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "spaceId",
+          "location": "query",
+          "type": "Long",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "startTime/endTime 不允许跨天（格式 yyyy-MM-dd HH:mm:ss）",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "startTime/endTime 时区未定义",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "spaceId 必填",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "data[].coverPic 需客户端自行拼接 &x=400 与 &decodekey=xxx 后才能打开",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "data[].downloadPath 仅供录像片段播放使用，无法直接访问",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "只读接口",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Source does not specify timezone. SDK requires whole-second naive datetime and performs no timezone conversion."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.hls_recordings",
+      "region": "domestic",
+      "source_doc_id": "3974",
+      "source_url": "https://open.ys7.com/help/3974",
+      "source_content_sha256": "d599054da5ab0e703d3ff9b00b5e8a4d63bb7d6e84994499973b1e664c22de10",
+      "method": "POST",
+      "path": "/api/service/open/vod/hls/info/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "localIndex",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "startTime",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "endTime",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "format",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "spaceId",
+          "location": "body",
+          "type": "Long",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "endTime - startTime 不允许跨 48 小时（≤48h），格式 yyyy-MM-dd HH:mm:ss",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "startTime/endTime 时区未定义",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "pageSize 取值范围 1-100，默认 50；分页通过返回 data.nextFileTime/data.all 判断",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "format 取值 MP4 或 HLS",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "spaceId 默认为主空间 ID",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "不支持托管设备（是否支持托管：否）",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "不支持子账号（是否支持子账号：否）",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "该能力由云点播 open_vod 承载（OpenMediaProcessController.standardVideInfo），云录制2.0 导航仅为引用",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "正文提到 busType=7 表示云录制2.0 录像，但请求参数表中无 busType 参数，不应补加",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "files 为空表示该时间段无录像或 format 与实际录像格式不匹配",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [
+        "Source does not specify timezone. SDK requires whole-second naive datetime and performs no timezone conversion.",
+        "Cross-product open_vod endpoint; managed devices and subaccounts unsupported. busType=7 is explanatory prose, not a declared request parameter."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Interface information and curl example",
+        "encoding": "application/x-www-form-urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.cloud_recording.templates",
+      "region": "domestic",
+      "source_doc_id": "4382",
+      "source_url": "https://open.ys7.com/help/4382",
+      "source_content_sha256": "13914d4d2c236b5979c18c507de193368ec11ec1e2d8558dc2b77fd3aca7b669",
+      "method": "GET",
+      "path": "/api/service/cloud/video/template/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "pageStart",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "pageSize",
+          "location": "query",
+          "type": "Int",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "templateId",
+          "location": "query",
+          "type": "Long",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        },
+        {
+          "name": "templateName",
+          "location": "query",
+          "type": "String",
+          "required": false,
+          "evidence": "Hash-verified request parameter table; cross-checked with request example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "Response example; message is optional where not documented"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "pageSize 取值 1-100，默认 10",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "pageStart 默认 0",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "templateName 为模糊搜索",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "format 取值 HLS 或 mp4；audioFormat 取值 AAC 或 default，且 format=HLS 时 audioFormat 仅支持 AAC",
+          "evidence": "Source request table/call limits"
+        },
+        {
+          "fact": "只读接口，无特殊频率限制",
+          "evidence": "Source request table/call limits"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Interface information and curl example",
+        "encoding": null
+      }
     }
   ],
   "reviews": [
@@ -10439,6 +11272,10 @@
     {
       "review": "docs/coordination/S017A/contracts-review.json",
       "note": "C015 adds thirteen security/arming contracts and seven legacy mappings; no actual safety-state or password changes."
+    },
+    {
+      "review": "docs/coordination/S018B/contracts-review.json",
+      "note": "Ten domestic Cloud Recording 2.0 read operations; source table and response differences retained. No live requests."
     }
   ]
 }

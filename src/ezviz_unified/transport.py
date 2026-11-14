@@ -125,6 +125,8 @@ def _collect_into(node: object, out: set[str]) -> None:
                         out.add(parts[1])
                 elif key.lower() in {"policy", "statement"}:
                     _collect_policy_resources(value, out)
+            elif isinstance(key, str) and key.lower() in _SECRET_KEYS and type(value) is int:
+                out.add(str(value))
             else:
                 _collect_into(value, out)
     elif isinstance(node, (list, tuple)):

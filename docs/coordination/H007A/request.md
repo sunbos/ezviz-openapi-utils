@@ -1,0 +1,11 @@
+# H007A 官方目录与契约关联清单
+
+固定devin/swe-2、effort=max，只读本文件及harness/docdiff.py、harness/audit.py。输出完整harness/source_inventory.py单文件Python代码，禁止命令、写文件、联网、配置或凭据访问。不输出中间版本，不宣称测试通过。
+
+API inventory(catalog:object, contracts:dict)->dict。复用harness.docdiff._index对catalog验证/身份去重；其memberships是JSON字符串列表，需json.loads后检查category_path为list[str]且元素非空，不执行内容。输入contracts已完成registry审计，仍检查contracts数组、operation_id唯一非空字符串、region/doc_id字符串、source_url/source_content_sha256字符串。每条契约的(region,source_doc_id)必须存在catalog，且已archived，URL和content_sha256与契约完全相同，否则ValueError固定短消息，不回显输入。不要只比doc_id，地区相同ID是不同文档。
+
+每个catalog文档都输出region/doc_id/title/source_url/status/content_sha256/category_paths（去重且排序的完整路径数组）/linked_operation_ids（排序），再给link_status：已有契约为contracts_linked_partial，archive但没有为no_contracts_linked，源缺项为source_unavailable。已关联也不能标全文已支持；零关联不等于不支持或不存在API。
+
+报告schema_version1,evidence=document_contract_links_only，summary包含documents,archived_documents,source_unavailable_documents,documents_with_contract_links,documents_without_contract_links（只算已归档且零关联）,registered_contracts。regions为同样计数按地区分组。categories为每个region+top_category分组，字段region/top_category以及上述同样summary（contract去重）；每文档同一top多条路径只能算一次，跨top可以重复，category_totals_are_non_additive=true。空memberships归到未分类。documents按region,doc_id字符串排序。禁止输出coverage百分比、全量支持或发布许可。
+
+CLI python -m harness.source_inventory --catalog PATH --repo . 默认输出完整JSON到stdout，--summary-only只输出schema/evidence/summary/regions/categories/免责声明/inputs_sha256。先audit_repository(repo)并读取contracts实际字节，检查其hash与audit报告一致；catalog按字节hash，两个inputs_sha256记catalog与contracts。不写输出文件，不读raw_file路径或访问URL，不导入SDK。不能用SDK安装版本替代来源hash。错误退出2只打印固定短消息，不回显异常或源内容。成功退出0只是关联报告生成成功。报告limitations列出：不验证原始文件hash、不是接口总数/支持率、未关联页面含指南/SDK等、关联文档可能还有未审核端点、不证明真实支持/可发布。尽量小于250行，标准库和既有harness模块即可。

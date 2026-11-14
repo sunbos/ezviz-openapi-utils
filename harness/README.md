@@ -42,3 +42,7 @@ python -m harness.audit --repo . --check-summary
 运行 `python -m harness.contract_eval --repo . --require-all`，按[独立案例](../evals/contracts/README.md)调用同步/异步SDK，在MockTransport上检查报文、响应与故障处理。父进程校验场景完整性和源码哈希；异常输出不回显，Python网络调用被阻断。此检查不证明真实设备能力或模型质量，不是运行不可信代码的OS沙箱。
 
 SDK和维护检查均不依赖旧utils或旧迁移清单。旧对照冻结为研究资料，不作为覆盖率分母、CI输入或发布要求。
+
+## 官方目录关联
+
+`python -m harness.source_inventory --catalog <snapshot>/catalog.json --repo .`逐页核对当前契约引用的地区、文档ID、URL和正文hash，并保留未关联与源缺项。`--summary-only`输出分类统计及输入hash。报告不读取raw_file、不访问URL、不把文档数当接口覆盖率；一个已有契约的页面仍可能包含其他未审核端点。多分类统计不可加总，原文完整性继续由采集verify.py检查。示例结果和复现步骤见[范围对照](../docs/research/2026-11-14-official-scope.md)。

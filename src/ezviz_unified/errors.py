@@ -50,6 +50,11 @@ _SENSITIVE_KEYS = (
     "newPassword",
     "policy",
     "statement",
+    "spaceId",
+    "oneOffPlanId",
+    "planId",
+    "templateId",
+    "templateName",
 )
 _SENSITIVE_PARAM_RE = re.compile(
     r"\b(" + "|".join(_SENSITIVE_KEYS) + r")\s*=\s*[^\s&\"']+",

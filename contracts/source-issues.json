@@ -466,6 +466,36 @@
       "description": "Parameter table places deviceSerial in Header but curl puts it in form.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Use Header per table; no duplicate placement or automatic fallback."
+    },
+    {
+      "id": "cn.cloud_recording.page_size_required_default",
+      "region": "domestic",
+      "source_doc_id": "2051",
+      "source_url": "https://open.ys7.com/help/2051",
+      "source_content_sha256": "f1b5b3c7c39209df7ef73d1f49ce07eb3016fe2c300d851b1f53b1619bd60f26",
+      "description": "pageSize is both required and described as default 10.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Always send pageSize; SDK default is 10, range 1-50."
+    },
+    {
+      "id": "cn.cloud_recording.calendar_sample_month",
+      "region": "domestic",
+      "source_doc_id": "2042",
+      "source_url": "https://open.ys7.com/help/2042",
+      "source_content_sha256": "21cd36883d39b3555419ab1350dcdc344c98a75c1fd6e1785d2fb08050045b57",
+      "description": "Example response date strings do not match the request example month.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Return raw date strings; do not change dates or infer a timezone."
+    },
+    {
+      "id": "cn.cloud_recording.running_status_semantics",
+      "region": "domestic",
+      "source_doc_id": "4861",
+      "source_url": "https://open.ys7.com/help/4861",
+      "source_content_sha256": "fb811c6f0c9d2968b646370eb23676f2dcdd36161cffb75b4612fa7c7622ef08",
+      "description": "The running-task query documents all task status values, including completed and cancelled.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Preserve every returned item and status; do not filter by the method name."
     }
   ]
 }
