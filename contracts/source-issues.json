@@ -166,6 +166,26 @@
       "description": "Wi-Fi prompt status return table declares channelNo String but example uses integer.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "preserve raw response types"
+    },
+    {
+      "id": "cn.ownership.offline_2009",
+      "region": "domestic",
+      "source_doc_id": "580",
+      "source_url": "https://open.ys7.com/help/580",
+      "source_content_sha256": "46d596ac50e61acc78851fb367147c8c6731e1b6296b928f3967531d52cbf58d",
+      "description": "Flow treats two 2009 responses as offline confirmation while the error table calls 2009 timeout.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "No automatic polling or success conversion; preserve non-200 errors."
+    },
+    {
+      "id": "cn.ownership.ssid_encoding",
+      "region": "domestic",
+      "source_doc_id": "664",
+      "source_url": "https://open.ys7.com/help/664",
+      "source_content_sha256": "5ef8a2aecda5f9a960a97e8b74ab0e557891230e954a74ca7b809ca1f68b60e7",
+      "description": "SSID is a header String but non-ASCII encoding is unspecified.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Refuse unverified encodings; do not silently move to query or collect network data."
     }
   ]
 }

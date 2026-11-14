@@ -1,0 +1,29 @@
+{
+  "installer": "uv",
+  "name": "ezviz-unified",
+  "offline": true,
+  "python": "3.12.13",
+  "real_api_used": false,
+  "results": [
+    {
+      "artifact_sha256": "cdbff75c93d56a88dfc7a58b78698eab82a5fd5b540ae8f8e8fe14ef7502788e",
+      "clean_install": true,
+      "filename": "ezviz_unified-0.1.0a1-py3-none-any.whl",
+      "install_offline": true,
+      "kind": "wheel",
+      "smoke": "Installed SDK sync/async mock smoke passed"
+    },
+    {
+      "artifact_sha256": "1656fe3dc76c95fc1c26f232f7102f9d76a66ae1dc9348fd46b5c8fc2067be8f",
+      "clean_install": true,
+      "filename": "ezviz_unified-0.1.0a1.tar.gz",
+      "install_offline": true,
+      "kind": "sdist",
+      "smoke": "Installed SDK sync/async mock smoke passed",
+      "source_archive_tests": "608 passed in 3.18s"
+    }
+  ],
+  "source_tests": true,
+  "validation": "clean_install_and_offline_smoke",
+  "version": "0.1.0a1"
+}

@@ -1,0 +1,9 @@
+{
+  "task_id": "C008",
+  "new_contracts": 18,
+  "total_contracts": 79,
+  "mapped_legacy_methods": 47,
+  "source_issues": 15,
+  "real_account_changes": false,
+  "source_bodies_rehashed": true
+}

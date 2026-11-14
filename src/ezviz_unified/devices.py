@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from .management import AsyncDeviceManagement, DeviceManagement
 from .models import ApiResponse, ResponsePolicy
 from .operations import Operation
 
@@ -96,7 +97,7 @@ def _check_device_serial(value: object, *, require_uppercase: bool) -> str:
     return value
 
 
-class Devices:
+class Devices(DeviceManagement):
     """Synchronous facade over the reviewed device query operations."""
 
     __slots__ = ("_client",)
@@ -134,7 +135,7 @@ class Devices:
         return self._client.request(_OP_STATUS, data=data)
 
 
-class AsyncDevices:
+class AsyncDevices(AsyncDeviceManagement):
     """Asynchronous facade over the reviewed device query operations."""
 
     __slots__ = ("_client",)

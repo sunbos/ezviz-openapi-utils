@@ -3846,6 +3846,1126 @@
         "path": "Request Address",
         "encoding": "application/x-www-form-urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.devices.bind",
+      "region": "domestic",
+      "source_doc_id": "661",
+      "source_url": "https://open.ys7.com/help/661",
+      "source_content_sha256": "11857cb88028b769814e6091abec8cb11018fbfefc015dc4e919870ff0a60d54",
+      "method": "POST",
+      "path": "/api/lapp/device/add",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "validateCode",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "A device verification code is required. The source describes six uppercase letters; SDK preserves the supplied credential and lets the platform validate actual device settings.",
+          "evidence": "validateCode row and verification error descriptions"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "global.devices.bind",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "source_url": "https://open.ys7.com/help/en/475",
+      "source_content_sha256": "056022d3ebe1aaa263c47e942eb0bd1d18fe4042c98cb243f1e8e21dcbdd85e0",
+      "method": "POST",
+      "path": "/api/lapp/device/add",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "validateCode",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A device verification code is required. The source describes six uppercase letters; SDK preserves the supplied credential and lets the platform validate actual device settings.",
+          "evidence": "validateCode row and verification error descriptions"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.unbind",
+      "region": "domestic",
+      "source_doc_id": "662",
+      "source_url": "https://open.ys7.com/help/662",
+      "source_content_sha256": "61711416eb7b211c10142b34dad709810de918ed1e9ce2894efdaee71ce56fcf",
+      "method": "POST",
+      "path": "/api/lapp/device/delete",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "global.devices.unbind",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "source_url": "https://open.ys7.com/help/en/475",
+      "source_content_sha256": "056022d3ebe1aaa263c47e942eb0bd1d18fe4042c98cb243f1e8e21dcbdd85e0",
+      "method": "POST",
+      "path": "/api/lapp/device/delete",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.rename",
+      "region": "domestic",
+      "source_doc_id": "667",
+      "source_url": "https://open.ys7.com/help/667",
+      "source_content_sha256": "e6b3351bf856d326fd24b2555aa476070b51d523bf56512027a468d97d62a989",
+      "method": "POST",
+      "path": "/api/lapp/device/name/update",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceName",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Name limit is 50 bytes; special characters are disallowed but no complete character set is specified.",
+          "evidence": "name/deviceName row"
+        }
+      ],
+      "uncertainties": [
+        "SDK measures UTF-8 bytes and rejects ASCII controls; it does not invent an unspecified symbol whitelist."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "global.devices.rename",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "source_url": "https://open.ys7.com/help/en/475",
+      "source_content_sha256": "056022d3ebe1aaa263c47e942eb0bd1d18fe4042c98cb243f1e8e21dcbdd85e0",
+      "method": "POST",
+      "path": "/api/lapp/device/name/update",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceName",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Name limit is 50 bytes; special characters are disallowed but no complete character set is specified.",
+          "evidence": "name/deviceName row"
+        }
+      ],
+      "uncertainties": [
+        "SDK measures UTF-8 bytes and rejects ASCII controls; it does not invent an unspecified symbol whitelist."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.rename_channel",
+      "region": "domestic",
+      "source_doc_id": "668",
+      "source_url": "https://open.ys7.com/help/668",
+      "source_content_sha256": "6e6a6f1d1e84822a9111cedef84b926507a3866d85776f416ba6ba0c8a1ad267",
+      "method": "POST",
+      "path": "/api/lapp/camera/name/update",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "name",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Name limit is 50 bytes; special characters are disallowed but no complete character set is specified.",
+          "evidence": "name/deviceName row"
+        },
+        {
+          "fact": "Omitted channelNo uses the platform default channel 1; SDK omits the field rather than inserting it.",
+          "evidence": "channelNo row"
+        }
+      ],
+      "uncertainties": [
+        "SDK measures UTF-8 bytes and rejects ASCII controls; it does not invent an unspecified symbol whitelist."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.link_ipc",
+      "region": "domestic",
+      "source_doc_id": "669",
+      "source_url": "https://open.ys7.com/help/669",
+      "source_content_sha256": "d0feb6a741e4bf858a6e55f01b7b858aa32b200b33c7d6786b14273f31bdf4d4",
+      "method": "POST",
+      "path": "/api/lapp/device/ipc/add",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "ipcSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "validateCode",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Omitted channelNo uses the platform default channel 1; SDK omits the field rather than inserting it.",
+          "evidence": "channelNo row"
+        },
+        {
+          "fact": "validateCode is optional and may be empty.",
+          "evidence": "validateCode row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "global.devices.link_ipc",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "source_url": "https://open.ys7.com/help/en/475",
+      "source_content_sha256": "056022d3ebe1aaa263c47e942eb0bd1d18fe4042c98cb243f1e8e21dcbdd85e0",
+      "method": "POST",
+      "path": "/api/lapp/device/ipc/add",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "ipcSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "validateCode",
+          "location": "body",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Omitted channelNo uses the platform default channel 1; SDK omits the field rather than inserting it.",
+          "evidence": "channelNo row"
+        },
+        {
+          "fact": "validateCode is optional and may be empty.",
+          "evidence": "validateCode row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.unlink_ipc",
+      "region": "domestic",
+      "source_doc_id": "670",
+      "source_url": "https://open.ys7.com/help/670",
+      "source_content_sha256": "35a7cfb2adec9b1319812235485a2af3be4756a084c5259f8671cae11175b180",
+      "method": "POST",
+      "path": "/api/lapp/device/ipc/delete",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "ipcSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Omitted channelNo uses the platform default channel 1; SDK omits the field rather than inserting it.",
+          "evidence": "channelNo row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "global.devices.unlink_ipc",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "source_url": "https://open.ys7.com/help/en/475",
+      "source_content_sha256": "056022d3ebe1aaa263c47e942eb0bd1d18fe4042c98cb243f1e8e21dcbdd85e0",
+      "method": "POST",
+      "path": "/api/lapp/device/ipc/delete",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "ipcSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Omitted channelNo uses the platform default channel 1; SDK omits the field rather than inserting it.",
+          "evidence": "channelNo row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.set_channel_visible",
+      "region": "domestic",
+      "source_doc_id": "1815",
+      "source_url": "https://open.ys7.com/help/1815",
+      "source_content_sha256": "14d9556d38867883bdee85a708d95d30732f8347f64ef38fb6969787c82cbe8a",
+      "method": "POST",
+      "path": "/api/open/device/camera/limit",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "channelNo",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "enable 1 shows and 0 hides the NVR channel.",
+          "evidence": "enable row"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.cameras",
+      "region": "domestic",
+      "source_doc_id": "674",
+      "source_url": "https://open.ys7.com/help/674",
+      "source_content_sha256": "0c9c4a26c96c59bad61c6f3e6663a3089ed871a95808303850cc566a3555b9dd",
+      "method": "POST",
+      "path": "/api/lapp/camera/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Pagination starts at 0, defaults to size 10 and has a maximum size of 50; no 400-page cap is stated here.",
+          "evidence": "pageStart/pageSize rows"
+        }
+      ],
+      "uncertainties": [
+        "Status and sharing/permission fields are preserved raw; the domestic online-status field is marked deprecated."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "global.devices.cameras",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "source_url": "https://open.ys7.com/help/en/476",
+      "source_content_sha256": "82a0152058592e8c4b5e11f4f968edce7a4e39d5e16b527db606d5957bf8f858",
+      "method": "POST",
+      "path": "/api/lapp/camera/list",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Pagination starts at 0, defaults to size 10 and has a maximum size of 50; no 400-page cap is stated here.",
+          "evidence": "pageStart/pageSize rows"
+        }
+      ],
+      "uncertainties": [
+        "Status and sharing/permission fields are preserved raw; the domestic online-status field is marked deprecated."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.devices.connection_info",
+      "region": "domestic",
+      "source_doc_id": "4232",
+      "source_url": "https://open.ys7.com/help/4232",
+      "source_content_sha256": "93e3ab7c07f2ee7d4ed4a2cc793b9e38033d8d4d0ef3457d3d382c14ecf171bd",
+      "method": "POST",
+      "path": "/api/lapp/device/connection/info",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example/return fields"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "English letters in deviceSerial must be uppercase.",
+          "evidence": "deviceSerial row"
+        },
+        {
+          "fact": "Subaccount and hosted permissions are not supported; the service requires a developer/B account.",
+          "evidence": "function description and error table"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "form request example"
+      }
+    },
+    {
+      "operation_id": "cn.ownership.auto_verify",
+      "region": "domestic",
+      "source_doc_id": "664",
+      "source_url": "https://open.ys7.com/help/664",
+      "source_content_sha256": "5ef8a2aecda5f9a960a97e8b74ab0e557891230e954a74ca7b809ca1f68b60e7",
+      "method": "GET",
+      "path": "/api/userdevice/v3/devices/op/permission",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "query",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "ssid",
+          "location": "header",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "clientIP",
+          "location": "header",
+          "type": "String",
+          "required": false,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "status",
+        "values": [
+          200
+        ],
+        "evidence": "response fields/example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single ownership-flow step; HTTP GET is not sufficient evidence of replay safety.",
+          "evidence": "580 workflow and step function description; SDK conservative retry policy"
+        }
+      ],
+      "uncertainties": [
+        "2009 is described inconsistently in the flow and error table; it is not a success code.",
+        "Non-ASCII SSID header encoding is unspecified; current SDK refuses undecided encodings rather than inventing one."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.ownership.confirm_offline",
+      "region": "domestic",
+      "source_doc_id": "665",
+      "source_url": "https://open.ys7.com/help/665",
+      "source_content_sha256": "cc7fc2bc8c1c732c296ba622626e8a08fbf5e13097c25b4a709ebcdcce807e95",
+      "method": "GET",
+      "path": "/api/userdevice/v3/devices/realtimestatus",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "query",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "status",
+        "values": [
+          200
+        ],
+        "evidence": "response fields/example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single ownership-flow step; HTTP GET is not sufficient evidence of replay safety.",
+          "evidence": "580 workflow and step function description; SDK conservative retry policy"
+        }
+      ],
+      "uncertainties": [
+        "2009 is described inconsistently in the flow and error table; it is not a success code."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.ownership.verify_online",
+      "region": "domestic",
+      "source_doc_id": "666",
+      "source_url": "https://open.ys7.com/help/666",
+      "source_content_sha256": "faaf970b19aa7310bc02ce40ec7fe1e8f73ca8632c81e44713ff6382121c94bf",
+      "method": "GET",
+      "path": "/api/userdevice/v3/devices/permission",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "query",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table/example"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "status",
+        "values": [
+          200
+        ],
+        "evidence": "response fields/example"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "A single ownership-flow step; HTTP GET is not sufficient evidence of replay safety.",
+          "evidence": "580 workflow and step function description; SDK conservative retry policy"
+        }
+      ],
+      "uncertainties": [
+        "2009 is described inconsistently in the flow and error table; it is not a success code."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "request address",
+        "encoding": null
+      }
     }
   ],
   "reviews": [
@@ -3879,6 +4999,10 @@
     {
       "review": "docs/coordination/S009A/contracts-review.json",
       "note": "C007 adds twenty switch contracts via an explicit enum; no real setting changes."
+    },
+    {
+      "review": "docs/coordination/S010A/contracts-review.json",
+      "note": "C008 adds management and explicit ownership steps; no real account mutations."
     }
   ]
 }

@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 35,
-  "pending_count": 115,
+  "mapped_count": 47,
+  "pending_count": 103,
   "compatibility_shim": false,
   "methods": [
     {
@@ -34,18 +34,23 @@
     {
       "legacy_method": "add_device",
       "source_line": 329,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.bind",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "validate_code": "verification_code"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "delete_device",
       "source_line": 383,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.unbind",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "device_wifi_qrcode",
@@ -58,66 +63,94 @@
     {
       "legacy_method": "device_permission_check",
       "source_line": 467,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ownership.auto_verify",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "ssid": "ssid (Header)",
+        "client_ip": "client_ip (Header)"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "get_device_realtime_status",
       "source_line": 519,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ownership.confirm_offline",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "get_device_permissions",
       "source_line": 564,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.ownership.verify_online",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "update_device_name",
       "source_line": 610,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.rename",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "device_name": "name"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "update_camera_name",
       "source_line": 653,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.rename_channel",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "name": "name",
+        "channel_no": "channel"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "add_ipc_device",
       "source_line": 703,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.link_ipc",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "ipc_serial": "ipc_serial",
+        "channel_no": "channel",
+        "validate_code": "verification_code"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "delete_ipc_device",
       "source_line": 776,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.unlink_ipc",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "ipc_serial": "ipc_serial",
+        "channel_no": "channel"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "nvr_device_camera_limit",
       "source_line": 830,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.set_channel_visible",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "channel_no": "channel",
+        "enable": "visible (bool)"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "get_gb_license_list",
@@ -159,10 +192,13 @@
     {
       "legacy_method": "get_camera_list",
       "source_line": 1044,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.cameras",
+      "argument_map": {
+        "page_start": "page_start",
+        "page_size": "page_size"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "get_device_camera_list",
@@ -198,10 +234,12 @@
     {
       "legacy_method": "get_device_connection_info",
       "source_line": 1213,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.devices.connection_info",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "ApiResponse return; explicit region and parameter rules. Ownership methods are single stateful steps and never automatically replayed."
     },
     {
       "legacy_method": "create_device_add_token_url",

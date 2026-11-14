@@ -4,7 +4,7 @@
 
 ## 发行与兼容边界
 
-新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[旧版150项清单](../contracts/legacy-migration.json)中，目前35项有可核对的新入口，其余115项尚未迁移。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
+新旧是两个独立发行、独立 API。Git 历史保留，但旧的导入、类名和方法签名不会自动兼容，当前也没有兼容 shim。[旧版150项清单](../contracts/legacy-migration.json)中，目前47项有可核对的新入口，其余103项尚未迁移。自定义接口可用 `Operation` + `client.request(...)` 显式封装，调用方仍需核对契约，不能把它计为已迁移支持。新包尚未发布 PyPI，只能从源码安装，要求 Python 3.12+。
 
 ## 方法映射
 
@@ -32,6 +32,10 @@
 控制和计划设置不自动重放。旧set_cruise_auto_switch仍待核实body/query矛盾，不能用时间计划setter替代。所有新映射仍需按型号与权限做实际设备验证。
 
 ## 参数与返回值差异
+
+设备管理映射：add_device/delete_device→devices.bind/unbind；update_device_name/update_camera_name→devices.rename/rename_channel；add_ipc_device/delete_ipc_device→devices.link_ipc/unlink_ipc；nvr_device_camera_limit→devices.set_channel_visible（visible必须bool）；get_camera_list→devices.cameras；get_device_connection_info→devices.connection_info。validate_code改为verification_code，channel_no改为channel；名称按UTF-8校验50字节，不自动截断。
+
+device_permission_check/get_device_realtime_status/get_device_permissions分别映射到ownership.auto_verify/confirm_offline/verify_online，均不自动重放。ssid/clientIP从旧库query改为文档Header；不可据旧方法的get/check命名把确权步骤当作普通读取，也不会自动完成物理流程。
 
 六组旧get/set方法（wifi_sound、scene、ssl、indicator_light、fullday_record、sound_status）合并为settings.get_switch/set_switch，按DeviceSwitch选择功能。旧ssl对应SOUND_LOCALIZATION（声源定位），不是TLS。旧整数或字符串enable须明确转换为bool，不能直接传旧值或使用bool("0")；channel_no改为可选channel，麦克风不接受channel。完整枚举映射见机器清单和[开关说明](research/2026-11-14-switch-settings.md)。
 
@@ -76,7 +80,7 @@ with Client(
 
 ## 迁移前检查清单
 
-- [ ] 清点代码中实际调用的旧方法，确认是否落在35个已映射入口内，其余按清单逐项处理。
+- [ ] 清点代码中实际调用的旧方法，确认是否落在47个已映射入口内，其余按清单逐项处理。
 - [ ] 确认 appKey/appSecret 主体与目标区域匹配；海外账户确认 `areaDomain` 行为。
 - [ ] 按新错误分类重写异常处理与重试逻辑。
 - [ ] 先用只读方法（`list`/`get`/`channels`/`status`）做连通性验证，再切换业务流量。

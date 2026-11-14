@@ -19,6 +19,7 @@ from .errors import (
 )
 from .models import ApiResponse, ResponsePolicy
 from .operations import Operation
+from .ownership import AsyncOwnership, Ownership
 from .providers import (
     AsyncStaticTokenProvider,
     AsyncTokenProvider,
@@ -43,6 +44,7 @@ __all__ = [
     "AsyncRecordings",
     "AsyncSettings",
     "AsyncPtz",
+    "AsyncOwnership",
     "AsyncStaticTokenProvider",
     "AsyncTokenProvider",
     "AsyncTransport",
@@ -57,6 +59,7 @@ __all__ = [
     "Diagnostics",
     "EzvizError",
     "Operation",
+    "Ownership",
     "PermissionDeniedError",
     "ProtocolError",
     "Ptz",

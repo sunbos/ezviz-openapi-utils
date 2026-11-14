@@ -257,6 +257,19 @@ def test_authorization_flow_credentials_are_redacted(sdk, field):
     assert "PRIVATE" not in str(caught.value)
 
 
+@pytest.mark.parametrize("field", ["ipcSerial", "deviceName", "name", "ssid", "clientIP"])
+def test_management_context_is_redacted(sdk, field):
+    def handler(request):
+        return httpx.Response(200, json={"code": "10001", "msg": "PRIVATE_CONTEXT invalid"})
+
+    with sdk.SyncTransport(
+        "https://api.example.test", transport=httpx.MockTransport(handler)
+    ) as client:
+        with pytest.raises(sdk.ApiError) as caught:
+            client.request("POST", "/api", data={field: "PRIVATE_CONTEXT"})
+    assert "PRIVATE" not in str(caught.value)
+
+
 def test_sdk_log_context_masks_unlisted_query_secret_and_preserves_integer_format(sdk, caplog):
     def handler(request):
         logging.getLogger("httpx").info("status=%d url=%s", 200, "/api?accessToken=UNLISTED_SECRET")

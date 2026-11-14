@@ -15,4 +15,4 @@ python -m harness.docdiff \
 
 随后运行 `python -m harness.impact --diff reports/docdiff.json --bindings contracts/sdk-bindings.json --issues contracts/source-issues.json --output reports/impact.json`，定位直接关联的SDK入口，并列出未映射文档和已有原文问题。它重新计算needs_review，不信任输入中的批准标志；不加载源码、不覆盖输入、不会输出发布许可，也不分析全部间接依赖。
 
-`contracts/sdk-bindings.json`记录当前61项地区契约与代码符号的关系；共享枚举入口还记录argument_constants，不能只凭方法名推断具体开关。离线通过、真实成功及未验证分别记录。`contracts/source-issues.json`保留已发现的语义矛盾与SDK处理方式。静态SDK参考站点的独立清单尚未接入。后续将加入新快照采集、候选变更、独立eval与审核发布，不把当前工具描述为已经实现无人维护。
+`contracts/sdk-bindings.json`记录当前79项地区契约与实现符号的关系；mixin实现另标public_entry，共享枚举入口记录argument_constants。不能只凭方法名推断具体操作。离线通过、真实成功及未验证分别记录。`contracts/source-issues.json`保留来源问题与SDK处理方式。静态SDK参考站点仍未接入；新快照采集、候选变更、独立eval与审核发布继续推进，不宣称已经实现无人维护。

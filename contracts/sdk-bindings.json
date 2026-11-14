@@ -795,6 +795,240 @@
       },
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.bind",
+      "region": "domestic",
+      "source_doc_id": "661",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.bind",
+        "AsyncDeviceManagement.bind"
+      ],
+      "public_entry": "devices.bind",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.bind",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.bind",
+        "AsyncDeviceManagement.bind"
+      ],
+      "public_entry": "devices.bind",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.unbind",
+      "region": "domestic",
+      "source_doc_id": "662",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.unbind",
+        "AsyncDeviceManagement.unbind"
+      ],
+      "public_entry": "devices.unbind",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.unbind",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.unbind",
+        "AsyncDeviceManagement.unbind"
+      ],
+      "public_entry": "devices.unbind",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.rename",
+      "region": "domestic",
+      "source_doc_id": "667",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.rename",
+        "AsyncDeviceManagement.rename"
+      ],
+      "public_entry": "devices.rename",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.rename",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.rename",
+        "AsyncDeviceManagement.rename"
+      ],
+      "public_entry": "devices.rename",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.rename_channel",
+      "region": "domestic",
+      "source_doc_id": "668",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.rename_channel",
+        "AsyncDeviceManagement.rename_channel"
+      ],
+      "public_entry": "devices.rename_channel",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.link_ipc",
+      "region": "domestic",
+      "source_doc_id": "669",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.link_ipc",
+        "AsyncDeviceManagement.link_ipc"
+      ],
+      "public_entry": "devices.link_ipc",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.link_ipc",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.link_ipc",
+        "AsyncDeviceManagement.link_ipc"
+      ],
+      "public_entry": "devices.link_ipc",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.unlink_ipc",
+      "region": "domestic",
+      "source_doc_id": "670",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.unlink_ipc",
+        "AsyncDeviceManagement.unlink_ipc"
+      ],
+      "public_entry": "devices.unlink_ipc",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.unlink_ipc",
+      "region": "overseas",
+      "source_doc_id": "475",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.unlink_ipc",
+        "AsyncDeviceManagement.unlink_ipc"
+      ],
+      "public_entry": "devices.unlink_ipc",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.set_channel_visible",
+      "region": "domestic",
+      "source_doc_id": "1815",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.set_channel_visible",
+        "AsyncDeviceManagement.set_channel_visible"
+      ],
+      "public_entry": "devices.set_channel_visible",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.cameras",
+      "region": "domestic",
+      "source_doc_id": "674",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.cameras",
+        "AsyncDeviceManagement.cameras"
+      ],
+      "public_entry": "devices.cameras",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.devices.cameras",
+      "region": "overseas",
+      "source_doc_id": "476",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.cameras",
+        "AsyncDeviceManagement.cameras"
+      ],
+      "public_entry": "devices.cameras",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.connection_info",
+      "region": "domestic",
+      "source_doc_id": "4232",
+      "module": "src/ezviz_unified/management.py",
+      "symbols": [
+        "DeviceManagement.connection_info",
+        "AsyncDeviceManagement.connection_info"
+      ],
+      "public_entry": "devices.connection_info",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ownership.auto_verify",
+      "region": "domestic",
+      "source_doc_id": "664",
+      "module": "src/ezviz_unified/ownership.py",
+      "symbols": [
+        "Ownership.auto_verify",
+        "AsyncOwnership.auto_verify"
+      ],
+      "public_entry": "ownership.auto_verify",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ownership.confirm_offline",
+      "region": "domestic",
+      "source_doc_id": "665",
+      "module": "src/ezviz_unified/ownership.py",
+      "symbols": [
+        "Ownership.confirm_offline",
+        "AsyncOwnership.confirm_offline"
+      ],
+      "public_entry": "ownership.confirm_offline",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.ownership.verify_online",
+      "region": "domestic",
+      "source_doc_id": "666",
+      "module": "src/ezviz_unified/ownership.py",
+      "symbols": [
+        "Ownership.verify_online",
+        "AsyncOwnership.verify_online"
+      ],
+      "public_entry": "ownership.verify_online",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

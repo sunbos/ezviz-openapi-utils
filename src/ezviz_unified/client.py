@@ -28,6 +28,7 @@ from .diagnostics import AsyncDiagnostics, Diagnostics
 from .errors import AuthenticationError, ProtocolError, TransportError
 from .models import ApiResponse
 from .operations import Operation
+from .ownership import AsyncOwnership, Ownership
 from .providers import AsyncTokenProvider, TokenProvider, validate_provider_token
 from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
@@ -225,6 +226,7 @@ class Client:
         self._active = 0
         self._closed = False
         self.devices = Devices(self)
+        self.ownership = Ownership(self)
         self.settings = Settings(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
@@ -422,6 +424,7 @@ class AsyncClient:
         self._closing: asyncio.Task[None] | None = None
         self._closed = False
         self.devices = AsyncDevices(self)
+        self.ownership = AsyncOwnership(self)
         self.settings = AsyncSettings(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
