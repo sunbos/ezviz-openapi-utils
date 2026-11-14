@@ -214,3 +214,11 @@ def test_duplicate_parameters_and_incomplete_binding_set_fail():
     data[1]["bindings"] = []
     with pytest.raises(module().RegistryError):
         module().audit_registry(*data)
+
+
+@pytest.mark.parametrize("paths", [[], "body", ["", ""], [None], ["body..value"]])
+def test_invalid_response_envelope_declarations_fail(paths):
+    data = fixtures()
+    data[0]["contracts"][0]["success"]["envelope_paths"] = paths
+    with pytest.raises(module().RegistryError):
+        module().audit_registry(*data)

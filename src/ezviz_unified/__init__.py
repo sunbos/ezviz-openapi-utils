@@ -19,7 +19,9 @@ from .errors import (
     ProtocolError,
     TransportError,
 )
+from .illumination import AsyncIllumination, FillLightMode, Illumination
 from .imaging import AsyncImaging, ImageSetting, Imaging
+from .maintenance import AsyncMaintenance, Maintenance
 from .models import ApiResponse, ResponsePolicy
 from .operations import Operation
 from .ownership import AsyncOwnership, Ownership
@@ -49,6 +51,8 @@ __all__ = [
     "AsyncAlarms",
     "AsyncCloudStorage",
     "AsyncSubaccounts",
+    "AsyncIllumination",
+    "AsyncMaintenance",
     "ApiResponse",
     "AsyncClient",
     "AsyncCruise",
@@ -77,6 +81,9 @@ __all__ = [
     "Diagnostics",
     "EzvizError",
     "ImageSetting",
+    "FillLightMode",
+    "Illumination",
+    "Maintenance",
     "Imaging",
     "Operation",
     "Ownership",

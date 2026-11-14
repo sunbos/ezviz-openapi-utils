@@ -1,0 +1,25 @@
+{
+  "task_id": "S016B",
+  "status": "accepted",
+  "session_id": "4fcd31ea-af65-4220-8293-bb99a4ace882",
+  "worker_model": "devin/swe-2",
+  "effort_requested": "max",
+  "usage_reported_deduplicated": {
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 14733,
+    "cache_read_input_tokens": 37696,
+    "input_tokens": 49111
+  },
+  "accepted_at_utc": "2026-11-14T06:39:18.201949+00:00",
+  "new_tests_passed": 62,
+  "repository_tests_passed": 1492,
+  "document_subtests_passed": 11,
+  "mypy": "passed (28 SDK source files)",
+  "ruff": "passed",
+  "review": "review.md",
+  "authenticated_device_operations_verified": false,
+  "mutations_sent": false,
+  "anonymous_protocol_observation": "../../validation/protocol/2026-11-14-overseas-v3.json",
+  "remote_ci": "see current PR1 checks",
+  "installation_verification": "../S016B/install-verification.json"
+}

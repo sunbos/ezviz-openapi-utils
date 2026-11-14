@@ -1,0 +1,69 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "735",
+      "title": "API-云接入-设备运维-设备升级-设备升级固件",
+      "source_url": "https://open.ys7.com/help/735",
+      "content_sha256": "b5e0206d0f9845a410002ea18b5a3ef6a65af2bb07413856e2903371a0a00a4a",
+      "raw_file_sha256": "51409129366b96f367c9199477121b9987c7fde5cec00681e84d73855aa40249"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "736",
+      "title": "API-云接入-设备运维-设备升级-获取设备升级状态",
+      "source_url": "https://open.ys7.com/help/736",
+      "content_sha256": "8dc63ab5ebe91a6e43b5dc60bd2d1240bfc762c042bb26a96732055d334dc98e",
+      "raw_file_sha256": "19ae0a1ab6449c29cf644b9540006deabe0e2943bab9a3d52cbb075ee650b3c5"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "2856",
+      "title": "获取设备模块升级信息",
+      "source_url": "https://open.ys7.com/help/2856",
+      "content_sha256": "30123bb32a9dae444d177f6725c895e12c32edac4174c25c9b36a6700992a82e",
+      "raw_file_sha256": "05c3befa7c9130117da7fab972cbfa01342e5db99cdcc8692f17a2164656c3c6"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "2857",
+      "title": "获取设备模块升级状态",
+      "source_url": "https://open.ys7.com/help/2857",
+      "content_sha256": "59b23ae779a1bb06e1e92656b17344a079be04d2c5c7488fbd77fac89dc49be3",
+      "raw_file_sha256": "4ae694a894eb59320acb5e5e70ccb589a72e8c4cb6bef5a4b91d8fb7db835566"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "2858",
+      "title": "触发设备模块升级",
+      "source_url": "https://open.ys7.com/help/2858",
+      "content_sha256": "6d00dd943ba70ffc580c1b925875eb3f5ecacefd220ea431d1176fd5e28019a4",
+      "raw_file_sha256": "7c2083daa09c3c2fdc139cdfaca79579ccdce72cfa7066886d17aefcb328dcb9"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "2011",
+      "title": "设备存储介质格式化",
+      "source_url": "https://open.ys7.com/help/2011",
+      "content_sha256": "aeb05fc500c33c2eb83fd3078e6e7c359d8f2736eba88f4ff5ada4da6c8aea07",
+      "raw_file_sha256": "2f6b8a52fcaa7b6030f6698aae8c3aa1866ec56598f2b191e88e78bc2174dcf3"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "478",
+      "title": "upgrade",
+      "source_url": "https://open.ys7.com/help/en/478",
+      "content_sha256": "f22dbba0d31b65ea267b18e92019e6d1c4cdfac06a02ea653e2c37389b3be172",
+      "raw_file_sha256": "bdcf3156d51bb75b6295e525880110eab51788c5217e4fbb1a8bde3e68bbe8a4"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "3732",
+      "title": "Formatting device disk",
+      "source_url": "https://open.ys7.com/help/en/3732",
+      "content_sha256": "4c2292a1709c1f88212ffd884405824e743f0f13cb3352fb1a0007a01e92eb02",
+      "raw_file_sha256": "4137cc4f42f0aea95725bc8d02416172c8aa0ca69ae3e4c0742da71f0e4a6fa7"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

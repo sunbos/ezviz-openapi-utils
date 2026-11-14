@@ -33,6 +33,8 @@
 
 ## 参数与返回值差异
 
+维护和补光映射见[说明](research/2026-11-14-maintenance-illumination.md)：旧format_device_disk的参数顺序调整为serial在前；upgrade_device_modules的逗号字符串改为显式模块序列；补光mode/enable不再省略，enable使用bool。触发操作不自动重放，进度查询不会启动后台轮询。
+
 抓拍capture_image→snapshots.capture，channel_no改为必填keyword-only channel；国内quality由旧版忽略改为明确拒绝，海外按当前文档接受0–4。不会重放抓拍或自动下载图片。指定空间抓拍和playback播放地址是新增能力，不属于旧150项的方法迁移，见[媒体说明](research/2026-11-14-media-access.md)。
 
 视频配置映射：set_video_level→video.set_quality（channel改为必填keyword-only int，level支持0–6）；set_device_video_encode→video.set_preview_encoding（使用PreviewEncoding，枚举代码转int，可选值默认省略）；get_device_video_encode→video.get_recording_encoding（明确为本地录像参数）。音视频encode_type分别映射set_audio_codec/set_video_codec；视频开关映射get_switch/set_switch（VideoSwitch，enabled须bool）。原先channel字符串应显式转int，不能将预览数字codec直接作为H264/H265字符串传入。完整限制见[视频说明](research/2026-11-14-video-configuration.md)。

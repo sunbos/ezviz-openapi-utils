@@ -28,7 +28,9 @@ from .cloud_storage import AsyncCloudStorage, CloudStorage
 from .devices import AsyncDevices, Devices
 from .diagnostics import AsyncDiagnostics, Diagnostics
 from .errors import AuthenticationError, ProtocolError, TransportError
+from .illumination import AsyncIllumination, Illumination
 from .imaging import AsyncImaging, Imaging
+from .maintenance import AsyncMaintenance, Maintenance
 from .models import ApiResponse
 from .operations import Operation
 from .ownership import AsyncOwnership, Ownership
@@ -241,6 +243,8 @@ class Client:
         self.alarms = Alarms(self)
         self.cloud_storage = CloudStorage(self)
         self.subaccounts = Subaccounts(self)
+        self.maintenance = Maintenance(self)
+        self.illumination = Illumination(self)
         self.diagnostics = Diagnostics(self)
         self.recordings = Recordings(self)
         self.ptz = Ptz(self)
@@ -446,6 +450,8 @@ class AsyncClient:
         self.alarms = AsyncAlarms(self)
         self.cloud_storage = AsyncCloudStorage(self)
         self.subaccounts = AsyncSubaccounts(self)
+        self.maintenance = AsyncMaintenance(self)
+        self.illumination = AsyncIllumination(self)
         self.diagnostics = AsyncDiagnostics(self)
         self.recordings = AsyncRecordings(self)
         self.ptz = AsyncPtz(self)

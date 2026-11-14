@@ -386,6 +386,26 @@
       "description": "Policy page 69 omits Alarm from its list while introduction page 68 includes it.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "Do not publish a closed enum inferred from either list; validate structure and retain caller-provided permission names."
+    },
+    {
+      "id": "global.v3.response_envelope",
+      "region": "overseas",
+      "source_doc_id": "3731",
+      "source_url": "https://open.ys7.com/help/en/3731",
+      "source_content_sha256": "bb88fc4d32d6d7574da2803d4c2cd1261129ae5b325de07485227234f76c32a3",
+      "description": "Documentation shows status/body/meta while an anonymous request to the documented example API host returned root/meta with string code 10001.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Explicitly accept root/meta and body/meta, reject ambiguity, retain strict success codes and raw payload. No inference of authenticated success or user areaDomain."
+    },
+    {
+      "id": "global.maintenance.upgrade_examples",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "source_url": "https://open.ys7.com/help/en/478",
+      "source_content_sha256": "f22dbba0d31b65ea267b18e92019e6d1c4cdfac06a02ea653e2c37389b3be172",
+      "description": "Firmware upgrade and upgrade-status HTTP examples use encrypt/off and validation-code fields unrelated to their Request Address tables.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "Use the dedicated upgrade and upgrade/status paths and documented fields; never disable encryption as a prerequisite."
     }
   ]
 }

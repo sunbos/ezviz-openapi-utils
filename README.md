@@ -4,7 +4,7 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置、播放地址、抓拍、告警、云存储、RAM子账户和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前登记数量、地区分布与验证状态见[机器生成的覆盖清单](contracts/coverage.json)，真实支持情况另列。
+本地录像、云台、巡航、诊断、设备开关、管理、图像参数、视频配置、播放地址、抓拍、告警、云存储、RAM子账户、维护、补光和单步确权接口已加入，国内/海外共用入口并保留协议差异；当前登记数量、地区分布与验证状态见[机器生成的覆盖清单](contracts/coverage.json)，真实支持情况另列。
 
 ## 设备查询
 
@@ -67,6 +67,10 @@ with Client(
 
 诊断入口为 `client.diagnostics`：protocol_support、search、channel_status、capabilities、version、storage_status、disk_capacity。protocol_support需显式app_key；capabilities可传channel。仅capabilities/version/storage_status有海外契约，其他仅国内。字段和响应差异见[诊断说明](docs/research/2026-11-14-diagnostics.md)；不自动升级、格式化或关闭加密。公开型号查询本次实测返回HTTP500，其余诊断未实测。
 
+## 维护与补光
+
+`client.maintenance`提供固件/模块查询与显式升级、指定介质格式化；查询不自动轮询，触发操作不自动重放或修改前置安全状态。`client.illumination`按地区处理补光模式、读取与开关，国内模式0–3、海外0–2。参数顺序、旧版迁移与[响应层级证据](docs/research/2026-11-14-maintenance-illumination.md)有明确说明；没有真实设备维护操作。
+
 ## 底层响应与传输
 
 ```python
@@ -80,7 +84,7 @@ response = decode_response(
 print(response.data)
 ```
 
-解析器支持 `code`、`meta.code`、`result.code` 等显式策略，保留原始响应，区分认证、权限、设备和协议错误。它本身不发起网络请求。
+解析器支持 `code`、`meta.code`、`result.code` 等显式策略，保留原始响应，区分认证、权限、设备和协议错误。可按接口明确声明envelope_paths，唯一匹配时解析，相互冲突的层级报错；默认只按根对象，不递归猜包。它本身不发起网络请求。
 
 `SyncTransport` 与 `AsyncTransport` 提供显式的 query/form/JSON/header 请求入口，默认各 HTTPX I/O 阶段超时为10秒，不自动重试或跟随重定向，支持上下文管理关闭。该超时不是整个请求的总时限；有限认证重试由上面的客户端层控制。
 

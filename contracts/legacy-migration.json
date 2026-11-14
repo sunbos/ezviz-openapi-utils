@@ -3,8 +3,8 @@
   "source_commit": "25cd41321d244592b4f5c9250b13443e5502129d",
   "legacy_version": "0.3.4",
   "new_version": "0.1.0a1",
-  "mapped_count": 65,
-  "pending_count": 85,
+  "mapped_count": 73,
+  "pending_count": 77,
   "compatibility_shim": false,
   "methods": [
     {
@@ -1004,10 +1004,13 @@
     {
       "legacy_method": "format_device_disk",
       "source_line": 5174,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.maintenance.format_disk",
+      "argument_map": {
+        "device_serial": "device_serial (first positional argument)",
+        "disk_index": "disk_index (second positional argument)"
+      },
+      "notes": "Argument order changes from old disk_index-first signature; no default disk, prerequisite changes or retry. Returns ApiResponse; device effects not live verified."
     },
     {
       "legacy_method": "set_video_level",
@@ -1223,18 +1226,24 @@
     {
       "legacy_method": "set_fill_light_mode",
       "source_line": 6111,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.illumination.set_mode",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "mode": "required FillLightMode or int"
+      },
+      "notes": "Old default mode=0 removed; domestic0–3/overseas0–2 and differing wire placement preserved. Returns ApiResponse; device effects not live verified."
     },
     {
       "legacy_method": "set_fill_light_switch",
       "source_line": 6164,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.illumination.set_enabled",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "enable": "required enabled:bool"
+      },
+      "notes": "Domestic only; explicit bool replaces old int/default0. Returns ApiResponse; device effects not live verified."
     },
     {
       "legacy_method": "set_talk_speaker_volume",
@@ -1396,42 +1405,54 @@
     {
       "legacy_method": "upgrade_device_firmware",
       "source_line": 7061,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.maintenance.upgrade_firmware",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "One explicit trigger; no replay, status polling, encryption change or success inference from acceptance. Returns ApiResponse; device effects not live verified."
     },
     {
       "legacy_method": "get_device_upgrade_status",
       "source_line": 7105,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.maintenance.upgrade_status",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "Data status/progress retain region semantics. Returns ApiResponse; device effects not live verified."
     },
     {
       "legacy_method": "get_device_upgrade_modules",
       "source_line": 7146,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.maintenance.modules",
+      "argument_map": {
+        "device_serial": "device_serial"
+      },
+      "notes": "Domestic only; no automatic selection of modules. Returns ApiResponse; device effects not live verified."
     },
     {
       "legacy_method": "upgrade_device_modules",
       "source_line": 7186,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.maintenance.upgrade_modules",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "modules": "Sequence[str], not a comma-delimited str"
+      },
+      "notes": "Caller supplies explicit module sequence; order and duplicates retained, no upgrade-all. Returns ApiResponse; device effects not live verified."
     },
     {
       "legacy_method": "get_device_module_upgrade_status",
       "source_line": 7231,
-      "status": "not_migrated",
-      "target": null,
-      "argument_map": null,
-      "notes": "Requires separate official-contract verification and implementation."
+      "status": "mapped_with_breaking_changes",
+      "target": "client.maintenance.module_status",
+      "argument_map": {
+        "device_serial": "device_serial",
+        "module": "module"
+      },
+      "notes": "Domestic single-module query, no polling. Returns ApiResponse; device effects not live verified."
     }
   ]
 }

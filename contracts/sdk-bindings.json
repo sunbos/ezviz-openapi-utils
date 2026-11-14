@@ -1708,6 +1708,175 @@
       "public_entry": "subaccounts.delete",
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_firmware",
+      "region": "domestic",
+      "source_doc_id": "735",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.upgrade_firmware",
+        "AsyncMaintenance.upgrade_firmware"
+      ],
+      "public_entry": "maintenance.upgrade_firmware",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_status",
+      "region": "domestic",
+      "source_doc_id": "736",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.upgrade_status",
+        "AsyncMaintenance.upgrade_status"
+      ],
+      "public_entry": "maintenance.upgrade_status",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.maintenance.format_disk",
+      "region": "domestic",
+      "source_doc_id": "2011",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.format_disk",
+        "AsyncMaintenance.format_disk"
+      ],
+      "public_entry": "maintenance.format_disk",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.illumination.set_mode",
+      "region": "domestic",
+      "source_doc_id": "1716",
+      "module": "src/ezviz_unified/illumination.py",
+      "symbols": [
+        "Illumination.set_mode",
+        "AsyncIllumination.set_mode"
+      ],
+      "public_entry": "illumination.set_mode",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.maintenance.upgrade_firmware",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.upgrade_firmware",
+        "AsyncMaintenance.upgrade_firmware"
+      ],
+      "public_entry": "maintenance.upgrade_firmware",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.maintenance.upgrade_status",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.upgrade_status",
+        "AsyncMaintenance.upgrade_status"
+      ],
+      "public_entry": "maintenance.upgrade_status",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.maintenance.format_disk",
+      "region": "overseas",
+      "source_doc_id": "3732",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.format_disk",
+        "AsyncMaintenance.format_disk"
+      ],
+      "public_entry": "maintenance.format_disk",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.illumination.set_mode",
+      "region": "overseas",
+      "source_doc_id": "3721",
+      "module": "src/ezviz_unified/illumination.py",
+      "symbols": [
+        "Illumination.set_mode",
+        "AsyncIllumination.set_mode"
+      ],
+      "public_entry": "illumination.set_mode",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.maintenance.modules",
+      "region": "domestic",
+      "source_doc_id": "2856",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.modules",
+        "AsyncMaintenance.modules"
+      ],
+      "public_entry": "maintenance.modules",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.maintenance.module_status",
+      "region": "domestic",
+      "source_doc_id": "2857",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.module_status",
+        "AsyncMaintenance.module_status"
+      ],
+      "public_entry": "maintenance.module_status",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_modules",
+      "region": "domestic",
+      "source_doc_id": "2858",
+      "module": "src/ezviz_unified/maintenance.py",
+      "symbols": [
+        "Maintenance.upgrade_modules",
+        "AsyncMaintenance.upgrade_modules"
+      ],
+      "public_entry": "maintenance.upgrade_modules",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "global.illumination.get_mode",
+      "region": "overseas",
+      "source_doc_id": "3720",
+      "module": "src/ezviz_unified/illumination.py",
+      "symbols": [
+        "Illumination.get_mode",
+        "AsyncIllumination.get_mode"
+      ],
+      "public_entry": "illumination.get_mode",
+      "offline_status": "passed",
+      "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.illumination.set_enabled",
+      "region": "domestic",
+      "source_doc_id": "1717",
+      "module": "src/ezviz_unified/illumination.py",
+      "symbols": [
+        "Illumination.set_enabled",
+        "AsyncIllumination.set_enabled"
+      ],
+      "public_entry": "illumination.set_enabled",
+      "offline_status": "passed",
+      "live_status": "not_verified"
     }
   ]
 }

@@ -26,10 +26,11 @@ _POLICY_META = ResponsePolicy(
     success_values=(200,),
 )
 _POLICY_BODY_META = ResponsePolicy(
-    code_path="body.meta.code",
-    message_path="body.meta.message",
-    data_path="body.data",
+    code_path="meta.code",
+    message_path="meta.message",
+    data_path="data",
     success_values=(200,),
+    envelope_paths=("", "body"),
 )
 
 _OP_PROTOCOL_SUPPORT = Operation(
@@ -80,8 +81,8 @@ _OP_STORAGE_STATUS_DOMESTIC = Operation(
     read_only=True,
     policy=_POLICY_META,
 )
-# Overseas wraps the envelope in an extra "body" object and carries the serial
-# in the request header; this schema is documented but not yet field-verified.
+# Overseas examples wrap body/meta; an anonymous gateway error used root/meta.
+# Both layouts are explicit; authenticated device success remains unverified.
 _OP_STORAGE_STATUS_OVERSEAS = Operation(
     "diagnostics.storage_status",
     "GET",

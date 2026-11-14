@@ -32,6 +32,21 @@ def _normalize_success_values(name: str, values: Iterable[ScalarCode]) -> tuple[
     return normalized
 
 
+def _normalize_envelope_paths(values: object) -> tuple[str, ...]:
+    if not isinstance(values, (tuple, list)) or not values:
+        raise ValueError("envelope_paths must be a non-empty tuple or list")
+    paths: list[str] = []
+    for value in values:
+        if not isinstance(value, str):
+            raise ValueError("envelope_paths entries must be strings")
+        if value:
+            _validate_path("envelope_paths", value)
+        if value in paths:
+            raise ValueError("envelope_paths must not contain duplicates")
+        paths.append(value)
+    return tuple(paths)
+
+
 @dataclass(frozen=True)
 class ResponsePolicy:
     """Dotted-path locations of status fields inside an EZVIZ-style envelope."""
@@ -44,8 +59,10 @@ class ResponsePolicy:
     device_message_path: str | None = None
     device_success_values: tuple[ScalarCode, ...] = (0, "0")
     require_device_code: bool = False
+    envelope_paths: tuple[str, ...] = ("",)
 
     def __post_init__(self) -> None:
+        object.__setattr__(self, "envelope_paths", _normalize_envelope_paths(self.envelope_paths))
         for name in (
             "code_path",
             "message_path",

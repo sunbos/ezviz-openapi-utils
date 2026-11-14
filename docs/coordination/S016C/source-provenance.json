@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "region": "domestic",
+      "doc_id": "1716",
+      "title": "设置补光灯模式",
+      "source_url": "https://open.ys7.com/help/1716",
+      "content_sha256": "cc97ff0a6d4bfbc335c7c25c15c6be51d6926504d259ae573b7d6a242374f21a",
+      "raw_file_sha256": "9b79864a3b108af488c1ce550a1c123ad9a5e6d0ccfd2929c1972e09eb23c379"
+    },
+    {
+      "region": "domestic",
+      "doc_id": "1717",
+      "title": "设置补光灯开关",
+      "source_url": "https://open.ys7.com/help/1717",
+      "content_sha256": "77742683062aa3d55ca28b70e8f1391acd4788239dac9049a728a0ee4d6ab122",
+      "raw_file_sha256": "786cce74eefce6a16b879b0bfacc8edc9491ac8febbc7571f4d069fb094f63ea"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "3720",
+      "title": "Query the fill light mode",
+      "source_url": "https://open.ys7.com/help/en/3720",
+      "content_sha256": "d135433307c36de9831e40fedf64be7286e9bff1c0ebc83498e082135564b79f",
+      "raw_file_sha256": "72baf4767b9a33b85198dde5771d91d9117124e1f4fa07615b7690d04664ee78"
+    },
+    {
+      "region": "overseas",
+      "doc_id": "3721",
+      "title": "Set the fill light mode",
+      "source_url": "https://open.ys7.com/help/en/3721",
+      "content_sha256": "9410fafd2cc1f903addf63c6f61d3b8ad4b14f72ea5dee675f75fe848173657d",
+      "raw_file_sha256": "371c3bb9ef09a1bbae8a073e294ab45dcf31c6e5e68900d830a590ee6d205b63"
+    }
+  ],
+  "source_bodies_rehashed": true
+}

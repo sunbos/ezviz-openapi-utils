@@ -2567,18 +2567,23 @@
         }
       ],
       "success": {
-        "code_path": "body.meta.code",
-        "message_path": "body.meta.message",
-        "data_path": "body.data",
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
         "values": [
           200
         ],
-        "evidence": "response fields and example"
+        "evidence": "Documented body/meta plus observed root/meta anonymous gateway error; no authenticated device-success proof.",
+        "envelope_paths": [
+          "",
+          "body"
+        ]
       },
       "read_only": true,
       "constraints": [],
       "uncertainties": [
-        "The published response includes status/body wrapping; literal body.meta/body.data parsing has not been verified on a real device."
+        "The published response includes status/body wrapping; literal body.meta/body.data parsing has not been verified on a real device.",
+        "Explicit root/body layouts accepted; ambiguous code-bearing envelopes fail. Anonymous error observation does not validate device handler or success shape."
       ],
       "transport_evidence": {
         "method": "GET",
@@ -8586,6 +8591,787 @@
         "encoding": "application/x-www-form-urlencoded"
       },
       "source_section": "1.9"
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_firmware",
+      "region": "domestic",
+      "source_doc_id": "735",
+      "source_url": "https://open.ys7.com/help/735",
+      "source_content_sha256": "b5e0206d0f9845a410002ea18b5a3ef6a65af2bb07413856e2903371a0a00a4a",
+      "method": "POST",
+      "path": "/api/lapp/device/upgrade",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Writes are not automatically replayed; platform acceptance is not completion.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "English serial letters must be uppercase; Upgrade/Get permission respectively.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_status",
+      "region": "domestic",
+      "source_doc_id": "736",
+      "source_url": "https://open.ys7.com/help/736",
+      "source_content_sha256": "8dc63ab5ebe91a6e43b5dc60bd2d1240bfc762c042bb26a96732055d334dc98e",
+      "method": "POST",
+      "path": "/api/lapp/device/upgrade/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "English serial letters must be uppercase; Upgrade/Get permission respectively.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.format_disk",
+      "region": "domestic",
+      "source_doc_id": "2011",
+      "source_url": "https://open.ys7.com/help/2011",
+      "source_content_sha256": "aeb05fc500c33c2eb83fd3078e6e7c359d8f2736eba88f4ff5ada4da6c8aea07",
+      "method": "PUT",
+      "path": "/api/v3/device/format/disk",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "diskIndex",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "diskIndex is explicitly required; domestic form differs from overseas header/query. Already-formatting error remains an error.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "cn.illumination.set_mode",
+      "region": "domestic",
+      "source_doc_id": "1716",
+      "source_url": "https://open.ys7.com/help/1716",
+      "source_content_sha256": "cc97ff0a6d4bfbc335c7c25c15c6be51d6926504d259ae573b7d6a242374f21a",
+      "method": "POST",
+      "path": "/api/v3/device/fillLight/mode",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "mode",
+          "location": "body",
+          "type": "Int",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Domestic int mode 0–3; overseas String mode 0–2. No implicit mode 0 or downgrade of mode 3.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.maintenance.upgrade_firmware",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "source_url": "https://open.ys7.com/help/en/478",
+      "source_content_sha256": "f22dbba0d31b65ea267b18e92019e6d1c4cdfac06a02ea653e2c37389b3be172",
+      "method": "POST",
+      "path": "/api/lapp/device/upgrade",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Writes are not automatically replayed; platform acceptance is not completion.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "HTTP examples incorrectly point to encrypt/off; use Request Address, never add validateCode or disable encryption."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.maintenance.upgrade_status",
+      "region": "overseas",
+      "source_doc_id": "478",
+      "source_url": "https://open.ys7.com/help/en/478",
+      "source_content_sha256": "f22dbba0d31b65ea267b18e92019e6d1c4cdfac06a02ea653e2c37389b3be172",
+      "method": "POST",
+      "path": "/api/lapp/device/upgrade/status",
+      "base_url": "{areaDomain}",
+      "body_encoding": "form_urlencoded",
+      "token_location": "form",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "HTTP examples incorrectly point to encrypt/off; use Request Address, never add validateCode or disable encryption."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.maintenance.format_disk",
+      "region": "overseas",
+      "source_doc_id": "3732",
+      "source_url": "https://open.ys7.com/help/en/3732",
+      "source_content_sha256": "4c2292a1709c1f88212ffd884405824e743f0f13cb3352fb1a0007a01e92eb02",
+      "method": "PUT",
+      "path": "/api/v3/device/format/disk",
+      "base_url": "{areaDomain}",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "diskIndex",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Explicit SDK layouts: documented body/meta and root/meta observed for an anonymous v3 gateway error; authenticated success remains unverified.",
+        "envelope_paths": [
+          "",
+          "body"
+        ]
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "diskIndex is explicitly required; domestic form differs from overseas header/query. Already-formatting error remains an error.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Root/body response layers have limited unauthenticated evidence only; success shape and device operation are not live verified. Ambiguous multiple code-bearing layouts are rejected."
+      ],
+      "transport_evidence": {
+        "method": "PUT",
+        "path": "Request Address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "global.illumination.set_mode",
+      "region": "overseas",
+      "source_doc_id": "3721",
+      "source_url": "https://open.ys7.com/help/en/3721",
+      "source_content_sha256": "9410fafd2cc1f903addf63c6f61d3b8ad4b14f72ea5dee675f75fe848173657d",
+      "method": "POST",
+      "path": "/api/v3/device/fillLight/mode/set",
+      "base_url": "{areaDomain}",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "mode",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Explicit SDK layouts: documented body/meta and root/meta observed for an anonymous v3 gateway error; authenticated success remains unverified.",
+        "envelope_paths": [
+          "",
+          "body"
+        ]
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Domestic int mode 0–3; overseas String mode 0–2. No implicit mode 0 or downgrade of mode 3.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Root/body response layers have limited unauthenticated evidence only; success shape and device operation are not live verified. Ambiguous multiple code-bearing layouts are rejected."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.modules",
+      "region": "domestic",
+      "source_doc_id": "2856",
+      "source_url": "https://open.ys7.com/help/2856",
+      "source_content_sha256": "30123bb32a9dae444d177f6725c895e12c32edac4174c25c9b36a6700992a82e",
+      "method": "GET",
+      "path": "/api/service/device/upgrade/modules",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Domestic managed/subaccounts supported; Get for queries, Upgrade for trigger. Module status process/status and list data remain raw.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Request Address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.module_status",
+      "region": "domestic",
+      "source_doc_id": "2857",
+      "source_url": "https://open.ys7.com/help/2857",
+      "source_content_sha256": "59b23ae779a1bb06e1e92656b17344a079be04d2c5c7488fbd77fac89dc49be3",
+      "method": "GET",
+      "path": "/api/service/device/upgrade/modules/status",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "module",
+          "location": "query",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Domestic managed/subaccounts supported; Get for queries, Upgrade for trigger. Module status process/status and list data remain raw.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Request Address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.maintenance.upgrade_modules",
+      "region": "domestic",
+      "source_doc_id": "2858",
+      "source_url": "https://open.ys7.com/help/2858",
+      "source_content_sha256": "6d00dd943ba70ffc580c1b925875eb3f5ecacefd220ea431d1176fd5e28019a4",
+      "method": "POST",
+      "path": "/api/v3/device/upgrade/modules",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "modules",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Writes are not automatically replayed; platform acceptance is not completion.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Domestic managed/subaccounts supported; Get for queries, Upgrade for trigger. Module status process/status and list data remain raw.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Caller supplies a nonempty sequence; join exact module names with commas, no filtering or deduplication.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
+    },
+    {
+      "operation_id": "global.illumination.get_mode",
+      "region": "overseas",
+      "source_doc_id": "3720",
+      "source_url": "https://open.ys7.com/help/en/3720",
+      "source_content_sha256": "d135433307c36de9831e40fedf64be7286e9bff1c0ebc83498e082135564b79f",
+      "method": "GET",
+      "path": "/api/v3/device/fillLight/mode/get",
+      "base_url": "{areaDomain}",
+      "body_encoding": "unknown",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "meta.code",
+        "message_path": "meta.message",
+        "data_path": "data",
+        "values": [
+          200
+        ],
+        "evidence": "Explicit SDK layouts: documented body/meta and root/meta observed for an anonymous v3 gateway error; authenticated success remains unverified.",
+        "envelope_paths": [
+          "",
+          "body"
+        ]
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Overseas only; graphicType/luminance/duration returned unchanged, with no fixed values injected.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [
+        "Root/body response layers have limited unauthenticated evidence only; success shape and device operation are not live verified. Ambiguous multiple code-bearing layouts are rejected."
+      ],
+      "transport_evidence": {
+        "method": "GET",
+        "path": "Request Address",
+        "encoding": null
+      }
+    },
+    {
+      "operation_id": "cn.illumination.set_enabled",
+      "region": "domestic",
+      "source_doc_id": "1717",
+      "source_url": "https://open.ys7.com/help/1717",
+      "source_content_sha256": "77742683062aa3d55ca28b70e8f1391acd4788239dac9049a728a0ee4d6ab122",
+      "method": "POST",
+      "path": "/api/v3/device/fillLight/switch/set",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "header",
+      "parameters": [
+        {
+          "name": "accessToken",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "deviceSerial",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "enable",
+          "location": "body",
+          "type": "Int",
+          "required": false,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "message_path": "msg",
+        "data_path": "data",
+        "values": [
+          "200"
+        ],
+        "evidence": "documented response fields and examples"
+      },
+      "read_only": false,
+      "constraints": [
+        {
+          "fact": "Single explicit operation; no automatic prerequisite mutations, polling, upgrade-all or format-all.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        },
+        {
+          "fact": "Source enable is optional with default 0; SDK requires explicit bool and sends 0/1 to avoid implicit disabling.",
+          "evidence": "function/parameter description and explicit SDK policy"
+        }
+      ],
+      "uncertainties": [],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "Request Address",
+        "encoding": "form_urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -8647,6 +9433,10 @@
     {
       "review": "docs/coordination/S015B/contracts-review.json",
       "note": "C013 adds eleven regional RAM contracts; unproven domestic parity remains unsupported, no real account/permission changes."
+    },
+    {
+      "review": "docs/coordination/S016B/contracts-review.json",
+      "note": "C014 adds thirteen maintenance/illumination contracts and revises overseas storage-status response layouts from limited protocol evidence."
     }
   ]
 }

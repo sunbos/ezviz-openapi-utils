@@ -41,6 +41,25 @@ def _resolve(payload: object, path: str | None) -> object:
     return current
 
 
+def _matching_envelopes(payload: object, policy: ResponsePolicy) -> list[object]:
+    """Explicit envelope candidates that contain policy.code_path.
+
+    Each entry of policy.envelope_paths names one candidate object ("" is the
+    payload root). A candidate matches when the configured code path exists in
+    it, regardless of the value's validity; candidates are never discovered by
+    searching arbitrary fields or data arrays.
+    """
+    matches: list[object] = []
+    for path in policy.envelope_paths:
+        candidate = payload if path == "" else _resolve(payload, path)
+        if candidate is _MISSING:
+            continue
+        if _resolve(candidate, policy.code_path) is _MISSING:
+            continue
+        matches.append(candidate)
+    return matches
+
+
 def _is_scalar_code(value: object) -> TypeGuard[ScalarCode]:
     """Only str/int codes are valid; bool, float, objects and null are not."""
     return isinstance(value, (str, int)) and not isinstance(value, bool)
@@ -79,11 +98,22 @@ def decode_response(
     elif not isinstance(policy, ResponsePolicy):
         raise TypeError(f"policy must be a ResponsePolicy, got {type(policy).__name__}")
 
-    raw_code = _resolve(payload, policy.code_path)
-    business_code: ScalarCode | None = raw_code if _is_scalar_code(raw_code) else None
-    message = redact(_text(_resolve(payload, policy.message_path)), secrets)
+    matches = _matching_envelopes(payload, policy)
 
     if not 200 <= http_status < 300:
+        business_code: ScalarCode | None = None
+        message = ""
+        error_scope: object = _MISSING
+        if len(matches) == 1:
+            error_scope = matches[0]
+        elif not matches and len(policy.envelope_paths) == 1:
+            path = policy.envelope_paths[0]
+            error_scope = payload if path == "" else _resolve(payload, path)
+        if error_scope is not _MISSING:
+            error_code = _resolve(error_scope, policy.code_path)
+            if _is_scalar_code(error_code):
+                business_code = error_code
+            message = redact(_text(_resolve(error_scope, policy.message_path)), secrets)
         error_type = _classify(http_status, business_code)
         raise error_type(
             message or f"HTTP {http_status} error",
@@ -100,6 +130,26 @@ def decode_response(
             operation=operation,
             secrets=secrets,
         )
+    if not matches:
+        raise ProtocolError(
+            f"missing business code at '{policy.code_path}'",
+            http_status=http_status,
+            operation=operation,
+            secrets=secrets,
+        )
+    if len(matches) > 1:
+        raise ProtocolError(
+            f"ambiguous response envelope: '{policy.code_path}' is present "
+            f"in {len(matches)} candidates",
+            http_status=http_status,
+            operation=operation,
+            secrets=secrets,
+        )
+
+    scope = matches[0]
+    raw_code = _resolve(scope, policy.code_path)
+    message = redact(_text(_resolve(scope, policy.message_path)), secrets)
+
     if raw_code is _MISSING:
         raise ProtocolError(
             f"missing business code at '{policy.code_path}'",
@@ -127,7 +177,7 @@ def decode_response(
         )
 
     if policy.device_code_path:
-        device_code = _resolve(payload, policy.device_code_path)
+        device_code = _resolve(scope, policy.device_code_path)
         if device_code is _MISSING:
             if policy.require_device_code:
                 raise ProtocolError(
@@ -145,7 +195,7 @@ def decode_response(
                 secrets=secrets,
             )
         elif device_code not in policy.device_success_values:
-            device_message = _text(_resolve(payload, policy.device_message_path))
+            device_message = _text(_resolve(scope, policy.device_message_path))
             raise DeviceError(
                 device_message or message or f"device error code {device_code}",
                 code=device_code,
@@ -154,7 +204,7 @@ def decode_response(
                 secrets=secrets,
             )
 
-    data = _resolve(payload, policy.data_path)
+    data = _resolve(scope, policy.data_path)
     return ApiResponse(
         http_status=http_status,
         code=code,

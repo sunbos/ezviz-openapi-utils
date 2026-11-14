@@ -142,8 +142,8 @@ def test_diagnostic_contracts(kind, region, case):
         expected = {"data": {"deviceSerial": "DEVICE", "channelNo": "2"}}
     if region.scope == "overseas" and name == "storage_status":
         expected = {"headers": {"deviceSerial": "DEVICE"}}
-        code_path = "body.meta.code"
-        data_path = "body.data"
+        code_path = "meta.code"
+        data_path = "data"
     assert call(kind, resource, name, *args, **kwargs) is client.result
     op, actual = client.calls[0]
     assert actual == expected and op.method == method and op.path == path
@@ -208,7 +208,10 @@ def test_storage_envelopes_and_token_recovery(kind, region):
             "data": {"storageStatus": []},
         }
         return httpx.Response(
-            200, json=body if region.scope == "domestic" else {"status": 200, "body": body}
+            200,
+            json=body
+            if region.scope == "domestic" or len(calls) == 1
+            else {"status": 200, "body": body},
         )
 
     async def scenario():

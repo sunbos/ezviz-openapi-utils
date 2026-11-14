@@ -1,0 +1,16 @@
+{
+  "task_id": "C014",
+  "new_contracts": 13,
+  "total_contracts": 142,
+  "mapped_legacy_methods": 73,
+  "source_issues": 37,
+  "source_bodies_rehashed": true,
+  "provenance": [
+    "source-provenance.json",
+    "../S016C/source-provenance.json",
+    "../S016A/source-provenance.json"
+  ],
+  "protocol_evidence": "../../validation/protocol/2026-11-14-overseas-v3.json",
+  "device_operations_verified": false,
+  "mutations_sent": false
+}

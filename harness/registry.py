@@ -151,6 +151,19 @@ def _token_consistency(contract, params, where):
 
 def _success(value, where):
     success = _entry(value, where)
+    if "envelope_paths" in success:
+        paths = success["envelope_paths"]
+        if not isinstance(paths, list) or not paths:
+            _fail(where, "envelope_paths must be a non-empty list")
+        seen = set()
+        for path in paths:
+            if not isinstance(path, str):
+                _fail(where, "envelope_paths entries must be strings")
+            if path:
+                _dotted(path, "envelope_paths", where)
+            if path in seen:
+                _fail(where, "envelope_paths must not contain duplicates")
+            seen.add(path)
     _dotted(success.get("code_path"), "code_path", where)
     values = success.get("values")
     if not isinstance(values, list) or not values:

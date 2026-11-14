@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "region": "overseas",
+      "doc_id": "3731",
+      "title": "Get the device formatting status",
+      "source_url": "https://open.ys7.com/help/en/3731",
+      "content_sha256": "bb88fc4d32d6d7574da2803d4c2cd1261129ae5b325de07485227234f76c32a3",
+      "raw_file_sha256": "a6761f13de7059b7cf815d9adcb01925f7376b05418dc91b3c2291fce7951cb8"
+    }
+  ],
+  "source_bodies_rehashed": true,
+  "protocol_observation": "../../validation/protocol/2026-11-14-overseas-v3.json"
+}
