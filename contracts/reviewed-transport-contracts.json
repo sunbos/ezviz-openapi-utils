@@ -1978,6 +1978,83 @@
         "path": "request address section",
         "encoding": "application/x-www-form-urlencoded"
       }
+    },
+    {
+      "operation_id": "cn.devices.list_managed",
+      "region": "domestic",
+      "source_doc_id": "824",
+      "source_url": "https://open.ys7.com/help/824",
+      "source_content_sha256": "d14df715585850e8b1ec434db5a9f857a47756766fdd681eb814a526f6316af7",
+      "method": "POST",
+      "path": "/api/lapp/trust/device/list",
+      "base_url": "https://open.ys7.com",
+      "body_encoding": "form_urlencoded",
+      "token_location": "body",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "location": "header",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table",
+          "constant": "application/x-www-form-urlencoded"
+        },
+        {
+          "name": "accessToken",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "version",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table",
+          "constant": "3.0"
+        },
+        {
+          "name": "pageStart",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        },
+        {
+          "name": "pageSize",
+          "location": "body",
+          "type": "String",
+          "required": true,
+          "evidence": "hash-verified parameter table"
+        }
+      ],
+      "success": {
+        "code_path": "code",
+        "values": [
+          "200"
+        ],
+        "evidence": "response example"
+      },
+      "read_only": true,
+      "constraints": [
+        {
+          "fact": "version is fixed to 3.0; pageStart defaults to 0, pageSize defaults to 10 and is capped at 50.",
+          "evidence": "request parameter table"
+        },
+        {
+          "fact": "Returns managed devices visible to the supplied token; ordinary device listing excludes managed devices.",
+          "evidence": "824 function section and 673 constraint"
+        }
+      ],
+      "uncertainties": [
+        "Visibility is determined by the issued token and server permissions; the SDK does not infer the subject from token text."
+      ],
+      "transport_evidence": {
+        "method": "POST",
+        "path": "request address",
+        "encoding": "application/x-www-form-urlencoded"
+      }
     }
   ],
   "reviews": [
@@ -1999,6 +2076,10 @@
     {
       "review": "docs/coordination/S006A/contracts-review.json",
       "note": "C004 adds 18 source-hash-bound contracts; one conflicting setter stays unresolved."
+    },
+    {
+      "review": "docs/coordination/S007A/contracts-review.json",
+      "note": "C005 managed-list contract; token refresh document conflict remains unresolved."
     }
   ]
 }

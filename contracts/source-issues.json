@@ -96,6 +96,16 @@
       "description": "enable is placed in body by the table but in query by the example; body encoding is absent.",
       "status": "unresolved_source_semantics",
       "sdk_handling": "no set_enabled facade until verified"
+    },
+    {
+      "id": "cn.trust.token.refresh.method_encoding",
+      "region": "domestic",
+      "source_doc_id": "821",
+      "source_url": "https://open.ys7.com/help/821",
+      "source_content_sha256": "5f62bc4a8e45d7b6acdd428b76efb9176666222670ff694f597219356c8e4cb7",
+      "description": "Request method says GET while the HTTP request example says POST; parameter header label and form example also conflict.",
+      "status": "unresolved_source_semantics",
+      "sdk_handling": "No built-in managed-token refresh flow; caller-owned providers must use a separately verified issuer integration."
     }
   ]
 }

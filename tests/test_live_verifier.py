@@ -72,3 +72,36 @@ def test_empty_account_is_not_reported_as_device_validation(monkeypatch):
     result = verify_devices.verify({"region": "overseas", "app_key": "K", "app_secret": "S"})
     assert result["results"][-1]["status"] == "not_verified"
     assert result["results"][-1]["reason"] == "no_device"
+
+
+def test_managed_inventory_is_opt_in_and_does_not_trigger_detail_queries(monkeypatch):
+    calls = []
+
+    class Client:
+        def __init__(self, *args, **kwargs):
+            self.devices = self
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+        def list(self, *, page_size):
+            calls.append("ordinary")
+            return ApiResponse(200, "200", data=[])
+
+        def list_managed(self, *, page_size):
+            assert page_size == 1
+            calls.append("managed")
+            return ApiResponse(200, "200", data=[{"deviceSerial": "PRIVATE_MANAGED_DEVICE"}])
+
+    monkeypatch.setattr(verify_devices, "Client", Client)
+    result = verify_devices.verify(
+        {"region": "domestic", "app_key": "K", "app_secret": "S", "include_managed": "true"}
+    )
+    assert calls == ["ordinary", "managed"]
+    assert {"operation": "devices.list_managed", "status": "passed", "returned_items": 1} in result[
+        "results"
+    ]
+    assert "PRIVATE" not in json.dumps(result)

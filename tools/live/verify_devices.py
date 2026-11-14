@@ -22,6 +22,9 @@ def verify(config: dict[str, str]) -> dict[str, object]:
     scope = config["region"]
     if scope not in {"domestic", "overseas"}:
         raise ValueError("invalid region")
+    include_managed = config.get("include_managed") == "true"
+    if include_managed and scope != "domestic":
+        raise ValueError("managed inventory is only documented for domestic accounts")
     region = (
         RegionConfig.china()
         if scope == "domestic"
@@ -75,6 +78,23 @@ def verify(config: dict[str, str]) -> dict[str, object]:
         results.append(
             {"operation": "devices.list", "status": "passed", "returned_items": len(rows)}
         )
+        if include_managed:
+            try:
+                managed = client.devices.list_managed(page_size=1)
+                if isinstance(managed.data, list):
+                    results.append(
+                        {
+                            "operation": "devices.list_managed",
+                            "status": "passed",
+                            "returned_items": len(managed.data),
+                        }
+                    )
+                else:
+                    results.append(
+                        {"operation": "devices.list_managed", "status": "unexpected_data_shape"}
+                    )
+            except EzvizError as exc:
+                record_error("devices.list_managed", exc)
         serial = rows[0].get("deviceSerial") if rows and isinstance(rows[0], dict) else None
         if not isinstance(serial, str) or not serial.strip():
             reason = "no_device" if not rows else "missing_device_serial"
@@ -97,7 +117,7 @@ def verify(config: dict[str, str]) -> dict[str, object]:
     return report
 
 
-def serve(output: Path) -> None:
+def serve(output: Path, *, include_managed: bool = False) -> None:
     """Temporary loopback form lets authorized browser inputs reach the local SDK."""
     route = "/" + secrets.token_urlsafe(24)
     form = """<!doctype html><meta charset=utf-8><title>EZVIZ 只读验收</title>
@@ -110,6 +130,13 @@ def serve(output: Path) -> None:
     <label>AppSecret<input name=app_secret type=password required autocomplete=off></label><br>
     <label>海外认证入口（留空使用官方文档默认值）<input name=auth_base_url></label><br>
     <button>运行只读验收</button></form>"""
+    if include_managed:
+        form = form.replace(
+            "<form", "<p>另查询一页国内托管设备，仅记录条数，不查询托管设备详情。</p><form", 1
+        )
+        form = form.replace(
+            "</form>", '<input type="hidden" name="include_managed" value="true"></form>'
+        )
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *_args: object) -> None:
@@ -168,13 +195,17 @@ def serve(output: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--serve", action="store_true")
+    parser.add_argument("--include-managed", action="store_true")
     parser.add_argument("--output", type=Path, default=Path("docs/validation/live"))
     args = parser.parse_args()
     if args.serve:
-        serve(args.output)
+        serve(args.output, include_managed=args.include_managed)
     else:
         try:
-            print(json.dumps(verify(json.load(sys.stdin)), ensure_ascii=False, indent=2))
+            config = json.load(sys.stdin)
+            if args.include_managed:
+                config["include_managed"] = "true"
+            print(json.dumps(verify(config), ensure_ascii=False, indent=2))
         except Exception as error:
             print(json.dumps({"status": "stopped", "error_type": type(error).__name__}))
             sys.exit(1)

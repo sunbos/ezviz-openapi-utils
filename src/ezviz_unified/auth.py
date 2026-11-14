@@ -73,6 +73,10 @@ class _BaseManager:
         self._closed = False
 
     @property
+    def can_refresh(self) -> bool:
+        return True
+
+    @property
     def is_closed(self) -> bool:
         return self._closed
 

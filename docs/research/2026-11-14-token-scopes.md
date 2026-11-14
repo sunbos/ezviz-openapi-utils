@@ -1,0 +1,17 @@
+# 令牌主体与设备范围
+
+普通设备列表673明确不查询托管设备；托管列表824使用独立POST接口 `/api/lapp/trust/device/list`，version固定3.0，分页字段为字符串。实际可见资源由传入token及服务端授权决定，SDK不根据token前缀猜测主体。
+
+820描述通过授权码换取用户的托管token，输入字段是access_token/auth_code，输出包含access_token、expires_in、refresh_token等。该页称expires_in为“毫秒过期时间”，示例是13位数值；不能直接套用常见OAuth的“剩余秒数”语义。外部provider需要调用方依据签发方规则提供Unix秒expires_at，SDK不自动猜单位或生命周期。
+
+821的授权token刷新文档存在GET声明与POST报文、Header标注与form示例冲突，且使用独立openauth.ys7.com入口。当前不内建这条刷新流程，也不放宽现有API域名规则；需要独立核实后再集成。调用者可通过provider接入自己已经验证的签发/刷新服务。
+
+## 客户端约定
+
+- appKey/appSecret模式由客户端拥有TokenManager，自动缓存和有限只读刷新。
+- token_provider模式只使用借用provider，不混用开发者凭据；关闭Client不关闭provider，资源由调用者管理。
+- StaticTokenProvider/AsyncStaticTokenProvider无刷新能力；过期或10002失效后必须更新上游授权，不会替换成开发者token。
+- TokenProvider/AsyncTokenProvider的can_refresh必须是bool；自定义实现负责同一授权主体下的有效token、条件失效、刷新并发、超时、取消和自身错误脱敏。SDK仍会检查返回Token类型、过期时间和可信区域域名，但不能从opaque token中验证主体身份。
+- Client的refresh_skew用于自有TokenManager；借用provider的刷新策略在provider中配置。AsyncClient使用异步provider。
+
+本轮真实验证仅使用开发者应用token：普通与托管列表均成功且均为空。用户授权token、子账户token和海外主体均未实测；不能将这些主体的资源范围合并推断。

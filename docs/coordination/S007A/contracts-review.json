@@ -1,0 +1,12 @@
+{
+  "task_id": "C005",
+  "total_contracts": 31,
+  "new_contract": "cn.devices.list_managed",
+  "sources_rehashed": [
+    "820",
+    "821",
+    "824"
+  ],
+  "known_conflicts": 7,
+  "new_live_evidence": "managed list succeeded with zero visible items under developer application token"
+}

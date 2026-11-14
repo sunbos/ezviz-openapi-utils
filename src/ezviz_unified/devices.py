@@ -17,6 +17,25 @@ _MAX_PAGE_SIZE = 50
 
 _POLICY = ResponsePolicy(success_values=("200",))
 
+_OP_LIST_MANAGED = Operation(
+    "devices.list_managed",
+    "POST",
+    "/api/lapp/trust/device/list",
+    regions=frozenset({"domestic"}),
+    read_only=True,
+    policy=_POLICY,
+)
+
+
+def _managed_list_data(scope: str, page_start: int, page_size: int) -> dict[str, str]:
+    if scope != _DOMESTIC:
+        raise ValueError("managed device listing is only documented for the domestic region")
+    start = _check_int("page_start", page_start)
+    if start < 0:
+        raise ValueError("page_start must be non-negative")
+    return {"version": "3.0", "pageStart": str(start), "pageSize": str(_check_page_size(page_size))}
+
+
 _OP_LIST = Operation(
     "devices.list",
     "POST",
@@ -95,6 +114,12 @@ class Devices:
         }
         return self._client.request(_OP_LIST, data=data)
 
+    def list_managed(self, page_start: int = 0, page_size: int = 10) -> ApiResponse:
+        return self._client.request(
+            _OP_LIST_MANAGED,
+            data=_managed_list_data(self._client.region.scope, page_start, page_size),
+        )
+
     def get(self, device_serial: str) -> ApiResponse:
         serial = _check_device_serial(device_serial, require_uppercase=False)
         return self._client.request(_OP_GET, data={"deviceSerial": serial})
@@ -126,6 +151,12 @@ class AsyncDevices:
             "pageSize": _check_page_size(page_size),
         }
         return await self._client.request(_OP_LIST, data=data)
+
+    async def list_managed(self, page_start: int = 0, page_size: int = 10) -> ApiResponse:
+        return await self._client.request(
+            _OP_LIST_MANAGED,
+            data=_managed_list_data(self._client.region.scope, page_start, page_size),
+        )
 
     async def get(self, device_serial: str) -> ApiResponse:
         serial = _check_device_serial(device_serial, require_uppercase=False)

@@ -361,6 +361,19 @@
       ],
       "offline_status": "passed",
       "live_status": "not_verified"
+    },
+    {
+      "operation_id": "cn.devices.list_managed",
+      "region": "domestic",
+      "source_doc_id": "824",
+      "module": "src/ezviz_unified/devices.py",
+      "symbols": [
+        "Devices.list_managed",
+        "AsyncDevices.list_managed"
+      ],
+      "offline_status": "passed",
+      "live_status": "empty_list_succeeded_application_token",
+      "live_evidence": "docs/validation/live/2026-11-14-managed/domestic.json"
     }
   ]
 }

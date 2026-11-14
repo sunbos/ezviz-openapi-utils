@@ -4,7 +4,7 @@
 
 当前为开发中的 `0.1.0a1`：已有同步/异步客户端、区域认证、设备查询和诊断脱敏。首批4个设备方法对应国内/海外8项文档契约；其他业务域按[实施路线](docs/plans/2026-11-14-delivery-roadmap.md)推进，尚未发布到 PyPI。
 
-本地录像、云台和巡航接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖30项已审核地区契约，全部真实支持情况另列。
+本地录像、云台、巡航和国内托管列表接口已加入，国内/海外共用入口并保留协议差异；当前SDK覆盖31项已审核地区契约，全部真实支持情况另列。
 
 ## 设备查询
 
@@ -26,6 +26,8 @@ with Client(
 客户端按契约携带token，复用当前区域的连接。仅明确只读的操作遇到平台 `10002` 时刷新并重发一次；写操作、网络失败、一般HTTP401及设备层错误不自动重放。自定义接口可用 `Operation` 和 `client.request(...)`，其 `read_only` 默认False。禁止调用方覆盖受管token或Host。
 
 国内分页页码不超过400；海外文档未声明相同限制。每页1–50条。国内 `channels`/`status` 要求序列号英文字母大写。SDK不自动翻页，不自行解释有文档矛盾的海外状态字段。当前设备方法已做离线契约验证；[真实记录](docs/validation/live/2026-11-14/README.md)仅证明国内认证和空设备列表成功，设备详情与海外账户尚待验证。
+
+国内托管设备使用 `client.devices.list_managed(page_start=0, page_size=10)`；与普通列表分开，不套用400页上限。最新[范围复核](docs/validation/live/2026-11-14-managed/README.md)中，当前开发者token的两个列表均成功且为空，其他授权主体仍未验证。
 
 ## 本地录像查询
 
@@ -78,6 +80,25 @@ with TokenManager(
 可显式配置海外 `auth_base_url` 与 `api_base_url`，仅接受 EZVIZ 域名下的 HTTPS origin；显式业务地址必须与返回域名一致。刷新提前量默认60秒，最多为剩余寿命的一半。`invalidate(expected_value=旧token)` 只清除匹配缓存，防止迟到的失败响应清掉新 token。
 
 异步管理器在同一事件循环内使用；单个等待方取消不会取消共享刷新。关闭先禁止新调用，再等待在途刷新并释放连接；取消一个关闭等待方时，清理任务仍会继续。国内认证已完成一次真实联调，海外仍待验证；显式只读工具见[联调说明](tools/live/README.md)。
+
+## 外部令牌
+
+已有合法外部token时，可以省略开发者密钥：
+
+```python
+import os
+from ezviz_unified import Client, RegionConfig, StaticTokenProvider
+
+provider = StaticTokenProvider(
+    os.environ["EZVIZ_ACCESS_TOKEN"],
+    expires_at=float(os.environ["EZVIZ_TOKEN_EXPIRES_AT"]),  # Unix秒
+    api_base_url="https://open.ys7.com",
+)
+with Client(region=RegionConfig.china(), token_provider=provider) as client:
+    response = client.devices.list_managed()
+```
+
+静态provider不刷新；异步对应AsyncStaticTokenProvider。也可实现TokenProvider/AsyncTokenProvider接入自己的签发服务，或借用已有TokenManager。Client不关闭借用provider，不允许混用appKey/appSecret或auth_transport，也不会自动回退到开发者凭据。SDK检查期限与域名；自定义provider负责维持授权主体，详见[授权范围](docs/research/2026-11-14-token-scopes.md)。
 
 ## 本地开发
 

@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 
 import httpx
 
-from .errors import TransportError, redact
+from .errors import _SENSITIVE_KEYS, TransportError, redact
 from .models import ApiResponse, ResponsePolicy
 from .response import decode_response
 
@@ -20,23 +20,7 @@ __all__ = ["SyncTransport", "AsyncTransport"]
 _Scalar = str | int | float | bool | None
 ParamMapping = Mapping[str, _Scalar | list[_Scalar] | tuple[_Scalar, ...]]
 
-_SECRET_KEYS = frozenset(
-    {
-        "accesstoken",
-        "access_token",
-        "appkey",
-        "app_key",
-        "appsecret",
-        "app_secret",
-        "token",
-        "secret",
-        "password",
-        "authorization",
-        "deviceserial",
-        "verifycode",
-        "validatecode",
-    }
-)
+_SECRET_KEYS = frozenset(key.lower() for key in _SENSITIVE_KEYS)
 
 _REASON_MESSAGES = {
     "timeout": "HTTP request timed out",

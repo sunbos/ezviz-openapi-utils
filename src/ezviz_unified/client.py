@@ -11,6 +11,7 @@ and are always registered with the transport for redaction.
 from __future__ import annotations
 
 import asyncio
+import inspect
 import math
 import threading
 import time
@@ -26,6 +27,7 @@ from .devices import AsyncDevices, Devices
 from .errors import AuthenticationError, ProtocolError, TransportError
 from .models import ApiResponse
 from .operations import Operation
+from .providers import AsyncTokenProvider, TokenProvider, validate_provider_token
 from .ptz import AsyncPtz, Ptz
 from .recordings import AsyncRecordings, Recordings
 from .transport import AsyncTransport, ParamMapping, SyncTransport
@@ -157,10 +159,11 @@ class Client:
 
     def __init__(
         self,
-        app_key: str,
-        app_secret: str,
+        app_key: str | None = None,
+        app_secret: str | None = None,
         *,
         region: RegionConfig,
+        token_provider: TokenProvider | None = None,
         timeout: float = 10.0,
         refresh_skew: float = 60.0,
         clock: Callable[[], float] = time.time,
@@ -176,17 +179,44 @@ class Client:
         self._timeout = _validate_timeout(timeout)
         self._trust_env = trust_env
         self._factory = transport_factory
-        self._manager = TokenManager(
-            app_key,
-            app_secret,
-            region=region,
-            transport=auth_transport,
-            timeout=self._timeout,
-            trust_env=trust_env,
-            clock=clock,
-            refresh_skew=refresh_skew,
-        )
-        self._secrets = (app_key, app_secret)
+        if not callable(clock):
+            raise ValueError("clock must be callable")
+        self._clock = clock
+        self._owned_manager: TokenManager | None = None
+        self._manager: TokenProvider
+        self._secrets: tuple[str, ...]
+        if token_provider is not None:
+            if app_key is not None or app_secret is not None or auth_transport is not None:
+                raise ValueError(
+                    "token_provider cannot be combined with application credentials or auth_transport"
+                )
+            if (
+                not isinstance(token_provider, TokenProvider)
+                or not callable(token_provider.get_token)
+                or not callable(token_provider.invalidate)
+            ):
+                raise TypeError("token_provider must implement TokenProvider")
+            if not isinstance(token_provider.can_refresh, bool) or inspect.iscoroutinefunction(
+                token_provider.get_token
+            ):
+                raise TypeError("invalid synchronous token_provider")
+            self._manager = token_provider
+            self._secrets = ()
+        else:
+            if app_key is None or app_secret is None:
+                raise ValueError("provide both application credentials or a token_provider")
+            self._owned_manager = TokenManager(
+                app_key,
+                app_secret,
+                region=region,
+                transport=auth_transport,
+                timeout=self._timeout,
+                trust_env=trust_env,
+                clock=clock,
+                refresh_skew=refresh_skew,
+            )
+            self._manager = self._owned_manager
+            self._secrets = (app_key, app_secret)
         self._condition = threading.Condition()
         self._close_lock = threading.Lock()
         self._transports: dict[str, SyncTransport] = {}
@@ -239,7 +269,11 @@ class Client:
     def _execute(self, operation: Operation, prepared: _Prepared) -> ApiResponse:
         retried = False
         while True:
-            token = self._manager.get_token()  # auth errors are never retried
+            supplied = self._manager.get_token()  # provider errors are never retried
+            if inspect.iscoroutine(supplied):
+                supplied.close()
+                raise TypeError("synchronous provider returned a coroutine")
+            token = validate_provider_token(supplied, region=self._region, now=self._clock())
             transport = self._transport_for(token)
             bound = _inject(operation, prepared, token)
             try:
@@ -258,7 +292,7 @@ class Client:
                 if exc.code not in _TOKEN_ERROR_CODES:
                     raise
                 self._manager.invalidate(token.value)
-                if retried or not operation.read_only:
+                if retried or not operation.read_only or not self._manager.can_refresh:
                     raise
                 retried = True
 
@@ -296,7 +330,8 @@ class Client:
                 if failure is None:
                     failure = exc
         try:
-            self._manager.close()
+            if self._owned_manager is not None:
+                self._owned_manager.close()
         except BaseException as exc:
             if failure is None:
                 failure = exc
@@ -320,10 +355,11 @@ class AsyncClient:
 
     def __init__(
         self,
-        app_key: str,
-        app_secret: str,
+        app_key: str | None = None,
+        app_secret: str | None = None,
         *,
         region: RegionConfig,
+        token_provider: AsyncTokenProvider | None = None,
         timeout: float = 10.0,
         refresh_skew: float = 60.0,
         clock: Callable[[], float] = time.time,
@@ -339,17 +375,42 @@ class AsyncClient:
         self._timeout = _validate_timeout(timeout)
         self._trust_env = trust_env
         self._factory = transport_factory
-        self._manager = AsyncTokenManager(
-            app_key,
-            app_secret,
-            region=region,
-            transport=auth_transport,
-            timeout=self._timeout,
-            trust_env=trust_env,
-            clock=clock,
-            refresh_skew=refresh_skew,
-        )
-        self._secrets = (app_key, app_secret)
+        if not callable(clock):
+            raise ValueError("clock must be callable")
+        self._clock = clock
+        self._owned_manager: AsyncTokenManager | None = None
+        self._manager: AsyncTokenProvider
+        self._secrets: tuple[str, ...]
+        if token_provider is not None:
+            if app_key is not None or app_secret is not None or auth_transport is not None:
+                raise ValueError(
+                    "token_provider cannot be combined with application credentials or auth_transport"
+                )
+            if (
+                not isinstance(token_provider, AsyncTokenProvider)
+                or not callable(token_provider.get_token)
+                or not callable(token_provider.invalidate)
+            ):
+                raise TypeError("token_provider must implement AsyncTokenProvider")
+            if not isinstance(token_provider.can_refresh, bool):
+                raise TypeError("provider can_refresh must be bool")
+            self._manager = token_provider
+            self._secrets = ()
+        else:
+            if app_key is None or app_secret is None:
+                raise ValueError("provide both application credentials or a token_provider")
+            self._owned_manager = AsyncTokenManager(
+                app_key,
+                app_secret,
+                region=region,
+                transport=auth_transport,
+                timeout=self._timeout,
+                trust_env=trust_env,
+                clock=clock,
+                refresh_skew=refresh_skew,
+            )
+            self._manager = self._owned_manager
+            self._secrets = (app_key, app_secret)
         self._transports: dict[str, AsyncTransport] = {}
         self._active = 0
         self._idle = asyncio.Event()
@@ -403,7 +464,8 @@ class AsyncClient:
     async def _execute(self, operation: Operation, prepared: _Prepared) -> ApiResponse:
         retried = False
         while True:
-            token = await self._manager.get_token()  # auth errors never retry
+            supplied = await self._manager.get_token()  # provider errors never retry
+            token = validate_provider_token(supplied, region=self._region, now=self._clock())
             transport = self._transport_for(token)
             bound = _inject(operation, prepared, token)
             try:
@@ -422,7 +484,7 @@ class AsyncClient:
                 if exc.code not in _TOKEN_ERROR_CODES:
                     raise
                 self._manager.invalidate(token.value)
-                if retried or not operation.read_only:
+                if retried or not operation.read_only or not self._manager.can_refresh:
                     raise
                 retried = True
 
@@ -459,7 +521,8 @@ class AsyncClient:
                     failure = exc
         self._transports.clear()
         try:
-            await self._manager.aclose()
+            if self._owned_manager is not None:
+                await self._owned_manager.aclose()
         except BaseException as exc:
             if failure is None:
                 failure = exc

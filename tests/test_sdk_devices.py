@@ -113,3 +113,29 @@ def test_overseas_does_not_inherit_undocumented_domestic_limits(kind):
     call(kind, devices, "status", "mixedCase")
     assert len(client.calls) == 3
     assert client.calls[1][1]["data"]["deviceSerial"] == "mixedCase"
+
+
+@pytest.mark.parametrize("kind", ["sync", "async"])
+def test_managed_listing_uses_its_own_scope_and_pagination_contract(kind):
+    devices, client = make_devices(kind, RegionConfig.china())
+    assert call(kind, devices, "list_managed", page_start=401, page_size=50) is client.result
+    operation, kwargs = client.calls[0]
+    assert operation.path == "/api/lapp/trust/device/list" and operation.method == "POST"
+    assert operation.token_location == "form" and operation.read_only
+    assert operation.regions == {"domestic"}
+    assert kwargs == {"data": {"version": "3.0", "pageStart": "401", "pageSize": "50"}}
+    overseas, foreign = make_devices(kind, RegionConfig.overseas())
+    with pytest.raises(ValueError):
+        call(kind, overseas, "list_managed")
+    assert not foreign.calls
+
+
+@pytest.mark.parametrize("kind", ["sync", "async"])
+@pytest.mark.parametrize(
+    "kwargs", [{"page_start": -1}, {"page_start": True}, {"page_size": 51}, {"page_size": 0}]
+)
+def test_managed_listing_validates_before_request(kind, kwargs):
+    devices, client = make_devices(kind, RegionConfig.china())
+    with pytest.raises(ValueError):
+        call(kind, devices, "list_managed", **kwargs)
+    assert not client.calls
